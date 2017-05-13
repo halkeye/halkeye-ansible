@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  vars:
+    nodejs_version: "7.x"
   tasks:
     - name: setup add-apt-repository
       become: yes
@@ -24,3 +26,5 @@
         src: "{{ lookup('env','HOME') }}/Documents/git"
         dest: "{{ lookup('env','HOME') }}/git"
         state: link
+  roles:
+    - role: geerlingguy.nodejs
