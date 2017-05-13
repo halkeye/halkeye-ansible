@@ -28,3 +28,5 @@
         state: link
   roles:
     - role: geerlingguy.nodejs
+    - role: jlund.ansible-go
+    - role: laggyluke.direnv

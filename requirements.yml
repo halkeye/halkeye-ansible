@@ -1,1 +1,4 @@
 - name: geerlingguy.nodejs
+- src: https://github.com/jlund/ansible-go
+  name: jlund.ansible-go
+- name: laggyluke.direnv
