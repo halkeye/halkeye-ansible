@@ -1,3 +1,4 @@
+---
 - hosts: all
   tasks:
     - name: setup add-apt-repository
@@ -7,3 +8,19 @@
         name: software-properties-common
         state: present
     - include: playbooks/nvim.yml
+    - name: Symlink to windows directories
+      become: no
+      with_items:
+        - Desktop
+        - Documents
+        - Pictures
+      file:
+        src: "/mnt/c/Users/micro/{{ item }}"
+        dest: "{{ lookup('env','HOME') }}/{{ item }}"
+        state: link
+    - name: Symlink for git directory
+      become: no
+      file:
+        src: "{{ lookup('env','HOME') }}/Documents/git"
+        dest: "{{ lookup('env','HOME') }}/git"
+        state: link
