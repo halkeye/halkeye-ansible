@@ -1,0 +1,25 @@
+- name: setup neovim ppa
+  become: yes
+  when: ansible_os_family == "Debian"
+  apt_repository:
+    repo: "ppa:neovim-ppa/stable"
+    state: present
+- name: setup neovim
+  become: yes
+  when: ansible_os_family == "Debian"
+  apt:
+    name: neovim
+    state: present
+- name: setup neovim alternatives
+  become: yes
+  when: ansible_os_family == "Debian"
+  with_items:
+    - vi
+    - vim
+    - editor
+  alternatives:
+    link: "/usr/bin/{{ item }}"
+    name: "{{ item }}"
+    path: "/usr/bin/nvim"
+    priority: 60
+
