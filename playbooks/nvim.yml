@@ -7,8 +7,11 @@
 - name: setup neovim
   become: yes
   when: ansible_os_family == "Debian"
+  with_items:
+    - neovim
+    - ctags
   apt:
-    name: neovim
+    name: "{{ item }}"
     state: present
 - name: setup neovim alternatives
   become: yes
@@ -22,4 +25,25 @@
     name: "{{ item }}"
     path: "/usr/bin/nvim"
     priority: 60
-
+- name: Download config from git
+  become: no
+  git:
+    repo: 'git@github.com:halkeye/vim.git'
+    dest: "{{ lookup('env','HOME') }}/.vim"
+- name: Create config directory
+  become: no
+  file:
+    path: "{{ lookup('env','HOME') }}/.config"
+    state: directory
+- name: Symlink for neovim config
+  become: no
+  file:
+    src: "{{ lookup('env','HOME') }}/.vim"
+    dest: "{{ lookup('env','HOME') }}/.config/nvim"
+    state: link
+- name: Install vundle
+  become: no
+  shell: "./install_vundle.sh"
+  args:
+    chdir: "{{ lookup('env','HOME') }}/.vim"
+    creates: "bundle/Vundle.vim"
