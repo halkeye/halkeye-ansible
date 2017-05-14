@@ -2,7 +2,7 @@
 - hosts: all
   vars:
     nodejs_version: "7.x"
-    windows_username: "micro"
+    windows_username: "Gavin Mogan"
   tasks:
     - name: setup add-apt-repository
       become: yes
