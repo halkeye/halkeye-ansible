@@ -2,7 +2,7 @@
 - hosts: all
   vars:
     nodejs_version: "7.x"
-    windows_username: "micro"
+    windows_username: "Gavin Mogan"
     gitconfig_users:
       - user: halkeye
         name: Gavin Mogan
@@ -14,16 +14,6 @@
           .envrc
           *.bak
   tasks:
-    - name: install ubuntu packages
-      become: yes
-      with_items:
-        - silversearcher-ag
-        - python
-        - python-dev
-        - ruby
-      apt:
-        name: "{{ item }}"
-        state: present
     - name: setup add-apt-repository
       become: yes
       when: ansible_os_family == "Debian"

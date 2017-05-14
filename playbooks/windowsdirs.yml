@@ -1,0 +1,17 @@
+- name: Symlink to windows directories
+  become: no
+  with_items:
+    - Desktop
+    - Documents
+    - Pictures
+  file:
+    src: "/mnt/c/Users/{{ windows_username }}/{{ item }}"
+    dest: "{{ lookup('env','HOME') }}/{{ item }}"
+    state: link
+- name: Symlink for git directory
+  become: no
+  file:
+    src: "{{ lookup('env','HOME') }}/Documents/git"
+    dest: "{{ lookup('env','HOME') }}/git"
+    state: link
+

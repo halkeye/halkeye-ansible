@@ -1,3 +1,4 @@
 .direnv/
 *.retry
 roles/*\.*
+venv/
