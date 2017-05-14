@@ -3,6 +3,16 @@
   vars:
     nodejs_version: "7.x"
     windows_username: "Gavin Mogan"
+    gitconfig_users:
+      - user: halkeye
+        name: Gavin Mogan
+        email: git@gavinmogan.com
+        ignore_github:
+          - Linux
+          - Vim
+        ignore_custom: |
+          .envrc
+          *.bak
   tasks:
     - name: setup add-apt-repository
       become: yes
@@ -16,3 +26,4 @@
     - role: geerlingguy.nodejs
     - role: jlund.ansible-go
     - role: laggyluke.direnv
+    - role: mjanser.gitconfig

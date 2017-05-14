@@ -2,3 +2,4 @@
 - src: https://github.com/jlund/ansible-go
   name: jlund.ansible-go
 - name: laggyluke.direnv
+- name: mjanser.gitconfig
