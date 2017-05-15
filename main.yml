@@ -1,26 +1,9 @@
 ---
 - hosts: all
-  vars:
-    nodejs_version: "7.x"
-    windows_username: "micro"
-    gitconfig_users:
-      - user: halkeye
-        name: Gavin Mogan
-        email: git@gavinmogan.com
-        ignore_github:
-          - Linux
-          - Vim
-        ignore_custom: |
-          .envrc
-          *.bak
   tasks:
     - name: install ubuntu packages
       become: yes
-      with_items:
-        - silversearcher-ag
-        - python
-        - python-dev
-        - ruby
+      with_items: "{{ global_ubuntu_packages }}"
       apt:
         name: "{{ item }}"
         state: present

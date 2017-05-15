@@ -1,0 +1,21 @@
+---
+nodejs_version: "7.x"
+global_ubuntu_packages:
+  - silversearcher-ag
+  - python
+  - python-dev
+  - ruby
+  - zsh
+gitconfig_users:
+  - user: halkeye
+    name: Gavin Mogan
+    email: git@gavinmogan.com
+    ignore_github:
+      - Linux
+      - Vim
+    ignore_custom: |
+      .envrc
+nodejs_npm_global_packages:
+  - name: jsonlint
+  - name: eslint-cli
+  - name: npm5
