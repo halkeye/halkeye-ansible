@@ -6,10 +6,12 @@ global_ubuntu_packages:
   - python-dev
   - ruby
   - zsh
+  - jq
+github_email: gavin@saucelabs.com
 gitconfig_users:
   - user: halkeye
     name: Gavin Mogan
-    email: git@gavinmogan.com
+    email: "{{ github_email }}"
     ignore_github:
       - Linux
       - Vim
