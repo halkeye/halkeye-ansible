@@ -22,6 +22,7 @@
         state: present
     - include: playbooks/nvim.yml
     - include: playbooks/windowsdirs.yml
+    - include: playbooks/hub.yml
   roles:
     - role: geerlingguy.nodejs
     - role: jlund.ansible-go

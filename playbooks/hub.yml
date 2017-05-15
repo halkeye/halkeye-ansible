@@ -1,0 +1,9 @@
+---
+- name: Unarchive hub
+  become: true
+  unarchive:
+    src: https://github.com/github/hub/releases/download/v2.3.0-pre9/hub-linux-amd64-2.3.0-pre9.tgz
+    extra_opts: ['--strip-components=1', '--show-stored-names']
+    creates: /usr/local/bin/hub
+    dest: /usr/local/
+    remote_src: yes
