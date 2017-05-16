@@ -16,6 +16,9 @@
     - include: playbooks/nvim.yml
     - include: playbooks/windowsdirs.yml
     - include: playbooks/hub.yml
+    - include: playbooks/tmux.yml
+      tags:
+        - tmux
   roles:
     - role: geerlingguy.nodejs
     - role: jlund.ansible-go
