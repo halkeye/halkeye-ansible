@@ -15,6 +15,7 @@
         state: present
     - include: playbooks/nvim.yml
     - include: playbooks/windowsdirs.yml
+      when: windows_username is defined
     - include: playbooks/hub.yml
     - include: playbooks/tmux.yml
       tags:

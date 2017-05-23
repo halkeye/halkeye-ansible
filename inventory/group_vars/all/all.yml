@@ -9,7 +9,7 @@ global_ubuntu_packages:
   - jq
 github_email: gavin@saucelabs.com
 gitconfig_users:
-  - user: halkeye
+  - user: "{{ lookup('env', 'USER') }}"
     name: Gavin Mogan
     email: "{{ github_email }}"
     ignore_github:

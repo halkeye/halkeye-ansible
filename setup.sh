@@ -1,4 +1,4 @@
-which pip || sudo apt install python-pip python virtualenv libssl-dev -y
+which pip || sudo apt install python-pip python virtualenv libssl-dev build-essential -y
 test -e venv || virtualenv venv
 source venv/bin/activate
 which ansible || pip install ansible
