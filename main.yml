@@ -27,3 +27,5 @@
     - role: mjanser.gitconfig
     - role: wtanaka.slack
       when: windows_username is not defined
+    - role: gantsign.visual-studio-code
+      when: windows_username is not defined
