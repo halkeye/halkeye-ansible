@@ -25,3 +25,4 @@
     - role: jlund.ansible-go
     - role: laggyluke.direnv
     - role: mjanser.gitconfig
+    - role: wtanaka.slack

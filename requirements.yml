@@ -3,3 +3,4 @@
   name: jlund.ansible-go
 - name: laggyluke.direnv
 - name: mjanser.gitconfig
+- name: wtanaka.slack
