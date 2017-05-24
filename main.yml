@@ -26,3 +26,4 @@
     - role: laggyluke.direnv
     - role: mjanser.gitconfig
     - role: wtanaka.slack
+      when: windows_username is not defined
