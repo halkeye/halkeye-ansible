@@ -1,4 +1,4 @@
-@---
+---
 nodejs_version: "7.x"
 slack_version: 2.6.2
 global_ubuntu_packages:
@@ -21,4 +21,5 @@ gitconfig_users:
 nodejs_npm_global_packages:
   - name: jsonlint
   - name: eslint-cli
-  - name: npm@5
+  - name: npm
+    version: 5

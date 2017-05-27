@@ -22,6 +22,8 @@
         - tmux
   roles:
     - role: geerlingguy.nodejs
+      tags:
+        - nodejs
     - role: jlund.ansible-go
     - role: laggyluke.direnv
     - role: mjanser.gitconfig
