@@ -8,6 +8,7 @@ global_ubuntu_packages:
   - ruby
   - zsh
   - jq
+  - curl
 github_email: gavin@saucelabs.com
 gitconfig_users:
   - user: "{{ lookup('env', 'USER') }}"
