@@ -9,6 +9,7 @@ global_ubuntu_packages:
   - zsh
   - jq
   - curl
+  - tmuxinator
 github_email: gavin@saucelabs.com
 gitconfig_users:
   - user: "{{ lookup('env', 'USER') }}"
