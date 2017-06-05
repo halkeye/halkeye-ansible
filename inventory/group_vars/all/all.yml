@@ -10,6 +10,7 @@ global_ubuntu_packages:
   - jq
   - curl
   - tig
+  - libffi-dev
 github_email: gavin@saucelabs.com
 gitconfig_users:
   - user: "{{ lookup('env', 'USER') }}"
