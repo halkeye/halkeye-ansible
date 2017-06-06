@@ -10,7 +10,7 @@ global_ubuntu_packages:
   - jq
   - curl
   - tig
-github_email: gavin@saucelabs.com
+github_email: git@gavinmogan.com
 gitconfig_users:
   - user: "{{ lookup('env', 'USER') }}"
     name: Gavin Mogan
@@ -19,6 +19,7 @@ gitconfig_users:
       - Linux
       - Vim
     ignore_custom: |
+      .vscode
       .envrc
 nodejs_npm_global_packages:
   - name: jsonlint
