@@ -23,6 +23,7 @@ gitconfig_users:
     ignore_custom: |
       .vscode
       .envrc
+      .direnv
 nodejs_npm_global_packages:
   - name: jsonlint
   - name: eslint-cli
