@@ -48,10 +48,13 @@
             - PeterJausovec.vscode-docker
             - rebornix.Ruby
             - RolandGreim.sharecode
+            - rafaelmaiolla.remote-vscode
           visual_studio_code_settings: {
             "window.zoomLevel": 0,
             "workbench.colorTheme": "Visual Studio Dark",
             "editor.renderWhitespace": "boundary",
             "editor.autoClosingBrackets": false,
-            "terminal.integrated.shell.windows": "C:\\Windows\\sysnative\\bash.exe"
+            "terminal.integrated.shell.windows": "C:\\Windows\\sysnative\\bash.exe",
+            "remote.port": 52698,
+            "remote.onstartup": true
           }
