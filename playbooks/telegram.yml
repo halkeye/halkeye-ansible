@@ -1,0 +1,9 @@
+---
+- name: Install Telegram Repo
+  apt_repository:
+    repo: 'ppa:atareao/telegram'
+- name: install ubuntu packages
+  become: yes
+  apt:
+    name: telegram
+    state: present

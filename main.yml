@@ -17,6 +17,10 @@
     - include: playbooks/windowsdirs.yml
       when: windows_username is defined
     - include: playbooks/hub.yml
+    - include: playbooks/telegram.yml
+      tags:
+        - telegram
+      when: "'linux' in group_names"
     - include: playbooks/tmux.yml
       tags:
         - tmux
