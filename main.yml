@@ -32,9 +32,12 @@
     - role: laggyluke.direnv
     - role: mjanser.gitconfig
     - role: wtanaka.slack
+      tags:
+        - slack
+      when: "'linux' in group_names"
       when: windows_username is not defined
     - role: gantsign.visual-studio-code
-      when: windows_username is not defined
+      when: "'linux' in group_names"
       users:
         - username: "{{ lookup('env', 'USER') }}"
           visual_studio_code_extensions:
