@@ -35,7 +35,6 @@
       tags:
         - slack
       when: "'linux' in group_names"
-      when: windows_username is not defined
     - role: gantsign.visual-studio-code
       when: "'linux' in group_names"
       users:
