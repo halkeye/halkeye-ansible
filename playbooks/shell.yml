@@ -1,0 +1,30 @@
+- name: setup zsh
+  become: yes
+  when: ansible_os_family == "Debian"
+  with_items:
+    - zsh
+  apt:
+    name: "{{ item }}"
+    state: present
+- name: Download config from git
+  become: no
+  git:
+    repo: 'git@github.com:halkeye/dotfiles.git'
+    dest: "{{ lookup('env','HOME') }}/.shell"
+- name: Install antigen
+  become: no
+  git:
+    repo: 'https://github.com/zsh-users/antigen.git'
+    dest: "{{ lookup('env','HOME') }}/.shell/antigen"
+- name: Symlink for zshrc
+  become: no
+  file:
+    src: "{{ lookup('env','HOME') }}/.shell/zshrc"
+    dest: "{{ lookup('env','HOME') }}/.zshrc"
+    state: link
+- name: Symlink for tmux.conf
+  become: no
+  file:
+    src: "{{ lookup('env','HOME') }}/.shell/tmux.conf"
+    dest: "{{ lookup('env','HOME') }}/.tmux.conf"
+    state: link
