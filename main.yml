@@ -24,6 +24,10 @@
     - include: playbooks/tmux.yml
       tags:
         - tmux
+    - include: playbooks/shell.yml
+      tags:
+        - zsh
+      when: "'linux' not in group_names"
   roles:
     - role: viasite-ansible.zsh
       tags:
