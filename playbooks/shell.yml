@@ -18,4 +18,5 @@
   blockinfile:
     dest: "{{ lookup('env','HOME') }}/.zshrc.local"
     block: |
+      export POWERLEVEL9K_TIME_FORMAT='%D{\%I:\%M:\%S \%p}'
       export TZ=America/Vancouver
