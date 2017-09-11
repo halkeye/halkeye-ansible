@@ -4,6 +4,7 @@
     - name: install ubuntu packages
       become: yes
       with_items: "{{ global_ubuntu_packages }}"
+      when: ansible_os_family == "Debian"
       apt:
         name: "{{ item }}"
         state: present
@@ -27,7 +28,6 @@
     - include: playbooks/shell.yml
       tags:
         - zsh
-      when: "'linux' not in group_names"
   roles:
     - role: viasite-ansible.zsh
       tags:

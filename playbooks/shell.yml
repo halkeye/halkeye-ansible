@@ -1,6 +1,13 @@
 ---
 - name: Update bashrc
+  when: "'wsl' in group_names"
   blockinfile:
     dest: "{{ lookup('env','HOME') }}/.bashrc"
     block: |
       if [ -t 1 ]; then exec zsh;fi
+
+- name: Update bashrc
+  blockinfile:
+    dest: "{{ lookup('env','HOME') }}/.zshrc.local"
+    block: |
+      export TZ=America/Vancouver

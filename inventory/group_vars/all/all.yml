@@ -28,10 +28,11 @@ nodejs_npm_global_packages:
   - name: jsonlint
   - name: eslint-cli
   - name: npm
-    version: 5.3.0
+    version: 5.4.1
 zsh_antigen_bundles_extras:
   - joel-porquet/zsh-dircolors-solarized
-  - bobsoppe/zsh-ssh-agent
+  - name: bobsoppe/zsh-ssh-agent
+    when: "'server' not in group_names"
   #- zuxfoucault/colored-man-pages_mod
   - zlsun/solarized-man
   - joel-porquet/zsh-dircolors-solarized

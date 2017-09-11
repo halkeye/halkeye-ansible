@@ -3,8 +3,8 @@
 [home]
 jarvis
 blackpanther
-Gavin-Macbook-Windows
 halkeye-chromebook
+odin
 
 [work]
 gavinmogan-ThinkPad-X260
@@ -12,3 +12,12 @@ Gavin-Mogan-SL0254
 
 [linux]
 halkeye-chromebook
+
+[wsl]
+Gavin-Mogan-SL0254
+jarvis
+blackpanther
+
+[server]
+odin
+ribbitfrog
