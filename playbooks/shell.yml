@@ -6,7 +6,15 @@
     block: |
       if [ -t 1 ]; then exec zsh;fi
 
-- name: Update bashrc
+- name: ensure .zshrc.local exists
+  file:
+    path: "{{ lookup('env','HOME') }}/.zshrc.local"
+    group: "{{ lookup('env', 'USER') }}"
+    owner: "{{ lookup('env', 'USER') }}"
+    mode: 0700
+    state: "touch"
+
+- name: Add timezone to .zshrc.local
   blockinfile:
     dest: "{{ lookup('env','HOME') }}/.zshrc.local"
     block: |
