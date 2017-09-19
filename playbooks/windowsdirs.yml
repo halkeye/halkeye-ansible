@@ -3,6 +3,7 @@
   with_items:
     - Desktop
     - Documents
+    - Downloads
     - Pictures
   file:
     src: "/mnt/c/Users/{{ windows_username }}/{{ item }}"
