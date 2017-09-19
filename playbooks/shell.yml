@@ -20,3 +20,10 @@
     block: |
       export POWERLEVEL9K_TIME_FORMAT='%D{\%I:\%M:\%S \%p}'
       export TZ=America/Vancouver
+
+- name: Make sure wsl don't use fzf for history search
+  blockinfile:
+    dest: "{{ lookup('env','HOME') }}/.zshrc.local"
+    block: |
+      bindkey "^R" history-incremental-search-backward
+  when: "'wsl' in group_names"
