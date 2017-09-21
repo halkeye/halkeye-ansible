@@ -20,10 +20,14 @@
     block: |
       export POWERLEVEL9K_TIME_FORMAT='%D{\%I:\%M:\%S \%p}'
       export TZ=America/Vancouver
+      if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
+      alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
+      alias webbie="python -m SimpleHTTPServer"
 
 - name: Make sure wsl don't use fzf for history search
   blockinfile:
     dest: "{{ lookup('env','HOME') }}/.zshrc.local"
+    marker: "# {mark} SECOND ANSIBLE MANAGED BLOCK"
     block: |
       bindkey "^R" history-incremental-search-backward
   when: "'wsl' in group_names"
