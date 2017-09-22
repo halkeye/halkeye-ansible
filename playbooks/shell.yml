@@ -23,7 +23,6 @@
       if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
       alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
       alias webbie="python -m SimpleHTTPServer"
-      #alias ncu="npx -p npm-check-updates ncu"
       alias ncu="docker run -it --rm -v $(pwd)/package.json:/app/package.json creack/ncu"
 
 - name: Make sure wsl don't use fzf for history search
@@ -32,4 +31,5 @@
     marker: "# {mark} SECOND ANSIBLE MANAGED BLOCK"
     block: |
       bindkey "^R" history-incremental-search-backward
+      alias ncu="npx -p npm-check-updates ncu"
   when: "'wsl' in group_names"
