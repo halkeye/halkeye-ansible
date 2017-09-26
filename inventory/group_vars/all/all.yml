@@ -32,7 +32,7 @@ nodejs_npm_global_packages:
 zsh_antigen_bundles_extras:
   - joel-porquet/zsh-dircolors-solarized
   - name: bobsoppe/zsh-ssh-agent
-    when: "'server' not in group_names"
+    when: zsh_install_ssh_agent
   #- zuxfoucault/colored-man-pages_mod
   - zlsun/solarized-man
   - joel-porquet/zsh-dircolors-solarized
@@ -42,3 +42,4 @@ zsh_antigen_bundles_extras:
 zsh_autosuggestions_bind_key: "^U"
 zsh_user: "{{ lookup('env', 'USER') }}"
 #zsh_antigen_theme: agnoster
+zsh_install_ssh_agent: false
