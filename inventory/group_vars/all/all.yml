@@ -28,7 +28,7 @@ nodejs_npm_global_packages:
   - name: jsonlint
   - name: eslint-cli
   - name: npm
-    version: 5.4.1
+    version: 5.4.2
 zsh_antigen_bundles_extras:
   - joel-porquet/zsh-dircolors-solarized
   - name: bobsoppe/zsh-ssh-agent
