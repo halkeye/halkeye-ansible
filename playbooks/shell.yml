@@ -32,4 +32,5 @@
     block: |
       bindkey "^R" history-incremental-search-backward
       alias ncu="npx -p npm-check-updates ncu"
+      alias docker='/mnt/c/ProgramData/chocolatey/bin/docker.exe'
   when: "'wsl' in group_names"
