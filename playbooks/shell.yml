@@ -25,6 +25,7 @@
       alias webbie="python -m SimpleHTTPServer"
       alias ncu="docker run -it --rm -v $(pwd)/package.json:/app/package.json creack/ncu"
       eval `dircolors $HOME/.antigen/bundles/joel-porquet/zsh-dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
+      unalias tmux
 
 - name: Make sure wsl don't use fzf for history search
   blockinfile:
