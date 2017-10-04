@@ -17,6 +17,7 @@ gitconfig_users:
   - user: "{{ lookup('env', 'USER') }}"
     name: Gavin Mogan
     email: "{{ github_email }}"
+    push_default: current
     ignore_github:
       - Linux
       - Vim
