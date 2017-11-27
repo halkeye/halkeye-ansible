@@ -24,6 +24,7 @@
       if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi
       if [ -e "/opt/google-cloud-sdk/bin" ]; then export PATH="/opt/google-cloud-sdk/bin:$PATH"; fi
       if [ -e "/opt/apache-maven-3.3.9/bin" ]; then export PATH="/opt/apache-maven-3.3.9/bin/:$PATH"; fi
+      if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
       alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
       alias webbie="python -m SimpleHTTPServer"
       alias ncu="docker run -it --rm -v $(pwd)/package.json:/app/package.json creack/ncu"
