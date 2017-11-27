@@ -22,6 +22,7 @@ gitconfig_users:
       - Linux
       - Vim
     ignore_custom: |
+      .lsyncd
       .vscode
       .envrc
       .direnv
