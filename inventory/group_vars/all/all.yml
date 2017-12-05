@@ -31,7 +31,6 @@ nodejs_npm_global_packages:
   - name: eslint-cli
   - name: heroku-cli
   - name: npm
-    version: 5.5.1
 zsh_antigen_bundles_extras:
   - joel-porquet/zsh-dircolors-solarized
   - name: bobsoppe/zsh-ssh-agent
