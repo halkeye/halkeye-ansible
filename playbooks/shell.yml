@@ -14,7 +14,7 @@
     mode: 0700
     state: "touch"
 
-- name: Add timezone to .zshrc.local
+- name: All the useful stuff for zshrc
   blockinfile:
     dest: "{{ lookup('env','HOME') }}/.zshrc.local"
     block: |
@@ -25,6 +25,9 @@
       if [ -e "/opt/google-cloud-sdk/bin" ]; then export PATH="/opt/google-cloud-sdk/bin:$PATH"; fi
       if [ -e "/opt/apache-maven-3.3.9/bin" ]; then export PATH="/opt/apache-maven-3.3.9/bin/:$PATH"; fi
       if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
+      if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
+      if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
+      if [ -e "/mnt/c/ProgramData/chocolatey/bin" ]; then export PATH="$PATH:/mnt/c/ProgramData/chocolatey/bin"; fi
       alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
       alias webbie="python -m SimpleHTTPServer"
       alias ncu="docker run -it --rm -v $(pwd)/package.json:/app/package.json creack/ncu"
