@@ -32,7 +32,22 @@
       alias webbie="python -m SimpleHTTPServer"
       alias ncu="docker run -it --rm -v $(pwd)/package.json:/app/package.json creack/ncu"
       eval `dircolors $HOME/.antigen/bundles/joel-porquet/zsh-dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
-      alias tmux && unalias tmux
+      alias tmux 1>/dev/null 2>/dev/null && unalias tmux
+      alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+      alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+      # Check for various OS openers. Quit as soon as we find one that works.
+      for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
+        if command -v $opener >/dev/null 2>&1; then
+          if [[ "$opener" == "cmd.exe" ]]; then
+            # shellcheck disable=SC2139
+            alias open="$opener /c start";
+          else
+            # shellcheck disable=SC2139
+            alias open="$opener";
+          fi
+          break;
+        fi
+      done
 
 - name: Make sure wsl don't use fzf for history search
   blockinfile:
