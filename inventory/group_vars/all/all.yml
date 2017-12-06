@@ -37,7 +37,6 @@ zsh_antigen_bundles_extras:
     when: zsh_install_ssh_agent
   #- zuxfoucault/colored-man-pages_mod
   - zlsun/solarized-man
-  - joel-porquet/zsh-dircolors-solarized
   - horosgrisa/mysql-colorize
   - joshuarubin/zsh-direnv
 

@@ -31,7 +31,7 @@
       alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
       alias webbie="python -m SimpleHTTPServer"
       alias ncu="docker run -it --rm -v $(pwd)/package.json:/app/package.json creack/ncu"
-      eval `dircolors $HOME/.antigen/bundles/joel-porquet/zsh-dircolors-solarized/dircolors-solarized/dircolors.ansi-dark`
+      eval `dircolors $HOME/.antigen/bundles/joel-porquet/zsh-dircolors-solarized/dircolors-solarized/dircolors.256dark`
       alias tmux 1>/dev/null 2>/dev/null && unalias tmux
       alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
       alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
