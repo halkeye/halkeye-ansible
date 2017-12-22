@@ -30,6 +30,7 @@
       if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
       if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
       if [ -e "/mnt/c/ProgramData/chocolatey/bin" ]; then export PATH="$PATH:/mnt/c/ProgramData/chocolatey/bin"; fi
+      if [ -e "/mnt/c/tools/docker-machine" ]; then export PATH="$PATH:/mnt/c/tools/docker-machine"; fi
       alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
       alias webbie="python -m SimpleHTTPServer"
       alias ncu="docker run -it --rm -v $(pwd)/package.json:/app/package.json creack/ncu"
