@@ -20,6 +20,8 @@
     block: |
       export POWERLEVEL9K_TIME_FORMAT='%D{\%I:\%M:\%S \%p}'
       export TZ=America/Vancouver
+      # tell less not to paginate if less than a page
+      export LESS='-F -X $LESS'
       if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
       if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi
       if [ -e "/opt/google-cloud-sdk/bin" ]; then export PATH="/opt/google-cloud-sdk/bin:$PATH"; fi
