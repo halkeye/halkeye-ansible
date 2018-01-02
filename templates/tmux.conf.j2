@@ -25,10 +25,8 @@ setw -g monitor-activity off
 
 # vim copy paste
 setw -g mode-keys vi
-bind -t vi-copy v begin-selection
-bind -t vi-copy c copy-selection
-#bind y send-keys c\;\
-#       run-shell "tmux save-buffer - | reattach-to-user-namespace pbcopy"
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 
 # THEME
 set -g status-bg black
@@ -76,3 +74,12 @@ set-option -g display-panes-colour colour166 #orange
 
 # clock
 set-window-option -g clock-mode-colour colour64 #green
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'tmux-plugins/tmux-yank'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

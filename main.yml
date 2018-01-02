@@ -38,10 +38,9 @@
     - role: jlund.ansible-go
     - role: laggyluke.direnv
     - role: mjanser.gitconfig
-    - role: wtanaka.slack
+    - role: suzuki-shunsuke.tmux-tpm
       tags:
-        - slack
-      when: "'linux' in group_names"
+        - tmux
     - role: gantsign.visual-studio-code
       when: "'linux' in group_names"
       users:

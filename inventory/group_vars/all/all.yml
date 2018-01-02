@@ -39,8 +39,10 @@ zsh_antigen_bundles_extras:
   - zlsun/solarized-man
   - horosgrisa/mysql-colorize
   - joshuarubin/zsh-direnv
+  - { name: tmuxinator, command: tmuxinator }
 
 zsh_autosuggestions_bind_key: "^U"
 zsh_user: "{{ lookup('env', 'USER') }}"
 #zsh_antigen_theme: agnoster
 zsh_install_ssh_agent: false
+tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
