@@ -18,6 +18,8 @@
   blockinfile:
     dest: "{{ lookup('env','HOME') }}/.zshrc.local"
     block: |
+      POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vcs virtualenv dir)
+      POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
       export POWERLEVEL9K_TIME_FORMAT='%D{\%I:\%M:\%S \%p}'
       export TZ=America/Vancouver
       # tell less not to paginate if less than a page
