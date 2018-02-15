@@ -41,6 +41,7 @@
       alias tmux 1>/dev/null 2>/dev/null && unalias tmux
       alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
       alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+      alias codeclimate="docker run --interactive --tty --rm --env CODECLIMATE_CODE=\"$PWD\" --volume \"$PWD\":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate"
       # Check for various OS openers. Quit as soon as we find one that works.
       for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
         if command -v $opener >/dev/null 2>&1; then
