@@ -25,6 +25,9 @@
     - include: playbooks/tmux.yml
       tags:
         - tmux
+    - include: playbooks/vault.yml
+      tags:
+        - hashicorp
     - include: playbooks/shell.yml
       tags:
         - zsh
