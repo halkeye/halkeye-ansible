@@ -31,11 +31,10 @@
       if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
       if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
       if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
-      if [ -e "/mnt/c/ProgramData/chocolatey/bin" ]; then export PATH="$PATH:/mnt/c/ProgramData/chocolatey/bin"; fi
-      if [ -e "/mnt/c/tools/docker-machine" ]; then export PATH="$PATH:/mnt/c/tools/docker-machine"; fi
+      if [ -e "/mnt/c/Program Files/Docker/Docker/resources/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"; fi
       alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
       alias webbie="python -m SimpleHTTPServer"
-      alias ncu="docker run -it --rm -v $(pwd)/package.json:/app/package.json creack/ncu"
+      alias ncu="npx -p npm-check-updates ncu"
       alias bfg="docker run -it --rm -v $(readlink -m $(pwd)):/code -w /code tomislacker/bfg:1.12.14"
       eval `dircolors $HOME/.antigen/bundles/joel-porquet/zsh-dircolors-solarized/dircolors-solarized/dircolors.256dark`
       alias tmux 1>/dev/null 2>/dev/null && unalias tmux
@@ -62,6 +61,6 @@
     marker: "# {mark} SECOND ANSIBLE MANAGED BLOCK"
     block: |
       bindkey "^R" history-incremental-search-backward
-      alias ncu="npx -p npm-check-updates ncu"
-      alias docker='/mnt/c/ProgramData/chocolatey/bin/docker.exe'
+      alias docker=docker.exe
+      alias docker-compose=docker-compose.exe
   when: "'wsl' in group_names"
