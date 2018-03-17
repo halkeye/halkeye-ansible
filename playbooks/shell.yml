@@ -25,6 +25,7 @@
       # tell less not to paginate if less than a page
       export LESS='-F -X -isMR --shift 5' 
       if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
+      if [ -e "$HOME/.npm-global/bin" ]; then export PATH="$HOME/.npm-global/bin:$PATH"; fi
       if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi
       if [ -e "/opt/google-cloud-sdk/bin" ]; then export PATH="/opt/google-cloud-sdk/bin:$PATH"; fi
       if [ -e "/opt/apache-maven-3.3.9/bin" ]; then export PATH="/opt/apache-maven-3.3.9/bin/:$PATH"; fi
