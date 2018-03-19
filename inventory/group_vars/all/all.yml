@@ -11,7 +11,7 @@ vault_os: "{{ ansible_system|lower }}"
 vault_pkg: "vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
 vault_zip_url: "https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
 
-nodejs_version: "8.x"
+nodejs_version: "9.x"
 slack_version: 2.6.2
 global_ubuntu_packages:
   - silversearcher-ag
