@@ -1,3 +1,3 @@
 #!/bin/bash
 source venv/bin/activate
-ansible-playbook -i inventory -l $(hostname) -c local main.yml  -K -b $@
+ansible-playbook -i inventory -l $(hostname) -c local main.yml --ask-become-pass -b $@
