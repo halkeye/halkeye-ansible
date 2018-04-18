@@ -1,9 +1,12 @@
 - name: geerlingguy.nodejs
-- src: https://github.com/jlund/ansible-go
-  name: jlund.ansible-go
-- src: https://github.com/halkeye/ansible-role-direnv
-  name: laggyluke.direnv
+  src: geerlingguy.nodejs
+- name: jlund.ansible-go
+  src: https://github.com/jlund/ansible-go
+- name: laggyluke.direnv
+  src: https://github.com/halkeye/ansible-role-direnv
 - name: mjanser.gitconfig
-- name: gantsign.visual-studio-code
+  src: mjanser.gitconfig
 - name: viasite-ansible.zsh
+  src: viasite-ansible.zsh
 - name: suzuki-shunsuke.tmux-tpm
+  src: suzuki-shunsuke.tmux-tpm
