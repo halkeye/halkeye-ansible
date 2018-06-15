@@ -41,7 +41,7 @@ gitconfig_users:
 nodejs_npm_global_packages:
   - name: jsonlint
   - name: eslint-cli
-  - name: heroku-cli
+  - name: heroku
   - name: npm
 zsh_antigen_bundles_extras:
   - joel-porquet/zsh-dircolors-solarized
