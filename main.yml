@@ -39,6 +39,8 @@
       tags:
         - nodejs
     - role: jlund.ansible-go
+      tags:
+        - golang
     - role: laggyluke.direnv
     - role: mjanser.gitconfig
     - role: suzuki-shunsuke.tmux-tpm
