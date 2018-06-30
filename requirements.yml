@@ -6,7 +6,7 @@
   src: https://github.com/halkeye/ansible-role-direnv
 - name: mjanser.gitconfig
   src: mjanser.gitconfig
-- name: viasite-ansible.zsh
-  src: viasite-ansible.zsh
+- name: ansible-role-zsh
+  src: https://github.com/viasite-ansible/ansible-role-zsh
 - name: suzuki-shunsuke.tmux-tpm
-  src: suzuki-shunsuke.tmux-tpm
+  src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
