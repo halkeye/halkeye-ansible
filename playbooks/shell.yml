@@ -37,7 +37,7 @@
       alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
       alias webbie="python -m SimpleHTTPServer"
       alias ncu="npx -p npm-check-updates ncu"
-      alias bfg="docker run -it --rm -v $(readlink -m $(pwd)):/code -w /code tomislacker/bfg:1.12.14"
+      alias bfg="docker run -it --rm -v $(readlink -m $(pwd)):/code -w /code donderom/bfg-repo-cleaner"
       eval `dircolors $HOME/.antigen/bundles/joel-porquet/zsh-dircolors-solarized/dircolors-solarized/dircolors.256dark`
       alias tmux 1>/dev/null 2>/dev/null && unalias tmux
       alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"

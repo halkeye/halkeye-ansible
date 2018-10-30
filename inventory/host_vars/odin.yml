@@ -1,3 +1,3 @@
 ---
-nodejs_version: "8.x"
 zsh_install_ssh_agent: true
+nodejs_version: "10"
