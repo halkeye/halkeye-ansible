@@ -2,3 +2,4 @@
 *.retry
 roles/*\.*
 venv/
+.vault

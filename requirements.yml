@@ -10,3 +10,5 @@
   src: https://github.com/viasite-ansible/ansible-role-zsh
 - name: suzuki-shunsuke.tmux-tpm
   src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
+- name: gantsign.visual-studio-code
+  src: gantsign.visual-studio-code

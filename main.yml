@@ -59,3 +59,13 @@
     - role: suzuki-shunsuke.tmux-tpm
       tags:
         - tmux
+    - role: gantsign.visual-studio-code
+      when: "'linux' in group_names"
+      users:
+        - username: "{{ lookup('env','USER') }}"
+          visual_studio_code_extensions:
+            - Shan.code-settings-sync
+          visual_studio_code_settings: {
+            "sync.gist": "{{ vscode_config_gist }}"
+          }
+ 
