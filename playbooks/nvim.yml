@@ -1,17 +1,22 @@
-- name: setup neovim ppa
+- name: remove old neovim ppa
   become: yes
   when: ansible_os_family == "Debian"
   apt_repository:
     repo: "ppa:neovim-ppa/stable"
+    state: absent
+- name: setup neovim ppa
+  become: yes
+  when: ansible_os_family == "Debian"
+  apt_repository:
+    repo: "ppa:neovim-ppa/unstable"
     state: present
 - name: setup neovim
   become: yes
   when: ansible_os_family == "Debian"
-  with_items:
-    - neovim
-    - ctags
   apt:
-    name: "{{ item }}"
+    name:
+      - neovim
+      - ctags
     state: present
 - name: setup neovim alternatives
   become: yes
@@ -47,3 +52,10 @@
   args:
     chdir: "{{ lookup('env','HOME') }}/.vim"
     creates: "bundle/Vundle.vim"
+- name: Install Plugins
+  become: no
+  shell: "vim -E -s -c 'source ~/.vimrc' -c PluginInstall -c qa"
+  register: vim_plugin_install_cmd
+  failed_when: vim_plugin_install_cmd.rc == 0 or vim_plugin_install_cmd.rc >= 2
+  args:
+    chdir: "{{ lookup('env','HOME') }}/.vim"
