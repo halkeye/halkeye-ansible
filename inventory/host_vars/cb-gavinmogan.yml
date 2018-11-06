@@ -1,3 +1,7 @@
 ---
 github_email: gmogan@cloudbees.com
+extra_ubuntu_packages:
+  - copyq
+  - network-manager-openvpn
+  - network-manager-openvpn-gnome
 
