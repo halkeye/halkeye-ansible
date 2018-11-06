@@ -66,3 +66,7 @@ tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 go_tarball: "go1.10.3.linux-amd64.tar.gz"
 go_tarball_checksum: "sha256:fa1b0e45d3b647c252f51f5e1204aba049cde4af177ef9f2181f43004f901035"
 go_version_target: "go version go1.10.3 linux/amd64"
+
+direnv:
+  bin_url: https://github.com/direnv/direnv/releases/download/v2.17.0/direnv.linux-amd64
+  bin_sha256: 8f9ae798c414c32046a94348420499a5f8e867de3685b1adec831088cbfa52e5
