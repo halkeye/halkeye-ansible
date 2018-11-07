@@ -37,14 +37,15 @@
       alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
       alias webbie="python -m SimpleHTTPServer"
       alias ncu="npx -p npm-check-updates ncu"
-      alias bfg="docker run -it --rm -v $(readlink -m $(pwd)):/code -w /code donderom/bfg-repo-cleaner"
+      alias bfg="docker run -it --rm -v \$(readlink -m $(pwd)):/code -w /code donderom/bfg-repo-cleaner"
       eval `dircolors $HOME/.antigen/bundles/joel-porquet/zsh-dircolors-solarized/dircolors-solarized/dircolors.256dark`
       alias tmux 1>/dev/null 2>/dev/null && unalias tmux
       alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
       alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
       alias codeclimate="docker run --interactive --tty --rm --env CODECLIMATE_CODE=\"$PWD\" --volume \"$PWD\":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate"
       alias youtube-dl='docker run --rm --user $UID:$GID -v $PWD:/downloads wernight/youtube-dl'
-      alias docker_run_pwd='docker run -it --rm -w "$PWD" -v "$PWD":"$PWD"'
+      alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
+      alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
       # Check for various OS openers. Quit as soon as we find one that works.
       for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
         if command -v $opener >/dev/null 2>&1; then
