@@ -5,6 +5,7 @@ jarvis
 blackpanther
 halkeye-chromebook
 odin
+wasp
 
 [work]
 cb-gavinmogan
@@ -12,6 +13,7 @@ cb-gavinmogan
 [linux]
 halkeye-chromebook
 cb-gavinmogan
+wasp
 
 [wsl]
 jarvis

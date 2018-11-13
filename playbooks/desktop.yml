@@ -1,0 +1,19 @@
+---
+- name: install desktop os packages
+  become: yes
+  when: ansible_os_family == "Debian"
+  apt:
+    name: 
+      - gpg
+      - fonts-powerline
+    state: present
+
+
+# xfce4-desktop
+# halkeye@wasp:~/git/halkeye/halkeye-ansible$ xfconf-query -c xfce4-panel -lv | grep plugin-5
+# /plugins/plugin-5                            clock
+# /plugins/plugin-5/digital-format             %r
+#
+# Setup xfce4-terminal font
+# Setup xfce4-terminal copy on highlight
+

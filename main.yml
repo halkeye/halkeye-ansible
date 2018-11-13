@@ -1,6 +1,12 @@
 ---
 - hosts: all
   tasks:
+
+    - name: Gather package facts
+      package_facts:
+        manager: apt
+      when: ansible_os_family == "Debian"
+
     - name: Accept Java 8 License
       become: yes
       debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
@@ -31,10 +37,10 @@
     - include: playbooks/windowsdirs.yml
       when: windows_username is defined
     - include: playbooks/hub.yml
-    - include: playbooks/telegram.yml
-      tags:
-        - telegram
-      when: "'linux' in group_names"
+#    - include: playbooks/telegram.yml
+#      tags:
+#        - telegram
+#      when: "'linux' in group_names"
     - include: playbooks/tmux.yml
       tags:
         - tmux
@@ -44,6 +50,8 @@
     - include: playbooks/shell.yml
       tags:
         - zsh
+    - include: playbooks/desktop.yml
+      when: '"xserver-xorg" in ansible_facts.packages'
   roles:
     - role: viasite-ansible.zsh
       tags:
