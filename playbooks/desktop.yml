@@ -3,8 +3,7 @@
   become: yes
   when: ansible_os_family == "Debian"
   apt:
-    name: 
-      - gpg
+    name:
       - fonts-powerline
     state: present
 
