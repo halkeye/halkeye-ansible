@@ -1,7 +1,10 @@
----
 github_email: gmogan@cloudbees.com
 extra_ubuntu_packages:
   - copyq
+  - maven
+  - gnupg2
+  - fonts-powerline
+  - openvpn-systemd-resolved
   - network-manager-openvpn
   - network-manager-openvpn-gnome
-
+  - fonts-firacode

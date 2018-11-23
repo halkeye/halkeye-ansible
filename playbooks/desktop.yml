@@ -1,13 +1,19 @@
----
 - name: install desktop os packages
   become: yes
   when: ansible_os_family == "Debian"
   apt:
     name:
+      - copyq
+      - maven
+      - gnupg2
       - fonts-powerline
+      - openvpn-systemd-resolved
+      - network-manager-openvpn
+      - network-manager-openvpn-gnome
+      - fonts-firacode
+      - fonts-powerline
+      - samba-vfs-modules
     state: present
-
-
 # xfce4-desktop
 # halkeye@wasp:~/git/halkeye/halkeye-ansible$ xfconf-query -c xfce4-panel -lv | grep plugin-5
 # /plugins/plugin-5                            clock
