@@ -1,0 +1,6 @@
+---
+zsh_install_ssh_agent: true
+nodejs_version: "10"
+docker_systemd_service_location: /tmp/gavin
+docker_apps_dir: /storage/apps
+
