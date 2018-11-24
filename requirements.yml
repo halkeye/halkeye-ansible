@@ -12,5 +12,7 @@
   src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
 - name: gantsign.visual-studio-code
   src: gantsign.visual-studio-code
+- name: geerlingguy.docker
+  src: geerlingguy.docker
 - name: halkeye.ansible-docker-systemd
   src: https://github.com/halkeye/ansible-docker-systemd

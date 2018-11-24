@@ -76,4 +76,5 @@
           visual_studio_code_settings: {
             "sync.gist": "{{ vscode_config_gist }}"
           }
- 
+    - role: geerlingguy.docker
+      when: "'linux' in group_names"
