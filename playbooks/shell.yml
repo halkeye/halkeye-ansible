@@ -22,6 +22,7 @@
       POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
       export POWERLEVEL9K_TIME_FORMAT='%D{\%I:\%M:\%S \%p}'
       export TZ=America/Vancouver
+      export EDITOR=nvim
       unset NPM_CONFIG_PREFIX
       # tell less not to paginate if less than a page
       export LESS='-F -X -isMR --shift 5' 
