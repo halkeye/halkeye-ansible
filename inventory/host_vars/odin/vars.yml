@@ -4,3 +4,434 @@ nodejs_version: "10"
 docker_systemd_service_location: /tmp/gavin
 docker_apps_dir: /storage/apps
 
+docker_systemd_services:
+  - name: hackmd
+    image: hackmdio/hackmd
+    required_services:
+      - postgres
+    ports:
+      - 3008:3000
+    environments:
+      NODE_ENV: production
+      HMD_DB_URL: "postgres://{{ hackmd_db_username }}:{{ hackmd_db_password }}@{{ postgres_host }}:5432/{{ hackmd_db_name }}"
+      HMD_HSTS_ENABLE: "true"
+      HMD_DOMAIN: "{{ hackmd_url }}"
+      HMD_PROTOCOL_USESSL: "true"
+      HMD_SESSION_SECRET: "{{ hackmd_session_secret }}"
+      HMD_URL_ADDPORT: 0
+
+  - name: mosquitto
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - "{{ docker_apps_dir }}/mosquitto/config:/mosquitto/config"
+
+  - name: shinobi
+    image: shinobicctv/shinobi
+    enabled: false
+    ports:
+      - 3016:8080
+    devices:
+      - /dev/video0
+    args: node camera.js
+    environments:
+      ADMIN_PASSWORD: "{{ shinobi_admin_password }}"
+      MYSQL_USER: "{{ shinobi_db_username }}"
+      MYSQL_PASSWORD: "{{ shinobi_db_password }}"
+      MYSQL_HOST: "{{ mysql_host }}"
+      MYSQL_DATABASE: shinobi
+    volumes:
+      - "{{ docker_apps_dir }}/shinobi/videos:/opt/shinobi/videos"
+
+  - name: shinobi-cron
+    image: shinobicctv/shinobi
+    enabled: false
+    devices:
+      - /dev/video0
+    args: node cron.js
+    environments:
+      ADMIN_PASSWORD: "{{ shinobi_admin_password }}"
+      MYSQL_USER: "{{ shinobi_db_username }}"
+      MYSQL_PASSWORD: "{{ shinobi_db_password }}"
+      MYSQL_HOST: "{{ mysql_host }}"
+      MYSQL_DATABASE: shinobi
+    volumes:
+      - "{{ docker_apps_dir }}/shinobi/videos:/opt/shinobi/videos"
+
+  - name: calibre-web
+    image: technosoft2000/calibre-web
+    extras:
+      - "--security-opt=no-new-privileges:true"
+    ports:
+      - 8111:8083
+    environments:
+      PGID: 1000
+      PUID: 1000
+      USE_CONFIG_DIR: "true"
+      TZ: "America/Vancouver"
+    volumes:
+      ## move everywhere?
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/storage/homes/halkeye/Documents/Calibre Library:/books"
+      - "{{ docker_apps_dir }}/calibre-web:/calibre-web/config"
+
+  - name: chronograf
+    enabled: true
+    image: chronograf
+    ports:
+      - 3012:8888
+    args: "--influxdb-url=http://{{ influxdb_host }}:8086"
+
+  - name: dnscrypt
+    enabled: false
+    description: DNSCrypt client proxy
+    image: halkeye/dnscrypt-proxy
+
+  - name: dnscrypt@
+    enabled: false
+    description: DNSCrypt client proxy
+    image: rix1337/docker-dnscrypt
+    environments:
+      RESOLVER_NAME: "%i"
+
+  - name: factorio
+    enabled: false
+    image: rix1337/docker-dnscrypt
+    ports:
+      - 34197:34197/udp
+    environments:
+      SERVERSETTINGS: /opt/factorio/conf/server-settings.json
+    volumes:
+      - "{{ docker_apps_dir }}/factorio/saves:/opt/factorio/saves"
+      - "{{ docker_apps_dir }}/factorio/conf:/opt/factorio/conf"
+
+  - name: freshrss
+    image: freshrss/freshrss
+    required_services:
+      - mariadb
+    ports:
+      - 3010:80
+    environments:
+      CRON_MIN: 23,53
+    volumes:
+      - "{{ docker_apps_dir }}/freshrss:/var/www/FreshRSS/data"
+
+  - name: grafana
+    image: grafana/grafana
+    ports:
+      - 9003:3000
+    volumes:
+      - "{{ docker_apps_dir }}/grafana/data:/var/lib/grafana"
+    environments:
+      GF_SERVER_ROOT_URL: "{{ grafana_root_url }}"
+      GF_SECURITY_ADMIN_PASSWORD: "{{ grafana_admin_password }}"
+      GF_AWS_PROFILES: default
+      GF_AWS_default_ACCESS_KEY_ID: "{{ grafana_aws_access_key }}"
+      GF_AWS_default_SECRET_ACCESS_KEY: "{{ grafana_aws_secret_key }}"
+      GF_AWS_default_REGION: us-west-1
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,cloudflare-app,briangann-gauge-panel,jdbranham-diagram-panel,mtanda-google-calendar-datasource
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_PROXY_ENABLED: "true"
+      GF_AUTH_PROXY_HEADER_NAME: X-Lasso-User
+      GF_AUTH_PROXY_HEADER_PROPERTY: email
+      GF_AUTH_PROXY_AUTO_SIGN_UP: "true"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_USERS_AUTO_ASSIGN_ORG: "true"
+      GF_USERS_AUTO_ASSIGN_ORG_ROLE: Viewer
+
+  - name: "graphite_github@"
+    description: "Graphite script to pull github stats"
+    args: "ruby social_media_github_graphite.rb -d %i"
+    image: halkeye/graphite_scripts
+    environments:
+      GRAPHITE_HOST: "{{ graphite_host }}"
+      GRAPHITE_PORT: 2003
+      SOCIAL_MEDIA_GITHUB_TOKEN: "{{ social_media_github_token }}"
+      SOCIAL_MEDIA_GITHUB_CLIENT_ID: "{{ social_media_github_client_id }}"
+      SOCIAL_MEDIA_GITHUB_CLIENT_SECRET: "{{ social_media_github_client_secret }}"
+
+  - name: "graphite_linkedin@"
+    description: Graphite script to pull linked in stats
+    enabled: false
+    args: ruby social_media_linkedin_graphite.rb -d %i
+    image: halkeye/graphite_scripts
+    environments:
+      GRAPHITE_HOST: "{{ graphite_host }}"
+      GRAPHITE_PORT: 2003
+      SOCIAL_MEDIA_LINKEDIN_CLIENT_ID: "{{ social_media_linkedin_client_id }}"
+      SOCIAL_MEDIA_LINKEDIN_CLIENT_SECRET: "{{ social_media_linkedin_client_secret }}"
+      SOCIAL_MEDIA_LINKEDIN_HALKEYE_OAUTH_TOKEN: "{{ social_media_linkedin_halkeye_oauth_token }}"
+      SOCIAL_MEDIA_LINKEDIN_HALKEYE_OAUTH_TOKEN_SECRET: "{{ social_media_linkedin_halkeye_oauth_token_secret }}"
+      SOCIAL_MEDIA_LINKEDIN_NIGELGREGOIRE_OAUTH_TOKEN: "{{ social_media_linkedin_nigelgregoire_oauth_token }}"
+      SOCIAL_MEDIA_LINKEDIN_NIGELGREGOIRE_OAUTH_TOKEN_SECRET: "{{ social_media_linkedin_nigelgregoire_oauth_token_secret }}"
+      SOCIAL_MEDIA_LINKEDIN_WINNIEHO_OAUTH_TOKEN: "{{ social_media_linkedin_winnieho_oauth_token }}"
+      SOCIAL_MEDIA_LINKEDIN_WINNIEHO_OAUTH_TOKEN_SECRET: "{{ social_media_linkedin_winnieho_oauth_token_secret }}"
+
+  - name: "graphite_network@"
+    description: Graphite script to pull router stats
+    enabled: false
+    args: ruby ipmi_network_graphite.rb -d %i
+    image: halkeye/graphite_scripts
+    environments:
+      GRAPHITE_HOST: "{{ graphite_host }}"
+      GRAPHITE_PORT: 2003
+
+  - name: "graphite_twitter@"
+    description: Graphite script to pull twitter stats
+    enabled: true
+    args: ruby social_media_twitter_graphite.rb -d %i
+    image: halkeye/graphite_scripts
+    environments:
+      GRAPHITE_HOST: "{{ graphite_host }}"
+      GRAPHITE_PORT: 2003
+      SOCIAL_MEDIA_TWITTER_CLIENT_ID: "{{ social_media_twitter_client_id }}"
+      SOCIAL_MEDIA_TWITTER_CLIENT_SECRET: "{{ social_media_twitter_client_secret }}"
+      SOCIAL_MEDIA_TWITTER_OAUTH_TOKEN: "{{ social_media_twitter_oauth_token }}"
+      SOCIAL_MEDIA_TWITTER_OAUTH_TOKEN_SECRET: "{{ social_media_twitter_oauth_token_secret }}"
+
+  - name: happybubbles
+    enabled: false
+    image: johncardenas/happybubbles-presence:latest
+    ports:
+      - 3014:5555
+    environments:
+      MQTT_HOST: "{{ mqtt_host }}:1883"
+
+  - name: graphite
+    image: hopsoft/graphite-statsd
+    ports:
+      - 5080:80
+      - 2003-2004:2003-2004
+      - 2003-2004:2003-2004/udp
+      - 2023-2024:2023-2024
+      - 8125:8125/udp
+      - 8126:8126
+    volumes:
+      - "{{ docker_apps_dir }}/graphite/conf:/opt/graphite/conf"
+      - "{{ docker_apps_dir }}/graphite/storage:/opt/graphite/storage"
+
+  - name: homeassistant
+    required_services:
+      - mariadb
+      - influxdb
+      - mosquitto
+    image: homeassistant/home-assistant
+    volumes:
+      - "{{ docker_apps_dir }}/hassio/config:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+    devices:
+      - /dev/ttyACM0
+    ports:
+      - 8123:8123
+
+  - name: influxdb
+    image: influxdb
+    volumes:
+      - "{{ docker_apps_dir }}/influxdb:/var/lib/influxdb"
+    ports:
+      - 8083:8083
+      - 8086:8086
+      - 8089:8089/udp
+
+  - name: jackett
+    image: linuxserver/jackett
+    volumes:
+      - "{{ docker_apps_dir }}/jackett:/config"
+      - "/media/storage/jackett:/downloads"
+    environments:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Vancouver
+    ports:
+      - 9117:9117
+
+  - name: jenkins-docker
+    image: halkeye/jenkins:latest
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - "/var/lib/docker:/var/lib/docker"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "{{ docker_apps_dir }}/jenkins/secrets:/run/secrets"
+      - "{{ docker_apps_dir }}/jenkins/users:/var/jenkins_home/users"
+    environments:
+      TZ: America/Vancouver
+      DOCKER_HOST: unix:///var/run/docker.sock
+    groups:
+      - 978
+
+  - name: mariadb
+    image: mariadb:10.3
+    ports:
+      - 3306:3306
+    volumes:
+      - "{{ docker_apps_dir }}/mariadb:/var/lib/mysql"
+      - "/var/lib/docker:/var/lib/docker"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "{{ docker_apps_dir }}/jenkins/secrets:/run/secrets"
+      - "{{ docker_apps_dir }}/jenkins/users:/var/jenkins_home/users"
+    environments:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+
+  - name: mineos
+    enabled: false
+    image: halkeye/docker-mineos
+    ports:
+      - 8124:8123
+      - 127.0.0.1:8443:8443
+      - 25565:25565
+    volumes:
+      - "/opt/minecraft:/var/games/minecraft"
+
+  - name: lasso
+    image: lassoproject/lasso
+    ports:
+      - 3018:9090
+    volumes:
+      - "{{ docker_apps_dir }}/lasso/config:/config"
+      - "{{ docker_apps_dir }}/lasso/data:/data"
+
+
+  - name: nextcloud
+    enabled: false
+    image: halkeye/docker-nextcloud
+    ports:
+      - 17900:80
+    environments:
+      MYSQL_ROOT_PASSWORD: "{{ nextcloud_mysql_root_password }}"
+      MYSQL_USER: "{{ nextcloud_mysql_user }}"
+      MYSQL_HOST: "{{ mysql_host }}"
+      MYSQL_DATABASE: "{{ nextcloud_mysql_database }}"
+      MYSQL_PASSWORD: "{{ nextcloud_mysql_password }}"
+      PGID: 1000
+      PUID: 1000
+      TZ: "America/Vancouver"
+    volumes:
+      - "{{ docker_apps_dir }}/nextcloud/config:/var/www/html/config"
+      - "{{ docker_apps_dir }}/nextcloud/data:/var/www/html/data"
+
+  - name: nodered
+    image: halkeye/node-red
+    ports:
+      - 1880:1880
+    environments:
+      PGID: 1000
+      PUID: 1000
+      TZ: "America/Vancouver"
+    volumes:
+      - "{{ docker_apps_dir }}/nodered:/data"
+
+  - name: bazarr
+    image: linuxserver/bazarr
+    volumes:
+      - "{{ docker_apps_dir }}/bazarr:/config"
+      - "/storage/Videos/TV:/tv"
+      - "/storage/Videos/Movies:/movies"
+    environments:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Vancouver
+    ports:
+      - 3020:6767
+
+  - name: turtl
+    image: halkeye/turtl
+    volumes:
+      - "{{ docker_apps_dir }}/turtl/plugins:/usr/src/app/plugin"
+      - "{{ docker_apps_dir }}/turtl/uploads:/usr/src/app/public/uploads"
+    environments:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Vancouver
+      SELF_URL: "{{ turtl_self_url }}"
+      DBURL: "postgres://{{ turtl_db_username }}:{{ turtl_db_password }}@{{ postgres_host }}:5432/{{ turtl_db_name }}"
+    ports:
+      - 3022:8181
+
+  - name: postgres
+    image: postgres:10.4
+    volumes:
+      - "{{ docker_apps_dir }}/postgresql:/var/lib/postgresql/data"
+    environments:
+      POSTGRES_PASSWORD: "{{ postgres_password }}"
+    ports:
+      - 5432:5432
+
+  - name: radarr
+    image: linuxserver/radarr
+    volumes:
+      - "{{ docker_apps_dir }}/radarr:/config"
+      - "/media/storage/downloads/Movies:/media/storage/downloads/Movies"
+      - "/storage/Videos/Anime Movies:/storage/Videos/Anime Movies"
+      - "/storage/Videos/Movies:/movies"
+      - "/media/storage/:/media/storage/"
+    environments:
+      PGID: 1000
+      PUID: 1000
+      TZ: "America/Vancouver"
+    ports:
+      - 7878:7878
+
+  - name: plex-docker
+    description: Plex Media Server (dockerized)
+    image: plexinc/pms-docker:plexpass
+    volumes:
+      - "{{ docker_apps_dir }}/plexmediaserver/database:/config"
+      - "{{ docker_apps_dir }}/plexmediaserver/transcode:/transcode"
+      - "/storage/Audio:/media/Audio"
+      - "/storage/Videos:/media/Videos"
+    environments:
+      PLEX_CLAIM: "{{ plex_claim }}"
+      ADVERTISE_IP: "http://{{ plex_advertise_ip }}:32400"
+      TZ: America/Vancouver
+    extras:
+      - "-h {{ plex_hostname }}"
+    ports:
+      - 32400:32400/tcp
+      - 3005:3005/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 1900:1900/udp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+
+  - name: sourcegraph
+    image: sourcegraph/server:2.13.6
+    volumes:
+      - "{{ docker_apps_dir }}/sourcegraph/config:/etc/sourcegraph"
+      - "{{ docker_apps_dir }}/sourcegraph/data:/var/opt/sourcegraph"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    ports:
+      - 7080:7080
+    environments:
+      REDIS_ENDPOINT: "{{ redis_host }}:6379"
+      PGHOST: "{{ postgres_host }}"
+      PGUSER: "{{ sourcegraph_db_user }}"
+      PGPASSWORD: "{{ sourcegraph_db_password }}"
+      PGDATABASE: "{{ sourcegraph_db_name }}"
+      PGSSLMODE: disable
+
+  - name: redis
+    image: redis:3.2
+    volumes:
+      - "{{ docker_apps_dir }}/redis:/data"
+    ports:
+      - 6379:6379
+
+  - name: nzbget
+    image: linuxserver/nzbget
+    volumes:
+      - "/media/storage/downloads:/media/storage/downloads"
+      - "{{ docker_apps_dir }}/nzbget/downloads:/downloads"
+      - "{{ docker_apps_dir }}/nzbget/config:/config"
+    ports:
+      - 6789:6789
+    environments:
+      PGID: 1000
+      PUID: 1000
+      TZ: "America/Vancouver"
