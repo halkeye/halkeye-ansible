@@ -82,6 +82,9 @@ docker_systemd_services:
     ports:
       - 3012:8888
     args: "--influxdb-url=http://{{ influxdb_host }}:8086"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8888"
 
   - name: dnscrypt
     enabled: false
@@ -139,6 +142,9 @@ docker_systemd_services:
       GF_USERS_ALLOW_SIGN_UP: "false"
       GF_USERS_AUTO_ASSIGN_ORG: "true"
       GF_USERS_AUTO_ASSIGN_ORG_ROLE: Viewer
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3000"
 
   - name: "graphite_github@"
     description: "Graphite script to pull github stats"
@@ -210,6 +216,9 @@ docker_systemd_services:
     volumes:
       - "{{ docker_apps_dir }}/graphite/conf:/opt/graphite/conf"
       - "{{ docker_apps_dir }}/graphite/storage:/opt/graphite/storage"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5080"
 
   - name: homeassistant
     required_services:
@@ -224,6 +233,9 @@ docker_systemd_services:
       - /dev/ttyACM0
     ports:
       - 8123:8123
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8123"
 
   - name: influxdb
     image: influxdb
@@ -245,6 +257,9 @@ docker_systemd_services:
       TZ: America/Vancouver
     ports:
       - 9117:9117
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=9117"
 
   - name: jenkins-docker
     image: halkeye/jenkins:latest
@@ -261,6 +276,9 @@ docker_systemd_services:
       DOCKER_HOST: unix:///var/run/docker.sock
     groups:
       - 978
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8080"
 
   - name: mariadb
     image: mariadb:10.3
@@ -284,6 +302,9 @@ docker_systemd_services:
       - 25565:25565
     volumes:
       - "/opt/minecraft:/var/games/minecraft"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8123"
 
   - name: lasso
     image: lassoproject/lasso
@@ -311,6 +332,9 @@ docker_systemd_services:
     volumes:
       - "{{ docker_apps_dir }}/nextcloud/config:/var/www/html/config"
       - "{{ docker_apps_dir }}/nextcloud/data:/var/www/html/data"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
 
   - name: nodered
     image: halkeye/node-red
@@ -322,6 +346,9 @@ docker_systemd_services:
       TZ: "America/Vancouver"
     volumes:
       - "{{ docker_apps_dir }}/nodered:/data"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=1880"
 
   - name: bazarr
     image: linuxserver/bazarr
@@ -335,6 +362,9 @@ docker_systemd_services:
       TZ: America/Vancouver
     ports:
       - 3020:6767
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=6767"
 
   - name: turtl
     image: halkeye/turtl
@@ -349,6 +379,9 @@ docker_systemd_services:
       DBURL: "postgres://{{ turtl_db_username }}:{{ turtl_db_password }}@{{ postgres_host }}:5432/{{ turtl_db_name }}"
     ports:
       - 3022:8181
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8181"
 
   - name: postgres
     image: postgres:10.4
@@ -373,6 +406,9 @@ docker_systemd_services:
       TZ: "America/Vancouver"
     ports:
       - 7878:7878
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=7878"
 
   - name: plex-docker
     description: Plex Media Server (dockerized)
@@ -407,6 +443,9 @@ docker_systemd_services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     ports:
       - 7080:7080
+    required_services:
+      - postgres
+      - redis
     environments:
       REDIS_ENDPOINT: "{{ redis_host }}:6379"
       PGHOST: "{{ postgres_host }}"
@@ -414,6 +453,9 @@ docker_systemd_services:
       PGPASSWORD: "{{ sourcegraph_db_password }}"
       PGDATABASE: "{{ sourcegraph_db_name }}"
       PGSSLMODE: disable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=7080"
 
   - name: redis
     image: redis:3.2
@@ -434,3 +476,7 @@ docker_systemd_services:
       PGID: 1000
       PUID: 1000
       TZ: "America/Vancouver"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=6789"
+
