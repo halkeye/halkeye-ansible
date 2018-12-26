@@ -493,3 +493,13 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=6789"
     args: --configFile=/config/traefik.toml
+
+  - name: crea
+    image: halkeye/crea
+    volumes:
+      - "{{ docker_apps_dir }}/crea/worlds:/worlds"
+    ports:
+      - 5555:5555
+    environments:
+      CREA_WORLD_NAME: "{{ crea_world_name }}"
+      CREA_PASSWORD: "{{ crea_password }}"
