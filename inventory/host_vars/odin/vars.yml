@@ -576,3 +576,15 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=9000"
       - com.centurylinklabs.watchtower.enable
+
+  - name: terraria
+    image: ryshe/terraria:latest
+    enabled: false
+    volumes:
+      - "{{ docker_apps_dir }}/terraria/world:/world"
+    ports:
+      - 7777:7777
+      - 7776:7776
+    args: -autocreate 3 -world /world/Lg-Normal-17-02.wld
+    labels:
+      - com.centurylinklabs.watchtower.enable
