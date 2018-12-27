@@ -565,3 +565,14 @@ docker_systemd_services:
       VAULT_LOCAL_CONFIG: '{"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h", "listener":{"tcp":{"address":"0.0.0.0:8200","tls_disable":1}}'
     volumes:
       - "{{ docker_apps_dir }}/vault:/vault/file"
+
+  - name: thelounge
+    image: thelounge/lounge:latest
+    volumes:
+      - "{{ docker_apps_dir }}/thelounge.service:/home/lounge/data"
+    ports:
+      - 9002:9000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=9000"
+      - com.centurylinklabs.watchtower.enable
