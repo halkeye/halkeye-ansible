@@ -789,6 +789,9 @@ docker_systemd_services:
     environments:
       GITHUB_CLIENT_ID: "{{ octobox_github_client_id }}"
       GITHUB_CLIENT_SECRET: "{{ octobox_github_client_secret }}"
+      SECRET_KEY_BASE: "{{ octobox_secret_key_base }}"
+      RAILS_SERVE_STATIC_FILES: "true"
+      RAILS_LOG_TO_STDOUT: "true"
       OCTOBOX_DATABASE_USERNAME: "{{ octobox_database_username }}"
       OCTOBOX_DATABASE_PASSWORD: "{{ octobox_database_password }}"
       OCTOBOX_DATABASE_NAME: "{{ octobox_database_name }}"
