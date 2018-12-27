@@ -658,3 +658,15 @@ docker_systemd_services:
       - 601:601/udp
     labels:
       - com.centurylinklabs.watchtower.enable
+
+
+
+  - name: starbound
+    description: Starbound Game Server
+    image: halkeye/docker-starbound
+    volumes:
+      - "{{ docker_apps_dir }}/starbound:/opt/starbound"
+    ports:
+      - 21025:21025/tcp
+    labels:
+      - com.centurylinklabs.watchtower.enable
