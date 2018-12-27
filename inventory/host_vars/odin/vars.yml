@@ -434,33 +434,6 @@ docker_systemd_services:
       - "traefik.port=7878"
       - com.centurylinklabs.watchtower.enable
 
-  - name: plex-docker
-    description: Plex Media Server (dockerized)
-    image: plexinc/pms-docker:plexpass
-    volumes:
-      - "{{ docker_apps_dir }}/plexmediaserver/database:/config"
-      - "{{ docker_apps_dir }}/plexmediaserver/transcode:/transcode"
-      - "/storage/Audio:/media/Audio"
-      - "/storage/Videos:/media/Videos"
-    environments:
-      PLEX_CLAIM: "{{ plex_claim }}"
-      ADVERTISE_IP: "http://{{ plex_advertise_ip }}:32400"
-      TZ: America/Vancouver
-    extras:
-      - "-h {{ plex_hostname }}"
-    ports:
-      - 32400:32400/tcp
-      - 3005:3005/tcp
-      - 8324:8324/tcp
-      - 32469:32469/tcp
-      - 1900:1900/udp
-      - 32410:32410/udp
-      - 32412:32412/udp
-      - 32413:32413/udp
-      - 32414:32414/udp
-    labels:
-      - com.centurylinklabs.watchtower.enable
-
   - name: sourcegraph
     image: sourcegraph/server:2.13.6
     volumes:
@@ -754,7 +727,7 @@ docker_systemd_services:
     image: halkeye/pi-hole:latest
     volumes:
       - "{{ docker_apps_dir }}/pihole/pihole:/etc/pihole/"
-      - "{{ docker_apps_dir }}/pihole/dnsmasq.d/:/etc/dnsmasq.d/" \
+      - "{{ docker_apps_dir }}/pihole/dnsmasq.d/:/etc/dnsmasq.d/"
     ports:
       - 53:53/tcp
       - 53:53/udp
@@ -777,9 +750,6 @@ docker_systemd_services:
   - name: phabricator
     enabled: false
     image: bitnami/phabricator:latest
-    volumes:
-      - "{{ docker_apps_dir }}/pihole/pihole:/etc/pihole/"
-      - "{{ docker_apps_dir }}/pihole/dnsmasq.d/:/etc/dnsmasq.d/"
     ports:
       - 45080:80
       - 45443:443
@@ -795,7 +765,7 @@ docker_systemd_services:
       - "traefik.port=80"
       - com.centurylinklabs.watchtower.enable
 
-  - name: pgadmin4
+  - name: pgadmin
     image: chorss/docker-pgadmin4
     volumes:
       - "{{ docker_apps_dir }}/pgadmin4:/data"
