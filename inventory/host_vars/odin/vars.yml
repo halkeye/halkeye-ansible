@@ -659,8 +659,6 @@ docker_systemd_services:
     labels:
       - com.centurylinklabs.watchtower.enable
 
-
-
   - name: starbound
     description: Starbound Game Server
     image: halkeye/docker-starbound
@@ -669,4 +667,16 @@ docker_systemd_services:
     ports:
       - 21025:21025/tcp
     labels:
+      - com.centurylinklabs.watchtower.enable
+
+  - name: sourcegraph
+    image: sourcegraph/server:2.5.0
+    volumes:
+      - "{{ docker_apps_dir }}/sourcegraph/config:/etc/sourcegraph"
+      - "{{ docker_apps_dir }}/sourcegraph/data:/var/opt/sourcegraph"
+    ports:
+      - 7080:7080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=7080"
       - com.centurylinklabs.watchtower.enable
