@@ -487,10 +487,11 @@ docker_systemd_services:
     image: traefik
     volumes:
       - "{{ docker_apps_dir }}/traefik:/config"
+      - "{{ docker_apps_dir }}/dehydrated/certs:{{ docker_apps_dir }}/dehydrated/certs"
       - "/var/run/docker.sock:/var/run/docker.sock"
     ports:
-      - 2080:80
-      - 2081:81
+      - 80:80
+      - 81:81
       - 20443:443
     labels:
       - "traefik.enable=true"
