@@ -645,3 +645,16 @@ docker_systemd_services:
       INFLUXDBHOST: "{{ influxdb_host }}"
     labels:
       - com.centurylinklabs.watchtower.enable
+
+  - name: syslog-server
+    image: balabit/syslog-ng:latest
+    volumes:
+      - "{{ docker_apps_dir }}/syslog/etc/syslog-ng.conf:/etc/syslog-ng/syslog-ng.conf"
+      - "{{ docker_apps_dir }}/log:/var/log"
+    ports:
+      - 514:514
+      - 601:601
+      - 514:514/udp
+      - 601:601/udp
+    labels:
+      - com.centurylinklabs.watchtower.enable
