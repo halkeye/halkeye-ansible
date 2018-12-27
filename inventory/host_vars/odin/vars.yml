@@ -577,6 +577,19 @@ docker_systemd_services:
       - "traefik.port=9000"
       - com.centurylinklabs.watchtower.enable
 
+  - name: telegraf
+    image: nuntz/telegraf-snmp
+    extras:
+      - "--privileged"
+    environments:
+      HOST_PROC: /host/proc
+    volumes:
+      - "/proc:/host/proc:ro"
+      - "{{ docker_apps_dir }}/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    labels:
+      - com.centurylinklabs.watchtower.enable
+
   - name: terraria
     image: ryshe/terraria:latest
     enabled: false
@@ -587,4 +600,34 @@ docker_systemd_services:
       - 7776:7776
     args: -autocreate 3 -world /world/Lg-Normal-17-02.wld
     labels:
+      - com.centurylinklabs.watchtower.enable
+
+  - name: nzbhydra
+    image: linuxserver/hydra
+    volumes:
+      - "{{ docker_apps_dir }}/nzbhydra:/config"
+      - "/media/storage/nzbhydra:/downloads"
+    ports:
+      - 5075:5075
+    environments:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Vancouver
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5075"
+      - com.centurylinklabs.watchtower.enable
+
+  - name: nzbhydra2
+    image: linuxserver/hydra2
+    volumes:
+      - "{{ docker_apps_dir }}/nzbhydra2:/config"
+      - "/media/storage/nzbhydra:/downloads"
+    environments:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Vancouver
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5075"
       - com.centurylinklabs.watchtower.enable
