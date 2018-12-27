@@ -718,3 +718,32 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=8181"
       - com.centurylinklabs.watchtower.enable
+
+  - name: plex-docker
+    description: Plex Media Server (dockerized)
+    image: plexinc/pms-docker:plexpass
+    volumes:
+      - "{{ docker_apps_dir }}/plexmediaserver/database:/config"
+      - "{{ docker_apps_dir }}/plexmediaserver/transcode:/transcode"
+      - /storage/Audio:/media/Audio
+      - /storage/Videos:/media/Videos
+    ports:
+      - 32400:32400/tcp
+      - 3005:3005/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 1900:1900/udp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+    environments:
+      TZ: America/Vancouver
+      PLEX_CLAIM: "{{ plex_claim }}"
+      ADVERTISE_IP: "{{ plex_advertise_ip }}"
+    extras:
+      - "-h {{ plex_hostname }}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=32400"
+      - com.centurylinklabs.watchtower.enable
