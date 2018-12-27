@@ -773,3 +773,24 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=80"
       - com.centurylinklabs.watchtower.enable
+
+  - name: phabricator
+    enabled: false
+    image: bitnami/phabricator:latest
+    volumes:
+      - "{{ docker_apps_dir }}/pihole/pihole:/etc/pihole/"
+      - "{{ docker_apps_dir }}/pihole/dnsmasq.d/:/etc/dnsmasq.d/" \
+    ports:
+      - 45080:80
+      - 45443:443
+    environments:
+      MARIADB_HOST: "{{ mysql_host }}"
+      MARIADB_PORT: 3306
+      MARIADB_USER: "{{ mysql_root_username }}"
+      MARIADB_PASS: "{{ mysql_root_password }}"
+    volumes:
+      - "{{ docker_apps_dir }}/phabricator:/bitnami"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - com.centurylinklabs.watchtower.enable
