@@ -6,6 +6,7 @@ docker_apps_dir: /storage/apps
 docker_systemd_services:
   - name: hackmd
     image: hackmdio/hackmd
+    enabled: false
     required_services:
       - postgres
     ports:
@@ -26,6 +27,8 @@ docker_systemd_services:
       - 9001:9001
     volumes:
       - "{{ docker_apps_dir }}/mosquitto/config:/mosquitto/config"
+    labels:
+      - com.centurylinklabs.watchtower.enable
 
   - name: shinobi
     image: shinobicctv/shinobi
@@ -85,6 +88,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8888"
+      - com.centurylinklabs.watchtower.enable
 
   - name: dnscrypt
     enabled: false
@@ -100,7 +104,7 @@ docker_systemd_services:
 
   - name: factorio
     enabled: false
-    image: rix1337/docker-dnscrypt
+    image: halkeye/factorio
     ports:
       - 34197:34197/udp
     environments:
@@ -119,6 +123,8 @@ docker_systemd_services:
       CRON_MIN: 23,53
     volumes:
       - "{{ docker_apps_dir }}/freshrss:/var/www/FreshRSS/data"
+    labels:
+      - com.centurylinklabs.watchtower.enable
 
   - name: grafana
     image: grafana/grafana
@@ -145,6 +151,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=3000"
+      - com.centurylinklabs.watchtower.enable
 
   - name: "graphite_github@"
     description: "Graphite script to pull github stats"
@@ -219,6 +226,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5080"
+      - com.centurylinklabs.watchtower.enable
 
   - name: homeassistant
     required_services:
@@ -236,6 +244,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8123"
+      - com.centurylinklabs.watchtower.enable
 
   - name: influxdb
     image: influxdb
@@ -245,6 +254,8 @@ docker_systemd_services:
       - 8083:8083
       - 8086:8086
       - 8089:8089/udp
+    labels:
+      - com.centurylinklabs.watchtower.enable
 
   - name: jackett
     image: linuxserver/jackett
@@ -260,6 +271,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=9117"
+      - com.centurylinklabs.watchtower.enable
 
   - name: jenkins-docker
     image: halkeye/jenkins:latest
@@ -279,6 +291,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
+      - com.centurylinklabs.watchtower.enable
 
   - name: mariadb
     image: mariadb:10.3
@@ -292,6 +305,8 @@ docker_systemd_services:
       - "{{ docker_apps_dir }}/jenkins/users:/var/jenkins_home/users"
     environments:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    labels:
+      - com.centurylinklabs.watchtower.enable
 
   - name: mineos
     enabled: false
@@ -313,6 +328,8 @@ docker_systemd_services:
     volumes:
       - "{{ docker_apps_dir }}/lasso/config:/config"
       - "{{ docker_apps_dir }}/lasso/data:/data"
+    labels:
+      - com.centurylinklabs.watchtower.enable
 
 
   - name: nextcloud
@@ -335,6 +352,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=80"
+      - com.centurylinklabs.watchtower.enable
 
   - name: nodered
     image: halkeye/node-red
@@ -349,6 +367,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=1880"
+      - com.centurylinklabs.watchtower.enable
 
   - name: bazarr
     image: linuxserver/bazarr
@@ -365,6 +384,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6767"
+      - com.centurylinklabs.watchtower.enable
 
   - name: turtl
     image: halkeye/turtl
@@ -382,6 +402,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8181"
+      - com.centurylinklabs.watchtower.enable
 
   - name: postgres
     image: postgres:10.4
@@ -391,6 +412,8 @@ docker_systemd_services:
       POSTGRES_PASSWORD: "{{ postgres_password }}"
     ports:
       - 5432:5432
+    labels:
+      - com.centurylinklabs.watchtower.enable
 
   - name: radarr
     image: linuxserver/radarr
@@ -409,6 +432,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=7878"
+      - com.centurylinklabs.watchtower.enable
 
   - name: plex-docker
     description: Plex Media Server (dockerized)
@@ -434,6 +458,8 @@ docker_systemd_services:
       - 32412:32412/udp
       - 32413:32413/udp
       - 32414:32414/udp
+    labels:
+      - com.centurylinklabs.watchtower.enable
 
   - name: sourcegraph
     image: sourcegraph/server:2.13.6
@@ -456,6 +482,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=7080"
+      - com.centurylinklabs.watchtower.enable
 
   - name: redis
     image: redis:3.2
@@ -463,6 +490,8 @@ docker_systemd_services:
       - "{{ docker_apps_dir }}/redis:/data"
     ports:
       - 6379:6379
+    labels:
+      - com.centurylinklabs.watchtower.enable
 
   - name: nzbget
     image: linuxserver/nzbget
@@ -479,6 +508,7 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6789"
+      - com.centurylinklabs.watchtower.enable
 
   - name: traefik
     image: traefik
@@ -492,10 +522,12 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6789"
+      - com.centurylinklabs.watchtower.enable
     args: --configFile=/config/traefik.toml
 
   - name: crea
     image: halkeye/crea
+    enabled: false
     volumes:
       - "{{ docker_apps_dir }}/crea/worlds:/worlds"
     ports:
@@ -503,3 +535,20 @@ docker_systemd_services:
     environments:
       CREA_WORLD_NAME: "{{ crea_world_name }}"
       CREA_PASSWORD: "{{ crea_password }}"
+    labels:
+      - com.centurylinklabs.watchtower.enable
+
+  - name: crea
+    image: v2tec/watchtower
+    environments:
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER: "{{ watchtower_notification_email_server }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PORT: "{{ watchtower_notification_email_server_port }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER: "{{ WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD: "{{ watchtower_notification_email_server_password }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_FROM: "{{ watchtower_notification_email_from }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_TO: "{{ watchtower_notification_email_to }}"
+      WATCHTOWER_LABEL_ENABLE: "true"
+    labels:
+      - com.centurylinklabs.watchtower.enable
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
