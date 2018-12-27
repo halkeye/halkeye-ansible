@@ -702,3 +702,19 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=8989"
       - com.centurylinklabs.watchtower.enable
+
+  - name: plexpy
+    image: linuxserver/tautulli
+    volumes:
+      - "{{ docker_apps_dir }}/plexpy:/config"
+      - "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs:/logs:ro"
+    ports:
+      - 8181:8181
+    environments:
+      PGID: 995
+      PUID: 997
+      TZ: "America/Vancouver"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8181"
+      - com.centurylinklabs.watchtower.enable
