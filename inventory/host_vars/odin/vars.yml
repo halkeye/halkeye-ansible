@@ -631,3 +631,17 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=5075"
       - com.centurylinklabs.watchtower.enable
+
+  - name: tautulli-influxdb-export
+    image: halkeye/tautulli-influxdb-export
+    volumes:
+      - "{{ docker_apps_dir }}/nzbhydra2:/config"
+      - "/media/storage/nzbhydra:/downloads"
+    environments:
+      PLEXPYWEBPROTOCOL: "{{ plexpywebprotocol }}"
+      PLEXPYHOST: "{{ plexpyhost }}"
+      PLEXPYPORT: "{{ plexpyport }}"
+      PLEXPYAPIKEY: "{{ plexpyapikey }}"
+      INFLUXDBHOST: "{{ influxdb_host }}"
+    labels:
+      - com.centurylinklabs.watchtower.enable
