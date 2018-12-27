@@ -747,3 +747,29 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=32400"
       - com.centurylinklabs.watchtower.enable
+
+  - name: pihole
+    enabled: false
+    # ExecStartPre=/usr/bin/bash -c "/usr/bin/systemctl set-environment DNSCRYPT2_IP=$(docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' dnscrypt)"
+    image: halkeye/pi-hole:latest
+    volumes:
+      - "{{ docker_apps_dir }}/pihole/pihole:/etc/pihole/"
+      - "{{ docker_apps_dir }}/pihole/dnsmasq.d/:/etc/dnsmasq.d/" \
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 8053:80/tcp
+    environments:
+      DNS1: 1.1.1.1
+      DNS2: 1.0.0.1
+      VIRTUAL_HOST: "{{ pihole_virtual_host }}"
+      ServerIP: "{{ pihole_server_ip }}"
+      TZ: America/Vancouver
+      WEBPASSWORD: "{{ pihole_password }}"
+    extras:
+      - "--dns 127.0.0.1"
+      - "--dns 1.1.1.1"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - com.centurylinklabs.watchtower.enable
