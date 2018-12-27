@@ -680,3 +680,25 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=7080"
       - com.centurylinklabs.watchtower.enable
+
+  - name: sonarr
+    image: linuxserver/sonarr
+    volumes:
+      - "/dev/rtc:/dev/rtc:ro"
+      - "{{ docker_apps_dir }}/sonarr.service:/config"
+      - "/media/storage/downloads:/media/storage/downloads"
+      - "/storage/Videos/TV:/storage/Videos/TV"
+      - "/storage/Videos/Anime:/storage/Videos/Anime"
+      - "/storage/Videos/Webseries:/storage/Videos/Webseries"
+      - "/storage/sickbeard/sonarr:/storage/sickbeard/sonarr"
+      - "/media/storage:/media/storage"
+    ports:
+      - 8989:8989
+    environments:
+      PGID: 1000
+      PUID: 1000
+      TZ: "America/Vancouver"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8989"
+      - com.centurylinklabs.watchtower.enable
