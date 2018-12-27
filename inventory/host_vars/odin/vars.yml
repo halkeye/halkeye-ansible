@@ -552,3 +552,16 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+
+  - name: vault
+    image: vault
+    enabled: false
+    extras:
+      - "--cap-add=IPC_LOCK"
+    args: "server"
+    ports:
+      - 8200:8200
+    environments:
+      VAULT_LOCAL_CONFIG: '{"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h", "listener":{"tcp":{"address":"0.0.0.0:8200","tls_disable":1}}'
+    volumes:
+      - "{{ docker_apps_dir }}/vault:/vault/file"
