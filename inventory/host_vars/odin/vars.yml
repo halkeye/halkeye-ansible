@@ -794,3 +794,40 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=80"
       - com.centurylinklabs.watchtower.enable
+
+  - name: pgadmin4
+    image: chorss/docker-pgadmin4
+    volumes:
+      - "{{ docker_apps_dir }}/pgadmin4:/data"
+    ports:
+      - 3009:5050
+    environments:
+      UID: 1000
+      GID: 1000
+      SERVER_MODE: 'true'
+      PGADMIN_SETUP_EMAIL: "{{ pgadmin_setup_email }}"
+      PGADMIN_SETUP_PASSWORD: "{{ pgadmin_setup_password }}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5050"
+      - com.centurylinklabs.watchtower.enable
+
+  - name: octobox
+    image: octoboxio/octobox:latest
+    ports:
+      - 8090:3000
+    environments:
+      GITHUB_CLIENT_ID: "{{ octobox_github_client_id }}"
+      GITHUB_CLIENT_SECRET: "{{ octobox_github_client_secret }}"
+      OCTOBOX_DATABASE_USERNAME: "{{ octobox_database_username }}"
+      OCTOBOX_DATABASE_PASSWORD: "{{ octobox_database_password }}"
+      OCTOBOX_DATABASE_NAME: "{{ octobox_database_name }}"
+      OCTOBOX_DATABASE_HOST: "{{ postgres_host }}"
+      REDIS_URL: "{{ redis_host }}"
+      RAILS_ENV: production
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3000"
+      - com.centurylinklabs.watchtower.enable
