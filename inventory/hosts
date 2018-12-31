@@ -6,6 +6,7 @@ blackpanther
 halkeye-chromebook
 odin
 wasp
+nickfury
 
 [work]
 cb-gavinmogan
@@ -14,6 +15,7 @@ cb-gavinmogan
 halkeye-chromebook
 cb-gavinmogan
 wasp
+nickfury
 
 [wsl]
 jarvis
@@ -22,3 +24,4 @@ blackpanther
 [server]
 odin
 ribbitfrog
+nickfury
