@@ -78,6 +78,12 @@ docker_systemd_services:
       - "/etc/localtime:/etc/localtime:ro"
       - "/storage/homes/halkeye/Documents/Calibre Library:/books"
       - "{{ docker_apps_dir }}/calibre-web:/calibre-web/config"
+    labels:
+      - "traefik.frontend.rule=Host:books.{{traefik_domain}}"
+      - "traefik.frontend.auth.forward.address=https://lasso.gavinmogan.com"
+      - "traefik.enable=true"
+      - "traefik.port=8083"
+      - com.centurylinklabs.watchtower.enable
 
   - name: chronograf
     enabled: true
