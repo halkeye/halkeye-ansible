@@ -242,6 +242,7 @@ docker_systemd_services:
     ports:
       - 8123:8123
     labels:
+      - "traefik.frontend.rule=Host:hab.{{ traefik_domain }}"
       - "traefik.enable=true"
       - "traefik.port=8123"
       - com.centurylinklabs.watchtower.enable
@@ -289,6 +290,7 @@ docker_systemd_services:
     groups:
       - 978
     labels:
+      - "traefik.frontend.rule=Host:jenkins.{{ traefik_domain }}"
       - "traefik.enable=true"
       - "traefik.port=8080"
       - com.centurylinklabs.watchtower.enable
@@ -330,6 +332,8 @@ docker_systemd_services:
       - "{{ docker_apps_dir }}/lasso/data:/data"
     labels:
       - com.centurylinklabs.watchtower.enable
+      - "traefik.enable=true"
+      - "traefik.port=9090"
 
 
   - name: nextcloud
@@ -374,6 +378,7 @@ docker_systemd_services:
     volumes:
       - "{{ docker_apps_dir }}/bazarr:/config"
       - "/storage/Videos/TV:/tv"
+      - "/storage/Videos/TV:/storage/Videos/TV"
       - "/storage/Videos/Movies:/movies"
     environments:
       PUID: 1000
@@ -479,8 +484,6 @@ docker_systemd_services:
       PUID: 1000
       TZ: "America/Vancouver"
     labels:
-      - "traefik.enable=true"
-      - "traefik.port=6789"
       - com.centurylinklabs.watchtower.enable
 
   - name: traefik
@@ -491,8 +494,8 @@ docker_systemd_services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     ports:
       - 80:80
-      - 81:81
-      - 20443:443
+      - 2081:81
+      - 443:443
     labels:
       - "traefik.enable=true"
       - "traefik.port=6789"
@@ -547,6 +550,7 @@ docker_systemd_services:
     ports:
       - 9002:9000
     labels:
+      - "traefik.frontend.rule=Host:theirc.{{ traefik_domain }}"
       - "traefik.enable=true"
       - "traefik.port=9000"
       - com.centurylinklabs.watchtower.enable
@@ -689,6 +693,7 @@ docker_systemd_services:
       PUID: 997
       TZ: "America/Vancouver"
     labels:
+      - "traefik.frontend.rule=Host:plexstats.{{ traefik_domain }}"
       - "traefik.enable=true"
       - "traefik.port=8181"
       - com.centurylinklabs.watchtower.enable
