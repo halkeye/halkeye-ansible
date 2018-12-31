@@ -1,0 +1,14 @@
+---
+- hosts: all
+  vars:
+    docker_systemd_service_location: /etc/systemd/system
+  tasks:
+    - name: docker-systemd
+      include_role:
+        name: halkeye.ansible-docker-systemd
+      loop_control:
+        loop_var: service
+      with_items:
+        - "{{ docker_systemd_services }}"
+
+
