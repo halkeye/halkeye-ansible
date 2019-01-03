@@ -80,7 +80,8 @@ docker_systemd_services:
       - "{{ docker_apps_dir }}/calibre-web:/calibre-web/config"
     labels:
       - "traefik.frontend.rule=Host:books.{{traefik_domain}}"
-      - "traefik.frontend.auth.forward.address=https://lasso.gavinmogan.com"
+      - "traefik.frontend.auth.forward.address=https://{{ traefik_auth_address }}"
+      - "traefik.frontend.auth.forward.authResponseHeader=X-Forwarded-User"
       - "traefik.enable=true"
       - "traefik.port=8083"
       - com.centurylinklabs.watchtower.enable
@@ -331,6 +332,7 @@ docker_systemd_services:
 
   - name: lasso
     image: lassoproject/lasso
+    enabled: false
     ports:
       - 3018:9090
     volumes:
@@ -395,6 +397,8 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6767"
+      - "traefik.frontend.auth.forward.address=https://{{ traefik_auth_address }}"
+      - "traefik.frontend.auth.forward.authResponseHeader=X-Forwarded-User"
       - com.centurylinklabs.watchtower.enable
 
   - name: turtl
