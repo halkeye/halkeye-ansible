@@ -147,9 +147,13 @@ docker_systemd_services:
       GF_AWS_default_SECRET_ACCESS_KEY: "{{ grafana_aws_secret_key }}"
       GF_AWS_default_REGION: us-west-1
       GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,cloudflare-app,briangann-gauge-panel,jdbranham-diagram-panel,mtanda-google-calendar-datasource
-      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+
+      GF_AUTH_DISABLE_LOGIN_FORM: "false"
+      GF_AUTH_DISABLE_SIGNOUT_MENU: "true"
+      GF_AUTH_BASIC_ENABLED: "true"
       GF_AUTH_PROXY_ENABLED: "true"
-      GF_AUTH_PROXY_HEADER_NAME: X-Lasso-User
+      GF_AUTH_PROXY_HEADER_NAME: X-Forwarded-User
       GF_AUTH_PROXY_HEADER_PROPERTY: email
       GF_AUTH_PROXY_AUTO_SIGN_UP: "true"
       GF_USERS_ALLOW_SIGN_UP: "false"
@@ -158,6 +162,8 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=3000"
+      - "traefik.frontend.auth.forward.address=https://{{ traefik_auth_address }}"
+      - "traefik.frontend.auth.forward.authResponseHeader=X-Forwarded-User"
       - com.centurylinklabs.watchtower.enable
 
   - name: "graphite_github@"
@@ -232,7 +238,8 @@ docker_systemd_services:
       - "{{ docker_apps_dir }}/graphite/storage:/opt/graphite/storage"
     labels:
       - "traefik.enable=true"
-      - "traefik.port=5080"
+      - "traefik.port=80"
+      - "traefik.frontend.rule=Host:graphite.{{ traefik_domain }}"
       - com.centurylinklabs.watchtower.enable
 
   - name: homeassistant
