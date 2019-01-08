@@ -87,7 +87,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: chronograf
-    enabled: true
+    enabled: false
     image: chronograf
     ports:
       - 3012:8888
@@ -273,6 +273,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: jackett
+    enabled: false
     image: linuxserver/jackett
     volumes:
       - "{{ docker_apps_dir }}/jackett:/config"
@@ -565,6 +566,7 @@ docker_systemd_services:
 
   - name: thelounge
     image: thelounge/lounge:latest
+    enabled: false
     volumes:
       - "{{ docker_apps_dir }}/thelounge.service:/home/lounge/data"
     ports:
@@ -601,6 +603,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: nzbhydra
+    enabled: false
     image: linuxserver/hydra
     volumes:
       - "{{ docker_apps_dir }}/nzbhydra:/config"
@@ -617,6 +620,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: nzbhydra2
+    enabled: false
     image: linuxserver/hydra2
     volumes:
       - "{{ docker_apps_dir }}/nzbhydra2:/config"
@@ -793,6 +797,7 @@ docker_systemd_services:
 
   - name: pgadmin
     image: chorss/docker-pgadmin4
+    enabled: false
     volumes:
       - "{{ docker_apps_dir }}/pgadmin4:/data"
     ports:
