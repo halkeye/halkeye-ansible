@@ -122,6 +122,7 @@ docker_systemd_services:
 
   - name: freshrss
     image: freshrss/freshrss
+    enabled: false
     required_services:
       - mariadb
     ports:
