@@ -636,9 +636,6 @@ docker_systemd_services:
 
   - name: tautulli-influxdb-export
     image: halkeye/tautulli-influxdb-export
-    volumes:
-      - "{{ docker_apps_dir }}/nzbhydra2:/config"
-      - "/media/storage/nzbhydra:/downloads"
     environments:
       PLEXPYWEBPROTOCOL: "{{ plexpywebprotocol }}"
       PLEXPYHOST: "{{ plexpyhost }}"
