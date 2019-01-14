@@ -134,7 +134,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
       - "traefik.frontend.rule=Host:rss.{{traefik_domain}}"
       - "traefik.enable=true"
-      - "traefik.port=8083"
+      - "traefik.port=80"
 
   - name: grafana
     image: grafana/grafana
