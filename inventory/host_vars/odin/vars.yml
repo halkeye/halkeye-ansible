@@ -138,6 +138,7 @@ docker_systemd_services:
       - "traefik.port=80"
 
   - name: grafana
+    enabled: false
     image: grafana/grafana
     ports:
       - 9003:3000
@@ -171,6 +172,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: "graphite_github@"
+    enabled: false
     description: "Graphite script to pull github stats"
     args: "ruby social_media_github_graphite.rb -d %i"
     image: halkeye/graphite_scripts
@@ -230,6 +232,7 @@ docker_systemd_services:
 
   - name: graphite
     image: hopsoft/graphite-statsd
+    enabled: false
     ports:
       - 5080:80
       - 2003-2004:2003-2004
@@ -248,8 +251,6 @@ docker_systemd_services:
 
   - name: homeassistant
     required_services:
-      - mariadb
-      - influxdb
       - mosquitto
     image: homeassistant/home-assistant
     volumes:
@@ -266,6 +267,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: influxdb
+    enabled: false
     image: influxdb
     volumes:
       - "{{ docker_apps_dir }}/influxdb:/var/lib/influxdb"
@@ -316,6 +318,7 @@ docker_systemd_services:
 
   - name: mariadb
     image: mariadb:10.3
+    enabled: false
     ports:
       - 3306:3306
     volumes:
@@ -583,6 +586,7 @@ docker_systemd_services:
 
   - name: telegraf
     image: nuntz/telegraf-snmp
+    enabled: false
     extras:
       - "--privileged"
     environments:
@@ -639,6 +643,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: tautulli-influxdb-export
+    enabled: false
     image: halkeye/tautulli-influxdb-export
     environments:
       PLEXPYWEBPROTOCOL: "{{ plexpywebprotocol }}"
