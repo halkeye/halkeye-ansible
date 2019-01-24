@@ -841,3 +841,17 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=3000"
       - com.centurylinklabs.watchtower.enable
+
+  - name: minio
+    image: minio/minio
+    #ports:
+    #  - 9000:9000
+    volumes:
+      - /storage/minio:/data
+      - /storage/apps/minio/:/root/.minio
+    args: "server /data"
+    labels:
+      - com.centurylinklabs.watchtower.enable
+      - "traefik.enable=true"
+      - "traefik.port=9000"
+      - "traefik.frontend.rule=Host:storage.{{traefik_domain}}"
