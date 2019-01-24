@@ -1,4 +1,12 @@
 ---
+# - host
+zsh_powerlevel9k_left_prompt:
+  - host
+  - vcs
+  - virtualenv
+  - dir
+
+zsh_powerlevel9k_right_prompt: []
 vault_version: "{{ lookup('env','VAULT_VERSION') | default('0.9.3', true) }}"
 vault_architecture_map:
   # this first entry seems... redundant (but it's required for reasons)

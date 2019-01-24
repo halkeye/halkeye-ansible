@@ -54,8 +54,8 @@
     creates: "bundle/Vundle.vim"
 - name: Install Plugins
   become: no
-  shell: "vim -E -s -c 'source ~/.vimrc' -c PluginInstall -c qa"
+  shell: "nvim -E -s -c 'source ~/.vimrc' -c PluginInstall -c qa"
   register: vim_plugin_install_cmd
-  failed_when: vim_plugin_install_cmd.rc == 0 or vim_plugin_install_cmd.rc >= 2
+  failed_when: vim_plugin_install_cmd.rc == 1 or vim_plugin_install_cmd.rc >= 2
   args:
     chdir: "{{ lookup('env','HOME') }}/.vim"
