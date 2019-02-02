@@ -299,7 +299,6 @@ docker_systemd_services:
   - name: jenkins-docker
     image: halkeye/jenkins:latest
     ports:
-      - 8080:8080
       - 50000:50000
     volumes:
       - "/var/lib/docker:/var/lib/docker"
@@ -503,14 +502,15 @@ docker_systemd_services:
       - "/media/storage/downloads:/media/storage/downloads"
       - "{{ docker_apps_dir }}/nzbget/downloads:/downloads"
       - "{{ docker_apps_dir }}/nzbget/config:/config"
-    ports:
-      - 6789:6789
+    # ports: ["6789:6789"]
     environments:
       PGID: 1000
       PUID: 1000
       TZ: "America/Vancouver"
     labels:
       - com.centurylinklabs.watchtower.enable
+      - "traefik.enable=true"
+      - "traefik.port=6789"
 
   - name: traefik
     image: traefik
@@ -527,7 +527,7 @@ docker_systemd_services:
       - 443:443
     labels:
       - "traefik.enable=true"
-      - "traefik.port=6789"
+      - "traefik.port=2018"
       - com.centurylinklabs.watchtower.enable
     args: --configFile=/config/traefik.toml
 
