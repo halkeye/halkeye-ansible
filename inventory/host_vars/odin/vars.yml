@@ -833,8 +833,7 @@ docker_systemd_services:
 
   - name: minio
     image: minio/minio
-    #ports:
-    #  - 9000:9000
+    enabled: false
     volumes:
       - /storage/minio:/data
       - /storage/apps/minio/:/root/.minio
