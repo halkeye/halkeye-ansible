@@ -465,6 +465,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: sourcegraph
+    enabled: false
     image: sourcegraph/server:2.13.6
     volumes:
       - "{{ docker_apps_dir }}/sourcegraph/config:/etc/sourcegraph"
@@ -489,6 +490,7 @@ docker_systemd_services:
 
   - name: redis
     image: redis:3.2
+    enabled: false
     volumes:
       - "{{ docker_apps_dir }}/redis:/data"
     ports:
