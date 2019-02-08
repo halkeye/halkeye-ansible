@@ -16,7 +16,21 @@
   apt:
     name:
       - neovim
+      - python3-neovim
+      - python-neovim
       - ctags
+    state: present
+- name: setup neovim
+  become: yes
+  pip:
+    name:
+      - pynvim
+    state: present
+- name: setup neovim
+  become: yes
+  gem:
+    name:
+      - neovim
     state: present
 - name: setup neovim alternatives
   become: yes

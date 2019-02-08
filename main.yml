@@ -24,12 +24,14 @@
       apt:
         name: "{{ global_ubuntu_packages }}"
         state: present
+
     - name: setup add-apt-repository
       become: yes
       when: ansible_os_family == "Debian"
       apt:
         name: software-properties-common
         state: present
+
     - include: playbooks/nvim.yml
       tags:
         - nvim
