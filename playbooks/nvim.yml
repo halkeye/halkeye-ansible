@@ -20,17 +20,25 @@
       - python-neovim
       - ctags
     state: present
-- name: setup neovim
+- name: setup neovim on python3
   become: yes
   pip:
-    name:
-      - pynvim
+    executable: /usr/bin/pip
+    name: pynvim
     state: present
-- name: setup neovim
+- name: setup neovim on python3
+  become: yes
+  pip:
+    executable: /usr/bin/pip3
+    name: pynvim
+    state: present
+- name: setup neovim for ruby
   become: yes
   gem:
-    name:
-      - neovim
+    user_install: false
+    # because its installed by the ruby module
+    executable: /usr/local/bin/gem
+    name: neovim
     state: present
 - name: setup neovim alternatives
   become: yes
@@ -68,7 +76,7 @@
     creates: "bundle/Vundle.vim"
 - name: Install Plugins
   become: no
-  shell: "nvim -E -s -c 'source ~/.vimrc' -c PluginInstall -c qa"
+  shell: "nvim -E -s -c 'source ~/.vimrc' -c PlugInstall -c UpdateRemotePlugins -c qa"
   register: vim_plugin_install_cmd
   failed_when: vim_plugin_install_cmd.rc == 1 or vim_plugin_install_cmd.rc >= 2
   args:

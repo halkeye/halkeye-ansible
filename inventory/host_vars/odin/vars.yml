@@ -1,6 +1,5 @@
 ---
 zsh_install_ssh_agent: true
-nodejs_version: "10"
 docker_apps_dir: /storage/apps
 
 docker_systemd_services:

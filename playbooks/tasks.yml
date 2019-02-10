@@ -1,0 +1,41 @@
+- name: Gather package facts
+  package_facts:
+    manager: "auto"
+
+- name: Accept Java 8 License
+  become: yes
+  when: ansible_os_family == "Debian"
+  debconf:
+    name: 'oracle-java8-installer'
+    question: 'shared/accepted-oracle-license-v1-1'
+    value: 'true'
+    vtype: 'select'
+
+- name: install ubuntu ppas
+  become: yes
+  with_items: "{{ global_ubuntu_ppas }}"
+  when: ansible_os_family == "Debian"
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+
+- name: install ubuntu packages
+  become: yes
+  when: ansible_os_family == "Debian"
+  apt:
+    name: "{{ global_ubuntu_packages }}"
+    state: present
+
+- name: install centos packages
+  become: yes
+  when: ansible_os_family == "RedHat"
+  yum:
+    name: "{{ global_centos_packages }}"
+    state: present
+
+- name: setup add-apt-repository
+  become: yes
+  when: ansible_os_family == "Debian"
+  apt:
+    name: software-properties-common
+    state: present

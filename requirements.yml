@@ -1,5 +1,7 @@
 - name: geerlingguy.nodejs
-  src: geerlingguy.nodejs
+  src: https://github.com/geerlingguy/ansible-role-nodejs
+- name: geerlingguy.ruby
+  src: https://github.com/geerlingguy/ansible-role-ruby
 - name: jlund.ansible-go
   src: https://github.com/jlund/ansible-go
 - name: laggyluke.direnv

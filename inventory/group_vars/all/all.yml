@@ -18,11 +18,20 @@ vault_architecture: "{{ vault_architecture_map[ansible_architecture] }}"
 vault_os: "{{ ansible_system|lower }}"
 vault_pkg: "vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
 vault_zip_url: "https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
-
-nodejs_version: "10.x"
+npm_config_prefix: "{{ lookup('env','HOME') }}/.npm-global"
+ruby_install_from_source: true
 slack_version: 2.6.2
 global_ubuntu_ppas:
   - ppa:webupd8team/java
+global_centos_packages:
+  - python
+  - python-devel
+  - python34
+  - python34-devel
+  - python34-pip
+  - python36
+  - python36-devel
+  - python36-pip
 global_ubuntu_packages:
   - silversearcher-ag
   - oracle-java8-set-default
