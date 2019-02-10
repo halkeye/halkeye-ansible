@@ -63,6 +63,7 @@ docker_systemd_services:
       - "{{ docker_apps_dir }}/shinobi/videos:/opt/shinobi/videos"
 
   - name: calibre-web
+    enabled: false
     image: technosoft2000/calibre-web
     extras:
       - "--security-opt=no-new-privileges:true"
@@ -298,7 +299,6 @@ docker_systemd_services:
   - name: jenkins-docker
     image: halkeye/jenkins:latest
     ports:
-      - 8080:8080
       - 50000:50000
     volumes:
       - "/var/lib/docker:/var/lib/docker"
@@ -465,6 +465,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: sourcegraph
+    enabled: false
     image: sourcegraph/server:2.13.6
     volumes:
       - "{{ docker_apps_dir }}/sourcegraph/config:/etc/sourcegraph"
@@ -489,6 +490,7 @@ docker_systemd_services:
 
   - name: redis
     image: redis:3.2
+    enabled: false
     volumes:
       - "{{ docker_apps_dir }}/redis:/data"
     ports:
@@ -502,14 +504,15 @@ docker_systemd_services:
       - "/media/storage/downloads:/media/storage/downloads"
       - "{{ docker_apps_dir }}/nzbget/downloads:/downloads"
       - "{{ docker_apps_dir }}/nzbget/config:/config"
-    ports:
-      - 6789:6789
+    # ports: ["6789:6789"]
     environments:
       PGID: 1000
       PUID: 1000
       TZ: "America/Vancouver"
     labels:
       - com.centurylinklabs.watchtower.enable
+      - "traefik.enable=true"
+      - "traefik.port=6789"
 
   - name: traefik
     image: traefik
@@ -526,7 +529,7 @@ docker_systemd_services:
       - 443:443
     labels:
       - "traefik.enable=true"
-      - "traefik.port=6789"
+      - "traefik.port=2018"
       - com.centurylinklabs.watchtower.enable
     args: --configFile=/config/traefik.toml
 
@@ -675,18 +678,6 @@ docker_systemd_services:
     ports:
       - 21025:21025/tcp
     labels:
-      - com.centurylinklabs.watchtower.enable
-
-  - name: sourcegraph
-    image: sourcegraph/server:2.5.0
-    volumes:
-      - "{{ docker_apps_dir }}/sourcegraph/config:/etc/sourcegraph"
-      - "{{ docker_apps_dir }}/sourcegraph/data:/var/opt/sourcegraph"
-    ports:
-      - 7080:7080
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=7080"
       - com.centurylinklabs.watchtower.enable
 
   - name: sonarr
@@ -844,8 +835,7 @@ docker_systemd_services:
 
   - name: minio
     image: minio/minio
-    #ports:
-    #  - 9000:9000
+    enabled: false
     volumes:
       - /storage/minio:/data
       - /storage/apps/minio/:/root/.minio
@@ -855,3 +845,29 @@ docker_systemd_services:
       - "traefik.enable=true"
       - "traefik.port=9000"
       - "traefik.frontend.rule=Host:storage.{{traefik_domain}}"
+
+  - name: unifi
+    image: linuxserver/unifi
+      # r.j3ss.co/unifi
+    ports:
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 8081:8081
+        #- 8443:8443
+      - 8843:8843
+      - 8880:8880
+      - 6789:6789
+    environments:
+      PGID: 1000
+      PUID: 1000
+      TZ: "America/Vancouver"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - "{{ docker_apps_dir }}/unifi:/config"
+    labels:
+      - com.centurylinklabs.watchtower.enable
+      - "traefik.enable=true"
+      - "traefik.port=8443"
+      - "traefik.frontend.rule=Host:unifi.odin.{{traefik_domain}}"
+      - "traefik.protocol=https"
