@@ -396,6 +396,7 @@ docker_systemd_services:
       - com.centurylinklabs.watchtower.enable
 
   - name: bazarr
+    enabled: false
     image: linuxserver/bazarr
     volumes:
       - "{{ docker_apps_dir }}/bazarr:/config"
