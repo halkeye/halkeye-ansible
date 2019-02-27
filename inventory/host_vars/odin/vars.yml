@@ -317,7 +317,7 @@ docker_systemd_services:
 
   - name: mariadb
     image: mariadb:10.3
-    enabled: false
+    enabled: true
     ports:
       - 3306:3306
     volumes:
