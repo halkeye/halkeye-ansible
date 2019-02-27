@@ -70,6 +70,7 @@ nodejs_npm_global_packages:
   - name: npm
   - name: neovim
   - name: typescript
+  - name: cloudflare-cli
 zsh_antigen_bundles_extras:
   - joel-porquet/zsh-dircolors-solarized
   - name: bobsoppe/zsh-ssh-agent
