@@ -24,6 +24,8 @@
       unset NPM_CONFIG_PREFIX
       # tell less not to paginate if less than a page
       export LESS='-F -X -isMR --shift 5' 
+      # load system profile again to reset paths
+      [[ -e /etc/profile ]] && emulate sh -c 'source /etc/profile'
       if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
       if [ -e "$HOME/.npm-global/bin" ]; then export PATH="$HOME/.npm-global/bin:$PATH"; fi
       if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi

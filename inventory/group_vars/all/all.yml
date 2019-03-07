@@ -20,7 +20,7 @@ vault_pkg: "vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zi
 vault_zip_url: "https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
 npm_config_prefix: "{{ lookup('env','HOME') }}/.npm-global"
 
-ruby_install_gems_user: root
+ruby_install_gems_user: "{{ lookup('env','USER') }}"
 ruby_install_from_source: true
 ruby_install_gems: 
   - bundler
