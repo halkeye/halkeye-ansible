@@ -854,7 +854,6 @@ docker_systemd_services:
 
   - name: unifi
     image: linuxserver/unifi
-      # r.j3ss.co/unifi
     ports:
       - 3478:3478/udp
       - 10001:10001/udp
