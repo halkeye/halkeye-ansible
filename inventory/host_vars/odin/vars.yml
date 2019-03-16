@@ -447,6 +447,9 @@ docker_systemd_services:
 
   - name: radarr
     image: linuxserver/radarr
+    required_services:
+      - transmission-daemon
+      - nzbget
     volumes:
       - "{{ docker_apps_dir }}/radarr:/config"
       - "/media/storage/downloads/Movies:/media/storage/downloads/Movies"
@@ -682,6 +685,9 @@ docker_systemd_services:
 
   - name: sonarr
     image: linuxserver/sonarr
+    required_services:
+      - transmission-daemon
+      - nzbget
     volumes:
       - "/dev/rtc:/dev/rtc:ro"
       - "{{ docker_apps_dir }}/sonarr.service:/config"
