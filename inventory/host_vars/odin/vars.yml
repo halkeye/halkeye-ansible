@@ -895,3 +895,15 @@ docker_systemd_services:
     groups:
       - 978
 
+  - name: nfs-server-docker
+    image: itsthenetwork/nfs-server-alpine:latest
+    ports:
+      - 2049:2049
+    extras:
+      - "--privileged"
+    environments:
+      SHARED_DIRECTORY: "{{ docker_apps_dir }}"
+    volumes:
+      - "{{ docker_apps_dir }}:{{ docker_apps_dir }}"
+    labels:
+      - com.centurylinklabs.watchtower.enable
