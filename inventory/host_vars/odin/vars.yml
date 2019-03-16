@@ -876,3 +876,22 @@ docker_systemd_services:
       - "traefik.port=8443"
       - "traefik.frontend.rule=Host:unifi.odin.{{traefik_domain}}"
       - "traefik.protocol=https"
+
+  - name: jenkins-evergreen
+    image: jenkins/evergreen:docker-cloud
+    environments:
+      LOG_LEVEL: debug
+      TZ: America/Vancouver
+    volumes:
+      - /var/lib/docker:/var/lib/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "{{ docker_apps_dir }}/:/evergreen/data"
+    labels:
+      - com.centurylinklabs.watchtower.enable
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.frontend.rule=Host:jenkins.{{traefik_domain}}"
+      - "traefik.protocol=https"
+    groups:
+      - 978
+
