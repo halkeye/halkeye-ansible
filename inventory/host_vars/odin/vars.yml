@@ -897,7 +897,21 @@ docker_systemd_services:
       - "--privileged"
     environments:
       SHARED_DIRECTORY: "{{ docker_apps_dir }}"
+  - name: watchtower
+    image: v2tec/watchtower
+    environments:
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER: "{{ watchtower_notification_email_server }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PORT: "{{ watchtower_notification_email_server_port }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER: "{{ watchtower_notification_email_server_user }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD: "{{ watchtower_notification_email_server_password }}"
+      WATCHTOWER_NOTIFICATIONS: email
+      WATCHTOWER_NOTIFICATION_EMAIL_FROM: "{{ watchtower_notification_email_from }}"
+      WATCHTOWER_NOTIFICATION_EMAIL_TO: "{{ watchtower_notification_email_to }}"
+    args:
+      - --label-enable
+      - --cleanup
+      - --interval 3600
     volumes:
-      - "{{ docker_apps_dir }}:{{ docker_apps_dir }}"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     labels:
       - com.centurylinklabs.watchtower.enable
