@@ -303,7 +303,8 @@ docker_systemd_services:
       - "/var/lib/docker:/var/lib/docker"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "{{ docker_apps_dir }}/jenkins/secrets:/run/secrets"
-      - "{{ docker_apps_dir }}/jenkins/users:/var/jenkins_home/users"
+      - "{{ docker_apps_dir }}/jenkins:/var/jenkins_home"
+      #- "{{ docker_apps_dir }}/jenkins/users:/var/jenkins_home/users"
     environments:
       TZ: America/Vancouver
       DOCKER_HOST: unix:///var/run/docker.sock
@@ -313,7 +314,6 @@ docker_systemd_services:
       - "traefik.frontend.rule=Host:jenkins.{{ traefik_domain }}"
       - "traefik.enable=true"
       - "traefik.port=8080"
-      - com.centurylinklabs.watchtower.enable
 
   - name: mariadb
     image: mariadb:10.3
@@ -892,11 +892,16 @@ docker_systemd_services:
   - name: nfs-server-docker
     image: itsthenetwork/nfs-server-alpine:latest
     ports:
-      - 2049:2049
+      - 2050:2049
     extras:
       - "--privileged"
     environments:
-      SHARED_DIRECTORY: "{{ docker_apps_dir }}"
+      SHARED_DIRECTORY: "/nfsshare"
+    volumes:
+      - "{{ docker_apps_dir }}:/nfsshare{{ docker_apps_dir }}"
+    labels:
+      - com.centurylinklabs.watchtower.enable
+
   - name: watchtower
     image: v2tec/watchtower
     environments:
