@@ -881,13 +881,11 @@ docker_systemd_services:
     volumes:
       - /var/lib/docker:/var/lib/docker
       - /var/run/docker.sock:/var/run/docker.sock
-      - "{{ docker_apps_dir }}/:/evergreen/data"
+      - "{{ docker_apps_dir }}/jenkins-evergreen:/evergreen/data"
     labels:
-      - com.centurylinklabs.watchtower.enable
       - "traefik.enable=true"
       - "traefik.port=80"
-      - "traefik.frontend.rule=Host:jenkins.{{traefik_domain}}"
-      - "traefik.protocol=https"
+      - "traefik.frontend.rule=Host:jenkins-evergreen.odin.{{traefik_domain}}"
     groups:
       - 978
 
