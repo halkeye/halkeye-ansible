@@ -55,7 +55,7 @@
 - name: Download config from git
   become: no
   git:
-    repo: 'git@github.com:halkeye/vim.git'
+    repo: "git@github.com:halkeye/vim.git"
     dest: "{{ lookup('env','HOME') }}/.vim"
 - name: Create config directory
   become: no
@@ -78,6 +78,7 @@
   become: no
   shell: "nvim -E -s -c 'source ~/.vimrc' -c PlugInstall -c UpdateRemotePlugins -c qa"
   register: vim_plugin_install_cmd
-  failed_when: vim_plugin_install_cmd.rc == 1 or vim_plugin_install_cmd.rc >= 2
+  #failed_when: vim_plugin_install_cmd.rc == 1 or vim_plugin_install_cmd.rc >= 2
+  ignore_errors: true
   args:
     chdir: "{{ lookup('env','HOME') }}/.vim"
