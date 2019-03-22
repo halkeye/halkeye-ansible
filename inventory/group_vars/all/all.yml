@@ -38,6 +38,7 @@ global_centos_packages:
   - python36
   - python36-devel
   - python36-pip
+  - mosh
 global_ubuntu_packages:
   - silversearcher-ag
   - oracle-java8-set-default
@@ -54,6 +55,7 @@ global_ubuntu_packages:
   - tmuxinator
   - tig
   - libffi-dev
+  - mosh
 github_email: git@gavinmogan.com
 gitconfig_users:
   - user: "{{ lookup('env', 'USER') }}"
