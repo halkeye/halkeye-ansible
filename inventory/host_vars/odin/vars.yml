@@ -302,7 +302,7 @@ docker_systemd_services:
     volumes:
       - "/var/lib/docker:/var/lib/docker"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "{{ docker_apps_dir }}/jenkins/secrets:/run/secrets"
+      - "{{ docker_apps_dir }}/jenkins/_secrets:/run/secrets"
       - "{{ docker_apps_dir }}/jenkins:/var/jenkins_home"
       #- "{{ docker_apps_dir }}/jenkins/users:/var/jenkins_home/users"
     environments:
