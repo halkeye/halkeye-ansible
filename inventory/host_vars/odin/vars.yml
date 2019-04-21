@@ -303,8 +303,8 @@ docker_systemd_services:
       - "/var/lib/docker:/var/lib/docker"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "{{ docker_apps_dir }}/jenkins/_secrets:/run/secrets"
-      - "{{ docker_apps_dir }}/jenkins:/var/jenkins_home"
-      #- "{{ docker_apps_dir }}/jenkins/users:/var/jenkins_home/users"
+      - "{{ docker_apps_dir }}/jenkins/users:/var/jenkins_home/users"
+      - "{{ docker_apps_dir }}/jenkins/jobs:/var/jenkins_home/jobs"
     environments:
       TZ: America/Vancouver
       DOCKER_HOST: unix:///var/run/docker.sock
