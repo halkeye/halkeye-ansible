@@ -68,6 +68,8 @@ gitconfig_users:
       .vscode
       .envrc
       .direnv
+      *.iml
+      .idea
 nodejs_npm_global_packages:
   - name: jsonlint
   - name: eslint-cli
