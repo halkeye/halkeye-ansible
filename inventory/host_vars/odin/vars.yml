@@ -723,7 +723,7 @@ docker_systemd_services:
 
   - name: plex-docker
     description: Plex Media Server (dockerized)
-    image: plexinc/pms-docker:plexpass
+    image: plexinc/pms-docker:latest
     volumes:
       - "{{ docker_apps_dir }}/plexmediaserver/database:/config"
       - "{{ docker_apps_dir }}/plexmediaserver/transcode:/transcode"
