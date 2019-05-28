@@ -919,3 +919,11 @@ docker_systemd_services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     labels:
       - com.centurylinklabs.watchtower.enable
+
+  - name: registry
+    image: registry:2.7.1
+    volumes:
+      - "{{ docker_apps_dir }}/nodered:/data"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5000"
