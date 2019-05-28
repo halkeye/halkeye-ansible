@@ -258,8 +258,6 @@ docker_systemd_services:
       - "/etc/localtime:/etc/localtime:ro"
     devices:
       - /dev/ttyACM0
-    ports:
-      - 8123:8123
     labels:
       - "traefik.frontend.rule=Host:hab.{{ traefik_domain }}"
       - "traefik.enable=true"
@@ -331,8 +329,7 @@ docker_systemd_services:
     enabled: false
     image: halkeye/docker-mineos
     ports:
-      - 8124:8123
-      - 127.0.0.1:8443:8443
+      #- 127.0.0.1:8443:8443
       - 25565:25565
     volumes:
       - "/opt/minecraft:/var/games/minecraft"
@@ -515,6 +512,8 @@ docker_systemd_services:
 
   - name: traefik
     image: traefik
+    extras:
+      - "--dns=8.8.8.8"
     volumes:
       - "{{ docker_apps_dir }}/traefik:/config"
       - "{{ docker_apps_dir }}/dehydrated/certs:{{ docker_apps_dir }}/dehydrated/certs"
@@ -855,7 +854,6 @@ docker_systemd_services:
       - 10001:10001/udp
       - 8080:8080
       - 8081:8081
-        #- 8443:8443
       - 8843:8843
       - 8880:8880
       - 6789:6789
@@ -890,6 +888,7 @@ docker_systemd_services:
       - 978
 
   - name: nfs-server-docker
+    enabled: false
     image: itsthenetwork/nfs-server-alpine:latest
     ports:
       - 2050:2049
