@@ -927,3 +927,11 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5000"
+
+  - name: files
+    image: halverneus/static-file-server:latest
+    volumes:
+      - "/storage/File:/web"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8080"
