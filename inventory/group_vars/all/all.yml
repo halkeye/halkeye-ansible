@@ -22,7 +22,7 @@ npm_config_prefix: "{{ lookup('env','HOME') }}/.npm-global"
 
 ruby_install_gems_user: "{{ lookup('env','USER') }}"
 ruby_install_from_source: true
-ruby_install_gems: 
+ruby_install_gems:
   - bundler
   - gist
 
@@ -72,6 +72,8 @@ gitconfig_users:
       .direnv
       *.iml
       .idea
+      __pycache__/
+nodejs_install_npm_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
 nodejs_npm_global_packages:
   - name: jsonlint
   - name: eslint-cli
@@ -85,16 +87,15 @@ zsh_antigen_bundles_extras:
   - joel-porquet/zsh-dircolors-solarized
   - name: bobsoppe/zsh-ssh-agent
     when: zsh_install_ssh_agent
-  #- zuxfoucault/colored-man-pages_mod
   - zlsun/solarized-man
   - horosgrisa/mysql-colorize
   - joshuarubin/zsh-direnv
-  - { name: tmuxinator, command: tmuxinator }
+  - {name: tmuxinator, command: tmuxinator}
   - matthieusb/zsh-sdkman
 
 zsh_autosuggestions_bind_key: "^U"
 zsh_user: "{{ lookup('env', 'USER') }}"
-#zsh_antigen_theme: agnoster
+# zsh_antigen_theme: agnoster
 zsh_install_ssh_agent: false
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 

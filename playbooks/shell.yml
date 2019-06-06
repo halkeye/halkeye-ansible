@@ -30,7 +30,6 @@
       if [ -e "$HOME/.npm-global/bin" ]; then export PATH="$HOME/.npm-global/bin:$PATH"; fi
       if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi
       if [ -e "/opt/google-cloud-sdk/bin" ]; then export PATH="/opt/google-cloud-sdk/bin:$PATH"; fi
-      if [ -e "/opt/apache-maven-3.3.9/bin" ]; then export PATH="/opt/apache-maven-3.3.9/bin/:$PATH"; fi
       if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
       if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
       if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
@@ -47,6 +46,7 @@
       alias youtube-dl='docker run --rm --user $UID:$GID -v $PWD:/downloads wernight/youtube-dl'
       alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
       alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
+      alias mitm='docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 3000:8081 -p 2222:8080 mitmproxy/mitmproxy mitmweb --web-iface 0.0.0.0'
       # Check for various OS openers. Quit as soon as we find one that works.
       for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
         if command -v $opener >/dev/null 2>&1; then
