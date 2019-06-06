@@ -20,3 +20,5 @@
   src: geerlingguy.git
 - name: halkeye.ansible-docker-systemd
   src: https://github.com/halkeye/ansible-docker-systemd
+- name: comcast.sdkman
+  src: comcast.sdkman

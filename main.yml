@@ -51,3 +51,5 @@
           }
     - role: geerlingguy.docker
       when: "'linux' in group_names"
+
+    - role: comcast.sdkman

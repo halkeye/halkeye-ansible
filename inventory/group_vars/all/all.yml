@@ -90,6 +90,7 @@ zsh_antigen_bundles_extras:
   - horosgrisa/mysql-colorize
   - joshuarubin/zsh-direnv
   - { name: tmuxinator, command: tmuxinator }
+  - matthieusb/zsh-sdkman
 
 zsh_autosuggestions_bind_key: "^U"
 zsh_user: "{{ lookup('env', 'USER') }}"
@@ -121,3 +122,24 @@ docker_systemd_default_dependency_services:
 git_version: "2.21.0"
 git_install_from_source: true
 git_install_from_source_force_update: true
+sdkman_user: "{{ lookup('env', 'USER') }}"
+sdkman_group: "{{ lookup('env', 'USER') }}"
+sdkman_auto_answer: true
+sdkman_update: true
+sdkman_install_packages:
+  - {candidate: java, version: 8.0.202-zulu}
+  - {candidate: java, version: 11.0.3-zulu}
+  - {candidate: maven, version: 3.6.1}
+sdkman_defaults:
+  maven: 3.6.1
+  java: 8.0.202-zulu
+sdkman_update_alternatives:
+  - candidate: java
+    name: java
+    link: /usr/bin/java
+  - candidate: java
+    name: javac
+    link: /usr/bin/javac
+  - candidate: maven
+    name: mvn
+    link: /usr/bin/mvn
