@@ -47,6 +47,7 @@
       alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
       alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
       alias mitm='docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 3000:8081 -p 2222:8080 mitmproxy/mitmproxy mitmweb --web-iface 0.0.0.0'
+      alias sonarqube="docker run -it --rm -v \"$PWD:$PWD\" -u \"$UID:$GID\" -v \"$PWD:/usr/src\" -v \"$PWD/sonar-project.properties:/usr/lib/sonar-scanner/conf/sonar-scanner.properties\" newtmitch/sonar-scanner -D \"sonar.login={{ sonar_login }}\" -D \"sonar.host.url={{ sonar_host_url }}\""
       # Check for various OS openers. Quit as soon as we find one that works.
       for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
         if command -v $opener >/dev/null 2>&1; then
