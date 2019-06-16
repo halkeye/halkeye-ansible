@@ -935,3 +935,16 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
+
+  - name: artifactory
+    image: docker.bintray.io/jfrog/artifactory-oss:6.10.3
+    extras:
+      - --ulimit
+      - "nproc=65535"
+      - --ulimit
+      - "nofile=32000:40000"
+    volumes:
+      - "{{ docker_apps_dir }}/artifactory:/var/opt/jfrog/artifactory"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8081"
