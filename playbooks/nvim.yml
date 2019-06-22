@@ -9,17 +9,28 @@
   when: ansible_os_family == "Debian"
   apt_repository:
     repo: "ppa:neovim-ppa/unstable"
+    state: absent
+- become: yes
+  when: ansible_os_family == "Debian"
+  apt:
+    name:
+      - ctags
     state: present
-- name: setup neovim
-  become: yes
+- become: yes
   when: ansible_os_family == "Debian"
   apt:
     name:
       - neovim
       - python3-neovim
       - python-neovim
-      - ctags
-    state: present
+    state: absent
+- name: Replace old neovim distro with appimage
+  become: yes
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/v0.3.7/nvim.appimage
+    checksum: "sha256:7d20d70889077065a14fec60d8684e66eafb904fc43f34c8b6b8aac40c82416a"
+    dest: /usr/bin/nvim
+    mode: '0755'
 - name: setup neovim on python3
   become: yes
   pip:
