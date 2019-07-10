@@ -923,7 +923,7 @@ docker_systemd_services:
   - name: registry
     image: registry:2.7.1
     volumes:
-      - "{{ docker_apps_dir }}/nodered:/data"
+      - "{{ docker_apps_dir }}/registry:/data"
     labels:
       - "traefik.enable=true"
       - "traefik.port=5000"
