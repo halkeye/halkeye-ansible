@@ -948,3 +948,24 @@ docker_systemd_services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8081"
+
+  - name: octoprint
+    image: octoprint/octoprint
+    groups:
+      - 18 # dialout
+    devices:
+      - /dev/ttyACM1
+    volumes:
+      - "{{ docker_apps_dir }}/octopi:/home/octoprint/.octoprint"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5000"
+
+  - name: printercam
+    image: sixsq/mjpg-streamer
+    devices:
+      - /dev/video0
+    labels:
+      - "traefik.frontend.rule=Host:printercam.odin.{{traefik_domain}}"
+      - "traefik.enable=true"
+      - "traefik.port=80"
