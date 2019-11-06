@@ -3,3 +3,4 @@
 roles/*\.*
 venv/
 .vault
+vars.json
