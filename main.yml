@@ -29,6 +29,9 @@
     - role: geerlingguy.nodejs
       tags:
         - nodejs
+    - role: ocha.yarn
+      tags:
+        - nodejs
     - role: geerlingguy.ruby
       tags:
         - ruby

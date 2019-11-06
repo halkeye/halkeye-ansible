@@ -22,3 +22,5 @@
   src: https://github.com/halkeye/ansible-docker-systemd
 - name: comcast.sdkman
   src: comcast.sdkman
+- name: ocha.yarn
+  src: ocha.yarn
