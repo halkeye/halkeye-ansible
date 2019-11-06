@@ -1,0 +1,22 @@
+---
+- name: Get DEB architecture
+  shell: dpkg --print-architecture
+  register: deb_architecture
+
+- name: Download and install udict
+  get_url:
+    url: "https://github.com/genuinetools/udict/releases/download/v0.5.3/udict-linux-{{ deb_architecture.stdout }}"
+    dest: /usr/local/bin/udict
+    mode: '0755'
+
+- name: Download and install img
+  get_url:
+    url: "https://github.com/genuinetools/img/releases/download/v0.5.7/img-linux-{{ deb_architecture.stdout }}"
+    dest: /usr/local/bin/img
+    mode: '0755'
+
+- name: Download and install reg
+  get_url:
+    url: "https://github.com/genuinetools/reg/releases/download/v0.16.0/reg-linux-{{ deb_architecture.stdout }}"
+    dest: /usr/local/bin/reg
+    mode: '0755'

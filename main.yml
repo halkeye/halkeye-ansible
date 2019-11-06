@@ -19,6 +19,9 @@
         - zsh
     - include: playbooks/desktop.yml
       when: '"xserver-xorg" in ansible_facts.packages'
+    - include: playbooks/genuinetools.yml
+      tags:
+        - genuinetools
   roles:
     - role: viasite-ansible.zsh
       tags:
