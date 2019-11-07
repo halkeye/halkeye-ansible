@@ -1,6 +1,6 @@
 ---
 - name: Get DEB architecture
-  shell: dpkg --print-architecture
+  shell: "bash -c 'if [ \"$(arch)\" == \"x86_64\" ]; then echo amd64; else arch; fi'"
   register: deb_architecture
 
 - name: Download and install udict
