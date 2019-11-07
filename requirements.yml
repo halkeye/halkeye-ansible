@@ -24,3 +24,5 @@
   src: comcast.sdkman
 - name: ocha.yarn
   src: ocha.yarn
+- name: cmprescott.chrome
+  src: cmprescott.chrome
