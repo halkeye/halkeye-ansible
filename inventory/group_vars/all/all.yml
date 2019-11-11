@@ -107,8 +107,8 @@ go_tarball_checksum: "sha256:dbcf71a3c1ea53b8d54ef1b48c85a39a6c9a935d01fc8291ff2
 go_version_target: "go version go1.12.6 linux/amd64"
 
 direnv:
-  bin_url: https://github.com/direnv/direnv/releases/download/v2.17.0/direnv.linux-amd64
-  bin_sha256: 8f9ae798c414c32046a94348420499a5f8e867de3685b1adec831088cbfa52e5
+  bin_url: https://github.com/direnv/direnv/releases/download/v2.20.0/direnv.linux-amd64
+  bin_sha256: 37fa56858796c4c1fdb8552da7218395d505e293dce123788f353bd616820648."
 
 vscode_config_gist: !vault |
           $ANSIBLE_VAULT;1.1;AES256
