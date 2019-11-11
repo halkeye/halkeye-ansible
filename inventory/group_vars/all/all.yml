@@ -98,6 +98,8 @@ zsh_antigen_bundles_extras:
 
 zsh_autosuggestions_bind_key: "^U"
 zsh_user: "{{ lookup('env', 'USER') }}"
+zsh_share_history: yes
+zsh_update_interval: 0 # set 0 for disable autoupdates
 # zsh_antigen_theme: agnoster
 zsh_install_ssh_agent: false
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
@@ -147,3 +149,5 @@ sdkman_update_alternatives:
   - candidate: maven
     name: mvn
     link: /usr/bin/mvn
+
+
