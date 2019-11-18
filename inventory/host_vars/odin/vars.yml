@@ -978,10 +978,7 @@ docker_systemd_services:
       - 53:53/udp
     volumes:
       - "{{ docker_apps_dir }}/bind:/data"
+    extras:
+      - "--dns 172.16.10.1"
     environments:
       WEBMIN_ENABLED: "false"
-    labels:
-      - "traefik.frontend.rule=Host:dns.odin.{{traefik_domain}}"
-      - "traefik.enable=true"
-      - "traefik.port=10000"
-      - "traefik.protocol=https"
