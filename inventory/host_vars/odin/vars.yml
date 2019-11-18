@@ -512,7 +512,7 @@ docker_systemd_services:
       - "traefik.port=6789"
 
   - name: traefik
-    image: traefik
+    image: traefik:v1.7.19
     extras:
       - "--dns=8.8.8.8"
     volumes:
