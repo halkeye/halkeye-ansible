@@ -58,7 +58,7 @@
     - role: geerlingguy.docker
       when: "'linux' in group_names"
 
-    - role: comcast.sdkman
+      #- role: comcast.sdkman
 
     - role: cmprescott.chrome
       tags:
