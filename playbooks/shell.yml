@@ -1,4 +1,10 @@
 ---
+- name: install powerline-shell
+  become: yes
+  pip:
+    name: powerline-shell
+    state: present
+
 - name: Update bashrc
   when: "'wsl' in group_names"
   blockinfile:
@@ -9,6 +15,13 @@
 - template:
     src: templates/zshrc.j2
     dest: "{{ lookup('env','HOME') }}/.zshrc"
+    group: "{{ lookup('env', 'USER') }}"
+    owner: "{{ lookup('env', 'USER') }}"
+    mode: 0700
+
+- template:
+    src: templates/powerline-shell.json.j2
+    dest: "{{ lookup('env','HOME') }}/.config/powerline-shell/config.json"
     group: "{{ lookup('env', 'USER') }}"
     owner: "{{ lookup('env', 'USER') }}"
     mode: 0700
