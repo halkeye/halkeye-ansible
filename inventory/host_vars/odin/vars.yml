@@ -983,3 +983,13 @@ docker_systemd_services:
       - "--dns=172.16.10.1"
     environments:
       WEBMIN_ENABLED: "false"
+
+  - name: bind_exporter
+    image: halkeye/bind_exporter
+    args: -bind.stats-url http://bind:8053/
+    extras:
+      - "--link=bind"
+    labels:
+      - "traefik.frontend.rule=Host:bind_exporter.odin.{{traefik_domain}}"
+      - "traefik.enable=true"
+      - "traefik.port=9119"
