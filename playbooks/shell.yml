@@ -6,68 +6,10 @@
     block: |
       if [ -t 1 ]; then exec zsh;fi
 
-- name: ensure .zshrc.local exists
-  file:
-    path: "{{ lookup('env','HOME') }}/.zshrc.local"
+- template:
+    src: templates/zshrc.j2
+    dest: "{{ lookup('env','HOME') }}/.zshrc"
     group: "{{ lookup('env', 'USER') }}"
     owner: "{{ lookup('env', 'USER') }}"
     mode: 0700
-    state: "touch"
 
-- name: All the useful stuff for zshrc
-  blockinfile:
-    dest: "{{ lookup('env','HOME') }}/.zshrc.local"
-    block: |
-      export POWERLEVEL9K_TIME_FORMAT='%D{\%I:\%M:\%S \%p}'
-      export TZ=America/Vancouver
-      export EDITOR=nvim
-      unset NPM_CONFIG_PREFIX
-      # tell less not to paginate if less than a page
-      export LESS='-F -X -isMR --shift 5' 
-      # load system profile again to reset paths
-      [[ -e /etc/profile ]] && emulate sh -c 'source /etc/profile'
-      if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
-      if [ -e "$HOME/.npm-global/bin" ]; then export PATH="$HOME/.npm-global/bin:$PATH"; fi
-      if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi
-      if [ -e "/opt/google-cloud-sdk/bin" ]; then export PATH="/opt/google-cloud-sdk/bin:$PATH"; fi
-      if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
-      if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
-      if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
-      if [ -e "/mnt/c/Program Files/Docker/Docker/resources/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"; fi
-      alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
-      alias webbie="python -m SimpleHTTPServer"
-      alias ncu="npx -p npm-check-updates ncu"
-      alias bfg="docker run -it --rm -v \$(readlink -m $(pwd)):/code -w /code donderom/bfg-repo-cleaner"
-      eval `dircolors $HOME/.antigen/bundles/joel-porquet/zsh-dircolors-solarized/dircolors-solarized/dircolors.256dark`
-      alias tmux 1>/dev/null 2>/dev/null && unalias tmux
-      alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-      alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-      alias codeclimate="docker run --interactive --tty --rm --env CODECLIMATE_CODE=\"$PWD\" --volume \"$PWD\":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate"
-      alias youtube-dl='docker run --rm --user $UID:$GID -v $PWD:/downloads wernight/youtube-dl'
-      alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
-      alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
-      alias mitm='docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 3000:8081 -p 2222:8080 mitmproxy/mitmproxy mitmweb --web-iface 0.0.0.0'
-      alias sonarqube="docker run -it --rm -v \"$PWD:$PWD\" -u \"$UID:$GID\" -v \"$PWD:/usr/src\" -v \"$PWD/sonar-project.properties:/usr/lib/sonar-scanner/conf/sonar-scanner.properties\" newtmitch/sonar-scanner -D \"sonar.login={{ sonar_login }}\" -D \"sonar.host.url={{ sonar_host_url }}\""
-      # Check for various OS openers. Quit as soon as we find one that works.
-      for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
-        if command -v $opener >/dev/null 2>&1; then
-          if [[ "$opener" == "cmd.exe" ]]; then
-            # shellcheck disable=SC2139
-            alias open="$opener /c start";
-          else
-            # shellcheck disable=SC2139
-            alias open="$opener";
-          fi
-          break;
-        fi
-      done
-
-- name: Make sure wsl don't use fzf for history search
-  blockinfile:
-    dest: "{{ lookup('env','HOME') }}/.zshrc.local"
-    marker: "# {mark} SECOND ANSIBLE MANAGED BLOCK"
-    block: |
-      bindkey "^R" history-incremental-search-backward
-      alias docker=docker.exe
-      alias docker-compose=docker-compose.exe
-  when: "'wsl' in group_names"

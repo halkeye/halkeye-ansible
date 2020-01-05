@@ -23,9 +23,6 @@
       tags:
         - genuinetools
   roles:
-    - role: viasite-ansible.zsh
-      tags:
-        - zsh
     - role: geerlingguy.nodejs
       tags:
         - nodejs

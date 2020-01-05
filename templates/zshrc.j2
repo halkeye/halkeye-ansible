@@ -1,0 +1,93 @@
+HIST_STAMPS="yyyy-mm-dd"
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+export TERM="xterm-256color"
+export EDITOR=nvim
+# fzf
+export FZF_TMUX=0
+export FZF_DEFAULT_OPTS="--height 100% --reverse"
+export TZ=America/Vancouver
+# tell less not to paginate if less than a page
+export LESS='-F -X -isMR --shift 5' 
+
+## switch to emacs mode after setting editor, which changes the mode
+bindkey -e
+# speifically make delete key work
+bindkey -a '^[[3~' delete-char
+
+## Setup all the paths stuff
+if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
+if [ -e "$HOME/.npm-global/bin" ]; then export PATH="$HOME/.npm-global/bin:$PATH"; fi
+if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi
+if [ -e "$HOME/.yarn/bin" ]; then export PATH="$HOME/.yarn/bin:$PATH"; fi
+if [ -e "$HOME/.config/yarn/global/node_modules/.bin" ]; then export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"; fi
+if [ -e "/opt/google-cloud-sdk/bin" ]; then export PATH="/opt/google-cloud-sdk/bin:$PATH"; fi
+if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
+if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
+if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
+if [ -e "/mnt/c/Program Files/Docker/Docker/resources/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"; fi
+
+## START https://github.com/b-ryan/powerline-shell
+function powerline_precmd() {
+    PS1="$(powerline-shell --shell zsh $?)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
+### END https://github.com/b-ryan/powerline-shell
+
+### START 'bash' completion
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+zstyle ':completion:*:*:git:*' script /usr/local/completion/git-completion.zsh
+source <(kubectl completion zsh)
+### END 'bash' completion
+
+# Full zsh support
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## Some aliases I really like
+alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
+alias ncu="npx -p npm-check-updates ncu"
+alias bfg="docker run -it --rm -v \$(readlink -m $(pwd)):/code -w /code donderom/bfg-repo-cleaner"
+alias webbie="python -m SimpleHTTPServer"
+alias kexec='kubectl exec -it $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
+alias klogs='kubectl logs $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
+alias tmux='tmux -2'
+alias youtube-dl='docker run --rm --user $UID:$GID -v $PWD:/downloads wernight/youtube-dl'
+alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
+alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# Check for various OS openers. Quit as soon as we find one that works.
+for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
+  if command -v $opener >/dev/null 2>&1; then
+    if [[ "$opener" == "cmd.exe" ]]; then
+      # shellcheck disable=SC2139
+      alias open="$opener /c start";
+    else
+      # shellcheck disable=SC2139
+      alias open="$opener";
+    fi
+    break;
+  fi
+done
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/halkeye/.sdkman"
+[[ -s "/home/halkeye/.sdkman/bin/sdkman-init.sh" ]] && source "/home/halkeye/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_OFFLINE_MODE=false
+

@@ -8,8 +8,6 @@
   src: https://github.com/halkeye/ansible-role-direnv
 - name: mjanser.gitconfig
   src: mjanser.gitconfig
-- name: viasite-ansible.zsh
-  src: https://github.com/viasite-ansible/ansible-role-zsh
 - name: suzuki-shunsuke.tmux-tpm
   src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
 - name: gantsign.visual-studio-code
