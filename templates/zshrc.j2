@@ -17,6 +17,20 @@ export LESS='-F -X -isMR --shift 5'
 bindkey -e
 # speifically make delete key work
 bindkey -a '^[[3~' delete-char
+# up/down to search back the zsh history
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+## From: https://unix.stackexchange.com/questions/258656/how-can-i-delete-to-a-slash-or-a-word-in-zsh
+# This way you can use ctrl+w for deleting a Word (in vim lingo) and alt+bkspc to delete a word
+backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+}
+zle -N backward-kill-dir
+bindkey '^[^?' backward-kill-dir
 
 ## Setup all the paths stuff
 if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
