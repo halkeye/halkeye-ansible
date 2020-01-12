@@ -100,6 +100,9 @@ for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
     break;
   fi
 done
+# direnv
+source <(direnv hook zsh)
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/halkeye/.sdkman"
 [[ -s "/home/halkeye/.sdkman/bin/sdkman-init.sh" ]] && source "/home/halkeye/.sdkman/bin/sdkman-init.sh"
