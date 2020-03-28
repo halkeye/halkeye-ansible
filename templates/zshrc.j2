@@ -2,7 +2,18 @@ HIST_STAMPS="yyyy-mm-dd"
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 export TERM="xterm-256color"
 export EDITOR=nvim
@@ -44,9 +55,9 @@ if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:
 if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
 if [ -e "/mnt/c/Program Files/Docker/Docker/resources/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"; fi
 
-## START https://github.com/b-ryan/powerline-shell
+## START https://github.com/justjanne/powerline-go
 function powerline_precmd() {
-    PS1="$(powerline-shell --shell zsh $?)"
+  PS1="$($HOME/bin/powerline-go -error $? -shell zsh -modules termtitle,venv,ssh,cwd,perms,git,jobs,exit,root -cwd-max-depth 2 -numeric-exit-codes)"
 }
 
 function install_powerline_precmd() {
@@ -86,6 +97,7 @@ alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
 alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias todo="todoist list --filter '(overdue | today)'"
 
 # Check for various OS openers. Quit as soon as we find one that works.
 for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
