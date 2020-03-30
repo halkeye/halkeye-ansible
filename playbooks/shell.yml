@@ -1,9 +1,13 @@
 ---
-- name: install powerline-shell
-  become: yes
-  pip:
-    name: powerline-shell
-    state: present
+- name: Get DEB architecture
+  shell: "bash -c 'if [ \"$(arch)\" == \"x86_64\" ]; then echo amd64; else arch; fi'"
+  register: deb_architecture
+
+- name: Download and install powerline-go
+  get_url:
+    url: "https://github.com/justjanne/powerline-go/releases/download/v1.15.0/powerline-go-linux-{{ deb_architecture.stdout }}"
+    dest: /usr/bin/powerline-go
+    mode: '0755'
 
 - name: Update bashrc
   when: "'wsl' in group_names"
@@ -18,11 +22,3 @@
     group: "{{ lookup('env', 'USER') }}"
     owner: "{{ lookup('env', 'USER') }}"
     mode: 0700
-
-- template:
-    src: templates/powerline-shell.json.j2
-    dest: "{{ lookup('env','HOME') }}/.config/powerline-shell/config.json"
-    group: "{{ lookup('env', 'USER') }}"
-    owner: "{{ lookup('env', 'USER') }}"
-    mode: 0700
-
