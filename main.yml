@@ -46,7 +46,7 @@
     - role: gantsign.visual-studio-code
       when: "'linux' in group_names"
       users:
-        - username: "{{ lookup('env','USER') }}"
+        - username: "{{ env_user }}"
           visual_studio_code_extensions:
             - Shan.code-settings-sync
           visual_studio_code_settings: {

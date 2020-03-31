@@ -149,4 +149,5 @@ sdkman_update_alternatives:
     name: mvn
     link: /usr/bin/mvn
 
-
+env_home: "{{ lookup('env','HOME') }}"
+env_user: "{{ lookup('env','USER') }}"

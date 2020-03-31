@@ -1,0 +1,48 @@
+---
+- name: install required os packages
+  become: true
+  when: ansible_os_family == "Debian"
+  apt:
+    name:
+      - avahi-daemon
+      - avahi-utils
+      - gir1.2-gst-plugins-base-1.0
+      - gir1.2-gst-rtsp-server-1.0
+      - gir1.2-gstreamer-1.0
+      - gstreamer1.0-gl
+      - gstreamer1.0-plugins-bad
+      - gstreamer1.0-plugins-base
+      - gstreamer1.0-plugins-good
+      - gstreamer1.0-tools
+      - gstreamer1.0-x
+      - libgstreamer-gl1.0-0
+      - libgstreamer-plugins-bad1.0-0
+      - libgstreamer-plugins-base1.0-0
+      - libgstreamer1.0-0
+      - libgstrtspserver-1.0-0
+      - v4l-utils
+    state: present
+
+- name: Create raspicam service
+  template:
+    src: raspicam.service.j2
+    dest: /etc/systemd/system/raspicam.service
+
+- name: just force systemd to reread configs (2.4 and above)
+  systemd:
+    daemon_reload: true
+
+- name: enable a service for raspicam
+  systemd:
+    name: raspicam.service
+    state: started
+    enabled: true
+
+
+
+    #28  cd /etc/avahi/services/
+    #29  cat > ssh.service
+    #30  cat > rtsp.service
+    #31  vim rtsp.service
+    #32  vi rtsp.service
+    #33  ls /usr/share/doc/avahi-daemon/examples/

@@ -7,12 +7,12 @@
     - Pictures
   file:
     src: "/mnt/c/Users/{{ windows_username }}/{{ item }}"
-    dest: "{{ lookup('env','HOME') }}/{{ item }}"
+    dest: "{{ env_user,'HOME') }}/{{ item }}"
     state: link
 - name: Symlink for git directory
   become: no
   file:
-    src: "{{ lookup('env','HOME') }}/Documents/git"
-    dest: "{{ lookup('env','HOME') }}/git"
+    src: "{{ env_user,'HOME') }}/Documents/git"
+    dest: "{{ env_user,'HOME') }}/git"
     state: link
 

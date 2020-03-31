@@ -67,23 +67,23 @@
   become: no
   git:
     repo: "git@github.com:halkeye/vim.git"
-    dest: "{{ lookup('env','HOME') }}/.vim"
+    dest: "{{ env_user,'HOME') }}/.vim"
 - name: Create config directory
   become: no
   file:
-    path: "{{ lookup('env','HOME') }}/.config"
+    path: "{{ env_user,'HOME') }}/.config"
     state: directory
 - name: Symlink for neovim config
   become: no
   file:
-    src: "{{ lookup('env','HOME') }}/.vim"
-    dest: "{{ lookup('env','HOME') }}/.config/nvim"
+    src: "{{ env_user,'HOME') }}/.vim"
+    dest: "{{ env_user,'HOME') }}/.config/nvim"
     state: link
 - name: Install vundle
   become: no
   shell: "./install_vundle.sh"
   args:
-    chdir: "{{ lookup('env','HOME') }}/.vim"
+    chdir: "{{ env_user,'HOME') }}/.vim"
     creates: "bundle/Vundle.vim"
 - name: Install Plugins
   become: no
@@ -92,4 +92,4 @@
   #failed_when: vim_plugin_install_cmd.rc == 1 or vim_plugin_install_cmd.rc >= 2
   ignore_errors: true
   args:
-    chdir: "{{ lookup('env','HOME') }}/.vim"
+    chdir: "{{ env_user,'HOME') }}/.vim"

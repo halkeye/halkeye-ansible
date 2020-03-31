@@ -4,21 +4,22 @@
   register: deb_architecture
 
 - name: Download and install powerline-go
-  get_url:
-    url: "https://github.com/justjanne/powerline-go/releases/download/v1.15.0/powerline-go-linux-{{ deb_architecture.stdout }}"
-    dest: /usr/bin/powerline-go
-    mode: '0755'
+  command: /usr/local/go/bin/go get github.com/justjanne/powerline-go
+  args:
+    creates: /usr/bin/powerline-go
 
 - name: Update bashrc
   when: "'wsl' in group_names"
   blockinfile:
-    dest: "{{ lookup('env','HOME') }}/.bashrc"
+    dest: "{{ env_home }}/.bashrc"
     block: |
       if [ -t 1 ]; then exec zsh;fi
 
-- template:
-    src: templates/zshrc.j2
-    dest: "{{ lookup('env','HOME') }}/.zshrc"
-    group: "{{ lookup('env', 'USER') }}"
-    owner: "{{ lookup('env', 'USER') }}"
+- name: install .zshrc
+  copy:
+    src: ./shell/zshrc
+    remote_src: false
+    dest: "{{ env_home }}/.zshrc"
+    group: "{{ env_user }}"
+    owner: "{{ env_user }}"
     mode: 0700

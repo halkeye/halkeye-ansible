@@ -1,5 +1,5 @@
 ---
 - template:
     src: templates/tmux.conf.j2
-    dest: "{{ lookup('env','HOME') }}/.tmux.conf"
+    dest: "{{ env_user,'HOME') }}/.tmux.conf"
     mode: 0644

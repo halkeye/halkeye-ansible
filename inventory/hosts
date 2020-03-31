@@ -7,6 +7,7 @@ halkeye-chromebook
 odin
 wasp
 nickfury
+rpicam1
 
 [work]
 cb-gavinmogan
@@ -25,3 +26,6 @@ blackpanther
 odin
 ribbitfrog
 nickfury
+
+[rpicam]
+rpicam1
