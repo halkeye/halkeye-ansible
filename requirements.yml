@@ -2,8 +2,8 @@
   src: https://github.com/geerlingguy/ansible-role-nodejs
 - name: geerlingguy.ruby
   src: https://github.com/geerlingguy/ansible-role-ruby
-- name: jlund.ansible-go
-  src: https://github.com/jlund/ansible-go
+- name: yogo1212.ansible-go
+  src: https://github.com/yogo1212/ansible-go
 - name: laggyluke.direnv
   src: https://github.com/halkeye/ansible-role-direnv
 - name: mjanser.gitconfig

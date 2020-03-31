@@ -32,7 +32,7 @@
     - role: geerlingguy.ruby
       tags:
         - ruby
-    - role: jlund.ansible-go
+    - role: yogo1212.ansible-go
       tags:
         - golang
     - role: geerlingguy.git

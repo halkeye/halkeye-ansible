@@ -105,9 +105,7 @@ zsh_update_interval: 0 # set 0 for disable autoupdates
 zsh_install_ssh_agent: false
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 
-go_tarball: "go1.14.1.linux-amd64.tar.gz"
-go_tarball_checksum: "sha256:2f49eb17ce8b48c680cdb166ffd7389702c0dec6effa090c324804a5cac8a7f8"
-go_version_target: "go version go1.14.1 linux/amd64"
+go_version: "1.14.1"
 
 direnv:
   bin_url: https://github.com/direnv/direnv/releases/download/v2.20.0/direnv.linux-amd64
