@@ -27,10 +27,12 @@
   template:
     src: raspicam.service.j2
     dest: /etc/systemd/system/raspicam.service
+  register: raspicam_service
 
-- name: just force systemd to reread configs (2.4 and above)
+- name: force systemd to reread configs 
   systemd:
     daemon_reload: true
+  when: raspicam_service.changed
 
 - name: enable a service for raspicam
   systemd:
@@ -38,6 +40,12 @@
     state: started
     enabled: true
 
+- name: restart raspicam
+  systemd:
+    name: raspicam.service
+    state: restarted
+    enabled: true
+  when: raspicam_service.changed
 
 
     #28  cd /etc/avahi/services/
