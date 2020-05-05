@@ -1,3 +1,5 @@
 #!/bin/bash
 source venv/bin/activate
-ansible-vault --vault-password-file .vault $@
+CMD=$1
+shift
+ansible-vault $CMD --vault-password-file .vault $@
