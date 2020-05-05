@@ -218,8 +218,6 @@ unset _agent_forwarding _ssh_env_cache
 unfunction _start_agent _add_identities
 # END FROM https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/ssh-agent/ssh-agent.plugin.zsh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/halkeye/.sdkman"
-[[ -s "/home/halkeye/.sdkman/bin/sdkman-init.sh" ]] && source "/home/halkeye/.sdkman/bin/sdkman-init.sh"
-export SDKMAN_OFFLINE_MODE=false
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 

@@ -16,8 +16,8 @@
   src: geerlingguy.git
 - name: halkeye.ansible-docker-systemd
   src: https://github.com/halkeye/ansible-docker-systemd
-- name: comcast.sdkman
-  src: comcast.sdkman
+- name: cimon-io.asdf
+  src: cimon-io.asdf
 - name: ocha.yarn
   src: ocha.yarn
 - name: cmprescott.chrome

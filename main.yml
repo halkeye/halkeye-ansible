@@ -46,6 +46,9 @@
 
       #- role: comcast.sdkman
 
+    - role: cimon-io.asdf
+      tags:
+        - asdf
     - role: cmprescott.chrome
       tags:
         - chrome

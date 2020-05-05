@@ -46,6 +46,7 @@ global_ubuntu_packages:
   - curl
   - tig
   - libffi-dev
+  - libssl-dev
   - mosh
 github_email: git@gavinmogan.com
 gitconfig_users:
@@ -116,14 +117,36 @@ docker_systemd_default_dependency_services:
 git_version: "2.21.0"
 git_install_from_source: true
 git_install_from_source_force_update: true
-sdkman_user: "{{ lookup('env', 'USER') }}"
-sdkman_group: "{{ lookup('env', 'USER') }}"
-sdkman_auto_answer: true
-sdkman_update: true
-sdkman_install_packages:
-  - {candidate: java, version: 8.0.202-zulu}
-  - {candidate: java, version: 11.0.3-zulu}
-  - {candidate: maven, version: 3.6.1}
+asdf_user: "{{ lookup('env', 'USER') }}"
+asdf_plugins:
+  - name: "java"    # a plugin name
+    repository: ""    # a plugin repository, optional
+    versions:         # a list of versions to install
+      - azul-zulu-8.42.0.21-jdk8.0.232
+      - azul-zulu-11.31.11-jdk11.0.3
+    global: azul-zulu-8.42.0.21-jdk8.0.232
+  - name: "maven"
+    repository: ""    # a plugin repository, optional
+    versions:         # a list of versions to install
+      - 3.6.1
+    global: 3.6.1
+  - name: "ruby"
+    repository: ""    # a plugin repository, optional
+    versions:         # a list of versions to install
+      - 2.6.5
+      # - 2.3.0
+      # - 2.3.8
+    global: "2.6.5"
+  - name: "nodejs"
+    repository: ""    # a plugin repository, optional
+    versions:         # a list of versions to install
+      - 10.16.3
+    global: "10.16.3"
+  - name: "python"
+    repository: ""    # a plugin repository, optional
+    versions:         # a list of versions to install
+      - 3.8.0
+    global: "3.8.0"
 sdkman_defaults:
   maven: 3.6.1
   java: 8.0.202-zulu
