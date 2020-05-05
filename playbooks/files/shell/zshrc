@@ -78,7 +78,7 @@ fi
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*:*:git:*' script /usr/local/completion/git-completion.zsh
-source <(kubectl completion zsh)
+command -v kubectl && source <(kubectl completion zsh)
 ### END 'bash' completion
 
 # Full zsh support
