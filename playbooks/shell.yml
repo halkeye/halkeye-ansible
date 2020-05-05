@@ -1,4 +1,12 @@
 ---
+- name: install zsh
+  become: yes
+  when: ansible_os_family == "Debian"
+  apt:
+    name:
+      - zsh
+    state: present
+
 - name: Get DEB architecture
   shell: "bash -c 'if [ \"$(arch)\" == \"x86_64\" ]; then echo amd64; else arch; fi'"
   register: deb_architecture

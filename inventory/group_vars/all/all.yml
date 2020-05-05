@@ -51,7 +51,6 @@ global_ubuntu_packages:
   - python3-pip
   - ruby
   - ruby-dev
-  - zsh
   - jq
   - curl
   - tig
