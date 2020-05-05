@@ -25,6 +25,7 @@ npm_config_prefix: "{{ lookup('env','HOME') }}/.npm-global"
 ruby_install_gems_user: "{{ lookup('env','USER') }}"
 ruby_install_from_source: true
 ruby_install_gems:
+  - tmuxinator
   - bundler
   - gist
 
@@ -77,22 +78,7 @@ nodejs_npm_global_packages:
   - name: typescript
   - name: cloudflare-cli
   - name: netlify-cli
-zsh_antigen_bundles_extras:
-  - joel-porquet/zsh-dircolors-solarized
-  - name: bobsoppe/zsh-ssh-agent
-    when: zsh_install_ssh_agent
-  - zlsun/solarized-man
-  - horosgrisa/mysql-colorize
-  - joshuarubin/zsh-direnv
-  - {name: tmuxinator, command: tmuxinator}
-  - matthieusb/zsh-sdkman
 
-zsh_autosuggestions_bind_key: "^U"
-zsh_user: "{{ lookup('env', 'USER') }}"
-zsh_share_history: yes
-zsh_update_interval: 0 # set 0 for disable autoupdates
-# zsh_antigen_theme: agnoster
-zsh_install_ssh_agent: false
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 
 go_version: "1.14.1"
@@ -147,19 +133,6 @@ asdf_plugins:
     versions:         # a list of versions to install
       - 3.8.0
     global: "3.8.0"
-sdkman_defaults:
-  maven: 3.6.1
-  java: 8.0.202-zulu
-sdkman_update_alternatives:
-  - candidate: java
-    name: java
-    link: /usr/bin/java
-  - candidate: java
-    name: javac
-    link: /usr/bin/javac
-  - candidate: maven
-    name: mvn
-    link: /usr/bin/mvn
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
