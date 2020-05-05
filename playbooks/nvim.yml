@@ -24,21 +24,36 @@
       - python3-neovim
       - python-neovim
     state: absent
+# - shell: "sh -c 'nvim --version || echo'"
+#   register: results
+# - set_fact:
+#     nvim_version: "{{ results.stdout | regex_search(regexp,'\\1') | first }}"
+#   when: results.stdout | trim
+#   vars:
+#     regexp: 'NVIM v([a-z0-9A-Z._-]+)'
 - name: Replace old neovim distro with appimage
   become: yes
   get_url:
-    url: https://github.com/neovim/neovim/releases/download/v0.3.7/nvim.appimage
-    checksum: "sha256:7d20d70889077065a14fec60d8684e66eafb904fc43f34c8b6b8aac40c82416a"
+    url: https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
+    checksum: "sha256:a3b7ccbde583acdc7f3385025d3c5e386f92aa97e425b311a49402836998b4e0"
     dest: /usr/bin/nvim
     mode: '0755'
+- stat:
+    path: /usr/bin/pip
+  register: pip_exists
+- stat:
+    path: /usr/bin/pip3
+  register: pip3_exists
 - name: setup neovim on python3
   become: yes
+  when: pip_exists.stat.exists == true
   pip:
     executable: /usr/bin/pip
     name: pynvim
     state: present
 - name: setup neovim on python3
   become: yes
+  when: pip3_exists.stat.exists == true
   pip:
     executable: /usr/bin/pip3
     name: pynvim
@@ -67,29 +82,21 @@
   become: no
   git:
     repo: "git@github.com:halkeye/vim.git"
-    dest: "{{ env_user,'HOME') }}/.vim"
+    dest: "{{ env_home }}/.vim"
 - name: Create config directory
   become: no
   file:
-    path: "{{ env_user,'HOME') }}/.config"
+    path: "{{ env_home }}/.config"
     state: directory
 - name: Symlink for neovim config
   become: no
   file:
-    src: "{{ env_user,'HOME') }}/.vim"
-    dest: "{{ env_user,'HOME') }}/.config/nvim"
+    src: "{{ env_home }}/.vim"
+    dest: "{{ env_home }}/.config/nvim"
     state: link
 - name: Install vundle
   become: no
   shell: "./install_vundle.sh"
   args:
-    chdir: "{{ env_user,'HOME') }}/.vim"
+    chdir: "{{ env_home }}/.vim"
     creates: "bundle/Vundle.vim"
-- name: Install Plugins
-  become: no
-  shell: "nvim -E -s -c 'source ~/.vimrc' -c PlugInstall -c UpdateRemotePlugins -c qa"
-  register: vim_plugin_install_cmd
-  #failed_when: vim_plugin_install_cmd.rc == 1 or vim_plugin_install_cmd.rc >= 2
-  ignore_errors: true
-  args:
-    chdir: "{{ env_user,'HOME') }}/.vim"
