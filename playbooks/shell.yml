@@ -12,9 +12,11 @@
   register: deb_architecture
 
 - name: Download and install powerline-go
-  command: /usr/local/go/bin/go get github.com/justjanne/powerline-go
+  command: "bash -c '/usr/local/go/bin/go get github.com/justjanne/powerline-go'"
+  become: true
+  become_user: "{{ env_user }}"
   args:
-    creates: /usr/bin/powerline-go
+    creates: "{{ env_home }}/go/bin/powerline-go"
 
 - name: Update bashrc
   when: "'wsl' in group_names"

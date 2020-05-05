@@ -57,7 +57,7 @@ if [ -e "/mnt/c/Program Files/Docker/Docker/resources/bin" ]; then export PATH="
 
 ## START https://github.com/justjanne/powerline-go
 function powerline_precmd() {
-  PS1="$($HOME/bin/powerline-go -error $? -shell zsh -modules termtitle,venv,ssh,cwd,perms,git,jobs,exit,root -cwd-max-depth 2 -numeric-exit-codes)"
+  PS1="$($HOME/go/bin/powerline-go -error $? -shell zsh -modules termtitle,venv,ssh,cwd,perms,git,jobs,exit,root -cwd-max-depth 2 -numeric-exit-codes)"
 }
 
 function install_powerline_precmd() {
