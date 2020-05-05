@@ -2,15 +2,6 @@
   package_facts:
     manager: "auto"
 
-- name: Accept Java 8 License
-  become: yes
-  when: ansible_os_family == "Debian"
-  debconf:
-    name: 'oracle-java8-installer'
-    question: 'shared/accepted-oracle-license-v1-1'
-    value: 'true'
-    vtype: 'select'
-
 - name: install ubuntu ppas
   become: yes
   with_items: "{{ global_ubuntu_ppas }}"
