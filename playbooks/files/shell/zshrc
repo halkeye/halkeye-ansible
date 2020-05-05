@@ -22,7 +22,10 @@ export FZF_TMUX=0
 export FZF_DEFAULT_OPTS="--height 100% --reverse"
 export TZ=America/Vancouver
 # tell less not to paginate if less than a page
-export LESS='-F -X -isMR --shift 5' 
+export LESS='-F -X -isMR --shift 5'
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 
 ## switch to emacs mode after setting editor, which changes the mode
 bindkey -e
@@ -54,6 +57,7 @@ if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
 if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
 if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
 if [ -e "/mnt/c/Program Files/Docker/Docker/resources/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"; fi
+test -e $(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")') && source $(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")')
 
 ## START https://github.com/justjanne/powerline-go
 function powerline_precmd() {
@@ -217,7 +221,3 @@ _add_identities
 unset _agent_forwarding _ssh_env_cache
 unfunction _start_agent _add_identities
 # END FROM https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/ssh-agent/ssh-agent.plugin.zsh
-
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
