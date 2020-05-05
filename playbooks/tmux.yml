@@ -1,5 +1,13 @@
 ---
+- name: install tmux
+  become: yes
+  when: ansible_os_family == "Debian"
+  apt:
+    name:
+      - tmux
+      - tmuxinator
+    state: present
 - template:
     src: templates/tmux.conf.j2
-    dest: "{{ env_user,'HOME') }}/.tmux.conf"
+    dest: "{{ env_home }}/.tmux.conf"
     mode: 0644

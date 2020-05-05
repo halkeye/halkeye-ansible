@@ -54,7 +54,6 @@ global_ubuntu_packages:
   - zsh
   - jq
   - curl
-  - tmuxinator
   - tig
   - libffi-dev
   - mosh
