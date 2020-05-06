@@ -19,19 +19,14 @@
       tags:
         - genuinetools
   roles:
-    - role: geerlingguy.nodejs
+    - role: cimon-io.asdf
       tags:
-        - nodejs
-    - role: ocha.yarn
-      tags:
-        - nodejs
-    - role: geerlingguy.ruby
-      tags:
-        - ruby
+        - asdf
     - role: yogo1212.ansible-go
       tags:
         - golang
     - role: geerlingguy.git
+      when: ansible_os_family != "Darwin"
       tags:
         - git
     - role: laggyluke.direnv
@@ -44,9 +39,6 @@
 
       #- role: comcast.sdkman
 
-    - role: cimon-io.asdf
-      tags:
-        - asdf
     - role: cmprescott.chrome
       tags:
         - chrome

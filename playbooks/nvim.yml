@@ -32,12 +32,20 @@
 #   vars:
 #     regexp: 'NVIM v([a-z0-9A-Z._-]+)'
 - name: Replace old neovim distro with appimage
+  when: ansible_os_family != "Darwin"
   become: yes
   get_url:
     url: https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
     checksum: "sha256:a3b7ccbde583acdc7f3385025d3c5e386f92aa97e425b311a49402836998b4e0"
-    dest: /usr/bin/nvim
+    dest: /usr/local/bin/nvim
     mode: '0755'
+- name: Install neovim
+  become: no
+  when: ansible_os_family == "Darwin"
+  homebrew:
+    name: "neovim"
+    state: present
+
 - stat:
     path: /usr/bin/pip
   register: pip_exists
@@ -58,14 +66,15 @@
     executable: /usr/bin/pip3
     name: pynvim
     state: present
-- name: setup neovim for ruby
-  become: yes
-  gem:
-    user_install: false
-    # because its installed by the ruby module
-    executable: /usr/local/bin/gem
-    name: neovim
-    state: present
+# - name: setup neovim for ruby
+#   become: yes
+#   gem:
+#     user_install: true
+#     # because its installed by the ruby module
+#     # executable: /usr/local/bin/gem
+#     executable: "{{ env_home }}/.asdf/shims/gem"
+#     name: neovim
+#     state: present
 - name: setup neovim alternatives
   become: yes
   when: ansible_os_family == "Debian"

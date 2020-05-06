@@ -30,6 +30,5 @@
     src: ./shell/zshrc
     remote_src: false
     dest: "{{ env_home }}/.zshrc"
-    group: "{{ env_user }}"
     owner: "{{ env_user }}"
     mode: 0700

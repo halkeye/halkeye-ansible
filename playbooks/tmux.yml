@@ -11,5 +11,4 @@
     src: templates/tmux.conf.j2
     dest: "{{ env_home }}/.tmux.conf"
     mode: 0644
-    group: "{{ env_user }}"
     owner: "{{ env_user }}"
