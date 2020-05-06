@@ -9,3 +9,6 @@
 - brew cask install font-source-code-pro
 - brew cask install font-source-code-pro-for-powerline
 - brew cask install font-meslo-for-powerline
+- brew install the_silver_searcher
+- gem install tmuxinator
+- brew install tmux
