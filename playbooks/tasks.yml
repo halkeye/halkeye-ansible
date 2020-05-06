@@ -1,7 +1,3 @@
-- name: Gather package facts
-  package_facts:
-    manager: "auto"
-
 - name: install ubuntu ppas
   become: yes
   with_items: "{{ global_ubuntu_ppas }}"
@@ -22,6 +18,13 @@
   when: ansible_os_family == "RedHat"
   yum:
     name: "{{ global_centos_packages }}"
+    state: present
+
+- name: install darwin packages
+  become: no
+  when: ansible_os_family == "Darwin"
+  homebrew:
+    name: "{{ global_darwin_packages }}"
     state: present
 
 - name: setup add-apt-repository

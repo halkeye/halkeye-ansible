@@ -49,6 +49,11 @@ global_ubuntu_packages:
   - libffi-dev
   - libssl-dev
   - mosh
+global_darwin_packages:
+  - gpg2
+  - jq
+  - coreutils
+  - tig
 github_email: git@gavinmogan.com
 gitconfig_users:
   - user: "{{ lookup('env', 'USER') }}"
@@ -85,7 +90,7 @@ go_version: "1.14.1"
 
 direnv:
   bin_url: https://github.com/direnv/direnv/releases/download/v2.20.0/direnv.linux-amd64
-  bin_sha256: 37fa56858796c4c1fdb8552da7218395d505e293dce123788f353bd616820648."
+  bin_sha256: 37fa56858796c4c1fdb8552da7218395d505e293dce123788f353bd616820648
 
 vscode_config_gist: !vault |
           $ANSIBLE_VAULT;1.1;AES256
