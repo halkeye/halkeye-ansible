@@ -1,22 +1,35 @@
 ---
 - name: Get DEB architecture
-  shell: "bash -c 'if [ \"$(arch)\" == \"x86_64\" ]; then echo amd64; else arch; fi'"
+  shell: "bash -c 'if [ \"$(arch)\" == \"x86_64\" ]; then echo amd64; else echo 386; fi'"
   register: deb_architecture
 
 - name: Download and install udict
   get_url:
-    url: "https://github.com/genuinetools/udict/releases/download/v0.5.3/udict-linux-{{ deb_architecture.stdout }}"
+    url: "https://github.com/genuinetools/udict/releases/download/v0.5.4/udict-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
     dest: /usr/local/bin/udict
     mode: '0755'
 
 - name: Download and install img
+  when: ansible_os_family != "Darwin"
   get_url:
-    url: "https://github.com/genuinetools/img/releases/download/v0.5.7/img-linux-{{ deb_architecture.stdout }}"
+    url: "https://github.com/genuinetools/img/releases/download/v0.5.7/img-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
     dest: /usr/local/bin/img
     mode: '0755'
 
 - name: Download and install reg
   get_url:
-    url: "https://github.com/genuinetools/reg/releases/download/v0.16.0/reg-linux-{{ deb_architecture.stdout }}"
+    url: "https://github.com/genuinetools/reg/releases/download/v0.16.1/reg-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
     dest: /usr/local/bin/reg
+    mode: '0755'
+
+- name: Download and install weather
+  get_url:
+    url: "https://github.com/genuinetools/weather/releases/download/v0.15.7/weather-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
+    dest: /usr/local/bin/weather
+    mode: '0755'
+
+- name: Download and install pepper
+  get_url:
+    url: "https://github.com/genuinetools/pepper/releases/download/v0.6.4/pepper-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
+    dest: /usr/local/bin/pepper
     mode: '0755'
