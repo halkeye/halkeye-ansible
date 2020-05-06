@@ -25,7 +25,6 @@ export TZ=America/Vancouver
 export LESS='-F -X -isMR --shift 5'
 
 . $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
 
 ## switch to emacs mode after setting editor, which changes the mode
 bindkey -e
@@ -57,8 +56,6 @@ if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
 if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
 if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
 if [ -e "/mnt/c/Program Files/Docker/Docker/resources/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"; fi
-TMUXINATOR_COMPLETION_PATH="$(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")' 2>/dev/null)"
-test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
 
 ## START https://github.com/justjanne/powerline-go
 function powerline_precmd() {
@@ -84,6 +81,9 @@ autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*:*:git:*' script /usr/local/completion/git-completion.zsh
 command -v kubectl && source <(kubectl completion zsh)
+TMUXINATOR_COMPLETION_PATH="$(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")' 2>/dev/null)"
+test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
+. $HOME/.asdf/completions/asdf.bash
 ### END 'bash' completion
 
 # Full zsh support
@@ -103,6 +103,7 @@ alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 alias todo="todoist list --filter '(overdue | today)'"
+alias vim=nvim
 
 # Check for various OS openers. Quit as soon as we find one that works.
 for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
