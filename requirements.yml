@@ -7,7 +7,7 @@
 - name: laggyluke.direnv
   src: https://github.com/halkeye/ansible-role-direnv
 - name: mjanser.gitconfig
-  src: mjanser.gitconfig
+  src: https://github.com/halkeye/ansible-role-gitconfig
 - name: suzuki-shunsuke.tmux-tpm
   src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
 - name: geerlingguy.docker

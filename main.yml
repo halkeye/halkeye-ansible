@@ -30,6 +30,8 @@
       tags:
         - git
     - role: laggyluke.direnv
+      tags:
+        - direnv
     - role: mjanser.gitconfig
     - role: suzuki-shunsuke.tmux-tpm
       tags:
