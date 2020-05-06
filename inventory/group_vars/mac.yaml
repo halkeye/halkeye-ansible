@@ -1,0 +1,3 @@
+direnv:
+  bin_url: https://github.com/direnv/direnv/releases/download/v2.21.2/direnv.darwin-386
+  bin_sha256: 9356b8c27dd91f8bb4634184ba1a16054247276c512fe3e1bee07f59739693ee
