@@ -138,6 +138,10 @@ asdf_plugins:
     versions:         # a list of versions to install
       - 3.8.0
     global: "3.8.0"
+  - name: "hadolint"
+    repository: "https://github.com/looztra/asdf-hadolint"
+    versions:
+      - 1.17.6
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
