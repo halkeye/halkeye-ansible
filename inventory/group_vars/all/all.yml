@@ -142,3 +142,5 @@ asdf_plugins:
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
 docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
+
+asdf_version: "v0.7.8"

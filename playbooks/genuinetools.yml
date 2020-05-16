@@ -1,13 +1,13 @@
 ---
-- name: Get architecture
-  shell: "bash -c 'if [ \"$(arch)\" == \"x86_64\" ]; then echo amd64; else echo 386; fi'"
-  register: deb_architecture
-  when: ansible_os_family != "Darwin"
+#- name: Get architecture
+#  shell: "bash -c 'if [ \"$(arch)\" == \"x86_64\" ]; then echo amd64; else echo 386; fi'"
+#  register: deb_architecture
+#  when: ansible_os_family != "Darwin"
+
 - name: Get architecture
   shell: "bash -c 'echo amd64'"
   register: deb_architecture
-  when: ansible_os_family == "Darwin"
-
+  #when: ansible_os_family == "Darwin"
 
 - name: Download and install udict
   get_url:
