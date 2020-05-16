@@ -142,6 +142,24 @@ asdf_plugins:
     repository: "https://github.com/looztra/asdf-hadolint"
     versions:
       - 1.17.6
+  - name: "github-cli"
+    repository: "https://github.com/bartlomiejdanek/asdf-github-cli.git"
+    versions:
+      - 0.8.0
+  - name: "docker-slim"
+    repository: "https://github.com/everpeace/asdf-docker-slim.git"
+    versions:
+      - 1.24
+  - name: "shellcheck"
+    repository: ""
+    versions:         # a list of versions to install
+      - 0.7.1
+    global: "0.7.1"
+  - name: "hadolint"
+  # - name: "golang"
+  #   repository: " https://github.com/kennyp/asdf-golang.git"
+  #   versions:
+  #     - 1.14.3
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
