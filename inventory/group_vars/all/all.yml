@@ -155,7 +155,35 @@ asdf_plugins:
     versions:         # a list of versions to install
       - 0.7.1
     global: "0.7.1"
-  - name: "hadolint"
+  - name: "kubectx"
+    versions:
+      - 0.8.0
+    global: "0.8.0"
+  - name: "mc"
+    repository: "https://github.com/penpyt/asdf-mc.git"
+    versions:
+      - "2020-05-16T01-44-37Z"
+    global: "2020-05-16T01-44-37Z"
+  - name: "kube-capacity"
+    repository: "https://github.com/looztra/asdf-kube-capacity"
+    versions:
+      - "0.4.0"
+    global: "0.4.0"
+  - name: "k9s"
+    repository: "https://github.com/looztra/asdf-k9s"
+    versions:
+      - "0.19.5"
+    global: "0.19.5"
+  - name: "snyk"
+    repository: "https://github.com/nirfuchs/asdf-snyk.git"
+    versions:
+      - "1.321.0"
+    global: "1.321.0"
+  - name: "kubeie"
+    repository: "https://github.com/johnhamelink/asdf-kubie"
+    versions:
+      - "0.9.1"
+    global: "0.9.1"
   # - name: "golang"
   #   repository: " https://github.com/kennyp/asdf-golang.git"
   #   versions:
