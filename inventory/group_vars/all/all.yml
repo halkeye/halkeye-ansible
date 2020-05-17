@@ -179,7 +179,7 @@ asdf_plugins:
     versions:
       - "1.321.0"
     global: "1.321.0"
-  - name: "kubeie"
+  - name: "kubie"
     repository: "https://github.com/johnhamelink/asdf-kubie"
     versions:
       - "0.9.1"
