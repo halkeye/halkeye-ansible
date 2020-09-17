@@ -113,9 +113,9 @@ asdf_plugins:
   - name: "java"    # a plugin name
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
-      - azul-zulu-8.42.0.21-jdk8.0.232
-      - azul-zulu-11.31.11-jdk11.0.3
-    global: azul-zulu-8.42.0.21-jdk8.0.232
+      - zulu-8.48.0.53
+      - zulu-11.31.11
+    global: zulu-8.48.0.53
   - name: "maven"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
