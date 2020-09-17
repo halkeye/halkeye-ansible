@@ -146,7 +146,7 @@ asdf_plugins:
   - name: "github-cli"
     repository: "https://github.com/bartlomiejdanek/asdf-github-cli.git"
     versions:
-      - 0.8.0
+      - 1.0.0
   - name: "docker-slim"
     repository: "https://github.com/everpeace/asdf-docker-slim.git"
     versions:
