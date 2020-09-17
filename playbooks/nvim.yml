@@ -34,11 +34,15 @@
 - name: Replace old neovim distro with appimage
   when: ansible_os_family != "Darwin"
   become: yes
-  get_url:
-    url: https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
-    checksum: "sha256:a3b7ccbde583acdc7f3385025d3c5e386f92aa97e425b311a49402836998b4e0"
-    dest: /usr/local/bin/nvim
+  unarchive:
+    src: https://github.com/neovim/neovim/releases/download/v0.4.4/nvim-linux64.tar.gz
+    remote_src: yes
+    dest: /usr/local
+    extra_opts:
+      - --strip-components=1
+    creates: /usr/local/bin/nvim
     mode: '0755'
+
 - name: Install neovim
   become: no
   when: ansible_os_family == "Darwin"
