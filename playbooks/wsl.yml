@@ -1,0 +1,7 @@
+- name: Install xdg-open-wsl
+  become: yes
+  pip:
+    executable: /usr/bin/pip3
+    name: git+https://github.com/cpbotha/xdg-open-wsl.git
+    state: present
+

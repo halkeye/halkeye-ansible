@@ -18,6 +18,10 @@
     - include: playbooks/genuinetools.yml
       tags:
         - genuinetools
+    - include: playbooks/wsl.yml
+      when: "'wsl' in group_names"
+      tags:
+        - wsl
   roles:
     - role: cimon-io.asdf
       tags:
