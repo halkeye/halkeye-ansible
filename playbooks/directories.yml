@@ -24,4 +24,5 @@
       mode: 0700
     loop:
       - { src: "{{ env_home }}/go/src/github.com", dest: "{{ env_home }}/git" }
+      #- { src: "{{ env_home }}/git/halkeye/helmfile", dest: "{{ env_home }}/helm" }
     
