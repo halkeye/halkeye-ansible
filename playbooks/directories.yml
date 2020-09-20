@@ -3,6 +3,8 @@
     file:
       path: "{{ item }}"
       state: directory
+      owner: "{{ env_user }}"
+      mode: 0700
     loop:
       - "{{ env_home }}/go"
       - "{{ env_home }}/go/src"
@@ -18,6 +20,8 @@
       src: "{{ item.src }}"
       dest: "{{ item.dest }}"
       state: link
+      owner: "{{ env_user }}"
+      mode: 0700
     loop:
       - { src: "{{ env_home }}/go/src/github.com", dest: "{{ env_home }}/git" }
     
