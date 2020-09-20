@@ -131,8 +131,8 @@ asdf_plugins:
   - name: "nodejs"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
-      - 10.16.3
-    global: "10.16.3"
+      - 12.18.4
+    global: "12.18.4"
   - name: "python"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
