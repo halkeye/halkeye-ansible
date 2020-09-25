@@ -93,7 +93,7 @@ test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
 alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
 alias ncu="npx -p npm-check-updates ncu"
 alias bfg="docker run -it --rm -v \$(readlink -m $(pwd)):/code -w /code donderom/bfg-repo-cleaner"
-alias webbie="python -m SimpleHTTPServer"
+alias webbie="python3 -m http.server"
 alias kexec='kubectl exec -it $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
 alias klogs='kubectl logs $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
 alias tmux='tmux -2'
