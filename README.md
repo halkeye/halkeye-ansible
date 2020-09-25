@@ -12,3 +12,6 @@
 - brew install the_silver_searcher
 - gem install tmuxinator
 - brew install tmux
+- brew install libpq
+- brew install postgresql
+- docker desktop

@@ -12,18 +12,11 @@ rpicam1
 [work]
 VANMBDEV40.local
 
-[mac]
-VANMBDEV40.local
-
 [linux]
 halkeye-chromebook
 jarvis
 wasp
 nickfury
-
-[wsl]
-jarvis
-blackpanther
 
 [server]
 odin
@@ -32,3 +25,7 @@ nickfury
 
 [rpicam]
 rpicam1
+
+[wsl]
+jarvis
+blackpanther

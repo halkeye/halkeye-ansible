@@ -18,6 +18,17 @@
     - include: playbooks/genuinetools.yml
       tags:
         - genuinetools
+    - include: playbooks/directories.yml
+      tags:
+        - directories
+    - include: playbooks/gnupg.yml
+      tags:
+        - gnupg
+    - include: playbooks/wsl.yml
+      when: "'wsl' in group_names"
+      tags:
+        - wsl
+        - gnupg
   roles:
     - role: cimon-io.asdf
       tags:
@@ -38,9 +49,6 @@
         - tmux
     - role: geerlingguy.docker
       when: "'linux' in group_names"
-
-      #- role: comcast.sdkman
-
     - role: cmprescott.chrome
       tags:
         - chrome

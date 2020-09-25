@@ -1,0 +1,28 @@
+---
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: "{{ env_user }}"
+      mode: 0700
+    loop:
+      - "{{ env_home }}/go"
+      - "{{ env_home }}/go/src"
+      - "{{ env_home }}/go/src/github.com"
+      - "{{ env_home }}/go/src/github.com/halkeye"
+      - "{{ env_home }}/go/src/github.com/halkeye-docker"
+      - "{{ env_home }}/go/src/github.com/halkeye-helm-charts"
+      - "{{ env_home }}/go/src/github.com/jenkinsci"
+      - "{{ env_home }}/go/src/github.com/jenkins-infra"
+  
+  - name: create links
+    file:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      state: link
+      owner: "{{ env_user }}"
+      mode: 0700
+    loop:
+      - { src: "{{ env_home }}/go/src/github.com", dest: "{{ env_home }}/git" }
+      #- { src: "{{ env_home }}/git/halkeye/helmfile", dest: "{{ env_home }}/helm" }
+    
