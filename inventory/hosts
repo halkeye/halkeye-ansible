@@ -11,6 +11,7 @@ rpicam1
 
 [work]
 VANMBDEV40.local
+LAPTOP-9O0F8OON
 
 [linux]
 halkeye-chromebook
@@ -29,3 +30,4 @@ rpicam1
 [wsl]
 jarvis
 blackpanther
+LAPTOP-9O0F8OON
