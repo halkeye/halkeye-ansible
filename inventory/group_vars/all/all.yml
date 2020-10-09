@@ -49,6 +49,7 @@ global_ubuntu_packages:
   - libffi-dev
   - libssl-dev
   - mosh
+  - fzf
 global_darwin_packages:
   - gpg2
   - jq
