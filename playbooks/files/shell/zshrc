@@ -82,6 +82,8 @@ autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*:*:git:*' script /usr/local/completion/git-completion.zsh
 command -v kubectl 2>/dev/null 1>/dev/null && source <(kubectl completion zsh)
 command -v docc 2>/dev/null 1>/dev/null && source <(SYSLOG_OFF=true docc completion zsh)
+command -v helm 2>/dev/null 1>/dev/null && source <(helm completion zsh)
+command -v doctl 2>/dev/null 1>/dev/null && source <(helm completion doctl)
 command -v npm 2>/dev/null 1>/dev/null && source <(npm completion)
 TMUXINATOR_COMPLETION_PATH="$(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")' 2>/dev/null)"
 test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
