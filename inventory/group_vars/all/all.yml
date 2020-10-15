@@ -50,6 +50,7 @@ global_ubuntu_packages:
   - libssl-dev
   - mosh
   - fzf
+  - net-tools
 global_darwin_packages:
   - gpg2
   - jq
