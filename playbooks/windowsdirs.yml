@@ -4,15 +4,7 @@
     - Desktop
     - Documents
     - Downloads
-    - Pictures
   file:
     src: "/mnt/c/Users/{{ windows_username }}/{{ item }}"
-    dest: "{{ env_user,'HOME') }}/{{ item }}"
+    dest: "{{ env_home }}/{{ item }}"
     state: link
-- name: Symlink for git directory
-  become: no
-  file:
-    src: "{{ env_user,'HOME') }}/Documents/git"
-    dest: "{{ env_user,'HOME') }}/git"
-    state: link
-
