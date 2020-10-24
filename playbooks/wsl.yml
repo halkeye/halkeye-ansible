@@ -9,7 +9,7 @@
 
 - name: Download xdg_open_wsl.py
   get_url:
-    url: https://github.com/cpbotha/xdg-open-wsl/blob/1156fe54344e35cf763b65c129df868647e455de/xdg_open_wsl/xdg_open_wsl.py
+    url: https://raw.githubusercontent.com/cpbotha/xdg-open-wsl/1156fe54344e35cf763b65c129df868647e455de/xdg_open_wsl/xdg_open_wsl.py
     dest: /usr/local/bin/xdg-open
     mode: '0755'
 
