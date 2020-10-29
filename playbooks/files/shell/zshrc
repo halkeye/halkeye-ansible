@@ -121,6 +121,8 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias todo="todoist list --filter '(overdue | today)'"
 alias vim=nvim
 command -v docc 2>/dev/null 1>/dev/null && alias docc='SYSLOG_OFF=true docc'
+command -v xclip 2>/dev/null 1>/dev/null && alias pbcopy='xclip -selection clipboard'
+command -v xclip 2>/dev/null 1>/dev/null && alias pbpaste='xclip -selection clipboard -o'
 
 # Check for various OS openers. Quit as soon as we find one that works.
 for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
