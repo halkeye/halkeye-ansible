@@ -15,3 +15,14 @@
 - brew install libpq
 - brew install postgresql
 - docker desktop
+
+## GUI
+
+* vscode
+* xclip
+* docker
+    * docker-compose
+    * group-add docker
+* https://www.jetbrains.com/lp/mono/#how-to-install
+*   Unpack fonts to ~/.local/share/fonts (or /usr/share/fonts, to install fonts system-wide) and fc-cache -f -v
+* https://packages.ubuntu.com/search?keywords=fonts-cascadia-code

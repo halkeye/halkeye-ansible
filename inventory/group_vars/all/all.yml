@@ -52,6 +52,7 @@ global_ubuntu_packages:
   - fzf
   - net-tools
   - nmap
+  - whois
 global_darwin_packages:
   - gpg2
   - jq
