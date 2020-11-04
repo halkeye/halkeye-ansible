@@ -1,0 +1,13 @@
+- become: yes
+  when: ansible_os_family == "Debian"
+  apt:
+    name:
+      - fzf
+    state: absent
+
+- name: Download fzf from git
+  become: no
+  git:
+    repo: "https://github.com/junegunn/fzf.git"
+    dest: "{{ env_home }}/.fzf"
+    version: "0.24.2"

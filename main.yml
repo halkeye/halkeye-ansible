@@ -2,6 +2,9 @@
 - hosts: all
   tasks:
     - include: playbooks/tasks.yml
+    - include: playbooks/fzf.yml
+      tags:
+        - fzf
     - include: playbooks/nvim.yml
       tags:
         - nvim

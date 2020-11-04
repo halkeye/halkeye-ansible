@@ -56,6 +56,7 @@ fi
 
 ## Setup all the paths stuff
 if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
+if [ -e "$HOME/.fzf/bin" ]; then export PATH="$HOME/.fzf/bin:$PATH"; fi
 if [ -e "$HOME/.npm-global/bin" ]; then export PATH="$HOME/.npm-global/bin:$PATH"; fi
 if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi
 if [ -e "$HOME/.yarn/bin" ]; then export PATH="$HOME/.yarn/bin:$PATH"; fi
@@ -101,9 +102,8 @@ test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
 ### END 'bash' completion
 
 # Full zsh support
-if [ -f ~/.fzf.zsh ]; then source ~/.fzf.zsh
-elif [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
+if [ -f ~/.fzf/shell/key-bindings.zsh ]; then source ~/.fzf/shell/key-bindings.zsh; fi 
+if [ -f ~/.fzf/shell/completion.zsh ]; then source ~/.fzf/shell/completion.zsh; fi 
 
 ## Some aliases I really like
 alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
