@@ -109,7 +109,7 @@ docker_systemd_services: []
 docker_systemd_default_dependency_services:
   - storage-zfs-mount
 
-git_version: "2.28.0"
+git_version: "2.29.2"
 git_install_from_source: true
 git_install_from_source_force_update: true
 asdf_user: "{{ lookup('env', 'USER') }}"
