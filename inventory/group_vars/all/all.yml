@@ -75,6 +75,7 @@ gitconfig_users:
       *.iml
       .idea
       __pycache__/
+      .factorypath
 nodejs_version: "12.x"
 nodejs_install_npm_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
 nodejs_npm_global_packages:
