@@ -25,6 +25,7 @@ export TZ=America/Vancouver
 export LESS='-F -X -isMR --shift 5'
 
 . $HOME/.asdf/asdf.sh
+if [ -f $HOME/.asdf/plugins/java/set-java-home.zsh ]; then source $HOME/.asdf/plugins/java/set-java-home.zsh; fi
 
 ## switch to emacs mode after setting editor, which changes the mode
 bindkey -e
