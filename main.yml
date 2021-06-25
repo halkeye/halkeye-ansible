@@ -29,6 +29,9 @@
     - include: playbooks/gnupg.yml
       tags:
         - gnupg
+    - include: playbooks/gitconfig.yml
+      tags:
+        - git
     - include: playbooks/wsl.yml
       when: "'wsl' in group_names"
       tags:
@@ -48,7 +51,6 @@
     - role: laggyluke.direnv
       tags:
         - direnv
-    - role: mjanser.gitconfig
     - role: suzuki-shunsuke.tmux-tpm
       tags:
         - tmux

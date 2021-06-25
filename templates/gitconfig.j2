@@ -1,0 +1,19 @@
+[user]
+    email = {{ github_email }}
+    name = Gavin Mogan
+[core]
+    excludesfile = {{env_home}}/.gitignore
+[push]
+    default = current
+[fetch]
+    prune = true
+[merge]
+    tool = vimdiff
+[mergetool]
+    keepBackup = false
+[mergetool "vimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED
+[diff "sopsdiffer"]
+    textconv = "sops -d"
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/

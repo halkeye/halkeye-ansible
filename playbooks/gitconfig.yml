@@ -1,0 +1,10 @@
+---
+- name: create git config
+  template:
+    src: gitconfig.j2
+    dest: "{{ env_home}}/.gitconfig"
+
+- name: create git ignore
+  template:
+    src: gitignore.j2
+    dest: "{{ env_home}}/.gitignore"
