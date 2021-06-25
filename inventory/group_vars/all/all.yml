@@ -59,18 +59,6 @@ global_darwin_packages:
   - coreutils
   - tig
 github_email: git@gavinmogan.com
-nodejs_version: "12.x"
-nodejs_install_npm_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
-nodejs_npm_global_packages:
-  - name: jsonlint
-  - name: eslint-cli
-  - name: eslint_d
-  - name: heroku
-  - name: npm
-  - name: neovim
-  - name: typescript
-  - name: cloudflare-cli
-  - name: netlify-cli
 
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 
