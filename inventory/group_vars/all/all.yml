@@ -137,7 +137,8 @@ asdf_plugins:
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
       - 12.18.4
-    global: "12.18.4"
+      - 14.17.1
+    global: "14.17.1"
   - name: "python"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
@@ -151,7 +152,8 @@ asdf_plugins:
   - name: "github-cli"
     repository: "https://github.com/bartlomiejdanek/asdf-github-cli.git"
     versions:
-      - 1.1.0
+      - 1.11.0
+    global: "1.11.0"
   - name: "docker-slim"
     repository: "https://github.com/everpeace/asdf-docker-slim.git"
     versions:
@@ -179,7 +181,6 @@ asdf_plugins:
     repository: "https://github.com/looztra/asdf-k9s"
     versions:
       - "0.19.5"
-    global: "0.19.5"
   - name: "snyk"
     repository: "https://github.com/nirfuchs/asdf-snyk.git"
     versions:
@@ -199,8 +200,8 @@ asdf_plugins:
   - name: "helm"
     repository: "https://github.com/Antiarchitect/asdf-helm.git"
     versions:
-      - "3.3.1"
-    global: "3.3.1"
+      - "3.5.4"
+    global: "3.5.4"
   - name: "helmfile"
     repository: "https://github.com/feniix/asdf-helmfile.git"
     versions:
@@ -209,8 +210,18 @@ asdf_plugins:
   - name: "doctl"
     repository: "https://github.com/maristgeek/asdf-doctl.git"
     versions:
-      - "1.48.1"
-    global: "1.48.1"
+      - "1.57.0"
+    global: "1.57.0"
+  - name: "grovy"
+    repository: "https://github.com/weibemoura/asdf-groovy.git"
+    versions:
+      - "3.0.7"
+    global: "3.0.7"
+  - name: "exa"
+    repository: "https://github.com/nyrst/asdf-exa.git"
+    versions:
+      - 0.10.1
+    global: 0.10.1
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
