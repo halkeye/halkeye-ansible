@@ -53,6 +53,8 @@ global_ubuntu_packages:
   - net-tools
   - nmap
   - whois
+  - fonts-jetbrains-mono 
+  - fonts-cascadia-code
 global_darwin_packages:
   - gpg2
   - jq
@@ -62,7 +64,7 @@ github_email: git@gavinmogan.com
 
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 
-go_version: "1.16.2"
+go_version: "1.16.5"
 
 direnv:
   bin_url: https://github.com/direnv/direnv/releases/download/v2.20.0/direnv.linux-amd64

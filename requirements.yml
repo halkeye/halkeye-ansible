@@ -1,5 +1,3 @@
-- name: geerlingguy.ruby
-  src: https://github.com/geerlingguy/ansible-role-ruby
 - name: yogo1212.ansible-go
   src: https://github.com/yogo1212/ansible-go
 - name: laggyluke.direnv
