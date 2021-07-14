@@ -185,7 +185,7 @@ asdf_plugins:
     versions:
       - "1.57.0"
     global: "1.57.0"
-  - name: "grovy"
+  - name: "groovy"
     repository: "https://github.com/weibemoura/asdf-groovy.git"
     versions:
       - "3.0.7"
