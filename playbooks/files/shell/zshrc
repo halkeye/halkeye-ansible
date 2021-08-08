@@ -15,7 +15,7 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-export TERM="xterm-256color"
+export TERM="${TERM:-xterm-256color}"
 export EDITOR=nvim
 # fzf
 export FZF_TMUX=0
@@ -114,7 +114,6 @@ alias webbie="python3 -m http.server"
 alias kexec='kubectl exec -it $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
 alias klogs='kubectl logs $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
 alias tmux='tmux -2'
-alias youtube-dl='docker run --rm --user $UID:$GID -v $PWD:/downloads wernight/youtube-dl'
 alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
 alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
