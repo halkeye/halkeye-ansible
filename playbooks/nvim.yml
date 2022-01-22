@@ -35,13 +35,13 @@
   when: ansible_os_family != "Darwin"
   become: yes
   unarchive:
-    src: https://github.com/neovim/neovim/releases/download/v0.4.4/nvim-linux64.tar.gz
+    src: https://github.com/neovim/neovim/releases/download/v0.6.1/nvim-linux64.tar.gz
     remote_src: yes
     dest: /usr/local
     extra_opts:
       - --strip-components=1
     creates: /usr/local/bin/nvim
-    mode: '0755'
+    mode: "0755"
 
 - name: Install neovim
   become: no

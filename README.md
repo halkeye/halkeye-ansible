@@ -27,3 +27,6 @@
 *   Unpack fonts to ~/.local/share/fonts (or /usr/share/fonts, to install fonts system-wide) and fc-cache -f -v
 * https://packages.ubuntu.com/search?keywords=fonts-cascadia-code
 * http://noobish-nix.blogspot.com/2015/05/xfce-xubuntu-how-take-screenshot-of.html - windows+shift+s
+
+
+git config --global alias.root 'rev-parse --show-toplevel'
