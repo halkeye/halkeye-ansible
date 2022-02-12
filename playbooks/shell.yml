@@ -14,7 +14,7 @@
     shell: /bin/zsh
 
 - name: Download and install powerline-go
-  command: "bash -c '/usr/local/go/bin/go get github.com/justjanne/powerline-go'"
+  command: "bash -c '/usr/local/go/bin/go install github.com/justjanne/powerline-go@v1.21.0'"
   become: true
   become_user: "{{ env_user }}"
   args:
