@@ -4,13 +4,7 @@
   src: https://github.com/halkeye/ansible-role-direnv
 - name: suzuki-shunsuke.tmux-tpm
   src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
-- name: geerlingguy.docker
-  src: geerlingguy.docker
 - name: geerlingguy.git
   src: geerlingguy.git
-- name: halkeye.ansible-docker-systemd
-  src: https://github.com/halkeye/ansible-docker-systemd
 - name: cimon-io.asdf
   src: cimon-io.asdf
-- name: cmprescott.chrome
-  src: cmprescott.chrome

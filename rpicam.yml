@@ -1,7 +1,7 @@
 ---
 - hosts: rpicam
   tasks:
-    - include: playbooks/shell.yml
-    - include: playbooks/rpicam.yml
+    - include_tasks: playbooks/shell.yml
+    - include_tasks: playbooks/rpicam.yml
   #roles:
   #  - role: yogo1212.ansible-go
