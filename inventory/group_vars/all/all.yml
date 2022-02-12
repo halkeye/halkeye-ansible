@@ -55,6 +55,7 @@ global_ubuntu_packages:
   - whois
   - fonts-jetbrains-mono 
   - fonts-cascadia-code
+  - entr
 global_darwin_packages:
   - gpg2
   - jq
