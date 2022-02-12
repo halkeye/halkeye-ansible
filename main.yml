@@ -1,38 +1,38 @@
 ---
 - hosts: all
   tasks:
-    - include: playbooks/tasks.yml
-    - include: playbooks/fzf.yml
+    - include_tasks: playbooks/tasks.yml
+    - include_tasks: playbooks/fzf.yml
       tags:
         - fzf
-    - include: playbooks/nvim.yml
+    - include_tasks: playbooks/nvim.yml
       tags:
         - nvim
-    - include: playbooks/windowsdirs.yml
+    - include_tasks: playbooks/windowsdirs.yml
       when: windows_username is defined
-    - include: playbooks/hub.yml
-    - include: playbooks/tmux.yml
+    - include_tasks: playbooks/hub.yml
+    - include_tasks: playbooks/tmux.yml
       tags:
         - tmux
-    - include: playbooks/vault.yml
+    - include_tasks: playbooks/vault.yml
       tags:
         - hashicorp
-    - include: playbooks/shell.yml
+    - include_tasks: playbooks/shell.yml
       tags:
         - zsh
-    - include: playbooks/genuinetools.yml
+    - include_tasks: playbooks/genuinetools.yml
       tags:
         - genuinetools
-    - include: playbooks/directories.yml
+    - include_tasks: playbooks/directories.yml
       tags:
         - directories
-    - include: playbooks/gnupg.yml
+    - include_tasks: playbooks/gnupg.yml
       tags:
         - gnupg
-    - include: playbooks/gitconfig.yml
+    - include_tasks: playbooks/gitconfig.yml
       tags:
         - git
-    - include: playbooks/wsl.yml
+    - include_tasks: playbooks/wsl.yml
       when: "'wsl' in group_names"
       tags:
         - wsl
@@ -54,8 +54,3 @@
     - role: suzuki-shunsuke.tmux-tpm
       tags:
         - tmux
-    - role: geerlingguy.docker
-      when: "'linux' in group_names"
-    - role: cmprescott.chrome
-      tags:
-        - chrome
