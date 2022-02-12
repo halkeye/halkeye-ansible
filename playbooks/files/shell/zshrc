@@ -23,6 +23,8 @@ export FZF_DEFAULT_OPTS="--height 100% --reverse"
 export TZ=America/Vancouver
 # tell less not to paginate if less than a page
 export LESS='-F -X -isMR --shift 5'
+# ignore node_modules from fzf
+export FZF_DEFAULT_COMMAND='ag -g ""'
 
 . $HOME/.asdf/asdf.sh
 if [ -f $HOME/.asdf/plugins/java/set-java-home.zsh ]; then source $HOME/.asdf/plugins/java/set-java-home.zsh; fi
@@ -67,8 +69,9 @@ if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
 if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
 if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
 if [ -e "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; then export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"; fi
+if [ -e "${KREW_ROOT:-$HOME/.krew}" ]; then export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"; fi
 
-## START https://github.com/justjanne/powerline-go
+# START https://github.com/justjanne/powerline-go
 function powerline_precmd() {
   PS1="$($HOME/go/bin/powerline-go -error $? -shell zsh -modules termtitle,host,venv,ssh,cwd,perms,git,jobs,exit,root -cwd-max-depth 2 -numeric-exit-codes)"
 }
@@ -245,3 +248,5 @@ _add_identities
 unset _agent_forwarding _ssh_env_cache
 unfunction _start_agent _add_identities
 # END FROM https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/ssh-agent/ssh-agent.plugin.zsh
+#
+printf 'yarn\njsonlint\nneovim\nserve' > $HOME/.default-npm-packages

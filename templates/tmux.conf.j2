@@ -33,12 +33,15 @@ set -g status-bg black
 set -g status-fg white
 set -g status-interval 60
 set -g status-left-length 30
-set -g status-left '#[fg=green](#S) #H #[default]'
+set -g status-left '#[fg=green](#S) #(whoami)@#H#[default]'
 set -g status-right ''
 
 # Make color scheme right for tmux
 set -g default-terminal "tmux-256color"
 #set -g default-terminal "xterm"
+
+# Enable focus-events so vim's autoread works
+set-option -g focus-events on
 
 # reload certain env variables
 set-option -ga update-environment ' GNOME_KEYRING_PID GNOME_KEYRING_CONTROL SSH_AUTH_SOCK'
@@ -54,6 +57,9 @@ set-option -g display-panes-colour colour166 #orange
 
 # clock
 set-window-option -g clock-mode-colour colour64 #green
+
+# WARNING: Neither Tc nor RGB capability set. True colors are disabled. |'termguicolors'| won't work properly.
+set-option -sa terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
