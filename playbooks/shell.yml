@@ -7,8 +7,9 @@
       - zsh
     state: present
 
-- name: change user shell to zsh 
+- name: change user shell to zsh
   become: yes
+  when: "'ldap' not in group_names"
   user:
     name: "{{ env_user }}"
     shell: /bin/zsh

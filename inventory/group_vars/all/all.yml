@@ -121,8 +121,8 @@ asdf_plugins:
   - name: "hadolint"
     repository: "https://github.com/looztra/asdf-hadolint"
     versions:
-      - v2.8.0
-    global: "v2.8.0"
+      - 2.10.0
+    global: "2.10.0"
   - name: "github-cli"
     repository: "https://github.com/bartlomiejdanek/asdf-github-cli.git"
     versions:
