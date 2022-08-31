@@ -250,3 +250,4 @@ unfunction _start_agent _add_identities
 # END FROM https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/ssh-agent/ssh-agent.plugin.zsh
 #
 printf 'yarn\njsonlint\nneovim\nserve' > $HOME/.default-npm-packages
+eval "$(jump shell --bind=j)"

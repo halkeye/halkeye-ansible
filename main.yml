@@ -23,6 +23,9 @@
     - include_tasks: playbooks/genuinetools.yml
       tags:
         - genuinetools
+    - include_tasks: playbooks/jump.yml
+      tags:
+        - jump
     - include_tasks: playbooks/directories.yml
       tags:
         - directories
