@@ -29,9 +29,6 @@
     - include_tasks: playbooks/gnupg.yml
       tags:
         - gnupg
-    - include_tasks: playbooks/gitconfig.yml
-      tags:
-        - git
     - include_tasks: playbooks/wsl.yml
       when: "'wsl' in group_names"
       tags:
@@ -49,7 +46,11 @@
       tags:
         - golang
     - role: geerlingguy.git
+      become: true
       when: ansible_os_family != "Darwin"
+      tags:
+        - git
+    - role: carlba.gitconfig
       tags:
         - git
     - role: laggyluke.direnv

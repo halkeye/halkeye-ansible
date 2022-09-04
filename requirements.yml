@@ -8,3 +8,5 @@
   src: https://github.com/geerlingguy/ansible-role-git
 - name: cimon-io.asdf
   src: https://github.com/cimon-io/ansible-role-asdf
+- name: carlba.gitconfig
+  src: https://github.com/carlba/ansible-role-gitconfig

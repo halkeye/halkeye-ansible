@@ -61,7 +61,67 @@ global_darwin_packages:
   - jq
   - coreutils
   - tig
-github_email: git@gavinmogan.com
+git_config:
+  user:
+    name: Gavin Mogan
+    email: git@gavinmogan.com
+  core:
+    editor: vim
+    excludesfile: "~/.gitexcludesfile"
+  push:
+    default: current
+  fetch:
+    prune: "true"
+  mergetool:
+    keepBackup: "false"
+  'mergetool "vimdiff"':
+    cmd: vim -d $LOCAL $REMOTE $MERGED
+  'diff "sopsdiffer"':
+    textconv: "sops -d"
+  'url "ssh://git@github.com/"':
+    insteadOf: 'https://github.com/'
+  alias:
+    root: rev-parse --show-toplevel
+git_ignore:
+  - "*~"
+  - "# temporary files which can be created if a process still has a handle open of a deleted file"
+  - ".fuse_hidden*"
+  - ""
+  - "# KDE directory preferences"
+  - ".directory"
+  - ""
+  - "# Linux trash folder which might appear on any partition or disk"
+  - ".Trash-*"
+  - ""
+  - "# .nfs files are created when an open file is removed but is still being accessed"
+  - ".nfs*"
+  - "# Swap"
+  - "[._]*.s[a-v][a-z]"
+  - "!*.svg  # comment out if you don't need vector files"
+  - "[._]*.sw[a-p]"
+  - "[._]s[a-rt-v][a-z]"
+  - "[._]ss[a-gi-z]"
+  - "[._]sw[a-p]"
+  - ""
+  - "# Session"
+  - "Session.vim"
+  - "Sessionx.vim"
+  - ""
+  - "# Temporary"
+  - ".netrwhist"
+  - "*~"
+  - "# Auto-generated tag files"
+  - "tags"
+  - "# Persistent undo"
+  - "[._]*.un~"
+  - ".lsyncd"
+  - ".vscode"
+  - ".envrc"
+  - ".direnv"
+  - "*.iml"
+  - ".idea"
+  - "__pycache__/"
+  - ".factorypath"
 
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 
