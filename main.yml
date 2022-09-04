@@ -5,9 +5,6 @@
     - include_tasks: playbooks/fzf.yml
       tags:
         - fzf
-    - include_tasks: playbooks/nvim.yml
-      tags:
-        - nvim
     - include_tasks: playbooks/windowsdirs.yml
       when: windows_username is defined
     - include_tasks: playbooks/hub.yml
@@ -41,6 +38,10 @@
         - wsl
         - gnupg
   roles:
+
+    - role: nvim
+      tags:
+        - nvim
     - role: cimon-io.asdf
       tags:
         - asdf

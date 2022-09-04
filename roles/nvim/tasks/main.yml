@@ -1,77 +1,65 @@
-- name: remove old neovim ppa
-  become: yes
-  when: ansible_os_family == "Debian"
-  apt_repository:
-    repo: "ppa:neovim-ppa/stable"
-    state: absent
-- name: setup neovim ppa
-  become: yes
-  when: ansible_os_family == "Debian"
-  apt_repository:
-    repo: "ppa:neovim-ppa/unstable"
-    state: absent
-- become: yes
-  when: ansible_os_family == "Debian"
-  apt:
-    name:
-      - universal-ctags
-    state: present
-- become: yes
-  when: ansible_os_family == "Debian"
-  apt:
-    name:
-      - neovim
-      - python3-neovim
-      - python-neovim
-    state: absent
-# - shell: "sh -c 'nvim --version || echo'"
-#   register: results
-# - set_fact:
-#     nvim_version: "{{ results.stdout | regex_search(regexp,'\\1') | first }}"
-#   when: results.stdout | trim
-#   vars:
-#     regexp: 'NVIM v([a-z0-9A-Z._-]+)'
+---
+- name: "Check if nvim is already installed"
+  stat:
+    path: /usr/local/bin/nvim
+  register: nvim_already_installed
+
+- name: "Fetch installed nvim version"
+  ansible.builtin.command: "/usr/local/bin/nvim --version"
+  register: results
+  when: nvim_already_installed.stat.exists
+
+- name: "Process nvim version"
+  set_fact:
+    nvim_installed_version: "{{ results.stdout | trim | regex_replace('.*NVIM v([a-z0-9A-Z._-]+).*','\\1') }}"
+    when: results.stdout | trim
+
 - name: Replace old neovim distro with appimage
-  when: ansible_os_family != "Darwin"
-  become: yes
+  when: (ansible_os_family != "Darwin") and (nvim_installed_version != nvim_version)
+  become: true
   unarchive:
-    src: https://github.com/neovim/neovim/releases/download/v0.6.1/nvim-linux64.tar.gz
-    remote_src: yes
+    src: "https://github.com/neovim/neovim/releases/download/v{{ nvim_version }}/nvim-linux64.tar.gz"
+    remote_src: true
     dest: /usr/local
     extra_opts:
       - --strip-components=1
-    creates: /usr/local/bin/nvim
     mode: "0755"
 
 - name: Install neovim
-  become: no
+  become: false
   when: ansible_os_family == "Darwin"
   homebrew:
     name: "neovim"
     state: present
 
-- stat:
+- name: "Confirm pip3 is installed to install neovim python modules"
+  stat:
     path: /usr/bin/pip
   register: pip_exists
-- stat:
+
+- name: "Confirm pip is installed to install neovim python modules"
+  stat:
     path: /usr/bin/pip3
   register: pip3_exists
+
 - name: setup neovim on python3
-  become: yes
-  when: pip_exists.stat.exists == true
+  become: true
+  when: pip_exists.stat.exists
   pip:
     executable: /usr/bin/pip
     name: pynvim
     state: present
+
 - name: setup neovim on python3
-  become: yes
-  when: pip3_exists.stat.exists == true
+  become: true
+  when: pip3_exists.stat.exists
   pip:
     executable: /usr/bin/pip3
     name: pynvim
     state: present
+
 # - name: setup neovim for ruby
-#   become: yes
+#   become: true
 #   gem:
 #     user_install: true
 #     # because its installed by the ruby module
@@ -79,8 +67,9 @@
 #     executable: "{{ env_home }}/.asdf/shims/gem"
 #     name: neovim
 #     state: present
+#
 - name: setup neovim alternatives
-  become: yes
+  become: true
   when: ansible_os_family == "Debian"
   with_items:
     - vi
@@ -91,25 +80,23 @@
     name: "{{ item }}"
     path: "/usr/local/bin/nvim"
     priority: 60
+
 - name: Download config from git
-  become: no
+  become: false
   git:
     repo: "git@github.com:halkeye/vim.git"
     dest: "{{ env_home }}/.vim"
+
 - name: Create config directory
-  become: no
+  become: false
   file:
     path: "{{ env_home }}/.config"
     state: directory
+    mode: "0755"
+
 - name: Symlink for neovim config
-  become: no
+  become: false
   file:
     src: "{{ env_home }}/.vim"
     dest: "{{ env_home }}/.config/nvim"
     state: link
-- name: Install vundle
-  become: no
-  shell: "./install_vundle.sh"
-  args:
-    chdir: "{{ env_home }}/.vim"
-    creates: "bundle/Vundle.vim"
