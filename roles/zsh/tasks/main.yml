@@ -16,7 +16,7 @@
 
 - name: install .zshrc
   copy:
-    src: ./shell/zshrc
+    src: zshrc
     remote_src: false
     dest: "{{ env_home }}/.zshrc"
     owner: "{{ env_user }}"

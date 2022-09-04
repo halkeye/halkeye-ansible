@@ -121,6 +121,7 @@ git_ignore:
   - "*.iml"
   - ".idea"
   - "__pycache__/"
+  - "*.pyc"
   - ".factorypath"
 
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
@@ -269,6 +270,14 @@ asdf_plugins:
     versions:
       - 0.10.0
     global: 0.10.0
+  - name: "bat"
+    versions:
+      - 0.21.0
+    global: 0.21.0
+  - name: "fd"
+    versions:
+      - 8.4.0
+    global: 8.4.0
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"

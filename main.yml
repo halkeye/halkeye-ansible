@@ -14,9 +14,6 @@
     - include_tasks: playbooks/vault.yml
       tags:
         - hashicorp
-    - include_tasks: playbooks/shell.yml
-      tags:
-        - zsh
     - include_tasks: playbooks/genuinetools.yml
       tags:
         - genuinetools
@@ -41,10 +38,13 @@
         - nvim
     - role: ohmyposh
       tags:
-        - zsh
+        - ohmyposh
     - role: cimon-io.asdf
       tags:
         - asdf
+    - role: zsh
+      tags:
+        - zsh
     - role: yogo1212.ansible-go
       tags:
         - golang

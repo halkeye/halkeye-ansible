@@ -21,14 +21,16 @@ zstyle :omz:plugins:ssh-agent agent-forwarding yes
 
 export TERM="${TERM:-xterm-256color}"
 export EDITOR=nvim
-# fzf
-export FZF_TMUX=0
-export FZF_DEFAULT_OPTS="--height 100% --reverse"
 export TZ=America/Vancouver
 # tell less not to paginate if less than a page
 export LESS='-F -X -isMR --shift 5'
+# fzf
 # ignore node_modules from fzf
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_TMUX=0
+export FZF_DEFAULT_COMMAND='fd --type f --follow'
+export FZF_DEFAULT_OPTS='--height 100% --multi --layout=reverse-list --inline-info'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
 
 . $HOME/.asdf/asdf.sh
 if [ -f $HOME/.asdf/plugins/java/set-java-home.zsh ]; then source $HOME/.asdf/plugins/java/set-java-home.zsh; fi
