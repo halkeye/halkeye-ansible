@@ -39,6 +39,9 @@
     - role: nvim
       tags:
         - nvim
+    - role: ohmyposh
+      tags:
+        - zsh
     - role: cimon-io.asdf
       tags:
         - asdf

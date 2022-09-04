@@ -1,0 +1,41 @@
+---
+- name: Setup architecture variable (if not already set)
+  set_fact:
+    ohmyposh_arch: "amd64"
+  when: (ohmyposh_arch is not defined) and (ansible_architecture == "x86_64")
+
+- name: Download and install oh-my-posh
+  become: true
+  get_url:
+    url: "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ ohmyposh_version }}/posh-{{ ansible_system | lower }}-{{ ohmyposh_arch }}"
+    dest: /usr/local/bin/oh-my-posh
+    mode: '0755'
+
+- name: Create oh-my-post theme directory
+  become: false
+  file:
+    path: "{{ ohmyposh_theme_directory }}"
+    state: directory
+    mode: "0755"
+
+- name: Extract oh-my-posh-themes
+  become: true
+  unarchive:
+    src: "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ ohmyposh_version }}/themes.zip"
+    remote_src: true
+    dest: "{{ ohmyposh_theme_directory }}"
+    mode: "0755"
+
+- name: Find files
+  find:
+    paths: "{{ ohmyposh_theme_directory }}"
+    patterns: "*.omp.*"
+  register: omp_files
+
+- name: Modify the file permissions
+  file:
+    path: "{{ item.path }}"
+    mode: "0755"
+  with_items: "{{ omp_files.files }}"
+  when:
+    - item.mode != "0755"
