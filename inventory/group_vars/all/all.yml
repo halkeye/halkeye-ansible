@@ -148,6 +148,7 @@ git_version: "2.35.1"
 git_install_from_source: true
 git_install_from_source_force_update: true
 asdf_user: "{{ lookup('env', 'USER') }}"
+asdf_group: "{{ lookup('env', 'USER') }}"
 asdf_plugins:
   - name: "java"    # a plugin name
     repository: ""    # a plugin repository, optional
