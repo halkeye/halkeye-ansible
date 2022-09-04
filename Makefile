@@ -1,12 +1,12 @@
 #!make
 .DEFAULT_GOAL := run
 
-ANSIBLE_PLAYBOOK := ~/.local/bin/ansible-playbook -i inventory --vault-password-file .vault -l $$(hostname) -c local
+ANSIBLE_PLAYBOOK := ansible-playbook -i inventory --vault-password-file .vault -l $$(hostname) -c local
 ANSIBLE_DEBUG :=
 PLAYBOOK := main
 
 deps: requirements.yml ## Install ansible dependancies
-	~/.local/bin/ansible-galaxy install -r requirements.yml
+	ansible-galaxy install -r requirements.yml
 
 .PHONY: run
 run: deps ## Run
@@ -15,6 +15,10 @@ run: deps ## Run
 .PHONY: check
 check: deps ## Validate all the configs
 	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG) --check --diff
+
+.PHONY: lint
+lint: ## Perform an ansible-lint linting
+	ansible-lint main.yml
 
 .PHONY: help
 help:
