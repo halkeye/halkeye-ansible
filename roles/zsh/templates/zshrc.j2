@@ -139,7 +139,7 @@ source ~/.zsh/gpg-agent.plugin.zsh
 source ~/.zsh/ssh-agent.plugin.zsh
 {% endif %}
 {% if zsh_use_ssh_auth_sock_link %}
-if [ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
+if [ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]; then
   ln -sf "$SSH_AUTH_SOCK" $HOME/.ssh/ssh_auth_sock
 fi
 {% endif %}
