@@ -1,18 +1,13 @@
 ---
-#- name: Get architecture
-#  shell: "bash -c 'if [ \"$(arch)\" == \"x86_64\" ]; then echo amd64; else echo 386; fi'"
-#  register: deb_architecture
-#  when: ansible_os_family != "Darwin"
-
-- name: Get architecture
-  shell: "bash -c 'echo amd64'"
-  register: deb_architecture
-  #when: ansible_os_family == "Darwin"
+- name: Setup architecture variable (if not already set)
+  set_fact:
+    genuinetools_arch: "amd64"
+  when: (genuinetools_arch is not defined) and (ansible_architecture == "x86_64")
 
 - name: Download and install udict
   become: true
   get_url:
-    url: "https://github.com/genuinetools/udict/releases/download/v0.5.4/udict-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
+    url: "https://github.com/genuinetools/udict/releases/download/v0.5.4/udict-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/udict
     mode: '0755'
 
@@ -20,27 +15,27 @@
   when: ansible_os_family != "Darwin"
   become: true
   get_url:
-    url: "https://github.com/genuinetools/img/releases/download/v0.5.7/img-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
+    url: "https://github.com/genuinetools/img/releases/download/v0.5.7/img-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/img
     mode: '0755'
 
 - name: Download and install reg
   become: true
   get_url:
-    url: "https://github.com/genuinetools/reg/releases/download/v0.16.1/reg-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
+    url: "https://github.com/genuinetools/reg/releases/download/v0.16.1/reg-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/reg
     mode: '0755'
 
 - name: Download and install weather
   become: true
   get_url:
-    url: "https://github.com/genuinetools/weather/releases/download/v0.15.7/weather-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
+    url: "https://github.com/genuinetools/weather/releases/download/v0.15.7/weather-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/weather
     mode: '0755'
 
 - name: Download and install pepper
   become: true
   get_url:
-    url: "https://github.com/genuinetools/pepper/releases/download/v0.6.4/pepper-{{ ansible_system | lower }}-{{ deb_architecture.stdout }}"
+    url: "https://github.com/genuinetools/pepper/releases/download/v0.6.4/pepper-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/pepper
     mode: '0755'
