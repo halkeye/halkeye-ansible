@@ -258,6 +258,11 @@ asdf_plugins:
     versions:
       - 0.10.1
     global: 0.10.1
+  - name: "pre-commit"
+    repository: "https://github.com/comdotlinux/asdf-pre-commit.git"
+    versions:
+      - 2.16.0
+    global: 2.16.0
   - name: "rust"
     versions:
       - 1.58.1
