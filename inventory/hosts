@@ -24,6 +24,9 @@ wasp
 nickfury
 philcoulson
 
+[remote]
+gmogan-dev-box
+
 [server]
 thor
 ribbitfrog

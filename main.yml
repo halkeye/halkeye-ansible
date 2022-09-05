@@ -8,9 +8,6 @@
     - include_tasks: playbooks/windowsdirs.yml
       when: windows_username is defined
     - include_tasks: playbooks/hub.yml
-    - include_tasks: playbooks/tmux.yml
-      tags:
-        - tmux
     - include_tasks: playbooks/vault.yml
       tags:
         - hashicorp
@@ -59,6 +56,9 @@
     - role: laggyluke.direnv
       tags:
         - direnv
+    - role: tmux
+      tags:
+        - tmux
     - role: suzuki-shunsuke.tmux-tpm
       tags:
         - tmux

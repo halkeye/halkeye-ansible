@@ -15,10 +15,6 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-## TODO - only if server?
-# To enable agent forwarding support add the following to your zshrc file:
-zstyle :omz:plugins:ssh-agent agent-forwarding yes
-
 export TERM="${TERM:-xterm-256color}"
 export EDITOR=nvim
 export TZ=America/Vancouver
@@ -136,131 +132,19 @@ if [ -z "$(pgrep dirmngr)" ]; then
   eval $(dirmngr --homedir $HOME/.gnupg --daemon)
 fi
 
-# START FROM https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/gpg-agent/gpg-agent.plugin.zsh
-# Enable gpg-agent if it is not running-
-# --use-standard-socket will work from version 2 upwards
-AGENT_SOCK=$(gpgconf --list-dirs | grep agent-socket | cut -d : -f 2)
-
-if [[ ! -S $AGENT_SOCK ]]; then
-  gpg-agent --daemon --use-standard-socket &>/dev/null
+{% if zsh_use_gpg_plugin %}
+source ~/.zsh/gpg-agent.plugin.zsh
+{% endif %}
+{% if zsh_use_gpg_plugin %}
+source ~/.zsh/ssh-agent.plugin.zsh
+{% endif %}
+{% if zsh_use_ssh_auth_sock_link %}
+if [ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
+  ln -sf "$SSH_AUTH_SOCK" $HOME/.ssh/ssh_auth_sock
 fi
-export GPG_TTY=$TTY
+{% endif %}
 
-# Set SSH to use gpg-agent if it's enabled
-GNUPGCONFIG="${GNUPGHOME:-"$HOME/.gnupg"}/gpg-agent.conf"
-if [[ -r $GNUPGCONFIG ]] && command grep -q enable-ssh-support "$GNUPGCONFIG"; then
-  export SSH_AUTH_SOCK="$AGENT_SOCK.ssh"
-  unset SSH_AGENT_PID
-fi
-# END FROM https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/gpg-agent/gpg-agent.plugin.zsh
-# START FROM https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/ssh-agent/ssh-agent.plugin.zsh
-
-# Get the filename to store/lookup the environment from
-ssh_env_cache="$HOME/.ssh/environment-$SHORT_HOST"
-
-function _start_agent() {
-  # Check if ssh-agent is already running
-  if [[ -f "$ssh_env_cache" ]]; then
-    . "$ssh_env_cache" > /dev/null
-
-    # Test if $SSH_AUTH_SOCK is visible
-    zmodload zsh/net/socket
-    if [[ -S "$SSH_AUTH_SOCK" ]] && zsocket "$SSH_AUTH_SOCK" 2>/dev/null; then
-      return 0
-    fi
-  fi
-
-  # Set a maximum lifetime for identities added to ssh-agent
-  local lifetime
-  zstyle -s :omz:plugins:ssh-agent lifetime lifetime
-
-  # start ssh-agent and setup environment
-  zstyle -t :omz:plugins:ssh-agent quiet || echo >&2 "Starting ssh-agent ..."
-  ssh-agent -s ${lifetime:+-t} ${lifetime} | sed '/^echo/d' >! "$ssh_env_cache"
-  chmod 600 "$ssh_env_cache"
-  . "$ssh_env_cache" > /dev/null
-}
-
-function _add_identities() {
-  local id file line sig lines
-  local -a identities loaded_sigs loaded_ids not_loaded
-  zstyle -a :omz:plugins:ssh-agent identities identities
-
-  # check for .ssh folder presence
-  if [[ ! -d "$HOME/.ssh" ]]; then
-    return
-  fi
-
-  # add default keys if no identities were set up via zstyle
-  # this is to mimic the call to ssh-add with no identities
-  if [[ ${#identities} -eq 0 ]]; then
-    # key list found on `ssh-add` man page's DESCRIPTION section
-    for id in id_rsa id_dsa id_ecdsa id_ed25519 identity; do
-      # check if file exists
-      [[ -f "$HOME/.ssh/$id" ]] && identities+=($id)
-    done
-  fi
-
-  # get list of loaded identities' signatures and filenames
-  if lines=$(ssh-add -l); then
-    for line in ${(f)lines}; do
-      loaded_sigs+=${${(z)line}[2]}
-      loaded_ids+=${${(z)line}[3]}
-    done
-  fi
-
-  # add identities if not already loaded
-  for id in $identities; do
-    # if id is an absolute path, make file equal to id
-    [[ "$id" = /* ]] && file="$id" || file="$HOME/.ssh/$id"
-    # check for filename match, otherwise try for signature match
-    if [[ ${loaded_ids[(I)$file]} -le 0 ]]; then
-      sig="$(ssh-keygen -lf "$file" | awk '{print $2}')"
-      [[ ${loaded_sigs[(I)$sig]} -le 0 ]] && not_loaded+=("$file")
-    fi
-  done
-
-  # abort if no identities need to be loaded
-  if [[ ${#not_loaded} -eq 0 ]]; then
-    return
-  fi
-
-  # pass extra arguments to ssh-add
-  local args
-  zstyle -a :omz:plugins:ssh-agent ssh-add-args args
-
-  # use user specified helper to ask for password (ksshaskpass, etc)
-  local helper
-  zstyle -s :omz:plugins:ssh-agent helper helper
-
-  if [[ -n "$helper" ]]; then
-    if [[ -z "${commands[$helper]}" ]]; then
-      echo >&2 "ssh-agent: the helper '$helper' has not been found."
-    else
-      SSH_ASKPASS="$helper" ssh-add "${args[@]}" ${^not_loaded} < /dev/null
-      return $?
-    fi
-  fi
-
-  ssh-add "${args[@]}" ${^not_loaded}
-}
-
-# Add a nifty symlink for screen/tmux if agent forwarding is enabled
-if zstyle -t :omz:plugins:ssh-agent agent-forwarding \
-   && [[ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
-  ln -sf "$SSH_AUTH_SOCK" /tmp/ssh-agent-$USERNAME-screen
-else
-  _start_agent
-fi
-
-# Don't add identities if lazy-loading is enabled
-if ! zstyle -t :omz:plugins:ssh-agent lazy; then
-  _add_identities
-fi
-
-unset agent_forwarding ssh_env_cache
-unfunction _start_agent _add_identities
-# END FROM https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/ssh-agent/ssh-agent.plugin.zsh
-#
 printf 'yarn\njsonlint\nneovim\nserve' > $HOME/.default-npm-packages
+printf 'solargraph\nbundler\npry\nneovim\n' > $HOME/.default-gems
+printf 'neovim\n' > $HOME/.default-python-packages
 eval "$(jump shell --bind=j)"

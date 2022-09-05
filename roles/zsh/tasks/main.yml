@@ -14,10 +14,25 @@
     name: "{{ env_user }}"
     shell: /bin/zsh
 
+- name: Create .zsh directory
+  become: false
+  file:
+    path: "{{ env_home }}/.zsh"
+    state: directory
+    mode: "0755"
+
+- name: Download ohmyzsh plugins
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/{{ ohmyzsh_git_sha }}/plugins/{{ item }}/{{ item }}.plugin.zsh
+    dest: "{{ env_home }}/.zsh/{{ item }}.plugin.zsh"
+    mode: "0755"
+  with_items:
+    - gpg-agent
+    - ssh-agent
+
 - name: install .zshrc
-  copy:
-    src: zshrc
-    remote_src: false
+  template:
+    src: templates/zshrc.j2
     dest: "{{ env_home }}/.zshrc"
     owner: "{{ env_user }}"
-    mode: 0700
+    mode: "0755"

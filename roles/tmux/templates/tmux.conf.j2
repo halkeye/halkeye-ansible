@@ -38,13 +38,18 @@ set -g status-right ''
 
 # Make color scheme right for tmux
 set -g default-terminal "tmux-256color"
-#set -g default-terminal "xterm"
 
 # Enable focus-events so vim's autoread works
 set-option -g focus-events on
 
 # reload certain env variables
-set-option -ga update-environment ' GNOME_KEYRING_PID GNOME_KEYRING_CONTROL SSH_AUTH_SOCK'
+{% if zsh_use_ssh_auth_sock_link %}
+set-option -ga update-environment 'GNOME_KEYRING_PID GNOME_KEYRING_CONTROL'
+# Use a symlink to look up SSH authentication
+setenv -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
+{% else %}
+set-option -ga update-environment 'GNOME_KEYRING_PID GNOME_KEYRING_CONTROL SSH_AUTH_SOCK'
+{% endif %}
 #### COLOUR (Solarized 256)
 
 # default statusbar colors

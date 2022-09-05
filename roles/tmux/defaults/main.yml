@@ -1,0 +1,2 @@
+---
+zsh_use_ssh_auth_sock_link: "{{ 'remote' in group_names }}"
