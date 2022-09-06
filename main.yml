@@ -1,29 +1,29 @@
 ---
 - hosts: all
   tasks:
-    - include_tasks: playbooks/tasks.yml
-    - include_tasks: playbooks/fzf.yml
+    - import_tasks: playbooks/tasks.yml
+    - import_tasks: playbooks/fzf.yml
       tags:
         - fzf
-    - include_tasks: playbooks/windowsdirs.yml
+    - import_tasks: playbooks/windowsdirs.yml
       when: windows_username is defined
-    - include_tasks: playbooks/hub.yml
-    - include_tasks: playbooks/vault.yml
+    - import_tasks: playbooks/hub.yml
+    - import_tasks: playbooks/vault.yml
       tags:
         - hashicorp
-    - include_tasks: playbooks/genuinetools.yml
+    - import_tasks: playbooks/genuinetools.yml
       tags:
         - genuinetools
-    - include_tasks: playbooks/jump.yml
+    - import_tasks: playbooks/jump.yml
       tags:
         - jump
-    - include_tasks: playbooks/directories.yml
+    - import_tasks: playbooks/directories.yml
       tags:
         - directories
-    - include_tasks: playbooks/gnupg.yml
+    - import_tasks: playbooks/gnupg.yml
       tags:
         - gnupg
-    - include_tasks: playbooks/wsl.yml
+    - import_tasks: playbooks/wsl.yml
       when: "'wsl' in group_names"
       tags:
         - wsl

@@ -49,12 +49,9 @@ global_ubuntu_packages:
   - libffi-dev
   - libssl-dev
   - mosh
-  - fzf
   - net-tools
   - nmap
   - whois
-  - fonts-jetbrains-mono
-  - fonts-cascadia-code
   - entr
 global_darwin_packages:
   - gpg2
