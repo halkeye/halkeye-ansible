@@ -153,7 +153,7 @@ asdf_plugins:
     versions:         # a list of versions to install
       - zulu-8.48.0.53
       - zulu-11.31.11
-    global: zulu-8.48.0.53
+    global: zulu-11.31.11
   - name: "maven"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
@@ -194,8 +194,8 @@ asdf_plugins:
   - name: "shellcheck"
     repository: ""
     versions:         # a list of versions to install
-      - 0.7.1
-    global: "0.7.1"
+      - 0.8.0
+    global: "0.8.0"
   - name: "kubectx"
     versions:
       - 0.8.0
@@ -213,7 +213,8 @@ asdf_plugins:
   - name: "k9s"
     repository: "https://github.com/looztra/asdf-k9s"
     versions:
-      - "0.19.5"
+      - "0.26.4"
+    global: "0.26.4"
   - name: "snyk"
     repository: "https://github.com/nirfuchs/asdf-snyk.git"
     versions:
@@ -280,6 +281,10 @@ asdf_plugins:
     versions:
       - 8.4.0
     global: 8.4.0
+  - name: "fx"
+    versions:
+      - 24.0.0
+    global: 24.0.0
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
