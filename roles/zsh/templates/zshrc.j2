@@ -101,7 +101,7 @@ alias bfg="docker run -it --rm -v \$(readlink -m $(pwd)):/code -w /code donderom
 alias webbie="python3 -m http.server"
 alias kexec='kubectl exec -it $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
 alias klogs='kubectl logs $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
-alias tmux='tmux -2'
+alias tmux='tmux -u'
 alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
 alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
