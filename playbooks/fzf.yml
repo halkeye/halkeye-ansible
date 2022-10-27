@@ -15,4 +15,5 @@
 
 - name: Run install script
   ansible.builtin.command: "{{ env_home }}/.fzf/install --no-update-rc"
-  creates: "{{ env_home }}/.fzf/bin/fzf"
+  args:
+    creates: "{{ env_home }}/.fzf/bin/fzf"
