@@ -144,7 +144,7 @@ if [[ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
 fi
 {% endif %}
 
-printf 'yarn\njsonlint\nneovim\nserve' > $HOME/.default-npm-packages
+printf 'yarn\njsonlint\nneovim\nserve\nnpm-check-updates' > $HOME/.default-npm-packages
 printf 'solargraph\nbundler\npry\nneovim\n' > $HOME/.default-gems
 printf 'neovim\n' > $HOME/.default-python-packages
 eval "$(jump shell --bind=j)"
