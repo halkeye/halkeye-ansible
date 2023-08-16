@@ -53,6 +53,7 @@ global_ubuntu_packages:
   - nmap
   - whois
   - entr
+  - vim
 global_darwin_packages:
   - gpg2
   - jq

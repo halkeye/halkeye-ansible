@@ -30,9 +30,9 @@
         - gnupg
   roles:
 
-    - role: nvim
-      tags:
-        - nvim
+    #- role: nvim
+    #  tags:
+    #    - nvim
     - role: ohmyposh
       tags:
         - ohmyposh
