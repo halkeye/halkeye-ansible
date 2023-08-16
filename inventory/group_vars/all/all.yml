@@ -123,7 +123,7 @@ git_ignore:
 
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 
-go_version: "1.19"
+go_version: "1.20.2"
 
 direnv:
   bin_url: https://github.com/direnv/direnv/releases/download/v2.20.0/direnv.linux-amd64
