@@ -280,6 +280,10 @@ asdf_plugins:
     versions:
       - 1.21.0
     global: 1.21.0
+  - name: "age"
+    versions:
+      - 1.1.1
+    global: 1.1.1
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
