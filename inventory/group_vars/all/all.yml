@@ -29,7 +29,6 @@ ruby_install_gems:
   - bundler
   - gist
 
-slack_version: 2.6.2
 global_ubuntu_ppas: []
 global_centos_packages:
   - python
@@ -277,9 +276,13 @@ asdf_plugins:
     versions:
       - 24.0.0
     global: 24.0.0
+  - name: "golang"
+    versions:
+      - 1.21.0
+    global: 1.21.0
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
 docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
-asdf_version: "v0.9.0"
+asdf_version: "v0.12.0"

@@ -7,6 +7,7 @@
 - name: geerlingguy.git
   src: https://github.com/geerlingguy/ansible-role-git
 - name: cimon-io.asdf
-  src: https://github.com/cimon-io/ansible-role-asdf
+  src: https://github.com/eliberty/ansible-role-asdf
+  ref: 762ebd2bd51b70db737873d10a081007460a5273
 - name: carlba.gitconfig
   src: https://github.com/carlba/ansible-role-gitconfig

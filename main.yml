@@ -43,6 +43,7 @@
       tags:
         - zsh
     - role: yogo1212.ansible-go
+      become: true
       tags:
         - golang
     - role: geerlingguy.git

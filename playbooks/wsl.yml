@@ -8,12 +8,14 @@
     state: present
 
 - name: Download xdg_open_wsl.py
+  become: yes
   get_url:
     url: https://raw.githubusercontent.com/cpbotha/xdg-open-wsl/1156fe54344e35cf763b65c129df868647e455de/xdg_open_wsl/xdg_open_wsl.py
     dest: /usr/local/bin/xdg-open
     mode: '0755'
 
 - name: Download pinentry-wsl-ps1
+  become: yes
   get_url:
     url: https://raw.githubusercontent.com/diablodale/pinentry-wsl-ps1/master/pinentry-wsl-ps1.sh
     dest: /usr/local/bin/pinentry-wsl-ps1
@@ -49,7 +51,7 @@
     url: https://github.com/NZSmartie/npiperelay/releases/download/v0.1/npiperelay.exe
     dest: "/mnt/c/Users/{{ windows_username }}/AppData/Roaming/npiperelay/npiperelay.exe"
     mode: '777'
-    
+
 - name: create wsl-ssh-pageant
   become: true
   file:
@@ -70,6 +72,5 @@
     remote_src: false
     dest: "/usr/local/bin/gpg-agent-relay"
     mode: 0755
-  
 
 #https://blog.nimamoh.net/yubi-key-gpg-wsl2/
