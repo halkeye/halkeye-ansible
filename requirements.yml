@@ -1,7 +1,5 @@
 - name: yogo1212.ansible-go
   src: https://github.com/yogo1212/ansible-go
-- name: laggyluke.direnv
-  src: https://github.com/halkeye/ansible-role-direnv
 - name: suzuki-shunsuke.tmux-tpm
   src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
 - name: geerlingguy.git

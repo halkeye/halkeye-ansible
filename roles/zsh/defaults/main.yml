@@ -1,5 +1,4 @@
 ---
 ohmyzsh_git_sha: 6d48309cd7da1b91038cf08be7865fb5bb9bc5ea
 zsh_use_ssh_plugin: "{{ not 'remote' in group_names }}"
-zsh_use_gpg_plugin: "{{ not 'remote' in group_names }}"
 zsh_use_ssh_auth_sock_link: "{{ 'remote' in group_names }}"

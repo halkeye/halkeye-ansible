@@ -127,14 +127,7 @@ done
 # direnv
 source <(direnv hook zsh)
 
-if [ -z "$(pgrep dirmngr)" ]; then
-  eval $(dirmngr --homedir $HOME/.gnupg --daemon)
-fi
-
-{% if zsh_use_gpg_plugin %}
-source ~/.zsh/gpg-agent.plugin.zsh
-{% endif %}
-{% if zsh_use_gpg_plugin %}
+{% if zsh_use_ssh_plugin %}
 source ~/.zsh/ssh-agent.plugin.zsh
 {% endif %}
 {% if zsh_use_ssh_auth_sock_link %}

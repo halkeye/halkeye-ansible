@@ -1,8 +1,0 @@
-- name: download and install vault binary
-  become: true
-  unarchive:
-    src: "{{ vault_zip_url }}"
-    dest: /usr/local/bin
-    remote_src: True
-    mode: 0555
-    owner: root

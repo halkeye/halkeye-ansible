@@ -7,10 +7,6 @@
         - fzf
     - import_tasks: playbooks/windowsdirs.yml
       when: windows_username is defined
-    - import_tasks: playbooks/hub.yml
-    - import_tasks: playbooks/vault.yml
-      tags:
-        - hashicorp
     - import_tasks: playbooks/genuinetools.yml
       tags:
         - genuinetools
@@ -20,9 +16,6 @@
     - import_tasks: playbooks/directories.yml
       tags:
         - directories
-    - import_tasks: playbooks/gnupg.yml
-      tags:
-        - gnupg
     - import_tasks: playbooks/wsl.yml
       when: "'wsl' in group_names"
       tags:
@@ -54,9 +47,6 @@
     - role: carlba.gitconfig
       tags:
         - git
-    - role: laggyluke.direnv
-      tags:
-        - direnv
     - role: tmux
       tags:
         - tmux

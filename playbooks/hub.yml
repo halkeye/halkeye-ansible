@@ -1,9 +1,0 @@
----
-- name: Unarchive hub
-  become: true
-  unarchive:
-    src: https://github.com/github/hub/releases/download/v2.14.2/hub-{{ ansible_system | lower }}-amd64-2.14.2.tgz
-    extra_opts: ['--strip-components=1', '--show-stored-names']
-    creates: /usr/local/bin/hub
-    dest: /usr/local/
-    remote_src: yes
