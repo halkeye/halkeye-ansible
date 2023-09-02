@@ -4,9 +4,26 @@
     ohmyposh_arch: "amd64"
   when: (ohmyposh_arch is not defined) and (ansible_architecture == "x86_64")
 
+- name: "Check if oh-my-posh is already installed"
+  stat:
+    path: /usr/local/bin/oh-my-posh
+  register: ohmyposh_already_installed
+
+- name: "Fetch installed oh-my-posh version"
+  ansible.builtin.command: "/usr/local/bin/oh-my-posh --version"
+  register: results
+  when: ohmyposh_already_installed.stat.exists
+
+- name: "Process oh-my-posh version"
+  set_fact:
+    ohmyposh_installed_version: "{{ results.stdout | trim }}"
+    when: results.stdout | trim
+
 - name: Download and install oh-my-posh
   become: true
+  when: ohmyposh_installed_version != ohmyposh_version
   get_url:
+    force: true
     url: "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ ohmyposh_version }}/posh-{{ ansible_system | lower }}-{{ ohmyposh_arch }}"
     dest: /usr/local/bin/oh-my-posh
     mode: '0755'
@@ -20,7 +37,7 @@
 
 - name: Extract oh-my-posh-themes
   become: true
-  unarchive:
+  ansible.builtin.unarchive:
     src: "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ ohmyposh_version }}/themes.zip"
     remote_src: true
     dest: "{{ ohmyposh_theme_directory }}"
