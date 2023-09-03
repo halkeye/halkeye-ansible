@@ -16,6 +16,9 @@
     - import_tasks: playbooks/directories.yml
       tags:
         - directories
+    - import_tasks: playbooks/vim.yml
+      tags:
+        - vim
     - import_tasks: playbooks/wsl.yml
       when: "'wsl' in group_names"
       tags:

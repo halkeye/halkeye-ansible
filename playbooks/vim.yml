@@ -1,0 +1,26 @@
+- name: Download config from git
+  become: false
+  git:
+    repo: "git@github.com:halkeye/vim.git"
+    dest: "{{ env_home }}/.vim"
+
+- name: Create config directory
+  become: false
+  file:
+    path: "{{ env_home }}/.config"
+    state: directory
+    mode: "0755"
+
+- name: Symlink for neovim config
+  become: false
+  file:
+    src: "{{ env_home }}/.vim"
+    dest: "{{ env_home }}/.config/nvim"
+    state: link
+
+- name: Symlink for vim config
+  become: false
+  file:
+    src: "{{ env_home }}/.vim/.vimrc"
+    dest: "{{ env_home }}/.vimrc"
+    state: link
