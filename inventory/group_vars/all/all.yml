@@ -218,13 +218,13 @@ asdf_plugins:
   - name: "helm"
     repository: "https://github.com/Antiarchitect/asdf-helm.git"
     versions:
-      - "3.5.4"
-    global: "3.5.4"
+      - "3.12.3"
+    global: "3.12.3"
   - name: "helmfile"
     repository: "https://github.com/feniix/asdf-helmfile.git"
     versions:
-      - "0.129.3"
-    global: "0.129.3"
+      - "0.143.0"
+    global: "0.143.0"
   - name: "doctl"
     repository: "https://github.com/maristgeek/asdf-doctl.git"
     versions:
@@ -245,6 +245,11 @@ asdf_plugins:
     versions:
       - 2.16.0
     global: 2.16.0
+  - name: "sops"
+    repository: "https://github.com/khassel/asdf-sops.git"
+    versions:
+      - 3.7.3
+    global: 3.7.3
   - name: "rust"
     versions:
       - 1.58.1
