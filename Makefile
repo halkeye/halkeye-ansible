@@ -20,7 +20,7 @@ venv/bin/activate: requirements.txt
 	. venv/bin/activate; pip install -U pip; pip install -r requirements.txt
 
 deps: venv requirements.yml ## Install ansible dependancies
-	ansible-galaxy install -r requirements.yml
+	. venv/bin/activate; ansible-galaxy install -r requirements.yml
 
 .PHONY: clean
 clean: ## Delete all generated artefacts
@@ -33,19 +33,19 @@ sync: ## Synchronize ansible data
 
 .PHONY: run
 run: deps ## Run
-	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG)
+	. venv/bin/activate; $(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG)
 
 .PHONY: check
 check: venv deps ## Validate all the configs
-	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG) --check --diff
+	. venv/bin/activate; $(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG) --check --diff
 
 .PHONY: lint
 lint: venv ## Perform an ansible-lint linting
-	ansible-lint main.yml
+	. venv/bin/activate; ansible-lint main.yml
 
 .PHONY: vars
 vars: venv ## List all variables
-	ansible $$(hostname) --vault-password-file .vault -c local -m ansible.builtin.setup
+	. venv/bin/activate; ansible $$(hostname) --vault-password-file .vault -c local -m ansible.builtin.setup
 
 .PHONY: help
 help:

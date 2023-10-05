@@ -13,13 +13,12 @@ antman
 
 [work]
 gmogan-dev-box
-gmogan-ThinkPad-X1-Carbon-Gen-8
+DO-MJ0D79E0
 
 [ldap]
 gmogan-dev-box
 
 [linux]
-gmogan-ThinkPad-X1-Carbon-Gen-8
 halkeye-chromebook
 wasp
 nickfury
@@ -42,3 +41,4 @@ rpicam1
 jarvis
 blackpanther
 antman
+DO-MJ0D79E0
