@@ -3,7 +3,7 @@
 [home]
 jarvis
 blackpanther
-halkeye-chromebook
+loki
 thor
 wasp
 nickfury
@@ -40,5 +40,6 @@ rpicam1
 [wsl]
 jarvis
 blackpanther
+loki
 antman
 DO-MJ0D79E0
