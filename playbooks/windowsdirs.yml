@@ -1,7 +1,6 @@
 - name: Symlink to windows directories
   become: no
   with_items:
-    - Desktop
     - Documents
     - Downloads
   file:
