@@ -9,15 +9,14 @@ PLAYBOOK := main
 venv: venv/bin/activate ## Build virtual environment
 
 venv/bin/activate: requirements.txt
-	if [ ! -d venv ]; then \
-	    virtualenv -p $(PYTHON_EXE) venv; \
-			which pip3 || sudo apt install -y python3-pip python3-dev python3 libssl-dev build-essential git \
-			which virtualenv || sudo pip3 install virtualenv \
-			which unzip || sudo apt install -y unzip \
-			which zip || sudo apt install -y zip \
-			. venv/bin/activate; \
-	fi
-	. venv/bin/activate; pip install -U pip; pip install -r requirements.txt
+	(which pip3 || sudo apt install -y python3-pip python3-dev python3 libssl-dev build-essential git) && \
+	(which virtualenv || sudo pip3 install virtualenv) && \
+	(which unzip || sudo apt install -y unzip) && \
+	(which zip || sudo apt install -y zip) && \
+	(test -d venv || python3 -m virtualenv venv) && \
+	. venv/bin/activate && \
+	pip install -U pip && \
+	pip install -r requirements.txt
 
 deps: venv requirements.yml ## Install ansible dependancies
 	. venv/bin/activate; ansible-galaxy install -r requirements.yml
