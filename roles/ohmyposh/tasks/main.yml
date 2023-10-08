@@ -17,7 +17,7 @@
 - name: "Process oh-my-posh version"
   set_fact:
     ohmyposh_installed_version: "{{ results.stdout | trim }}"
-    when: results.stdout | trim
+  when: ohmyposh_already_installed.stat.exists and results.stdout | trim
 
 - name: Download and install oh-my-posh
   become: true
