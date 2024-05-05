@@ -6,9 +6,6 @@ blackpanther
 loki
 thor
 wasp
-nickfury
-rpicam1
-philcoulson
 antman
 
 [work]
@@ -21,21 +18,13 @@ gmogan-dev-box
 [linux]
 halkeye-chromebook
 wasp
-nickfury
-philcoulson
 
 [remote]
 gmogan-dev-box
 
 [server]
 thor
-ribbitfrog
-nickfury
-philcoulson
 gmogan-dev-box
-
-[rpicam]
-rpicam1
 
 [wsl]
 jarvis

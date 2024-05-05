@@ -1,5 +1,0 @@
-ansible_connection: ssh
-ansible_ssh_user: pi
-go_arch: "armv6l"
-env_home: "/home/pi"
-env_user: "pi"
