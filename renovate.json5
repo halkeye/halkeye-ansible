@@ -7,22 +7,22 @@
     {
       "fileMatch": ["inventory/group_vars/all/all.yml$"],
       "matchStrings": [
-        "asdf_version: \"v(?<currentValue>.+?)\" # repo: (?<depName>.*?)",
-        "software_version_fzf: [\"']?(?<currentValue>.+?)[\"']? # repo: (?<depName>.*?)",
+        "asdf_version: \"v(?<currentValue>.+?)\" # repo: (?<depName>.*)",
+        "software_version_(\w+): [\"']?(?<currentValue>.+?)[\"']? # repo: (?<depName>.*)",
       ],
       "datasourceTemplate": "github-releases",
     },
     {
       "fileMatch": ["inventory/group_vars/all/all.yml$"],
       "matchStrings": [
-        "git_version: [\"']?(?<currentValue>.+?)[\"']? # repo: (?<depName>.*?)",
+        "git_version: [\"']?(?<currentValue>.+?)[\"']? # repo: (?<depName>.*)",
       ],
       "datasourceTemplate": "github-tags",
     },
     {
       "fileMatch": ["inventory/group_vars/all/all.yml$"],
       "matchStrings": [
-        "go_version: [\"']?(?<currentValue>.+?)[\"']? # repo: (?<depName>.*?)",
+        "go_version: [\"']?(?<currentValue>.+?)[\"']? # repo: (?<depName>.*)",
       ],
       "datasourceTemplate": "golang-version",
     }
