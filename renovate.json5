@@ -19,6 +19,7 @@
       "matchStrings": [
         "git_version: \"(?<currentValue>.+?)\" # repo: (?<depName>.*)",
       ],
+      "depNameTemplate": "git/git",
       "datasourceTemplate": "github-tags",
     },
     {
