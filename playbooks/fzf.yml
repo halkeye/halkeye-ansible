@@ -11,9 +11,25 @@
   git:
     repo: "https://github.com/junegunn/fzf.git"
     dest: "{{ env_home }}/.fzf"
-    version: "0.24.2"
+    version: "{{ software_version_fzf }}"
+
+- name: "Check if fzf is already installed"
+  stat:
+    path: "{{ env_home }}/.fzf/bin/fzf"
+  register: fzf_already_installed
+
+- name: "Fetch installed fzf version"
+  ansible.builtin.command: "{{ env_home }}/.fzf/bin/fzf --version"
+  register: results
+  when: fzf_already_installed.stat.exists
 
 - name: Run install script
   ansible.builtin.command: "{{ env_home }}/.fzf/install --no-update-rc"
-  args:
-    creates: "{{ env_home }}/.fzf/bin/fzf"
+  when: (nvim_installed_version != nvim_version)
+  #args:
+  #  creates: "{{ env_home }}/.fzf/bin/fzf"
+
+- name: "Process fzf version"
+  set_fact:
+    fzf_installed_version: "{{ results.stdout | trim | regex_replace('([a-z0-9A-Z._-]+).*','\\1') }}"
+    when: results.stdout | trim

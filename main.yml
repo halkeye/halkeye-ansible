@@ -24,6 +24,10 @@
       tags:
         - wsl
         - gnupg
+    - import_tasks: playbooks/software.yml
+      when: "'wsl' in group_names"
+      tags:
+        - software
   roles:
 
     #- role: nvim
@@ -56,3 +60,4 @@
     - role: suzuki-shunsuke.tmux-tpm
       tags:
         - tmux
+

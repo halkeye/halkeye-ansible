@@ -9,17 +9,6 @@ zsh_powerlevel9k_left_prompt:
 zsh_powerlevel9k_right_prompt: []
 zsh_hotkeys_extras:
   - { hotkey: '\e[3~', action: 'delete-char' }
-vault_version: "{{ lookup('env','VAULT_VERSION') | default('0.9.3', true) }}"
-vault_architecture_map:
-  # this first entry seems... redundant (but it's required for reasons)
-  amd64: amd64
-  x86_64: amd64
-  armv7l: arm
-  aarch64: arm64
-vault_architecture: "{{ vault_architecture_map[ansible_architecture] }}"
-vault_os: "{{ ansible_system|lower }}"
-vault_pkg: "vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
-vault_zip_url: "https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
 npm_config_prefix: "{{ lookup('env','HOME') }}/.npm-global"
 
 ruby_install_gems_user: "{{ lookup('env','USER') }}"
@@ -124,15 +113,6 @@ git_ignore:
 
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 
-go_version: "1.20.2"
-
-docker_systemd_services: []
-docker_systemd_default_dependency_services:
-  - storage-zfs-mount
-
-git_version: "2.38.0"
-git_install_from_source: true
-git_install_from_source_force_update: true
 asdf_user: "{{ lookup('env', 'USER') }}"
 asdf_group: "{{ lookup('env', 'USER') }}"
 asdf_plugins:
@@ -150,106 +130,26 @@ asdf_plugins:
   - name: "ruby"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
-      - 2.6.9
       - 3.1.0
-    global: "3.1.0"
+      - 3.2.0
+    global: "3.2.0"
   - name: "nodejs"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
-      - 12.18.4
-      - 14.17.1
       - 16.13.1
+      - 20.12.2
+      - 21.7.3
     global: "16.13.1"
   - name: "python"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
       - 3.10.2
     global: "3.10.2"
-  - name: "hadolint"
-    repository: "https://github.com/looztra/asdf-hadolint"
-    versions:
-      - 2.10.0
-    global: "2.10.0"
-  - name: "github-cli"
-    repository: "https://github.com/bartlomiejdanek/asdf-github-cli.git"
-    versions:
-      - 2.5.0
-    global: "2.5.0"
-  - name: "shellcheck"
-    repository: ""
-    versions:         # a list of versions to install
-      - 0.8.0
-    global: "0.8.0"
-  - name: "kubectx"
-    versions:
-      - 0.8.0
-    global: "0.8.0"
-  - name: "mc"
-    repository: "https://github.com/penpyt/asdf-mc.git"
-    versions:
-      - "2020-05-16T01-44-37Z"
-    global: "2020-05-16T01-44-37Z"
-  - name: "kube-capacity"
-    repository: "https://github.com/looztra/asdf-kube-capacity"
-    versions:
-      - "0.4.0"
-    global: "0.4.0"
-  - name: "k9s"
-    repository: "https://github.com/looztra/asdf-k9s"
-    versions:
-      - "0.26.4"
-    global: "0.26.4"
-  - name: "snyk"
-    repository: "https://github.com/nirfuchs/asdf-snyk.git"
-    versions:
-      - "1.321.0"
-    global: "1.321.0"
-  - name: "kubie"
-    repository: "https://github.com/johnhamelink/asdf-kubie"
-    versions:
-      - "0.9.1"
-    global: "0.9.1"
-  - name: "kubectl"
-    repository: "https://github.com/Banno/asdf-kubectl"
-    versions:
-      - "1.19.1"
-      - "1.16.2"
-    global: "1.19.1"
-  - name: "helm"
-    repository: "https://github.com/Antiarchitect/asdf-helm.git"
-    versions:
-      - "3.12.3"
-    global: "3.12.3"
-  - name: "helmfile"
-    repository: "https://github.com/feniix/asdf-helmfile.git"
-    versions:
-      - "0.143.0"
-    global: "0.143.0"
-  - name: "doctl"
-    repository: "https://github.com/maristgeek/asdf-doctl.git"
-    versions:
-      - "1.57.0"
-    global: "1.57.0"
   - name: "groovy"
     repository: "https://github.com/weibemoura/asdf-groovy.git"
     versions:
       - "3.0.7"
     global: "3.0.7"
-  - name: "exa"
-    repository: "https://github.com/nyrst/asdf-exa.git"
-    versions:
-      - 0.10.1
-    global: 0.10.1
-  - name: "pre-commit"
-    repository: "https://github.com/comdotlinux/asdf-pre-commit.git"
-    versions:
-      - 2.16.0
-    global: 2.16.0
-  - name: "sops"
-    repository: "https://github.com/khassel/asdf-sops.git"
-    versions:
-      - 3.7.3
-    global: 3.7.3
   - name: "rust"
     versions:
       - 1.58.1
@@ -258,33 +158,49 @@ asdf_plugins:
     versions:
       - 7.3.1
     global: 7.3.1
-  - name: "dive"
-    versions:
-      - 0.10.0
-    global: 0.10.0
-  - name: "bat"
-    versions:
-      - 0.21.0
-    global: 0.21.0
-  - name: "fd"
-    versions:
-      - 8.4.0
-    global: 8.4.0
-  - name: "fx"
-    versions:
-      - 24.0.0
-    global: 24.0.0
-  - name: "age"
-    versions:
-      - 1.1.1
-    global: 1.1.1
-  - name: "sops"
-    versions:
-      - 3.7.3
-    global: 3.7.3
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
 docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
-asdf_version: "v0.12.0"
+go_version: "1.22.2"
+
+git_version: "2.38.0" # repo: github-tags
+git_install_from_source: true
+git_install_from_source_force_update: true
+
+ghr_install_dir: "{{ env_home }}/.local/bin"
+
+asdf_version: "v0.14.0" # repo: asdf-vm/asdf
+software_version_kubectl: "1.30.0" # repo: kubernetes/kubernetes
+software_version_fzf: "0.51.0" # repo: junegunn/fzf
+software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide
+software_version_age: "1.1.1" # repo: FiloSottile/age
+# Terminal JSON viewer & processor
+software_version_fx: "34.0.0" # repo: antonmedv/fx
+# A cat(1) clone with wings.
+software_version_bat: "0.24.0" # repo: sharkdp/bat
+# The next gen ls command
+software_version_lsd: "1.1.2" # repo: lsd-rs/lsd
+# The official command line interface for the DigitalOcean API.
+software_version_doctl: "1.106.0" # repo: digitalocean/doctl
+# Simple and flexible tool for managing secrets
+software_version_sops: "3.8.1" # repo: getsops/sops
+# Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
+software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
+# The Kubernetes Package Manager
+software_version_helm: "3.14.4" # repo: helm/helm
+# Kubernetes CLI To Manage Your Clusters In Style!
+software_version_k9s: "0.32.4" # repo: derailed/k9s
+# Faster way to switch between clusters and namespaces in kubectl
+software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
+# ShellCheck, a static analysis tool for shell scripts
+software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
+# GitHub’s official command line tool
+software_version_gh: "2.49.0" # repo: cli/cli
+# Dockerfile linter, validate inline bash, written in Haskell
+software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
+# The most customisable and low-latency cross platform/shell prompt renderer
+software_version_oh_my_posh: "19.26.1" # repo: JanDeDobbeleer/oh-my-posh
+# Source code spell checker
+software_version_typos: "1.21.0" # repo: crate-ci/typos

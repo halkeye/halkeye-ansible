@@ -61,6 +61,7 @@ fi
 
 ## Setup all the paths stuff
 if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
+if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi
 if [ -e "$HOME/.fzf/bin" ]; then export PATH="$HOME/.fzf/bin:$PATH"; fi
 if [ -e "$HOME/.npm-global/bin" ]; then export PATH="$HOME/.npm-global/bin:$PATH"; fi
 if [ -e "$HOME/.local/bin" ]; then export PATH="$HOME/.local/bin:$PATH"; fi

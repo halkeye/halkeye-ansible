@@ -1,0 +1,197 @@
+---
+# sops
+
+
+- name: install latest version of neovim
+  ansible.builtin.include_role:
+    name: gikeymarcia.neovim
+    apply:
+      become: yes
+
+- name: install latest version of neovim
+  ansible.builtin.include_role:
+    name: gantsign.helm
+    apply:
+      become: yes
+  vars:
+    helm_version: "{{ software_version_helm }}"
+
+- name: Download zoxide.deb
+  become: yes
+  ansible.builtin.get_url:
+    url: https://github.com/ajeetdsouza/zoxide/releases/download/v{{software_version_zoxide}}/zoxide_{{software_version_zoxide}}-1_amd64.deb
+    dest: /var/cache/apt/archives/zoxide-{{software_version_zoxide}}.deb
+    mode: '0600'
+
+- name: Install zoxide package
+  become: true
+  ansible.builtin.apt:
+    deb: /var/cache/apt/archives/zoxide-{{software_version_zoxide}}.deb
+
+- name: Download bat.deb
+  become: yes
+  ansible.builtin.get_url:
+    url: https://github.com/sharkdp/bat/releases/download/v{{software_version_bat}}/bat_{{software_version_bat}}_amd64.deb
+    dest: /var/cache/apt/archives/bat-{{software_version_bat}}.deb
+    mode: '0600'
+
+- name: Install bat package
+  become: true
+  ansible.builtin.apt:
+    deb: /var/cache/apt/archives/bat-{{software_version_bat}}.deb
+
+- name: Download lsd.deb
+  become: yes
+  ansible.builtin.get_url:
+    url: https://github.com/lsd-rs/lsd/releases/download/v{{software_version_lsd}}/lsd_{{software_version_lsd}}_amd64.deb
+    dest: /var/cache/apt/archives/lsd-{{software_version_lsd}}.deb
+    mode: '0600'
+
+- name: Install lsd package
+  become: true
+  ansible.builtin.apt:
+    deb: /var/cache/apt/archives/lsd-{{software_version_lsd}}.deb
+
+- name: Download k9s.deb
+  become: yes
+  ansible.builtin.get_url:
+    url: https://github.com/derailed/k9s/releases/download/v{{software_version_k9s}}/k9s_linux_amd64.deb
+    dest: /var/cache/apt/archives/k9s-{{software_version_k9s}}.deb
+    mode: '0600'
+
+- name: Install k9s package
+  become: true
+  ansible.builtin.apt:
+    deb: /var/cache/apt/archives/k9s-{{software_version_k9s}}.deb
+
+- name: Download gh.deb
+  become: yes
+  ansible.builtin.get_url:
+    url: https://github.com/cli/cli/releases/download/v{{software_version_gh}}/gh_{{software_version_gh}}_linux_amd64.deb
+    dest: /var/cache/apt/archives/gh-{{software_version_gh}}.deb
+    mode: '0600'
+
+- name: Install gh package
+  become: true
+  ansible.builtin.apt:
+    deb: /var/cache/apt/archives/gh-{{software_version_gh}}.deb
+
+- name: Download gh.deb
+  become: yes
+  ansible.builtin.get_url:
+    url: https://github.com/cli/cli/releases/download/v{{software_version_gh}}/gh_{{software_version_gh}}_linux_amd64.deb
+    dest: /var/cache/apt/archives/gh-{{software_version_gh}}.deb
+    mode: '0600'
+
+- name: Install gh package
+  become: true
+  ansible.builtin.apt:
+    deb: /var/cache/apt/archives/gh-{{software_version_gh}}.deb
+
+- name: install age
+  become: yes
+  quera.github.install_from_github:
+    repo: FiloSottile/age
+    tag: "v{{software_version_age}}"
+    version_command: age --version
+    asset_regex: "age-.*"
+    move_rules:
+      - src_regex: age-.*
+        dst: /usr/local/bin/age
+        mode: 0755
+
+- name: install fx
+  become: yes
+  quera.github.install_from_github:
+    repo: antonmedv/fx
+    tag: "{{software_version_fx}}"
+    version_command: fx --version
+    asset_regex: fx_.*
+    move_rules:
+      - src_regex: fx_.*
+        dst: /usr/local/bin/fx
+        mode: 0755
+
+- name: install doctl
+  become: yes
+  quera.github.install_from_github:
+    repo: digitalocean/doctl
+    tag: "v{{software_version_doctl}}"
+    version_command: doctl version
+    asset_regex: doctl.*
+    move_rules:
+      - src_regex: doctl.*
+        dst: /usr/local/bin/doctl
+        mode: 0755
+
+- name: install helmfile
+  become: yes
+  quera.github.install_from_github:
+    repo: helmfile/helmfile
+    tag: "v{{software_version_helmfile}}"
+    version_command: helmfile --version
+    asset_regex: helmfile.*
+    move_rules:
+      - src_regex: helmfile.*
+        dst: /usr/local/bin/helmfile
+        mode: 0755
+
+- name: install kubectx
+  become: yes
+  quera.github.install_from_github:
+    repo: ahmetb/kubectx
+    tag: "v{{software_version_kubectx}}"
+    version_command: kubectx --version
+    asset_regex: kubectx.*
+    move_rules:
+      - src_regex: kubectx.*
+        dst: /usr/local/bin/kubectx
+        mode: 0755
+
+- name: install shellcheck
+  become: yes
+  quera.github.install_from_github:
+    repo: koalaman/shellcheck
+    tag: "v{{software_version_shellcheck}}"
+    version_command: shellcheck --version
+    asset_regex: shellcheck.*
+    move_rules:
+      - src_regex: shellcheck
+        dst: /usr/local/bin/shellcheck
+        mode: 0755
+
+- name: install hadolint
+  become: yes
+  quera.github.install_from_github:
+    repo: hadolint/hadolint
+    tag: "v{{software_version_hadolint}}"
+    version_command: hadolint --version
+    asset_regex: hadolint.*
+    move_rules:
+      - src_regex: hadolint.*
+        dst: /usr/local/bin/hadolint
+        mode: 0755
+
+- name: install oh_my_posh
+  become: yes
+  quera.github.install_from_github:
+    repo: JanDeDobbeleer/oh-my-posh
+    tag: "v{{software_version_oh_my_posh}}"
+    version_command: oh_my_posh --version
+    asset_regex: posh-\w+-\w+
+    move_rules:
+      - src_regex: posh.*
+        dst: /usr/local/bin/oh_my_posh
+        mode: 0755
+
+- name: install typos
+  become: yes
+  quera.github.install_from_github:
+    repo: crate-ci/typos
+    tag: "v{{software_version_typos}}"
+    version_command: typos --version
+    asset_regex: typos.*
+    move_rules:
+      - src_regex: typos.*
+        dst: /usr/local/bin/typos
+        mode: 0755
