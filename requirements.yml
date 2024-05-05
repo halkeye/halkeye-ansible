@@ -6,7 +6,7 @@ roles:
     src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
   - name: geerlingguy.git
     src: https://github.com/geerlingguy/ansible-role-git
-    version: a1b5485abcba58122cfd4335714e25854572457c
+    version: 1.4.1
   - name: cimon-io.asdf
     src: https://github.com/eliberty/ansible-role-asdf
     version: 762ebd2bd51b70db737873d10a081007460a5273
