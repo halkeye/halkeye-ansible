@@ -23,13 +23,14 @@
   register: results
   when: fzf_already_installed.stat.exists
 
-- name: Run install script
-  ansible.builtin.command: "{{ env_home }}/.fzf/install --no-update-rc"
-  when: (nvim_installed_version != nvim_version)
-  #args:
-  #  creates: "{{ env_home }}/.fzf/bin/fzf"
-
 - name: "Process fzf version"
   set_fact:
     fzf_installed_version: "{{ results.stdout | trim | regex_replace('([a-z0-9A-Z._-]+).*','\\1') }}"
     when: results.stdout | trim
+
+- name: Run install script
+  ansible.builtin.command: "{{ env_home }}/.fzf/install --no-update-rc"
+  when: fzf_installed_version is not defined or (fzf_installed_version != software_version_fzf)
+  #args:
+  #  creates: "{{ env_home }}/.fzf/bin/fzf"
+

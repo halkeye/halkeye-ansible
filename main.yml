@@ -25,9 +25,11 @@
         - wsl
         - gnupg
     - import_tasks: playbooks/software.yml
-      when: "'wsl' in group_names"
       tags:
         - software
+    - import_tasks: playbooks/git_config.yml
+      tags:
+        - git
   roles:
 
     #- role: nvim
@@ -49,9 +51,6 @@
     - role: geerlingguy.git
       become: true
       when: ansible_os_family != "Darwin"
-      tags:
-        - git
-    - role: carlba.gitconfig
       tags:
         - git
     - role: tmux
