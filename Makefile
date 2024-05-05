@@ -28,11 +28,11 @@ sync: ## Synchronize ansible data
 	git pull --rebase
 
 .PHONY: run
-run: venv deps ## Run
+run: venv requirements.yml ## Run
 	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG)
 
 .PHONY: check
-check: venv deps ## Validate all the configs
+check: venv requirements.yml ## Validate all the configs
 	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG) --check --diff
 
 .PHONY: lint
