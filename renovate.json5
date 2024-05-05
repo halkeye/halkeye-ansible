@@ -9,7 +9,7 @@
       "fileMatch": ["inventory/group_vars/all/all.yml$"],
       "matchStrings": [
         "asdf_version: \"v(?<currentValue>.+?)\" # repo: (?<depName>.*)",
-        "software_version_(\w+): \"(?<currentValue>.+?)\" # repo: (?<depName>.*)",
+        "software_version_(.+): \"(?<currentValue>.+?)\" # repo: (?<depName>.*)",
       ],
       "datasourceTemplate": "github-releases",
     },
