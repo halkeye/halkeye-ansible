@@ -10,9 +10,6 @@
     - import_tasks: playbooks/genuinetools.yml
       tags:
         - genuinetools
-    - import_tasks: playbooks/jump.yml
-      tags:
-        - jump
     - import_tasks: playbooks/directories.yml
       tags:
         - directories

@@ -29,15 +29,15 @@
     scope: global
     value: false
 - git_config:
-    name: 'mergetool "vimdiff"'
+    name: mergetool.vimdiff.cmd
     scope: global
     value: vim -d $LOCAL $REMOTE $MERGED
 - git_config:
-    name: 'diff "sopsdiffer".textconv'
+    name: diff.sopsdiffer.textconv
     scope: global
     value: "sops -d"
 - git_config:
-    name: 'url "ssh://git@github.com/".insteadOf'
+    name: 'url."ssh://git@github.com/".insteadOf'
     scope: global
     value: 'https://github.com/'
 - git_config:

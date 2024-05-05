@@ -1,7 +1,0 @@
----
-- name: Download and install jump
-  become: true
-  get_url:
-    url: "https://github.com/gsamokovarov/jump/releases/download/v0.50.0/jump_linux_amd64_binary"
-    dest: /usr/local/bin/jump
-    mode: '0755'
