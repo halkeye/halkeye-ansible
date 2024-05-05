@@ -1,6 +1,7 @@
 roles:
   - name: yogo1212.ansible-go
     src: https://github.com/yogo1212/ansible-go
+    version: 83006f3078b6910465eeecd1ebdc791ad6684b06
   - name: suzuki-shunsuke.tmux-tpm
     src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
   - name: geerlingguy.git
@@ -10,10 +11,6 @@ roles:
     version: 762ebd2bd51b70db737873d10a081007460a5273
   - name: carlba.gitconfig
     src: https://github.com/carlba/ansible-role-gitconfig
-  - name: breathe.release-from-github
-    src: https://github.com/isometry/ansible-role-release-from-github
-  - name: ansible-role-github-release
-    src: https://github.com/ctorgalson/ansible-role-github-release
   - name: gikeymarcia.neovim
   - name: gantsign.helm
 collections:
