@@ -204,3 +204,6 @@ software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 software_version_oh_my_posh: "19.28.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.21.0" # repo: crate-ci/typos
+# A simple, fast and user-friendly alternative to 'find'
+# (Currently used by ctrl+p in vim)
+software_version_fd: "10.1.0" # repo: sharkdp/fd
