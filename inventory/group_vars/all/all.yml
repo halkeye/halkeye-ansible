@@ -173,7 +173,7 @@ ghr_install_dir: "{{ env_home }}/.local/bin"
 
 asdf_version: "v0.14.0" # repo: asdf-vm/asdf
 software_version_kubectl: "1.30.0" # repo: kubernetes/kubernetes
-software_version_fzf: "0.52.0" # repo: junegunn/fzf
+software_version_fzf: "0.52.1" # repo: junegunn/fzf
 software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide
 software_version_age: "1.1.1" # repo: FiloSottile/age
 # Terminal JSON viewer & processor
@@ -197,11 +197,11 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.49.1" # repo: cli/cli
+software_version_gh: "2.49.2" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "19.28.0" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "19.29.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.21.0" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
