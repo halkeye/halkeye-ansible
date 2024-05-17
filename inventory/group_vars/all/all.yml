@@ -172,7 +172,7 @@ git_install_from_source_force_update: true
 ghr_install_dir: "{{ env_home }}/.local/bin"
 
 asdf_version: "v0.14.0" # repo: asdf-vm/asdf
-software_version_kubectl: "1.30.0" # repo: kubernetes/kubernetes
+software_version_kubectl: "1.30.1" # repo: kubernetes/kubernetes
 software_version_fzf: "0.52.1" # repo: junegunn/fzf
 software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide
 software_version_age: "1.1.1" # repo: FiloSottile/age
@@ -189,7 +189,7 @@ software_version_sops: "3.8.1" # repo: getsops/sops
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
 software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
-software_version_helm: "3.14.4" # repo: helm/helm
+software_version_helm: "3.15.0" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
 software_version_k9s: "0.32.4" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
@@ -201,7 +201,7 @@ software_version_gh: "2.49.2" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "19.29.1" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "19.30.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.21.0" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
