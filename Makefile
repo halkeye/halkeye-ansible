@@ -47,9 +47,13 @@ vars: venv ## List all variables
 software: ANSIBLE_DEBUG+=-t software
 software: run ## Just update software
 
-.PHONY: vim
-vim: ANSIBLE_DEBUG+=-t vim
-vim: run ## Just update software
+.PHONY: asdf-defaults
+asdf-defaults: venv  ## Install default modules when asdf wasn't installed right
+	cat $(HOME)/.default-npm-packages | xargs $(HOME)/.asdf/shims/npm install -g
+	$(HOME)/.asdf/shims/pip install -r $(HOME)/.default-python-packages
+	$(VENV)/pip install -r $(HOME)/.default-python-packages
+	cat $(HOME)/.default-gems | xargs -n1 $(HOME)/.asdf/shims/gem install
+	cat $(HOME)/.default-perl-modules | xargs -n1 $(HOME)/.asdf/shims/cpanm
 
 .PHONY: help
 help:
@@ -63,3 +67,4 @@ Makefile.venv:
 	echo "fb48375ed1fd19e41e0cdcf51a4a0c6d1010dfe03b672ffc4c26a91878544f82 *Makefile.fetched" \
 		| sha256sum --check - \
 		&& mv Makefile.fetched Makefile.venv
+

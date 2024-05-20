@@ -20,6 +20,7 @@
       - { url: "https://github.com/cli/cli/releases/download/v{{software_version_gh}}/gh_{{software_version_gh}}_linux_amd64.deb", "name": "gh", "version": "{{software_version_gh}}" }
       - { url: "https://github.com/sharkdp/fd/releases/download/v10.1.0/fd_{{software_version_fd}}_amd64.deb", "name": "fd", "version": "{{software_version_fd}}" }
       - { url: "https://github.com/BurntSushi/ripgrep/releases/download/{{software_version_ripgrep}}/ripgrep_{{software_version_ripgrep}}-1_amd64.deb", "name": "ripgrep", "version": "{{software_version_ripgrep}}" }
+      - { url: "https://github.com/aymanbagabas/shcopy/releases/download/v{{software_version_shcopy}}/shcopy_{{software_version_shcopy}}_linux_amd64.deb", "name": "shcopy", "version": "{{software_version_shcopy}}" }
 
 - name: Download debs
   become: yes
@@ -131,19 +132,6 @@
     move_rules:
       - src_regex: posh.*
         dst: /usr/local/bin/oh_my_posh
-        mode: 0755
-
-- name: install win32yank
-  become: yes
-  when: "'wsl' in group_names"
-  quera.github.install_from_github:
-    repo: equalsraf/win32yank
-    tag: "v{{software_version_win32yank}}"
-    version_command: win32yank --version
-    asset_regex: win32yank-x86
-    move_rules:
-      - src_regex: win32yank.*
-        dst: /usr/local/bin/win32yank
         mode: 0755
 
 - name: install typos

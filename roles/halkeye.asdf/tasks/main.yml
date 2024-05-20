@@ -10,3 +10,6 @@
     - default-npm-packages
     - default-python-packages
     - default-perl-modules
+- name: Configure asdf
+  ansible.builtin.include_role:
+    name: cimon-io.asdf

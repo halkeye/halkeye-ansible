@@ -33,9 +33,6 @@
       tags:
         - ohmyposh
         - shell
-    - role: cimon-io.asdf
-      tags:
-        - asdf
     - role: halkeye.asdf
       tags:
         - asdf
