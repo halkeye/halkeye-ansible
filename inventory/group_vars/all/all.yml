@@ -172,6 +172,8 @@ git_install_from_source_force_update: true
 ghr_install_dir: "{{ env_home }}/.local/bin"
 
 asdf_version: "v0.14.0" # repo: asdf-vm/asdf
+software_version_neovim: "0.10.0" # repo: neovim/neovim
+software_version_treesitter: "0.22.6" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.30.1" # repo: kubernetes/kubernetes
 software_version_fzf: "0.52.1" # repo: junegunn/fzf
 software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide

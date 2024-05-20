@@ -1,14 +1,6 @@
 ---
 # sops
-
-
-- name: install latest version of neovim
-  ansible.builtin.include_role:
-    name: gikeymarcia.neovim
-    apply:
-      become: yes
-
-- name: install latest version of neovim
+- name: install latest version of helm
   ansible.builtin.include_role:
     name: gantsign.helm
     apply:

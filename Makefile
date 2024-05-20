@@ -44,8 +44,12 @@ vars: venv ## List all variables
 	$(VENV)/ansible $$(hostname) --vault-password-file .vault -c local -m ansible.builtin.setup
 
 .PHONY: software
-software: | venv ## Just update software
-	$(ANSIBLE_PLAYBOOK) main.yml -t software
+software: ANSIBLE_DEBUG+=-t software
+software: run ## Just update software
+
+.PHONY: vim
+vim: ANSIBLE_DEBUG+=-t vim
+vim: run ## Just update software
 
 .PHONY: help
 help:

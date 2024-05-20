@@ -4,13 +4,6 @@
     repo: "git@github.com:halkeye/vim.git"
     dest: "{{ env_home }}/.vim"
 
-- name: Create config directory
-  become: false
-  file:
-    path: "{{ env_home }}/.config"
-    state: directory
-    mode: "0755"
-
 - name: Symlink for vim config
   become: false
   file:

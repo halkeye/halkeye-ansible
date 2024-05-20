@@ -15,6 +15,7 @@
         - directories
     - import_tasks: playbooks/vim.yml
       tags:
+        - software
         - vim
     - import_tasks: playbooks/wsl.yml
       when: "'wsl' in group_names"
@@ -31,19 +32,26 @@
     - role: ohmyposh
       tags:
         - ohmyposh
+        - shell
     - role: cimon-io.asdf
       tags:
         - asdf
     - role: halkeye.asdf
       tags:
         - asdf
+    - role: halkeye.nvim
+      tags:
+        - vim
+        - software
     - role: zsh
       tags:
         - zsh
+        - shell
     - role: yogo1212.ansible-go
       become: true
       tags:
         - golang
+        - software
     - role: geerlingguy.git
       become: true
       when: ansible_os_family != "Darwin"
@@ -52,7 +60,8 @@
     - role: tmux
       tags:
         - tmux
+        - software
     - role: suzuki-shunsuke.tmux-tpm
       tags:
         - tmux
-
+        - software
