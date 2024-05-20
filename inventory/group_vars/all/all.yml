@@ -1,22 +1,7 @@
 ---
-# - host
-zsh_powerlevel9k_left_prompt:
-  - host
-  - vcs
-  - virtualenv
-  - dir
-
-zsh_powerlevel9k_right_prompt: []
 zsh_hotkeys_extras:
   - { hotkey: '\e[3~', action: 'delete-char' }
 npm_config_prefix: "{{ lookup('env','HOME') }}/.npm-global"
-
-ruby_install_gems_user: "{{ lookup('env','USER') }}"
-ruby_install_from_source: true
-ruby_install_gems:
-  - tmuxinator
-  - bundler
-  - gist
 
 global_ubuntu_ppas: []
 global_centos_packages:
@@ -30,6 +15,7 @@ global_centos_packages:
   - python36-pip
   - mosh
 global_ubuntu_packages:
+  - luarocks
   - silversearcher-ag
   - jq
   - curl
@@ -127,24 +113,31 @@ asdf_plugins:
     versions:         # a list of versions to install
       - 3.8.4
     global: 3.8.4
+  - name: "perl"
+    repository: ""    # a plugin repository, optional
+    versions:         # a list of versions to install
+      - 5.38.2
+    global: 5.38.2
   - name: "ruby"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
       - 3.1.0
       - 3.2.0
-    global: "3.2.0"
+      - 3.3.1
+    global: "3.3.1"
   - name: "nodejs"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
       - 16.13.1
       - 20.12.2
       - 21.7.3
-    global: "16.13.1"
+    global: "21.7.3"
   - name: "python"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
       - 3.10.2
-    global: "3.10.2"
+      - 3.12.3
+    global: "3.12.3"
   - name: "groovy"
     repository: "https://github.com/weibemoura/asdf-groovy.git"
     versions:
@@ -152,8 +145,8 @@ asdf_plugins:
     global: "3.0.7"
   - name: "rust"
     versions:
-      - 1.58.1
-    global: 1.58.1
+      - 1.78.0
+    global: 1.78.0
   - name: "gradle"
     versions:
       - 7.3.1
@@ -177,6 +170,7 @@ software_version_treesitter: "0.22.6" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.30.1" # repo: kubernetes/kubernetes
 software_version_fzf: "0.52.1" # repo: junegunn/fzf
 software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide
+software_version_ripgrep: "14.1.0" # repo: BurntSushi/ripgrep
 software_version_age: "1.1.1" # repo: FiloSottile/age
 # Terminal JSON viewer & processor
 software_version_fx: "34.0.0" # repo: antonmedv/fx
@@ -209,3 +203,5 @@ software_version_typos: "1.21.0" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.1.0" # repo: sharkdp/fd
+software_version_win32yank: "0.1.1" #repo: equalsraf/win32yank
+

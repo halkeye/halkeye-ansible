@@ -7,3 +7,4 @@ python-lsp-isort
 pylsp-mypy
 python-lsp-black
 jedi
+pyenv
