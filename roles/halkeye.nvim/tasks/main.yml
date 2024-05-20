@@ -20,6 +20,7 @@
   ansible.posix.synchronize:
     src: "nvim"
     dest: "{{ env_home}}/.config"
-    # owner: "{{ env_user }}"
     delete: true
     recursive: true
+    rsync_opts:
+      - "--exclude=lazy-lock.json"

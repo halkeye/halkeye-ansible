@@ -21,7 +21,7 @@ clean: clean-venv ## Delete all generated artefacts
 .PHONY: setup
 setup: venv ## Installs minimal dependancies
 	(which unzip || sudo apt install -y unzip) && \
-	(which zip || sudo apt install -y zip) && \
+	(which zip || sudo apt install -y zip)
 
 .PHONY: sync
 sync: ## Synchronize ansible data

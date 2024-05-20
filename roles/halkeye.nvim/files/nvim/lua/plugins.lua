@@ -17,5 +17,6 @@ require("lazy").setup({
   require("plugins.lsp"),
   require("plugins.nav"),
   require("plugins.telescope"),
+  require("plugins.trouble"),
   require("plugins.treesitter"),
 })
