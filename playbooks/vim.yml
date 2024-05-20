@@ -11,13 +11,6 @@
     state: directory
     mode: "0755"
 
-- name: Symlink for neovim config
-  become: false
-  file:
-    src: "{{ env_home }}/.vim"
-    dest: "{{ env_home }}/.config/nvim"
-    state: link
-
 - name: Symlink for vim config
   become: false
   file:

@@ -28,14 +28,13 @@
       tags:
         - git
   roles:
-
-    #- role: nvim
-    #  tags:
-    #    - nvim
     - role: ohmyposh
       tags:
         - ohmyposh
     - role: cimon-io.asdf
+      tags:
+        - asdf
+    - role: halkeye.asdf
       tags:
         - asdf
     - role: zsh

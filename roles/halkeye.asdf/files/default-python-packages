@@ -1,0 +1,9 @@
+virtualenv
+neovim
+pynvim
+python-lsp-server[all]
+vim-vint
+python-lsp-isort
+pylsp-mypy
+python-lsp-black
+jedi

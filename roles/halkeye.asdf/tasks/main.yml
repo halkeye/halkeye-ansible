@@ -1,0 +1,11 @@
+---
+- name: Copy all the default asdf files into home dir
+  copy:
+    src: "{{ item }}"
+    dest: "{{ env_home}}/.{{ item }}"
+    owner: "{{ env_user }}"
+    mode: '0644'
+  with_items:
+    - default-gems
+    - default-npm-packages
+    - default-python-packages

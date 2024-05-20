@@ -1,6 +1,5 @@
 .direnv/
 *.retry
-roles/*\.*
 .venv
 .vault
 vars.json

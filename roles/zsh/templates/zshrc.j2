@@ -137,7 +137,4 @@ if [[ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
 fi
 {% endif %}
 
-printf 'yarn\njsonlint\nserve\nnpm-check-updates\nnodemon' > $HOME/.default-npm-packages
-printf 'solargraph\nbundler\npry\n' > $HOME/.default-gems
-printf 'virtualenv\n' > $HOME/.default-python-packages
 eval "$(zoxide init zsh --cmd j)"
