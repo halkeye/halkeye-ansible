@@ -1,6 +1,7 @@
 require("lazy").setup({
   "nvim-lua/plenary.nvim",
   "nvim-tree/nvim-web-devicons",
+  "duane9/nvim-rg",
   "tpope/vim-surround",
   "tpope/vim-commentary",
   {
@@ -14,6 +15,7 @@ require("lazy").setup({
   },
   require("plugins.ai"),
   require("plugins.colorscheme"),
+  require("plugins.cmp"),
   require("plugins.lsp"),
   require("plugins.nav"),
   require("plugins.telescope"),

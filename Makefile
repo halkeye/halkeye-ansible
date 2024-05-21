@@ -31,10 +31,6 @@ sync: ## Synchronize ansible data
 run: venv requirements.yml ## Run
 	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG)
 
-.PHONY: check
-check: venv requirements.yml ## Validate all the configs
-	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG) --check --diff
-
 .PHONY: lint
 lint: venv ## Perform an ansible-lint linting
 	$(VENV)/ansible-lint main.yml
@@ -47,6 +43,18 @@ vars: venv ## List all variables
 software: ANSIBLE_DEBUG+=-t software
 software: run ## Just update software
 
+.PHONY: vim
+vim: ANSIBLE_DEBUG+=-t vim
+vim: run ## Just update vim
+
+.PHONY: diff
+diff: ANSIBLE_DEBUG+=--check --diff
+diff: run ## Dry run and output diffs not run
+
+.PHONY: check
+check: diff
+
+
 .PHONY: asdf-defaults
 asdf-defaults: venv  ## Install default modules when asdf wasn't installed right
 	cat $(HOME)/.default-npm-packages | xargs $(HOME)/.asdf/shims/npm install -g
@@ -57,7 +65,7 @@ asdf-defaults: venv  ## Install default modules when asdf wasn't installed right
 
 .PHONY: help
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 include Makefile.venv
 Makefile.venv:

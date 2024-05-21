@@ -32,5 +32,18 @@
 vim.keymap.set("n", "<Leader>te", ":tabedit<space>")
 vim.keymap.set("n", "<Leader>tn", ":tabnew<space>")
 vim.keymap.set("n", "<Leader>tm", ":tabmove<space>")
-vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+vim.keymap.set("n", "<c-P>", "<cmd>lua require('telescope.builtin').find_files()<CR>", { silent = true })
 
+vim.keymap.set('n', '<Leader>la', function()
+    require('telescope.builtin').lsp_references({
+        preview_title = 'LSP References Preview',
+        jump_type = 'split',
+        fname_width = 50,
+    })
+end)
+
+vim.keymap.set('n', '<Leader>ba', function()
+    require('telescope.builtin').buffers({
+        preview_title = 'Buffers',
+    })
+end)
