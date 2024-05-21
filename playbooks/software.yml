@@ -116,9 +116,9 @@
     repo: hadolint/hadolint
     tag: "v{{software_version_hadolint}}"
     version_command: hadolint --version
-    asset_regex: hadolint.*
+    asset_regex: ^hadolint-Linux-\w+$
     move_rules:
-      - src_regex: hadolint.*
+      - src_regex: ^hadolint-Linux-\w+$
         dst: /usr/local/bin/hadolint
         mode: 0755
 

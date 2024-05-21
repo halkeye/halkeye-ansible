@@ -50,6 +50,26 @@ backward-kill-dir () {
 zle -N backward-kill-dir
 bindkey '^[^?' backward-kill-dir
 
+tmux_jump() {
+    # starting in ~/code...
+    BASE="$HOME/git"
+    # ... look for directories exactly two levels deep (`~/code/owner/project`)
+    # and match them with fzf. In this case we break ties by favoring matches
+    # on the project name instead of the owner name (implementaion means
+    # favoring matches closer to the end of the string.) This is simplified a
+    # little bit with the `--select-1 --query="$1"` line: if there's only one
+    # match for the argument passed in as the first argument to this function,
+    # we select immediately instead of asking for an interactive selection.
+    SELECTED=$(find "$BASE" -mindepth 2 -maxdepth 2 -type d | sed "s|$BASE/||g" | fzf --tiebreak=end --select-1 --query="$1")
+
+    # fzf will exit with a non-zero code if you ctrl-c or ctrl-g out of
+    # it. We use this as a signal that we don't want to jump after all.
+    if [[ "$?" != 0 ]]; then echo "cancelling!"; return 1; fi
+
+    # call tmux-session on the *full* path to the matched project!
+    tmux-session "$BASE/$SELECTED"
+}
+
 if [ -d /etc/profile.d ]; then
   for i in /etc/profile.d/*.sh; do
     if [ -r $i ]; then
@@ -73,6 +93,7 @@ if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:
 if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
 if [ -e "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; then export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"; fi
 if [ -e "${KREW_ROOT:-$HOME/.krew}" ]; then export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"; fi
+if [ -e "$HOME/.dotnet/tools" ]; then export PATH="$PATH:$HOME/.dotnet/tools"; fi
 
 eval "$(/usr/local/bin/oh-my-posh init zsh --config ~/.poshthemes/gmay.omp.json)"
 
@@ -86,13 +107,14 @@ command -v helm 2>/dev/null 1>/dev/null && source <(helm completion zsh)
 command -v doctl 2>/dev/null 1>/dev/null && source <(doctl completion zsh)
 command -v npm 2>/dev/null 1>/dev/null && source <(npm completion)
 command -v gh 2>/dev/null 1>/dev/null && source <(gh completion -s zsh)
+command -v k9s 2>/dev/null 1>/dev/null && source <(k9s completion zsh)
 TMUXINATOR_COMPLETION_PATH="$(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")' 2>/dev/null)"
 test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
 . $HOME/.asdf/completions/asdf.bash
 ### END 'bash' completion
 
 # Full zsh support
-if [ -f ~/.fzf/shell/key-bindings.zsh ]; then source ~/.fzf/shell/key-bindings.zsh; fi 
+# if [ -f ~/.fzf/shell/key-bindings.zsh ]; then source ~/.fzf/shell/key-bindings.zsh; fi 
 if [ -f ~/.fzf/shell/completion.zsh ]; then source ~/.fzf/shell/completion.zsh; fi 
 
 ## Some aliases I really like
@@ -128,6 +150,10 @@ done
 # direnv
 source <(direnv hook zsh)
 
+if [ -z "$(pgrep dirmngr)" ]; then
+  eval $(dirmngr --homedir $HOME/.gnupg --daemon)
+fi
+
 {% if zsh_use_ssh_plugin %}
 source ~/.zsh/ssh-agent.plugin.zsh
 {% endif %}
@@ -137,4 +163,8 @@ if [[ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
 fi
 {% endif %}
 
+if [ -f /opt/android/android-sdk-linux ]; then
+  export ANDROID_HOME=/opt/android/android-sdk-linux
+  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+fi
 eval "$(zoxide init zsh --cmd j)"

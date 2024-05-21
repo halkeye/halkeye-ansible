@@ -3,6 +3,9 @@
   "extends": [
     "github>halkeye/halkeye//.github/renovate/base.json5"
   ],
+  "git-submodules": {
+    "enabled": true
+  },
   "customManagers": [
     {
       "customType": "regex",

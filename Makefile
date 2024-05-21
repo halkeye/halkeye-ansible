@@ -12,7 +12,7 @@ PLAYBOOK := main
 #(which virtualenv || sudo pip3 install virtualenv) && \
 
 requirements.yml: venv
-	ansible-galaxy install -r requirements.yml
+	$(VENV)/ansible-galaxy install -r requirements.yml --force
 
 .PHONY: clean
 clean: clean-venv ## Delete all generated artefacts
@@ -46,6 +46,10 @@ software: run ## Just update software
 .PHONY: vim
 vim: ANSIBLE_DEBUG+=-t vim
 vim: run ## Just update vim
+
+.PHONY: go
+go: ANSIBLE_DEBUG+=-t go
+go: run ## Just update go
 
 .PHONY: diff
 diff: ANSIBLE_DEBUG+=--check --diff

@@ -1,6 +1,7 @@
 roles:
   - name: yogo1212.ansible-go
     src: https://github.com/yogo1212/ansible-go
+    version: 83006f3078b6910465eeecd1ebdc791ad6684b06
   - name: suzuki-shunsuke.tmux-tpm
     src: https://github.com/suzuki-shunsuke/ansible-tmux-tpm
   - name: geerlingguy.git
