@@ -8,4 +8,12 @@ return {
       vim.cmd.colorscheme("tokyonight")
     end,
   },
+  {
+    "NLKNguyen/papercolor-theme",
+    lazy = false,
+    init = function()
+      vim.opt.background = "dark",
+      vim.cmd.colorscheme("PaperColor")
+    end,
+  },
 }
