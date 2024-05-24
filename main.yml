@@ -40,6 +40,10 @@
       tags:
         - vim
         - software
+    - role: halkeye.iamb
+      tags:
+        - iamb
+        - software
     - role: zsh
       tags:
         - zsh

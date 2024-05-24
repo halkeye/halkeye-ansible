@@ -146,14 +146,26 @@
         dst: /usr/local/bin/typos
         mode: 0755
 
-- name: install iamb
+- name: install 
   become: yes
   quera.github.install_from_github:
-    repo: ulyssa/iamb
-    tag: "v{{software_version_iamb}}"
-    version_command: iamb --version
-    asset_regex: iamb.*
+    repo: nektos/act
+    tag: "v{{software_version_act}}"
+    version_command: act --version
+    asset_regex: act.*
     move_rules:
-      - src_regex: iamb.*
-        dst: /usr/local/bin/iamb
+      - src_regex: act.*
+        dst: /usr/local/bin/act
+        mode: 0755
+
+- name: install regctl
+  become: yes
+  quera.github.install_from_github:
+    repo: regclient/regclient
+    tag: "v{{software_version_regctl}}"
+    version_command: regctl --version
+    asset_regex: regctl.*
+    move_rules:
+      - src_regex: .*
+        dst: /usr/local/bin/regctl
         mode: 0755
