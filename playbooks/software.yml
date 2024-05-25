@@ -163,7 +163,7 @@
   quera.github.install_from_github:
     repo: regclient/regclient
     tag: "v{{software_version_regctl}}"
-    version_command: regctl --version
+    version_command: regctl version
     asset_regex: regctl.*
     move_rules:
       - src_regex: .*
