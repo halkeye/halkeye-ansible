@@ -26,7 +26,7 @@
 - name: "Process fzf version"
   set_fact:
     fzf_installed_version: "{{ results.stdout | trim | regex_replace('([a-z0-9A-Z._-]+).*','\\1') }}"
-    when: results.stdout | trim
+  when: results.stdout | trim
 
 - name: Run install script
   ansible.builtin.command: "{{ env_home }}/.fzf/install --no-update-rc"
