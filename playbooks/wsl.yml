@@ -5,6 +5,7 @@
   apt:
     name:
       - socat
+      - wslu
     state: present
 
 - name: Download xdg_open_wsl.py

@@ -29,7 +29,6 @@ global_ubuntu_packages:
   - entr
   - vim
   - direnv
-  - wslu
   - git-absorb
 global_darwin_packages:
   - gpg2
