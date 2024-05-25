@@ -19,7 +19,7 @@ clean: clean-venv ## Delete all generated artefacts
 	find . -name "*.pyc" -exec $(RM) -rf {} \;
 
 .PHONY: setup
-setup: venv ## Installs minimal dependancies
+setup: venv requirements.yml ## Installs minimal dependancies
 	(which unzip || sudo apt install -y unzip) && \
 	(which zip || sudo apt install -y zip)
 
@@ -28,20 +28,28 @@ sync: ## Synchronize ansible data
 	git pull --rebase
 
 .PHONY: run
-run: venv requirements.yml ## Run
+run: setup ## Run
 	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG)
 
 .PHONY: lint
-lint: venv ## Perform an ansible-lint linting
+lint: setup ## Perform an ansible-lint linting
 	$(VENV)/ansible-lint main.yml
 
 .PHONY: vars
-vars: venv ## List all variables
+vars: setup ## List all variables
 	$(VENV)/ansible $$(hostname) --vault-password-file .vault -c local -m ansible.builtin.setup
+
+.PHONY: debug
+debug: ANSIBLE_DEBUG+=-vvv
+debug: run ## Run in debug mode
 
 .PHONY: software
 software: ANSIBLE_DEBUG+=-t software
 software: run ## Just update software
+
+.PHONY: git
+git: ANSIBLE_DEBUG+=-t git
+git: run ## Just update git
 
 .PHONY: vim
 vim: ANSIBLE_DEBUG+=-t vim
@@ -57,7 +65,6 @@ diff: run ## Dry run and output diffs not run
 
 .PHONY: check
 check: diff
-
 
 .PHONY: asdf-defaults
 asdf-defaults: venv  ## Install default modules when asdf wasn't installed right

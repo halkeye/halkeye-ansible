@@ -29,32 +29,54 @@ global_ubuntu_packages:
   - entr
   - vim
   - direnv
+  - wslu
+  - git-absorb
 global_darwin_packages:
   - gpg2
   - jq
   - coreutils
   - tig
-git_config:
-  user:
-    name: Gavin Mogan
-    email: git@gavinmogan.com
-  core:
-    editor: vim
-    excludesfile: "~/.gitexcludesfile"
-  push:
-    default: current
-  fetch:
-    prune: "true"
-  mergetool:
-    keepBackup: "false"
-  'mergetool "vimdiff"':
-    cmd: vim -d $LOCAL $REMOTE $MERGED
-  'diff "sopsdiffer"':
-    textconv: "sops -d"
-  'url "ssh://git@github.com/"':
-    insteadOf: 'https://github.com/'
-  alias:
-    root: rev-parse --show-toplevel
+
+group_git_config: []
+host_git_config: []
+global_git_config:
+  - name: user.name
+    scope: global
+    value: Gavin Mogan
+  - name: user.email
+    scope: global
+    value: git@gavinmogan.com
+  - name: core.editor
+    scope: global
+    value: nvim
+  - name: core.excludesfile
+    scope: global
+    value: "~/.gitexcludesfile"
+  - name: push.default
+    scope: global
+    value: current
+  - name: fetch.prune
+    scope: global
+    value: "true"
+  - name: mergetool.keepBackup
+    scope: global
+    value: "false"
+  - name: merge.tool
+    scope: global
+    value: "vimdiff"
+  - name: mergetool.vimdiff.cmd
+    scope: global
+    value: 'vim -d $LOCAL $REMOTE $MERGED'
+  - name: diff.sopsdiffer.textconv
+    scope: global
+    value: 'sops -d'
+  - name: url.ssh://git@github.com/.insteadOf
+    scope: global
+    value: 'https://github.com/'
+  - name: alias.root
+    scope: global
+    value: rev-parse --show-toplevel
+
 git_ignore:
   - "*~"
   - "# temporary files which can be created if a process still has a handle open of a deleted file"

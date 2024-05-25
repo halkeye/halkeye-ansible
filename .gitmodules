@@ -1,0 +1,3 @@
+[submodule "roles/boutetnico.gitconfig"]
+	path = roles/boutetnico.gitconfig
+	url = https://github.com/boutetnico/ansible-role-gitconfig

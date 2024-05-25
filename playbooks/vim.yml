@@ -1,11 +1,11 @@
 - name: Download config from git
-  become: false
+  become: no
   git:
     repo: "git@github.com:halkeye/vim.git"
     dest: "{{ env_home }}/.vim"
 
 - name: Symlink for vim config
-  become: false
+  become: no
   file:
     src: "{{ env_home }}/.vim/.vimrc"
     dest: "{{ env_home }}/.vimrc"

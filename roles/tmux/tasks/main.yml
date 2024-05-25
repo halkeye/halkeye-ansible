@@ -1,6 +1,6 @@
 ---
 - name: install tmux
-  become: true
+  become: yes
   when: ansible_os_family == "Debian"
   apt:
     name:

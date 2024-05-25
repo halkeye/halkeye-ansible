@@ -2,6 +2,8 @@
 - hosts: all
   tasks:
     - import_tasks: playbooks/tasks.yml
+      tags:
+        - software
     - import_tasks: playbooks/fzf.yml
       tags:
         - fzf
@@ -25,9 +27,6 @@
     - import_tasks: playbooks/software.yml
       tags:
         - software
-    - import_tasks: playbooks/git_config.yml
-      tags:
-        - git
   roles:
     - role: ohmyposh
       tags:
@@ -66,3 +65,7 @@
       tags:
         - tmux
         - software
+    - role: boutetnico.gitconfig
+      tags:
+        - git
+      git_config_settings: "{{ global_git_config + group_git_config + host_git_config }}"

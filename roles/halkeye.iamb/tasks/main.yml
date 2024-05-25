@@ -1,13 +1,13 @@
 ---
 - name: Create config directory
-  become: false
+  become: no
   file:
     path: "{{ env_home }}/.config"
     state: directory
     mode: "0755"
 
 - name: Create config iamb directory
-  become: false
+  become: no
   file:
     path: "{{ env_home }}/.config/iamb"
     state: directory

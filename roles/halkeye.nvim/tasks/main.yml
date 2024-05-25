@@ -10,7 +10,7 @@
 
 # tasks file for halkeye.nvim
 - name: Create config directory
-  become: false
+  become: no
   file:
     path: "{{ env_home }}/.config"
     state: directory

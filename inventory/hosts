@@ -11,12 +11,12 @@ antman
 [work]
 gmogan-dev-box
 DO-MJ0D79E0
+DO-PW0BFSP4
 
 [ldap]
 gmogan-dev-box
 
 [linux]
-halkeye-chromebook
 wasp
 
 [remote]
@@ -32,3 +32,4 @@ blackpanther
 loki
 antman
 DO-MJ0D79E0
+DO-PW0BFSP4
