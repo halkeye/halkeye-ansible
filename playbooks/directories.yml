@@ -13,4 +13,4 @@
       - "{{ env_home }}/git/halkeye-helm-charts"
       - "{{ env_home }}/git/jenkinsci"
       - "{{ env_home }}/git/jenkins-infra"
-  
+      - "{{ env_home }}/git/digitalocean"
