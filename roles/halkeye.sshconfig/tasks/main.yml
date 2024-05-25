@@ -1,0 +1,13 @@
+---
+- name: Create .ssh directory
+  file:
+    path: "{{ home }}/.ssh"
+    state: directory
+    mode: "0755"
+
+- name: create ssh config
+  copy:
+    dest: "{{ home }}/.ssh/config"
+    owner: "{{ owner }}"
+    mode: "0700"
+    content: "{{ contents }}"

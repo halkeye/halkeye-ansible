@@ -70,3 +70,9 @@
       tags:
         - git
       git_config_settings: "{{ global_git_config + group_git_config + host_git_config }}"
+    - role: halkeye.sshconfig
+      contents: "{{ ssh_config }}"
+      home: "{{ env_home }}"
+      owner: "{{ env_user }}"
+      tags:
+        - ssh
