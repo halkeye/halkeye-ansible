@@ -1,3 +1,24 @@
 [submodule "roles/boutetnico.gitconfig"]
 	path = roles/boutetnico.gitconfig
 	url = https://github.com/boutetnico/ansible-role-gitconfig
+[submodule "roles/yogo1212.ansible-go"]
+	path = roles/yogo1212.ansible-go
+	url = https://github.com/yogo1212/ansible-go
+[submodule "roles/suzuki-shunsuke.tmux-tpm"]
+	path = roles/suzuki-shunsuke.tmux-tpm
+	url = https://github.com/suzuki-shunsuke/ansible-tmux-tpm
+[submodule "roles/geerlingguy.git"]
+	path = roles/geerlingguy.git
+	url = https://github.com/geerlingguy/ansible-role-git
+[submodule "roles/cimon-io.asdf"]
+	path = roles/cimon-io.asdf
+	url = https://github.com/eliberty/ansible-role-asdf
+[submodule "roles/gikeymarcia.neovim"]
+	path = roles/gikeymarcia.neovim
+	url = https://github.com/gikeymarcia/ansible-role-neovim
+[submodule "roles/gantsign.helm"]
+	path = roles/gantsign.helm
+	url = https://github.com/gantsign/ansible_role_helm
+[submodule "collections/ansible_collections/quera/github"]
+	path = collections/ansible_collections/quera/github
+	url = https://github.com/QueraTeam/ansible-github.git
