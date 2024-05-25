@@ -122,18 +122,6 @@
         dst: /usr/local/bin/hadolint
         mode: 0755
 
-- name: install oh_my_posh
-  become: yes
-  quera.github.install_from_github:
-    repo: JanDeDobbeleer/oh-my-posh
-    tag: "v{{software_version_oh_my_posh}}"
-    version_command: oh_my_posh --version
-    asset_regex: posh-\w+-\w+
-    move_rules:
-      - src_regex: posh.*
-        dst: /usr/local/bin/oh_my_posh
-        mode: 0755
-
 - name: install typos
   become: yes
   quera.github.install_from_github:

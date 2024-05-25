@@ -29,6 +29,7 @@
         - software
   roles:
     - role: ohmyposh
+      ohmyposh_version: "{{ software_version_oh_my_posh }}"
       tags:
         - ohmyposh
         - shell
