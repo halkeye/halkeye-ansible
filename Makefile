@@ -7,6 +7,11 @@ ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file 
 ANSIBLE_DEBUG :=
 PLAYBOOK := main
 
+
+.PHONY: pull
+pull: .gitmodules ## get all dependancies
+	git submodule update --init
+
 .PHONY: clean
 clean: clean-venv ## Delete all generated artefacts
 	find . -name "*.pyc" -exec $(RM) -rf {} \;
