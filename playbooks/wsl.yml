@@ -8,10 +8,15 @@
       - wslu
     state: present
 
-- name: Download xdg_open_wsl.py
+- name: Remove local xdg-open
   become: yes
-  get_url:
-    url: https://raw.githubusercontent.com/cpbotha/xdg-open-wsl/1156fe54344e35cf763b65c129df868647e455de/xdg_open_wsl/xdg_open_wsl.py
-    dest: /usr/local/bin/xdg-open
-    mode: '0755'
+  file:
+    state: absent
+    path: /usr/local/bin/xdg-open
 
+- name: Map wslview to xdg-open
+  become: yes
+  file:
+    state: link
+    src: /usr/bin/wslview
+    dest: /usr/bin/xdg-open
