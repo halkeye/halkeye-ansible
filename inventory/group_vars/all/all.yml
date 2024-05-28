@@ -3,6 +3,9 @@ zsh_hotkeys_extras:
   - { hotkey: '\e[3~', action: 'delete-char' }
 npm_config_prefix: "{{ lookup('env','HOME') }}/.npm-global"
 
+zsh_group_config: ""
+zsh_host_config: ""
+
 global_ubuntu_ppas: []
 global_centos_packages:
   - python

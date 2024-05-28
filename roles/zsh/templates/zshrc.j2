@@ -44,39 +44,39 @@ bindkey "$key[Down]" history-beginning-search-forward-end
 ## From: https://unix.stackexchange.com/questions/258656/how-can-i-delete-to-a-slash-or-a-word-in-zsh
 # This way you can use ctrl+w for deleting a Word (in vim lingo) and alt+bkspc to delete a word
 backward-kill-dir () {
-    local WORDCHARS=${WORDCHARS/\/}
-    zle backward-kill-word
+  local WORDCHARS=${WORDCHARS/\/}
+  zle backward-kill-word
 }
 zle -N backward-kill-dir
 bindkey '^[^?' backward-kill-dir
 
 tmux_jump() {
-    # starting in ~/code...
-    BASE="$HOME/git"
-    # ... look for directories exactly two levels deep (`~/code/owner/project`)
-    # and match them with fzf. In this case we break ties by favoring matches
-    # on the project name instead of the owner name (implementaion means
-    # favoring matches closer to the end of the string.) This is simplified a
-    # little bit with the `--select-1 --query="$1"` line: if there's only one
-    # match for the argument passed in as the first argument to this function,
-    # we select immediately instead of asking for an interactive selection.
-    SELECTED=$(find "$BASE" -mindepth 2 -maxdepth 2 -type d | sed "s|$BASE/||g" | fzf --tiebreak=end --select-1 --query="$1")
+  # starting in ~/code...
+  BASE="$HOME/git"
+  # ... look for directories exactly two levels deep (`~/code/owner/project`)
+  # and match them with fzf. In this case we break ties by favoring matches
+  # on the project name instead of the owner name (implementaion means
+  # favoring matches closer to the end of the string.) This is simplified a
+  # little bit with the `--select-1 --query="$1"` line: if there's only one
+  # match for the argument passed in as the first argument to this function,
+  # we select immediately instead of asking for an interactive selection.
+  SELECTED=$(find "$BASE" -mindepth 2 -maxdepth 2 -type d | sed "s|$BASE/||g" | fzf --tiebreak=end --select-1 --query="$1")
 
-    # fzf will exit with a non-zero code if you ctrl-c or ctrl-g out of
-    # it. We use this as a signal that we don't want to jump after all.
-    if [[ "$?" != 0 ]]; then echo "cancelling!"; return 1; fi
+  # fzf will exit with a non-zero code if you ctrl-c or ctrl-g out of
+  # it. We use this as a signal that we don't want to jump after all.
+  if [[ "$?" != 0 ]]; then echo "cancelling!"; return 1; fi
 
-    # call tmux-session on the *full* path to the matched project!
-    tmux-session "$BASE/$SELECTED"
+  # call tmux-session on the *full* path to the matched project!
+  tmux-session "$BASE/$SELECTED"
 }
 
 if [ -d /etc/profile.d ]; then
-  for i in /etc/profile.d/*.sh; do
-    if [ -r $i ]; then
-      . $i
-    fi
-  done
-  unset i
+for i in /etc/profile.d/*.sh; do
+  if [ -r $i ]; then
+    . $i
+  fi
+done
+unset i
 fi
 
 ## Setup all the paths stuff
@@ -102,7 +102,6 @@ autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*:*:git:*' script /usr/local/completion/git-completion.zsh
 command -v kubectl 2>/dev/null 1>/dev/null && source <(kubectl completion zsh)
-command -v docc 2>/dev/null 1>/dev/null && source <(SYSLOG_OFF=true docc completion zsh)
 command -v helm 2>/dev/null 1>/dev/null && source <(helm completion zsh)
 command -v doctl 2>/dev/null 1>/dev/null && source <(doctl completion zsh)
 command -v npm 2>/dev/null 1>/dev/null && source <(npm completion)
@@ -130,28 +129,27 @@ alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 alias todo="todoist list --filter '(overdue | today)'"
-command -v docc 2>/dev/null 1>/dev/null && alias docc='SYSLOG_OFF=true docc'
 command -v xclip 2>/dev/null 1>/dev/null && alias pbcopy='xclip -selection clipboard'
 command -v xclip 2>/dev/null 1>/dev/null && alias pbpaste='xclip -selection clipboard -o'
 
 # Check for various OS openers. Quit as soon as we find one that works.
 for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
-  if command -v $opener >/dev/null 2>&1; then
-    if [[ "$opener" == "cmd.exe" ]]; then
-      # shellcheck disable=SC2139
-      alias open="$opener /c start";
-    else
-      # shellcheck disable=SC2139
-      alias open="$opener";
-    fi
-    break;
+if command -v $opener >/dev/null 2>&1; then
+  if [[ "$opener" == "cmd.exe" ]]; then
+    # shellcheck disable=SC2139
+    alias open="$opener /c start";
+  else
+    # shellcheck disable=SC2139
+    alias open="$opener";
   fi
+  break;
+fi
 done
 # direnv
 source <(direnv hook zsh)
 
 if [ -z "$(pgrep dirmngr)" ]; then
-  eval $(dirmngr --homedir $HOME/.gnupg --daemon)
+eval $(dirmngr --homedir $HOME/.gnupg --daemon)
 fi
 
 {% if zsh_use_ssh_plugin %}
@@ -159,12 +157,15 @@ source ~/.zsh/ssh-agent.plugin.zsh
 {% endif %}
 {% if zsh_use_ssh_auth_sock_link %}
 if [[ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
-  ln -sf "$SSH_AUTH_SOCK" $HOME/.ssh/ssh_auth_sock
+ln -sf "$SSH_AUTH_SOCK" $HOME/.ssh/ssh_auth_sock
 fi
 {% endif %}
 
 if [ -f /opt/android/android-sdk-linux ]; then
-  export ANDROID_HOME=/opt/android/android-sdk-linux
-  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export ANDROID_HOME=/opt/android/android-sdk-linux
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 eval "$(zoxide init zsh --cmd j)"
+
+{{ zsh_group_config }}
+{{ zsh_host_config }}
