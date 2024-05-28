@@ -21,6 +21,7 @@
       - { url: "https://github.com/sharkdp/fd/releases/download/v10.1.0/fd_{{software_version_fd}}_amd64.deb", "name": "fd", "version": "{{software_version_fd}}" }
       - { url: "https://github.com/BurntSushi/ripgrep/releases/download/{{software_version_ripgrep}}/ripgrep_{{software_version_ripgrep}}-1_amd64.deb", "name": "ripgrep", "version": "{{software_version_ripgrep}}" }
       - { url: "https://github.com/aymanbagabas/shcopy/releases/download/v{{software_version_shcopy}}/shcopy_{{software_version_shcopy}}_linux_amd64.deb", "name": "shcopy", "version": "{{software_version_shcopy}}" }
+      - { url: "https://github.com/humanlogio/humanlog/releases/download/v{{software_version_humanlog}}/humanlog_{{software_version_humanlog}}_linux_amd64.deb", "name": "humanlog", "version": "{{software_version_humanlog}}" }
 
 - name: Download debs
   become: yes
@@ -37,6 +38,21 @@
   with_items: "{{ software_debs }}"
 
 # Done Debs
+
+- name: Create ~/config/humanlog directory
+  become: no
+  file:
+    path: "{{ env_home }}/.config/humanlog"
+    state: directory
+    mode: "0755"
+
+- name: "copy humanlog config"
+  become: yes
+  copy:
+    dest: "{{ env_home }}/.config/humanlog/config.json"
+    content: '{"truncate-length": 1999}'
+    owner: "root"
+    mode: '0755'
 
 - name: install age
   become: yes
