@@ -1,5 +1,5 @@
 return {
-  { 
+  {
     "kosayoda/nvim-lightbulb",
     config = function()
       require("nvim-lightbulb").setup({
@@ -14,18 +14,17 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      local trouble = require("trouble.providers.telescope")
-
-      local telescope = require("telescope")
-
-      telescope.setup {
-        defaults = {
-          mappings = {
-            i = { ["<c-t>"] = trouble.open_with_trouble },
-            n = { ["<c-t>"] = trouble.open_with_trouble },
-          },
-        },
-      }
+--      local telescope = require("telescope")
+--      local actions = require("telescope.actions")
+--
+--      telescope.setup {
+--        defaults = {
+--          mappings = {
+--            i = { ["<CR>"] = actions.select_tab },
+--            n = { ["<CR>"] = actions.select_tab },
+--          },
+--        },
+--      }
 
       vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
       vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
