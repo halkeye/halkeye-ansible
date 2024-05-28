@@ -30,3 +30,6 @@
 
 
 git config --global alias.root 'rev-parse --show-toplevel'
+
+
+https://www.reddit.com/r/neovim/comments/13j14li/use_both_ansible_lsp_and_yaml_lsp/
