@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# From https://bytes.zone/posts/tmux-session/
+set -euo pipefail
+
+## FIXME - update docs
+# find the project root directory by examining each parent starting from the
+# current directory. If you use a different VCS, you can change `$ROOT/.git`
+# below to something else: for example, Mercurial would use `$ROOT/.hg`.
+ROOT="${1:-$(pwd)}"
+
+
+## FIXME - allow disabling git root support by env variable
+if git rev-parse --show-toplevel 2>/dev/null 1>/dev/null; then
+  ROOT=$(git rev-parse --show-toplevel)
+fi
+
+# tmux doesn't allow dots in session names, so we replace them with
+# dashes. This shows up surprisingly often in my life! For example, my dotfiles
+# repo is named `dotfiles.nix`, which gets normalized to `dotfiles-nix`. This
+# is close enough to the actual name that I know what I'm selecting when I
+# switch to it.
+SESSION=$(basename "${ROOT}" | sed 's/\./-/g')
+
+# are we in a tmux client already? If we are, `$TMUX` will be set.
+if test -z "${TMUX:-}"; then
+  # ah, we're not in a client? Create a session and enter it! Some quirk in
+  # my installation make the TMUX_TMPDIR and -u2 necessary when starting
+  # the server; you may not need it.
+  exec env TMUX_TMPDIR=/tmp tmux -u2 new-session -As "$SESSION" -c "$ROOT"
+else
+  # we're already in a client? Neat. Let's make a new session with the
+  # target name in the background...
+  if ! tmux has-session -t "$SESSION" > /dev/null; then
+    tmux new-session -ds "$SESSION" -c "$ROOT"
+  fi
+  # ... and then switch our current client to it!
+  exec tmux switch-client -t "$SESSION"
+fi
