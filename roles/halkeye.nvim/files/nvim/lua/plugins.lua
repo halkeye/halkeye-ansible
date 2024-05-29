@@ -29,7 +29,7 @@ require("lazy").setup({
     config = function()
       require("telescope").setup {
         defaults = {
-          file_ignore_patterns = { ".git/", "vendor/" },
+          file_ignore_patterns = { ".git/", "vendor/", "node_modules/", },
           mappings = {
             i = {
               ["<CR>"] = function(bufnr)
