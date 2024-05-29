@@ -10,6 +10,7 @@ PLAYBOOK := main
 
 .PHONY: pull
 pull: .gitmodules ## get all dependancies
+	git pull
 	git submodule update --init
 
 .PHONY: clean
