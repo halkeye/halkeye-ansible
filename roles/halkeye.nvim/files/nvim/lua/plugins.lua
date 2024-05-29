@@ -3,9 +3,19 @@ require("lazy").setup({
   "nvim-tree/nvim-web-devicons",
   "duane9/nvim-rg",
   "tpope/vim-surround",
-  "tpope/vim-commentary",
+  {
+    "numToStr/Comment.nvim",
+    opts = {
+      opleader = { line = '<C-_>', block = 'gb' },
+    },
+    lazy = false
+  },
   {
     "nvim-telescope/telescope-fzy-native.nvim",
+  },
+  {
+    "prichrd/vwd.nvim",
+    opts={},
   },
   {
     "kelly-lin/telescope-ag",
@@ -254,7 +264,32 @@ require("lazy").setup({
     },
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "go", "gomod", "lua", "bash", "starlark", "rust" },
+        ensure_installed = {
+          "bash",
+          "diff",
+          "dockerfile",
+          "go",
+          "gomod",
+          "graphql",
+          "html",
+          "javascript",
+          "json",
+          "lua",
+          "make",
+          "markdown",
+          "markdown_inline",
+          "python",
+          "query",
+          "regex",
+          "ruby",
+          "rust",
+          "scss",
+          "ssh_config",
+          "tsx",
+          "typescript",
+          "vim",
+          "yaml",
+        },
         highlight = {
           enable = true,
         },
@@ -303,7 +338,7 @@ require("lazy").setup({
               ["]m"] = "@function.outer",
               ["]]"] = { query = "@class.outer", desc = "Next class start" },
               --
-              -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
+              -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queries.
               ["]o"] = "@loop.*",
               -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
               --
@@ -350,6 +385,9 @@ require("lazy").setup({
     "hrsh7th/cmp-path",
   },
   {
+    "hrsh7th/cmp-emoji",
+  },
+  {
     "hrsh7th/cmp-cmdline",
   },
   {
@@ -360,6 +398,13 @@ require("lazy").setup({
   },
   {
     "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+    },
     config = function()
       local cmp = require'cmp'
       cmp.setup {
@@ -374,6 +419,12 @@ require("lazy").setup({
           { name = 'nvim_lsp' },
         }, {
           { name = 'buffer' },
+        }, {
+          { name = 'emoji' },
+        }, {
+          { name = 'path' },
+        }, {
+          { name = 'cmdline' },
         })
       }
     end,
@@ -383,7 +434,7 @@ require("lazy").setup({
     opts = {
       view_options = {
         show_hidden = false,
-        is_hidden_file = function(name, bufnr)
+        is_hidden_file = function(name, _)
           return name == ".."
         end,
       },
