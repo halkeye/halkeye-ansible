@@ -69,66 +69,66 @@ require("lazy").setup({
             hidden = true,
           },
         },
-        keys = {
-          {
-            "<Leader>fr",
-            function()
-              require("telescope.builtin").resume()
-            end,
-            desc = "Resume previous picker",
-          },
-          {
-            "<Leader>fb",
-            function()
-              require("telescope.builtin").buffers()
-            end,
-            desc = "Buffers",
-          },
-          {
-            "<Leader>fh",
-            function()
-              require("telescope.builtin").help_tags()
-            end,
-            desc = "Help tags",
-          },
-          {
-            "<Leader>ff",
-            function()
-              require("telescope").extensions.vwd.find_files({})
-            end,
-            desc = "Files",
-          },
-          {
-            "<Leader>fg",
-            function()
-              require("telescope").extensions.vwd.live_grep({})
-            end,
-            desc = "Grep",
-          },
-          {
-            "<Leader>fq",
-            function()
-              require("telescope.builtin").quickfix()
-            end,
-            desc = "Quickfixes",
-          },
-          {
-            "<Leader>fk",
-            function()
-              require("telescope.builtin").keymaps()
-            end,
-            desc = "Keymaps",
-          },
-          {
-            "<Leader>fs",
-            function()
-              require("telescope.builtin").git_status()
-            end,
-            desc = "Git Status",
-          },
-        },
       }
     end,
+    keys = {
+      {
+        "<Leader>fr",
+        function()
+          require("telescope.builtin").resume()
+        end,
+        desc = "Resume previous picker",
+      },
+      {
+        "<Leader>fb",
+        function()
+          require("telescope.builtin").buffers()
+        end,
+        desc = "Buffers",
+      },
+      {
+        "<Leader>fh",
+        function()
+          require("telescope.builtin").help_tags()
+        end,
+        desc = "Help tags",
+      },
+      {
+        "<Leader>ff",
+        function()
+          require("telescope").extensions.vwd.find_files({})
+        end,
+        desc = "Files",
+      },
+      {
+        "<Leader>fg",
+        function()
+          require("telescope").extensions.vwd.live_grep({})
+        end,
+        desc = "Grep",
+      },
+      {
+        "<Leader>fq",
+        function()
+          require("telescope.builtin").quickfix()
+        end,
+        desc = "Quickfixes",
+      },
+      {
+        "<Leader>fk",
+        function()
+          require("telescope.builtin").keymaps()
+        end,
+        desc = "Keymaps",
+      },
+      {
+        "<Leader>fs",
+        function()
+          require("telescope.builtin").git_status()
+        end,
+        desc = "Git Status",
+      },
+    },
   },
 --  {
 --    "folke/tokyonight.nvim",
