@@ -264,6 +264,8 @@ require("lazy").setup({
       })
     end,
   },
+  -- try and detect ansible
+  { "mfussenegger/nvim-ansible" },
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPre",
