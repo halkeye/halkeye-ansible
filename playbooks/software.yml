@@ -181,7 +181,7 @@
     repo: mike-engel/jwt-cli
     tag: "{{software_version_jwt}}"
     version_command: jwt version
-    asset_regex: jwt.*.tar.gz
+    asset_regex: jwt-linux.tar.gz
     move_rules:
       - src_regex: jwt
         dst: /usr/local/bin/jwt
