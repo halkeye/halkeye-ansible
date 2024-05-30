@@ -151,7 +151,7 @@
         dst: /usr/local/bin/typos
         mode: 0755
 
-- name: install 
+- name: install act
   become: yes
   quera.github.install_from_github:
     repo: nektos/act
@@ -180,9 +180,21 @@
   quera.github.install_from_github:
     repo: mike-engel/jwt-cli
     tag: "{{software_version_jwt}}"
-    version_command: jwt version
+    version_command: jwt --version
     asset_regex: jwt-linux.tar.gz
     move_rules:
       - src_regex: jwt
         dst: /usr/local/bin/jwt
+        mode: 0755
+
+- name: install rover
+  become: yes
+  quera.github.install_from_github:
+    repo: apollographql/rover
+    tag: "v{{software_version_rover}}"
+    version_command: rover --version
+    asset_regex: rover.*-gnu.tar.gz
+    move_rules:
+      - src_regex: dist/rover
+        dst: /usr/local/bin/rover
         mode: 0755
