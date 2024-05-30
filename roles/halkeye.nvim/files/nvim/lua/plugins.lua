@@ -4,6 +4,19 @@ require("lazy").setup({
   "duane9/nvim-rg",
   "tpope/vim-surround",
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
+  {
     "numToStr/Comment.nvim",
     opts = {
       opleader = { line = '<C-_>', block = 'gb' },
