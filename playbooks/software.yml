@@ -174,3 +174,15 @@
       - src_regex: .*
         dst: /usr/local/bin/regctl
         mode: 0755
+
+- name: install jwt
+  become: yes
+  quera.github.install_from_github:
+    repo: mike-engel/jwt-cli
+    tag: "{{software_version_jwt}}"
+    version_command: jwt version
+    asset_regex: jwt.*.tar.gz
+    move_rules:
+      - src_regex: jwt
+        dst: /usr/local/bin/jwt
+        mode: 0755

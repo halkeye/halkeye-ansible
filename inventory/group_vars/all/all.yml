@@ -232,3 +232,4 @@ software_version_iamb: "0.0.9" # repo: ulyssa/iamb
 software_version_act: "0.2.62" # repo: nektos/act
 software_version_regctl: "0.6.1" # repo: regclient/regclient
 software_version_humanlog: "0.7.6" # repo: humanlogio/humanlog
+software_version_jwt: "6.1.0" # repo: mike-engel/jwt-cli
