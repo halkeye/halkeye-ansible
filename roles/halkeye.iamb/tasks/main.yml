@@ -20,7 +20,7 @@
     mode: '0600'
 
 - name: install iamb
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: ulyssa/iamb
     tag: "v{{software_version_iamb}}"

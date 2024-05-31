@@ -3,7 +3,7 @@
   ansible.builtin.include_role:
     name: gikeymarcia.neovim
     apply:
-      become: yes
+      become: true
   vars:
     neovim_version: "{{ software_version_neovim }}"
     treesitter_version: "{{ software_version_treesitter }}"

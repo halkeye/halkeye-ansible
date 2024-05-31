@@ -20,7 +20,7 @@
   when: ohmyposh_already_installed.stat.exists and results.stdout | trim
 
 - name: Download and install oh-my-posh
-  become: yes
+  become: true
   when: ohmyposh_installed_version != ohmyposh_version
   get_url:
     force: true
@@ -36,7 +36,7 @@
     mode: "0755"
 
 - name: Extract oh-my-posh-themes
-  become: yes
+  become: true
   ansible.builtin.unarchive:
     src: "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ ohmyposh_version }}/themes.zip"
     remote_src: true

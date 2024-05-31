@@ -1,6 +1,6 @@
 ---
 - name: install ubuntu packages
-  become: yes
+  become: true
   apt:
     name: telegram-desktop
     state: present

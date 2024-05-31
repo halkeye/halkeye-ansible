@@ -5,7 +5,7 @@
   ansible.builtin.include_role:
     name: gantsign.helm
     apply:
-      become: yes
+      become: true
   vars:
     helm_version: "{{ software_version_helm }}"
 
@@ -25,7 +25,7 @@
       - { url: "https://github.com/humanlogio/humanlog/releases/download/v{{software_version_humanlog}}/humanlog_{{software_version_humanlog}}_linux_amd64.deb", "name": "humanlog", "version": "{{software_version_humanlog}}" }
 
 - name: Download debs
-  become: yes
+  become: true
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: /var/cache/apt/archives/{{ item.name }}-{{ item.version }}.deb
@@ -33,7 +33,7 @@
   with_items: "{{ software_debs }}"
 
 - name: Install package
-  become: yes
+  become: true
   ansible.builtin.apt:
     deb: /var/cache/apt/archives/{{ item.name }}-{{ item.version }}.deb
   with_items: "{{ software_debs }}"
@@ -48,7 +48,7 @@
     mode: "0755"
 
 - name: "copy humanlog config"
-  become: yes
+  become: true
   copy:
     dest: "{{ env_home }}/.config/humanlog/config.json"
     content: '{"truncate-length": 1999}'
@@ -56,7 +56,7 @@
     mode: '0755'
 
 - name: install age
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: FiloSottile/age
     tag: "v{{software_version_age}}"
@@ -68,7 +68,7 @@
         mode: 0755
 
 - name: install fx
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: antonmedv/fx
     tag: "{{software_version_fx}}"
@@ -80,7 +80,7 @@
         mode: 0755
 
 - name: install doctl
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: digitalocean/doctl
     tag: "v{{software_version_doctl}}"
@@ -92,7 +92,7 @@
         mode: 0755
 
 - name: install helmfile
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: helmfile/helmfile
     tag: "v{{software_version_helmfile}}"
@@ -104,7 +104,7 @@
         mode: 0755
 
 - name: install kubectx
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: ahmetb/kubectx
     tag: "v{{software_version_kubectx}}"
@@ -116,7 +116,7 @@
         mode: 0755
 
 - name: install shellcheck
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: koalaman/shellcheck
     tag: "v{{software_version_shellcheck}}"
@@ -128,7 +128,7 @@
         mode: 0755
 
 - name: install hadolint
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: hadolint/hadolint
     tag: "v{{software_version_hadolint}}"
@@ -140,7 +140,7 @@
         mode: 0755
 
 - name: install typos
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: crate-ci/typos
     tag: "v{{software_version_typos}}"
@@ -152,7 +152,7 @@
         mode: 0755
 
 - name: install act
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: nektos/act
     tag: "v{{software_version_act}}"
@@ -164,7 +164,7 @@
         mode: 0755
 
 - name: install regctl
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: regclient/regclient
     tag: "v{{software_version_regctl}}"
@@ -176,7 +176,7 @@
         mode: 0755
 
 - name: install jwt
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: mike-engel/jwt-cli
     tag: "{{software_version_jwt}}"
@@ -188,7 +188,7 @@
         mode: 0755
 
 - name: install rover
-  become: yes
+  become: true
   quera.github.install_from_github:
     repo: apollographql/rover
     tag: "v{{software_version_rover}}"

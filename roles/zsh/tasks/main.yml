@@ -1,6 +1,6 @@
 ---
 - name: install zsh
-  become: yes
+  become: true
   when: ansible_os_family == "Debian"
   apt:
     name:
@@ -8,7 +8,7 @@
     state: present
 
 - name: change user shell to zsh
-  become: yes
+  become: true
   when: "'ldap' not in group_names"
   user:
     name: "{{ env_user }}"

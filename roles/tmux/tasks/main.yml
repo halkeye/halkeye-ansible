@@ -1,6 +1,6 @@
 ---
 - name: install tmux
-  become: yes
+  become: true
   when: ansible_os_family == "Debian"
   apt:
     name:
@@ -15,7 +15,7 @@
     owner: "{{ env_user }}"
 
 - name: "copy tmux-session to bin"
-  become: yes
+  become: true
   copy:
     src: "tmux-session"
     dest: "/usr/local/bin/tmux-session"

@@ -1,5 +1,5 @@
 - name: install ubuntu ppas
-  become: yes
+  become: true
   with_items: "{{ global_ubuntu_ppas }}"
   when: ansible_os_family == "Debian"
   apt_repository:
@@ -7,14 +7,14 @@
     state: present
 
 - name: install ubuntu packages
-  become: yes
+  become: true
   when: ansible_os_family == "Debian"
   apt:
     name: "{{ global_ubuntu_packages }}"
     state: present
 
 - name: install centos packages
-  become: yes
+  become: true
   when: ansible_os_family == "RedHat"
   yum:
     name: "{{ global_centos_packages }}"
@@ -28,7 +28,7 @@
     state: present
 
 - name: setup add-apt-repository
-  become: yes
+  become: true
   when: ansible_os_family == "Debian"
   apt:
     name: software-properties-common
