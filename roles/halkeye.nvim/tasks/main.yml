@@ -1,5 +1,5 @@
 ---
-- name: install latest version of neovim
+- name: Install latest version of neovim
   ansible.builtin.include_role:
     name: gikeymarcia.neovim
     apply:
@@ -10,8 +10,7 @@
 
 # tasks file for halkeye.nvim
 - name: Create config directory
-  become: no
-  file:
+  ansible.builtin.file:
     path: "{{ env_home }}/.config"
     state: directory
     mode: "0755"
@@ -19,7 +18,7 @@
 - name: Copy all the nvim files into nvim onfig directory dir
   ansible.posix.synchronize:
     src: "nvim"
-    dest: "{{ env_home}}/.config"
+    dest: "{{ env_home }}/.config"
     delete: true
     recursive: true
     rsync_opts:

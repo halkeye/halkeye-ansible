@@ -1,2 +1,3 @@
 skip_list:
   - git-latest  # Git checkouts must contain explicit version
+  - role-name # importing roles into roles confuses ansible lint

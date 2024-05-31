@@ -1,8 +1,8 @@
 ---
 - name: Copy all the default asdf files into home dir
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
-    dest: "{{ env_home}}/.{{ item }}"
+    dest: "{{ env_home }}/.{{ item }}"
     owner: "{{ env_user }}"
     mode: '0644'
   with_items:
@@ -10,6 +10,7 @@
     - default-npm-packages
     - default-python-packages
     - default-perl-modules
+
 - name: Configure asdf
   ansible.builtin.include_role:
     name: cimon-io.asdf

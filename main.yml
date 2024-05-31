@@ -7,8 +7,6 @@
     - import_tasks: playbooks/fzf.yml
       tags:
         - fzf
-    - import_tasks: playbooks/windowsdirs.yml
-      when: windows_username is defined
     - import_tasks: playbooks/genuinetools.yml
       tags:
         - genuinetools
@@ -19,15 +17,15 @@
       tags:
         - software
         - vim
-    - import_tasks: playbooks/wsl.yml
-      when: "'wsl' in group_names"
-      tags:
-        - wsl
-        - gnupg
     - import_tasks: playbooks/software.yml
       tags:
         - software
   roles:
+    - role: halkeye.wsl
+      when: "'wsl' in group_names"
+      tags:
+        - wsl
+        - gnupg
     - role: ohmyposh
       ohmyposh_version: "{{ software_version_oh_my_posh }}"
       tags:

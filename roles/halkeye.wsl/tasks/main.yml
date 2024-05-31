@@ -1,0 +1,41 @@
+---
+- name: Install required packages
+  become: true
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    name:
+      - socat
+      - wslu
+    state: present
+
+- name: Remove local xdg-open
+  become: true
+  ansible.builtin.file:
+    state: absent
+    path: /usr/local/bin/xdg-open
+
+- name: Map wslview to xdg-open
+  become: true
+  ansible.builtin.file:
+    state: link
+    src: /usr/bin/wslview
+    dest: /usr/bin/xdg-open
+
+- name: Symlink to windows directories
+  become: false
+  when: windows_username is defined
+  with_items:
+    - Documents
+    - Downloads
+  ansible.builtin.file:
+    src: "/mnt/c/Users/{{ windows_username }}/{{ item }}"
+    dest: "{{ env_home }}/{{ item }}"
+    state: link
+
+- name: Copy wezterm config
+  when: windows_username is defined
+  ansible.builtin.copy:
+    src: "wezterm.lua"
+    dest: "/mnt/c/Users/{{ windows_username }}/.wezterm.lua"
+    owner: "{{ env_user }}"
+    mode: '0644'

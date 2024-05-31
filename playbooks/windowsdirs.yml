@@ -1,9 +1,0 @@
-- name: Symlink to windows directories
-  become: no
-  with_items:
-    - Documents
-    - Downloads
-  file:
-    src: "/mnt/c/Users/{{ windows_username }}/{{ item }}"
-    dest: "{{ env_home }}/{{ item }}"
-    state: link
