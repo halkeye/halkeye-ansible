@@ -1,12 +1,12 @@
 - name: Download config from git
-  become: no
-  git:
+  become: false
+  ansible.builtin.git:
     repo: "git@github.com:halkeye/vim.git"
     dest: "{{ env_home }}/.vim"
 
 - name: Symlink for vim config
-  become: no
-  file:
+  become: false
+  ansible.builtin.file:
     src: "{{ env_home }}/.vim/.vimrc"
     dest: "{{ env_home }}/.vimrc"
     state: link

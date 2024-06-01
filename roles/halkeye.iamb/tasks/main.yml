@@ -1,14 +1,14 @@
 ---
 - name: Create config directory
-  become: no
-  file:
+  become: false
+  ansible.builtin.file:
     path: "{{ env_home }}/.config"
     state: directory
     mode: "0755"
 
 - name: Create config iamb directory
-  become: no
-  file:
+  become: false
+  ansible.builtin.file:
     path: "{{ env_home }}/.config/iamb"
     state: directory
     mode: "0755"
@@ -16,17 +16,17 @@
 - name: Download iamb config
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/ulyssa/iamb/main/config.example.toml
-    dest: "{{env_home}}/.config/iamb/config.toml"
+    dest: "{{ env_home }}/.config/iamb/config.toml"
     mode: '0600'
 
-- name: install iamb
+- name: Install iamb
   become: true
   quera.github.install_from_github:
     repo: ulyssa/iamb
-    tag: "v{{software_version_iamb}}"
+    tag: "v{{ software_version_iamb }}"
     version_command: iamb --version
     asset_regex: iamb.*
     move_rules:
       - src_regex: iamb.*/iamb$
         dst: /usr/local/bin/iamb
-        mode: 0755
+        mode: "0755"

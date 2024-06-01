@@ -1,22 +1,22 @@
 ---
-- name: install tmux
+- name: Install tmux
   become: true
   when: ansible_os_family == "Debian"
-  apt:
+  ansible.builtin.apt:
     name:
       - tmux
     state: present
 
-- name: "Install tmux.conf"
-  template:
+- name: Install tmux.conf
+  ansible.builtin.template:
     src: templates/tmux.conf.j2
     dest: "{{ env_home }}/.tmux.conf"
-    mode: 0644
+    mode: "0644"
     owner: "{{ env_user }}"
 
-- name: "copy tmux-session to bin"
+- name: Copy tmux-session to bin
   become: true
-  copy:
+  ansible.builtin.copy:
     src: "tmux-session"
     dest: "/usr/local/bin/tmux-session"
     owner: "root"

@@ -5,8 +5,8 @@
     apply:
       become: true
   vars:
-    neovim_version: "{{ software_version_neovim }}"
-    treesitter_version: "{{ software_version_treesitter }}"
+    neovim_version: "{{ neovim_neovim_version }}" # noqa var-naming[no-role-prefix]
+    treesitter_version: "{{ neovim_treesitter_version }}"
 
 # tasks file for halkeye.nvim
 - name: Create config directory

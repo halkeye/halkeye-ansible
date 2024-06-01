@@ -1,2 +1,3 @@
 ---
-# defaults file for halkeye.nvim
+neovim_neovim_version: "0.10.0"
+neovim_treesitter_version: "0.22.6"

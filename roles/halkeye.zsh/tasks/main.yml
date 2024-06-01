@@ -1,22 +1,22 @@
 ---
-- name: install zsh
+- name: Install zsh
   become: true
   when: ansible_os_family == "Debian"
-  apt:
+  ansible.builtin.apt:
     name:
       - zsh
     state: present
 
-- name: change user shell to zsh
+- name: Change user shell to zsh
   become: true
   when: "'ldap' not in group_names"
-  user:
+  ansible.builtin.user:
     name: "{{ env_user }}"
     shell: /bin/zsh
 
 - name: Create .zsh directory
-  become: no
-  file:
+  become: false
+  ansible.builtin.file:
     path: "{{ env_home }}/.zsh"
     state: directory
     mode: "0755"
@@ -30,8 +30,8 @@
     - gpg-agent
     - ssh-agent
 
-- name: install .zshrc
-  template:
+- name: Install .zshrc
+  ansible.builtin.template:
     src: templates/zshrc.j2
     dest: "{{ env_home }}/.zshrc"
     owner: "{{ env_user }}"

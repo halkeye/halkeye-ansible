@@ -1,6 +1,6 @@
 ---
   - name: create directories
-    file:
+    ansible.builtin.file:
       path: "{{ item }}"
       state: directory
       owner: "{{ env_user }}"

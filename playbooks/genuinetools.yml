@@ -1,12 +1,12 @@
 ---
 - name: Setup architecture variable (if not already set)
-  set_fact:
+  ansible.builtin.set_fact:
     genuinetools_arch: "amd64"
   when: (genuinetools_arch is not defined) and (ansible_architecture == "x86_64")
 
 - name: Download and install udict
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/genuinetools/udict/releases/download/v0.5.4/udict-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/udict
     mode: '0755'
@@ -14,28 +14,28 @@
 - name: Download and install img
   when: ansible_os_family != "Darwin"
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/genuinetools/img/releases/download/v0.5.7/img-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/img
     mode: '0755'
 
 - name: Download and install reg
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/genuinetools/reg/releases/download/v0.16.1/reg-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/reg
     mode: '0755'
 
 - name: Download and install weather
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/genuinetools/weather/releases/download/v0.15.7/weather-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/weather
     mode: '0755'
 
 - name: Download and install pepper
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/genuinetools/pepper/releases/download/v0.6.4/pepper-{{ ansible_system | lower }}-{{ genuinetools_arch }}"
     dest: /usr/local/bin/pepper
     mode: '0755'

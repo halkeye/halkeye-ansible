@@ -1,35 +1,35 @@
-- name: install ubuntu ppas
+- name: Install ubuntu ppas
   become: true
   with_items: "{{ global_ubuntu_ppas }}"
   when: ansible_os_family == "Debian"
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ item }}"
     state: present
 
-- name: install ubuntu packages
+- name: Install ubuntu packages
   become: true
   when: ansible_os_family == "Debian"
-  apt:
+  ansible.builtin.apt:
     name: "{{ global_ubuntu_packages }}"
     state: present
 
-- name: install centos packages
+- name: Install centos packages
   become: true
   when: ansible_os_family == "RedHat"
-  yum:
+  ansible.builtin.yum:
     name: "{{ global_centos_packages }}"
     state: present
 
-- name: install darwin packages
+- name: Install darwin packages
   become: no
   when: ansible_os_family == "Darwin"
-  homebrew:
+  ansible.builtin.homebrew:
     name: "{{ global_darwin_packages }}"
     state: present
 
-- name: setup add-apt-repository
+- name: Setup add-apt-repository
   become: true
   when: ansible_os_family == "Debian"
-  apt:
+  ansible.builtin.apt:
     name: software-properties-common
     state: present

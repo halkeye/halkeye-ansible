@@ -1,12 +1,12 @@
 ---
 - name: Create .ssh directory
-  file:
+  ansible.builtin.file:
     path: "{{ home }}/.ssh"
     state: directory
     mode: "0755"
 
-- name: create ssh config
-  copy:
+- name: Create ssh config
+  ansible.builtin.copy:
     dest: "{{ home }}/.ssh/config"
     owner: "{{ owner }}"
     mode: "0700"

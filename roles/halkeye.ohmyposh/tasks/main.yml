@@ -1,36 +1,37 @@
 ---
 - name: Setup architecture variable (if not already set)
-  set_fact:
+  ansible.builtin.set_fact:
     ohmyposh_arch: "amd64"
   when: (ohmyposh_arch is not defined) and (ansible_architecture == "x86_64")
 
-- name: "Check if oh-my-posh is already installed"
-  stat:
+- name: Check if oh-my-posh is already installed
+  ansible.builtin.stat:
     path: /usr/local/bin/oh-my-posh
   register: ohmyposh_already_installed
 
-- name: "Fetch installed oh-my-posh version"
+- name: Fetch installed oh-my-posh version
   ansible.builtin.command: "/usr/local/bin/oh-my-posh --version"
   register: results
   when: ohmyposh_already_installed.stat.exists
+  changed_when: results.rc != 0
 
-- name: "Process oh-my-posh version"
-  set_fact:
+- name: Process oh-my-posh version
+  ansible.builtin.set_fact:
     ohmyposh_installed_version: "{{ results.stdout | trim }}"
   when: ohmyposh_already_installed.stat.exists and results.stdout | trim
 
 - name: Download and install oh-my-posh
   become: true
   when: ohmyposh_installed_version != ohmyposh_version
-  get_url:
+  ansible.builtin.get_url:
     force: true
     url: "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ ohmyposh_version }}/posh-{{ ansible_system | lower }}-{{ ohmyposh_arch }}"
     dest: /usr/local/bin/oh-my-posh
     mode: '0755'
 
 - name: Create oh-my-post theme directory
-  become: no
-  file:
+  become: false
+  ansible.builtin.file:
     path: "{{ ohmyposh_theme_directory }}"
     state: directory
     mode: "0755"
@@ -44,13 +45,13 @@
     mode: "0755"
 
 - name: Find files
-  find:
+  ansible.builtin.find:
     paths: "{{ ohmyposh_theme_directory }}"
     patterns: "*.omp.*"
   register: omp_files
 
 - name: Modify the file permissions
-  file:
+  ansible.builtin.file:
     path: "{{ item.path }}"
     mode: "0755"
   with_items: "{{ omp_files.files }}"

@@ -1,20 +1,20 @@
 ---
 - become: true
   when: ansible_os_family == "Debian"
-  apt:
+  ansible.builtin.apt:
     name:
       - fzf
     state: absent
 
 - name: Download fzf from git
-  become: no
-  git:
+  become: false
+  ansible.builtin.git:
     repo: "https://github.com/junegunn/fzf.git"
     dest: "{{ env_home }}/.fzf"
     version: "{{ software_version_fzf }}"
 
 - name: "Check if fzf is already installed"
-  stat:
+  ansible.builtin.stat:
     path: "{{ env_home }}/.fzf/bin/fzf"
   register: fzf_already_installed
 
@@ -24,7 +24,7 @@
   when: fzf_already_installed.stat.exists
 
 - name: "Process fzf version"
-  set_fact:
+  ansible.builtin.set_fact:
     fzf_installed_version: "{{ results.stdout | trim | regex_replace('([a-z0-9A-Z._-]+).*','\\1') }}"
   when: fzf_already_installed.stat.exists and (results.stdout | trim)
 

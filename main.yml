@@ -26,7 +26,7 @@
       tags:
         - wsl
         - gnupg
-    - role: ohmyposh
+    - role: halkeye.ohmyposh
       ohmyposh_version: "{{ software_version_oh_my_posh }}"
       tags:
         - ohmyposh
@@ -35,6 +35,8 @@
       tags:
         - asdf
     - role: halkeye.nvim
+      neovim_neovim_version: "{{ software_version_neovim }}"
+      neovim_treesitter_version: "{{ software_version_treesitter }}"
       tags:
         - vim
         - software
@@ -42,7 +44,7 @@
       tags:
         - iamb
         - software
-    - role: zsh
+    - role: halkeye.zsh
       tags:
         - zsh
         - shell
@@ -56,7 +58,7 @@
       when: ansible_os_family != "Darwin"
       tags:
         - git
-    - role: tmux
+    - role: halkeye.tmux
       tags:
         - tmux
         - software
