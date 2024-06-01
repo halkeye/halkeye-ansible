@@ -182,7 +182,7 @@ docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
 go_version: "1.22.3"
 
-git_version: "2.45.1" # repo: git/git
+git_version: "2.45.2" # repo: git/git
 git_install_from_source: true
 git_install_from_source_force_update: true
 
@@ -229,7 +229,7 @@ software_version_typos: "1.21.0" # repo: crate-ci/typos
 software_version_fd: "10.1.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.3" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.9" # repo: ulyssa/iamb
-software_version_act: "0.2.62" # repo: nektos/act
+software_version_act: "0.2.63" # repo: nektos/act
 software_version_regctl: "0.6.1" # repo: regclient/regclient
 software_version_humanlog: "0.7.6" # repo: humanlogio/humanlog
 software_version_jwt: "6.1.0" # repo: mike-engel/jwt-cli
