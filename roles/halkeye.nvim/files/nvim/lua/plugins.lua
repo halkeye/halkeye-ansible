@@ -81,6 +81,30 @@ require("lazy").setup({
   "MunifTanjim/nui.nvim",
   "rcarriga/nvim-notify",
   {
+    'stevearc/conform.nvim',
+    opts = {},
+  },
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      local lint = require("lint")
+      lint.linters_by_ft = {
+        javascript = {
+          "eslint_d"
+        },
+        typescript = {
+          "eslint_d"
+        },
+        javascriptreact = {
+          "eslint_d"
+        },
+        typescriptreact = {
+          "eslint_d"
+        }
+      }
+    end,
+  },
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -306,8 +330,12 @@ require("lazy").setup({
     },
   },
   {
+    "folke/neoconf.nvim",
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "folke/neoconf.nvim",
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/nvim-cmp",

@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook
 #
 # sops
-- name: install latest version of helm
+- name: Install latest version of helm
   ansible.builtin.include_role:
     name: gantsign.helm
     apply:
@@ -55,7 +55,7 @@
     owner: "root"
     mode: '0755'
 
-- name: install age
+- name: Install age
   become: true
   quera.github.install_from_github:
     repo: FiloSottile/age
@@ -67,7 +67,7 @@
         dst: /usr/local/bin/age
         mode: 0755
 
-- name: install fx
+- name: Install fx
   become: true
   quera.github.install_from_github:
     repo: antonmedv/fx
@@ -79,7 +79,7 @@
         dst: /usr/local/bin/fx
         mode: 0755
 
-- name: install doctl
+- name: Install doctl
   become: true
   quera.github.install_from_github:
     repo: digitalocean/doctl
@@ -91,7 +91,7 @@
         dst: /usr/local/bin/doctl
         mode: 0755
 
-- name: install helmfile
+- name: Install helmfile
   become: true
   quera.github.install_from_github:
     repo: helmfile/helmfile
@@ -103,7 +103,7 @@
         dst: /usr/local/bin/helmfile
         mode: 0755
 
-- name: install kubectx
+- name: Install kubectx
   become: true
   quera.github.install_from_github:
     repo: ahmetb/kubectx
@@ -115,7 +115,7 @@
         dst: /usr/local/bin/kubectx
         mode: 0755
 
-- name: install shellcheck
+- name: Install shellcheck
   become: true
   quera.github.install_from_github:
     repo: koalaman/shellcheck
@@ -127,7 +127,7 @@
         dst: /usr/local/bin/shellcheck
         mode: 0755
 
-- name: install hadolint
+- name: Install hadolint
   become: true
   quera.github.install_from_github:
     repo: hadolint/hadolint
@@ -139,7 +139,7 @@
         dst: /usr/local/bin/hadolint
         mode: 0755
 
-- name: install typos
+- name: Install typos
   become: true
   quera.github.install_from_github:
     repo: crate-ci/typos
@@ -151,7 +151,7 @@
         dst: /usr/local/bin/typos
         mode: 0755
 
-- name: install act
+- name: Install act
   become: true
   quera.github.install_from_github:
     repo: nektos/act
@@ -163,7 +163,7 @@
         dst: /usr/local/bin/act
         mode: 0755
 
-- name: install regctl
+- name: Install regctl
   become: true
   quera.github.install_from_github:
     repo: regclient/regclient
@@ -175,7 +175,7 @@
         dst: /usr/local/bin/regctl
         mode: 0755
 
-- name: install jwt
+- name: Install jwt
   become: true
   quera.github.install_from_github:
     repo: mike-engel/jwt-cli
@@ -187,7 +187,7 @@
         dst: /usr/local/bin/jwt
         mode: 0755
 
-- name: install rover
+- name: Install rover
   become: true
   quera.github.install_from_github:
     repo: apollographql/rover
