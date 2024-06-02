@@ -95,7 +95,7 @@ if [ -e "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; the
 if [ -e "${KREW_ROOT:-$HOME/.krew}" ]; then export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"; fi
 if [ -e "$HOME/.dotnet/tools" ]; then export PATH="$PATH:$HOME/.dotnet/tools"; fi
 
-eval "$(/usr/local/bin/oh-my-posh init zsh --config ~/.poshthemes/gmay.omp.json)"
+eval "$(POSH_INSTALLER=ws /usr/local/bin/oh-my-posh init zsh --config ~/.poshthemes/gmay.omp.json)"
 
 ### START 'bash' completion
 autoload -U +X compinit && compinit
