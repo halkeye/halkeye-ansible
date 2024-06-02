@@ -235,3 +235,4 @@ software_version_regctl: "0.6.1" # repo: regclient/regclient
 software_version_humanlog: "0.7.6" # repo: humanlogio/humanlog
 software_version_jwt: "6.1.0" # repo: mike-engel/jwt-cli
 software_version_rover: "0.23.0" # repo: apollographql/rover
+software_version_ssh_to_age: "1.1.7" # repo: Mic92/ssh-to-age

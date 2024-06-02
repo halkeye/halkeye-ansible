@@ -76,3 +76,8 @@
       owner: "{{ env_user }}"
       tags:
         - ssh
+    - role: halkeye.ssh-to-age
+      ssh_to_age_version: "{{ software_version_ssh_to_age }}"
+      tags:
+        - software
+        - gavin

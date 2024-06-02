@@ -1,0 +1,13 @@
+---
+- name: Install ssh-to-age
+  become: true
+  ansible.builtin.command:
+    cmd: env GOBIN=/usr/local/ssh-to-age/{{ ssh_to_age_version }} /usr/local/go/bin/go install github.com/Mic92/ssh-to-age/cmd/ssh-to-age@{{ ssh_to_age_version }}
+    creates: /usr/local/ssh-to-age/{{ ssh_to_age_version }}/ssh-to-age
+
+- name: Map right version of ssh-to-age to bin
+  become: true
+  ansible.builtin.file:
+    state: link
+    src: /usr/local/ssh-to-age/{{ ssh_to_age_version }}/ssh-to-age
+    dest: /usr/local/bin/ssh-to-age
