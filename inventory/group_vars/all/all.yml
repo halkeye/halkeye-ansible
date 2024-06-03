@@ -223,9 +223,9 @@ software_version_gh: "2.50.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "21.1.0" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "21.2.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.21.0" # repo: crate-ci/typos
+software_version_typos: "1.22.0" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.1.0" # repo: sharkdp/fd
