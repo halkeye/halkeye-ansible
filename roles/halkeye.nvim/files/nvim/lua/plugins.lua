@@ -247,7 +247,7 @@ require("lazy").setup({
       {
         "<Leader>fg",
         function()
-          require("telescope").extensions.vwd.live_grep({})
+          require("telescope").extensions.vwd.live_grep({ default_text=vim.fn.expand("<cword>") })
         end,
         desc = "Grep",
       },
