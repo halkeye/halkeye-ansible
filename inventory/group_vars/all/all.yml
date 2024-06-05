@@ -181,7 +181,7 @@ env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
 docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
-go_version: "1.22.3"
+go_version: "1.22.4"
 
 git_version: "2.45.2" # repo: git/git
 git_install_from_source: true
@@ -223,7 +223,7 @@ software_version_gh: "2.50.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "21.2.0" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "21.2.1" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.22.0" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
