@@ -35,6 +35,34 @@ require("lazy").setup({
       wk.register(opts.defaults)
     end,
   },
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/neotest-jest',
+      'nvim-neotest/nvim-nio',
+    },
+    config = function()
+      require('neotest').setup({
+        adapters = {
+          require('neotest-jest')({
+            jestCommand = "npx jest --",
+            jestConfigFile = "custom.jest.config.ts",
+            env = { CI = true },
+            cwd = function(_)
+              -- return vim.fn.getcwd()
+              return require('vwd').get_vwd()
+            end,
+          }),
+        }
+      })
+    end,
+  },
+  {
+    "mxsdev/nvim-dap-vscode-js",
+    dependencies = {
+      "mfussenegger/nvim-dap"
+    },
+  },
   "MunifTanjim/nui.nvim",
   "rcarriga/nvim-notify",
   {
