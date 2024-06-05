@@ -4,49 +4,6 @@ require("lazy").setup({
   "duane9/nvim-rg",
   "tpope/vim-surround",
   {
-    "nvimdev/dashboard-nvim",
-    lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
-    opts = function()
-      local opts = {
-        theme = "doom",
-        hide = {
-          -- this is taken care of by lualine
-          -- enabling this messes up the actual laststatus setting after loading a file
-          statusline = false,
-        },
-        config = {
-          -- stylua: ignore
-          center = {
-            { action = 'lua require("telescope").extensions.vwd.find_files({})',   desc = " Find File",       icon = " ", key = "f" },
-            { action = "ene | startinsert",                                        desc = " New File",        icon = " ", key = "n" },
-            { action = "Telescope oldfiles",                                       desc = " Recent Files",    icon = " ", key = "r" },
-            { action = "Telescope live_grep",                                      desc = " Find Text",       icon = " ", key = "g" },
-            { action = 'lua require("persistence").load()',                        desc = " Restore Session", icon = " ", key = "s" },
-            { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
-          },
-        },
-      }
-
-      for _, button in ipairs(opts.config.center) do
-        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
-        button.key_format = "  %s"
-      end
-
-      -- close Lazy and re-open when the dashboard is ready
-      if vim.o.filetype == "lazy" then
-        vim.cmd.close()
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "DashboardLoaded",
-          callback = function()
-            require("lazy").show()
-          end,
-        })
-      end
-
-      return opts
-    end,
-  },
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
