@@ -156,23 +156,23 @@ require("lazy").setup({
         },
       },
       presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
+        bottom_search = true,         -- use a classic bottom cmdline for search
+        command_palette = false,      -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
+        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false,       -- add a border to hover docs and signature help
       },
     },
     -- stylua: ignore
     keys = {
-      { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-      { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-      { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
-      { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-      { "<leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-      { "<leader>snt", function() require("noice").cmd("telescope") end, desc = "Noice Telescope" },
-      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll Forward", mode = {"i", "n", "s"} },
-      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
+      { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 mode = "c",                 desc = "Redirect Cmdline" },
+      { "<leader>snl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },
+      { "<leader>snh", function() require("noice").cmd("history") end,                                desc = "Noice History" },
+      { "<leader>sna", function() require("noice").cmd("all") end,                                    desc = "Noice All" },
+      { "<leader>snd", function() require("noice").cmd("dismiss") end,                                desc = "Dismiss All" },
+      { "<leader>snt", function() require("noice").cmd("telescope") end,                              desc = "Noice Telescope" },
+      { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,              expr = true,              desc = "Scroll Forward",  mode = { "i", "n", "s" } },
+      { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true,              expr = true,              desc = "Scroll Backward", mode = { "i", "n", "s" } },
     },
   },
   {
@@ -187,7 +187,7 @@ require("lazy").setup({
   },
   {
     "prichrd/vwd.nvim",
-    opts={},
+    opts = {},
   },
   {
     "kelly-lin/telescope-ag",
@@ -269,7 +269,7 @@ require("lazy").setup({
       {
         "<Leader>fg",
         function()
-          require("telescope").extensions.vwd.live_grep({ default_text=vim.fn.expand("<cword>") })
+          require("telescope").extensions.vwd.live_grep({ default_text = vim.fn.expand("<cword>") })
         end,
         desc = "Grep",
       },
@@ -296,15 +296,15 @@ require("lazy").setup({
       },
     },
   },
---  {
---    "folke/tokyonight.nvim",
---    lazy = false,
---    priority = 1000,
---    opts = { style = "night" },
---    init = function()
---      vim.cmd.colorscheme("tokyonight")
---    end,
---  },
+  --  {
+  --    "folke/tokyonight.nvim",
+  --    lazy = false,
+  --    priority = 1000,
+  --    opts = { style = "night" },
+  --    init = function()
+  --      vim.cmd.colorscheme("tokyonight")
+  --    end,
+  --  },
   {
     "NLKNguyen/papercolor-theme",
     lazy = false,
@@ -313,7 +313,6 @@ require("lazy").setup({
       vim.cmd.colorscheme("PaperColor")
     end,
   },
-  "github/copilot.vim",
   {
     "kosayoda/nvim-lightbulb",
     config = function()
@@ -566,27 +565,6 @@ require("lazy").setup({
     end,
   },
   {
-    "hrsh7th/cmp-nvim-lsp",
-  },
-  {
-    "hrsh7th/cmp-buffer",
-  },
-  {
-    "hrsh7th/cmp-path",
-  },
-  {
-    "hrsh7th/cmp-emoji",
-  },
-  {
-    "hrsh7th/cmp-cmdline",
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  },
-  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-emoji",
@@ -596,7 +574,7 @@ require("lazy").setup({
       "hrsh7th/cmp-cmdline",
     },
     config = function()
-      local cmp = require'cmp'
+      local cmp = require 'cmp'
       cmp.setup {
         mapping = cmp.mapping.preset.insert({
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
