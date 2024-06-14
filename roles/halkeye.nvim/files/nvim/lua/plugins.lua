@@ -3,66 +3,6 @@ require("lazy").setup({
   "nvim-tree/nvim-web-devicons",
   "duane9/nvim-rg",
   "tpope/vim-surround",
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-      plugins = { spelling = true },
-      defaults = {
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["gs"] = { name = "+surround" },
-        ["z"] = { name = "+fold" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader><tab>"] = { name = "+tabs" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>f"] = { name = "+file/find" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>gh"] = { name = "+hunks" },
-        ["<leader>q"] = { name = "+quit/session" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>sn"] = { name = "+noice" },
-        ["<leader>u"] = { name = "+ui" },
-        ["<leader>w"] = { name = "+windows" },
-        ["<leader>x"] = { name = "+diagnostics/quickfix" },
-      },
-    },
-    config = function(_, opts)
-      local wk = require("which-key")
-      wk.setup(opts)
-      wk.register(opts.defaults)
-    end,
-  },
-  {
-    'nvim-neotest/neotest',
-    dependencies = {
-      'nvim-neotest/neotest-jest',
-      'nvim-neotest/nvim-nio',
-    },
-    config = function()
-      require('neotest').setup({
-        adapters = {
-          require('neotest-jest')({
-            jestCommand = "npx jest --",
-            jestConfigFile = "custom.jest.config.ts",
-            env = { CI = true },
-            cwd = function(_)
-              -- return vim.fn.getcwd()
-              return require('vwd').get_vwd()
-            end,
-          }),
-        }
-      })
-    end,
-  },
-  {
-    "mxsdev/nvim-dap-vscode-js",
-    dependencies = {
-      "mfussenegger/nvim-dap"
-    },
-  },
   "MunifTanjim/nui.nvim",
   "rcarriga/nvim-notify",
   {
@@ -88,6 +28,9 @@ require("lazy").setup({
         go = { "gofmt", "goimports-reviser", "golines" },
         -- Use a sub-list to run only the first available formatter
         javascript = { { "prettierd", "prettier", "eslint_d", "eslint" }, },
+        javascriptreact = { { "prettierd", "prettier", "eslint_d", "eslint" }, },
+        typescript = { { "prettierd", "prettier", "eslint_d", "eslint" }, },
+        typescriptreact = { { "prettierd", "prettier", "eslint_d", "eslint" }, },
       },
       -- Set up format-on-save
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
@@ -183,24 +126,21 @@ require("lazy").setup({
     lazy = false
   },
   {
-    "nvim-telescope/telescope-fzy-native.nvim",
-  },
-  {
     "prichrd/vwd.nvim",
     opts = {},
   },
   {
-    "kelly-lin/telescope-ag",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-  },
-  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
+      "kelly-lin/telescope-ag",
       "nvim-telescope/telescope-fzy-native.nvim",
     },
     config = function()
       require("telescope").setup {
         defaults = {
+          layout_config = {
+            vertical = { width = 0.5 }
+          },
           file_ignore_patterns = { ".git/", "vendor/", "node_modules/", },
           mappings = {
             i = {
@@ -246,16 +186,27 @@ require("lazy").setup({
         desc = "Buffers",
       },
       {
-        "<Leader>fh",
+        "<Leader>la",
         function()
-          require("telescope.builtin").help_tags()
+          require('telescope.builtin').lsp_references({
+            preview_title = 'LSP References Preview',
+            jump_type = 'split',
+            fname_width = 50,
+          })
         end,
-        desc = "Help tags",
+        desc = "LSP References Preview",
+      },
+      {
+        "<Leader>ba",
+        function()
+          require("telescope.builtin").buffers()
+        end,
+        desc = "Buffers",
       },
       {
         "<c-P>",
         function()
-          require("telescope").extensions.vwd.find_files({})
+          require("telescope").extensions.vwd.find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))
         end,
         desc = "Files",
       },
@@ -296,23 +247,24 @@ require("lazy").setup({
       },
     },
   },
-  --  {
-  --    "folke/tokyonight.nvim",
-  --    lazy = false,
-  --    priority = 1000,
-  --    opts = { style = "night" },
-  --    init = function()
-  --      vim.cmd.colorscheme("tokyonight")
-  --    end,
-  --  },
   {
-    "NLKNguyen/papercolor-theme",
+    "folke/tokyonight.nvim",
     lazy = false,
+    priority = 1000,
+    opts = { style = "night" },
     init = function()
       vim.opt.background = "dark"
-      vim.cmd.colorscheme("PaperColor")
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
+  -- {
+  --   "NLKNguyen/papercolor-theme",
+  --   lazy = false,
+  --   init = function()
+  --     vim.opt.background = "dark"
+  --     vim.cmd.colorscheme("PaperColor")
+  --   end,
+  -- },
   {
     "kosayoda/nvim-lightbulb",
     config = function()
@@ -327,14 +279,38 @@ require("lazy").setup({
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
-      vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
-      vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-      vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-      vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-      vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
-    end,
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
   },
   { "nvimtools/none-ls.nvim" },
   {
@@ -478,6 +454,9 @@ require("lazy").setup({
           "typescript",
           "vim",
           "yaml",
+        },
+        indent = {
+          enable = true
         },
         highlight = {
           enable = true,
@@ -661,5 +640,15 @@ require("lazy").setup({
         desc = "Next harpoon",
       },
     },
+  },
+  {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+      require('lspsaga').setup({})
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter', -- optional
+      'nvim-tree/nvim-web-devicons',     -- optional
+    }
   },
 })
