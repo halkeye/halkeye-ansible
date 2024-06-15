@@ -69,7 +69,7 @@ global_git_config:
     value: "vimdiff"
   - name: mergetool.vimdiff.cmd
     scope: global
-    value: 'vim -d $LOCAL $REMOTE $MERGED'
+    value: 'nvim -d $LOCAL $REMOTE $MERGED'
   - name: diff.sopsdiffer.textconv
     scope: global
     value: 'sops -d'
