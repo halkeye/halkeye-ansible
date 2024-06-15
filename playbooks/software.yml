@@ -230,3 +230,14 @@
       - src_regex: ^actionlint$
         dst: /usr/local/bin/actionlint
         mode: 0755
+
+- name: Install bump
+  become: true
+  quera.github.install_from_github:
+    repo: guilhem/bump
+    tag: "v{{software_version_bump}}"
+    asset_regex: bump.*
+    move_rules:
+      - src_regex: ^bump$
+        dst: /usr/local/bin/bump
+        mode: 0755
