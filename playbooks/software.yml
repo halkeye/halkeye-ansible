@@ -218,3 +218,15 @@
       - src_regex: dist/rover
         dst: /usr/local/bin/rover
         mode: 0755
+
+- name: Install actionlint
+  become: true
+  quera.github.install_from_github:
+    repo: rhysd/actionlint
+    tag: "v{{software_version_actionlint}}"
+    version_command: actionlint --version
+    asset_regex: actionlint.*
+    move_rules:
+      - src_regex: ^actionlint$
+        dst: /usr/local/bin/actionlint
+        mode: 0755
