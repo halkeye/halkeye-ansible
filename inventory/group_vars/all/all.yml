@@ -79,6 +79,9 @@ global_git_config:
   - name: alias.root
     scope: global
     value: rev-parse --show-toplevel
+  - name: init.defaultBranch
+    scope: global
+    value: main
 
 git_ignore:
   - "*~"
