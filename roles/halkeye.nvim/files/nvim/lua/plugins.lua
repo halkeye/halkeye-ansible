@@ -341,6 +341,7 @@ require("lazy").setup({
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/nvim-cmp",
+      "towolf/vim-helm",
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -385,6 +386,7 @@ require("lazy").setup({
           "yamlls",
         },
       }
+
       mason_lspconfig.setup_handlers({
         function(server_name)
           lspconfig[server_name].setup({
@@ -412,6 +414,16 @@ require("lazy").setup({
           })
         end,
       })
+
+      lspconfig.helm_ls.setup {
+        settings = {
+          ['helm-ls'] = {
+            yamlls = {
+              path = "yaml-language-server",
+            }
+          }
+        }
+      }
     end,
   },
   -- try and detect ansible
