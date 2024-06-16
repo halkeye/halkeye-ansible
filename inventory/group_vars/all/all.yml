@@ -242,3 +242,4 @@ software_version_rover: "0.23.0" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.7" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.1" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
+software_version_stern: "1.30.0" # repo: stern/stern

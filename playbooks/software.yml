@@ -241,3 +241,15 @@
       - src_regex: ^bump$
         dst: /usr/local/bin/bump
         mode: 0755
+
+- name: Install stern
+  become: true
+  quera.github.install_from_github:
+    repo: stern/stern
+    tag: "v{{software_version_stern}}"
+    version_command: stern --version
+    asset_regex: stern.*
+    move_rules:
+      - src_regex: ^stern$
+        dst: /usr/local/bin/stern
+        mode: 0755
