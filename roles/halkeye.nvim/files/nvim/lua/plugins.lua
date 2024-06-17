@@ -279,6 +279,22 @@ require("lazy").setup({
     },
   },
   {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      require('mason-tool-installer').setup {
+        ensure_installed = {
+          'goimports-reviser',
+          'golines',
+          'prettierd',
+          'eslint_d',
+        }
+      }
+    end,
+  },
+  {
     "folke/neoconf.nvim",
   },
   {
