@@ -182,6 +182,13 @@ require("lazy").setup({
         desc = "Buffers",
       },
       {
+        "<Leader>be",
+        function()
+          require("telescope.builtin").buffers()
+        end,
+        desc = "Buffers",
+      },
+      {
         "<Leader>la",
         function()
           require('telescope.builtin').lsp_references({
