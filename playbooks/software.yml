@@ -81,7 +81,7 @@
     repo: FiloSottile/age
     tag: "v{{software_version_age}}"
     version_command: age --version
-    asset_regex: "age-.*"
+    asset_regex: "age-.*\\.(gz|zip)$"
     move_rules:
       - src_regex: age-.*
         dst: /usr/local/bin/age
