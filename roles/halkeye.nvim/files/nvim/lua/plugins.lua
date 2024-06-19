@@ -64,6 +64,8 @@ require("lazy").setup({
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
+        ruby = { "rubocop" },
+        eruby = { "erb-lint" },
         python = { "isort", "black" },
         go = { "gofmt", "goimports-reviser", "golines" },
         -- Use a sub-list to run only the first available formatter
@@ -94,6 +96,9 @@ require("lazy").setup({
     config = function()
       local lint = require("lint")
       lint.linters_by_ft = {
+        ruby = {
+          "rubocop"
+        },
         javascript = {
           "eslint_d"
         },
@@ -290,6 +295,7 @@ require("lazy").setup({
           'golines',
           'prettierd',
           'eslint_d',
+          'erb-lint',
         }
       }
     end,
