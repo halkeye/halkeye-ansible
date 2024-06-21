@@ -67,10 +67,10 @@ require("lazy").setup({
         python = { "isort", "black" },
         go = { "gofmt", "goimports-reviser", "golines" },
         -- Use a sub-list to run only the first available formatter
-        javascript = { { "prettierd", "prettier", "eslint_d", "eslint" }, },
-        javascriptreact = { { "prettierd", "prettier", "eslint_d", "eslint" }, },
-        typescript = { { "prettierd", "prettier", "eslint_d", "eslint" }, },
-        typescriptreact = { { "prettierd", "prettier", "eslint_d", "eslint" }, },
+        javascript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" }, },
+        javascriptreact = { { "prettierd", "prettier" }, { "eslint_d", "eslint" }, },
+        typescript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" }, },
+        typescriptreact = { { "prettierd", "prettier" }, { "eslint_d", "eslint" }, },
       },
       -- Set up format-on-save
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
@@ -349,7 +349,6 @@ require("lazy").setup({
           "sqlls",
           "sqls",
           "tailwindcss",
-          "tsserver",
           "typos_lsp",
           "yamlls",
         },
