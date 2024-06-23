@@ -23,7 +23,8 @@
       - { url: "https://github.com/BurntSushi/ripgrep/releases/download/{{ software_version_ripgrep }}/ripgrep_{{ software_version_ripgrep }}-1_amd64.deb", "name": "ripgrep", "version": "{{ software_version_ripgrep }}" }
       - { url: "https://github.com/aymanbagabas/shcopy/releases/download/v{{ software_version_shcopy }}/shcopy_{{ software_version_shcopy }}_linux_amd64.deb", "name": "shcopy", "version": "{{ software_version_shcopy }}" }
       - { url: "https://github.com/humanlogio/humanlog/releases/download/v{{ software_version_humanlog }}/humanlog_{{ software_version_humanlog }}_linux_amd64.deb", "name": "humanlog", "version": "{{ software_version_humanlog }}" }
-      - { url: "https://github.com/getsops/sops/releases/download/v{{ software_version_sops }}/sops_{{ software_version_sops }}_amd64.deb", "name": "sops", "version": "{{software_version_sops}}" }
+      - { url: "https://github.com/getsops/sops/releases/download/v{{ software_version_sops }}/sops_{{ software_version_sops }}_amd64.deb", "name": "sops", "version": "{{ software_version_sops }}" }
+      - { url: "https://github.com/sharkdp/vivid/releases/download/v{{ software_version_vivid }}/vivid-musl_{{ software_version_vivid }}_amd64.deb", "name": "sops", "version": "{{ software_version_vivid }}" }
 
 - name: Download debs
   become: true
@@ -252,4 +253,16 @@
     move_rules:
       - src_regex: ^stern$
         dst: /usr/local/bin/stern
+        mode: 0755
+
+- name: Install gron
+  become: true
+  quera.github.install_from_github:
+    repo: tomnomnom/gron
+    tag: "v{{software_version_gron}}"
+    version_command: gron --version
+    asset_regex: gron.*
+    move_rules:
+      - src_regex: ^gron$
+        dst: /usr/local/bin/gron
         mode: 0755
