@@ -18,6 +18,9 @@ global_centos_packages:
   - python36-pip
   - mosh
 global_ubuntu_packages:
+  - libsqlite3-dev
+  - liblzma-dev
+  - libbz2-dev # make sure python has bz
   - luarocks
   - silversearcher-ag
   - jq

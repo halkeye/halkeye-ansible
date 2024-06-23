@@ -2,7 +2,6 @@
 SHELL = /bin/bash
 .DEFAULT_GOAL := run
 
-PY=/usr/bin/python3
 ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file .vault -l $$(hostname) -c local
 ANSIBLE_DEBUG :=
 PLAYBOOK := main
