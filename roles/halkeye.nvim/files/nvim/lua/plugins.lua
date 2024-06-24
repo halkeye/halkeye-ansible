@@ -99,6 +99,9 @@ require("lazy").setup({
         ruby = {
           "rubocop"
         },
+        eruby = {
+          "erb-lint"
+        },
         javascript = {
           "eslint_d"
         },
