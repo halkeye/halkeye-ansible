@@ -67,7 +67,7 @@ require("lazy").setup({
         ruby = { "rubocop" },
         eruby = { "erb-lint" },
         python = { "isort", "black" },
-        go = { "gofmt", "goimports-reviser", "golines" },
+        go = { "gofmt", "goimports-reviser" },
         -- Use a sub-list to run only the first available formatter
         javascript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" }, },
         javascriptreact = { { "prettierd", "prettier" }, { "eslint_d", "eslint" }, },
