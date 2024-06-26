@@ -3,8 +3,6 @@ require("lazy").setup({
   "nvim-tree/nvim-web-devicons",
   "duane9/nvim-rg",
   "tpope/vim-surround",
-  -- "MunifTanjim/nui.nvim",
-  -- "rcarriga/nvim-notify",
   {
     "folke/trouble.nvim",
     dependencies = {
@@ -131,7 +129,6 @@ require("lazy").setup({
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "kelly-lin/telescope-ag",
       "nvim-telescope/telescope-fzy-native.nvim",
     },
     config = function()
@@ -253,25 +250,25 @@ require("lazy").setup({
       },
     },
   },
-  {
-    "sainnhe/gruvbox-material",
-    lazy = false,
-    priority = 1000,
-    init = function()
-      vim.opt.background = "dark"
-      vim.cmd.colorscheme('gruvbox-material')
-    end,
-  },
   -- {
-  --   "folke/tokyonight.nvim",
+  --   "sainnhe/gruvbox-material",
   --   lazy = false,
   --   priority = 1000,
-  --   opts = { style = "night" },
   --   init = function()
   --     vim.opt.background = "dark"
-  --     vim.cmd.colorscheme("tokyonight")
+  --     vim.cmd.colorscheme('gruvbox-material')
   --   end,
   -- },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = { style = "night" },
+    init = function()
+      vim.opt.background = "dark"
+      vim.cmd.colorscheme("tokyonight")
+    end,
+  },
   -- {
   --   "NLKNguyen/papercolor-theme",
   --   lazy = false,
@@ -390,19 +387,6 @@ require("lazy").setup({
           lspconfig.gopls.setup({
             on_attach = on_attach,
             capabilities = capabilities,
-            settings = {
-              gopls = {
-                hints = {
-                  assignVariableTypes = true,
-                  compositeLiteralFields = true,
-                  compositeLiteralTypes = true,
-                  constantValues = true,
-                  functionTypeParameters = true,
-                  parameterNames = true,
-                  rangeVariableTypes = true,
-                },
-              },
-            },
           })
         end,
       })
@@ -644,15 +628,5 @@ require("lazy").setup({
         desc = "Next harpoon",
       },
     },
-  },
-  {
-    'nvimdev/lspsaga.nvim',
-    config = function()
-      require('lspsaga').setup({})
-    end,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons',     -- optional
-    }
-  },
+  }
 })
