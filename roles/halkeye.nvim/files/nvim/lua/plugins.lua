@@ -387,6 +387,11 @@ require("lazy").setup({
           lspconfig.gopls.setup({
             on_attach = on_attach,
             capabilities = capabilities,
+            settings = {
+              gopls = {
+                buildFlags = { "-tags=integration" }
+              }
+            }
           })
         end,
       })

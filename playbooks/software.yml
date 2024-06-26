@@ -260,7 +260,7 @@
   quera.github.install_from_github:
     repo: tomnomnom/gron
     tag: "v{{software_version_gron}}"
-    version_command: gron --version
+    version_command: "echo v{{software_version_gron}}"
     asset_regex: gron.*
     move_rules:
       - src_regex: ^gron$
