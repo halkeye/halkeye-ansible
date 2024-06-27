@@ -203,7 +203,7 @@ software_version_fzf: "0.53.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide
 software_version_ripgrep: "14.1.0" # repo: BurntSushi/ripgrep
 # Terminal JSON viewer & processor
-software_version_fx: "34.0.0" # repo: antonmedv/fx
+software_version_fx: "35.0.0" # repo: antonmedv/fx
 # A cat(1) clone with wings.
 software_version_bat: "0.24.0" # repo: sharkdp/bat
 # The next gen ls command
