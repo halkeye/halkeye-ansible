@@ -266,3 +266,29 @@
       - src_regex: ^gron$
         dst: /usr/local/bin/gron
         mode: 0755
+
+- name: Install lychee
+  become: true
+  quera.github.install_from_github:
+    repo: lycheeverse/lychee
+    tag: "v{{software_version_lychee}}"
+    version_command: lychee --version
+    asset_regex: lychee.*-gnu.tar.gz
+    move_rules:
+      - src_regex: dist/lychee
+        dst: /usr/local/bin/lychee
+        mode: 0755
+
+- name: Install vale
+  become: true
+  quera.github.install_from_github:
+    repo: errata-ai/vale
+    tag: "v{{software_version_vale}}"
+    version_command: vale --version
+    asset_regex: vale.*
+    asset_arch_mapping:
+      amd64: "64-bit"
+    move_rules:
+      - src_regex: dist/vale
+        dst: /usr/local/bin/vale
+        mode: 0755

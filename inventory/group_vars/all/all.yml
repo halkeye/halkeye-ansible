@@ -248,3 +248,5 @@ software_version_bump: "0.2.3" # repo: guilhem/bump
 software_version_stern: "1.30.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
 software_version_vivid: "0.10.1" # repo: sharkdp/vivid
+software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
+software_version_vale: "3.6.0" # repo: errata-ai/vale
