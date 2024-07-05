@@ -292,3 +292,15 @@
       - src_regex: dist/vale
         dst: /usr/local/bin/vale
         mode: 0755
+
+- name: Install gemini
+  become: true
+  quera.github.install_from_github:
+    repo: reugn/gemini-cli
+    tag: "v{{software_version_gemini}}"
+    version_command: gemini --version
+    asset_regex: gemini.*
+    move_rules:
+      - src_regex: gemini
+        dst: /usr/local/bin/gemini
+        mode: 0755
