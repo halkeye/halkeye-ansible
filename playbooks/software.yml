@@ -275,7 +275,7 @@
     version_command: lychee --version
     asset_regex: lychee.*-gnu.tar.gz
     move_rules:
-      - src_regex: dist/lychee
+      - src_regex: lychee
         dst: /usr/local/bin/lychee
         mode: 0755
 
@@ -289,7 +289,7 @@
     asset_arch_mapping:
       amd64: "64-bit"
     move_rules:
-      - src_regex: dist/vale
+      - src_regex: vale
         dst: /usr/local/bin/vale
         mode: 0755
 
