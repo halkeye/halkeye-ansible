@@ -209,7 +209,7 @@ software_version_bat: "0.24.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.2" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.109.0" # repo: digitalocean/doctl
+software_version_doctl: "1.109.1" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.9.0" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -217,7 +217,7 @@ software_version_age: "1.2.0" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
 software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
-software_version_helm: "3.15.2" # repo: helm/helm
+software_version_helm: "3.15.3" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
 software_version_k9s: "0.32.5" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
@@ -229,9 +229,9 @@ software_version_gh: "2.52.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "21.23.1" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "21.24.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.23.1" # repo: crate-ci/typos
+software_version_typos: "1.23.2" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.1.0" # repo: sharkdp/fd
