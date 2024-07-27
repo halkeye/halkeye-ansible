@@ -199,7 +199,7 @@ asdf_version: "v0.14.0" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.1" # repo: neovim/neovim
 software_version_treesitter: "0.22.6" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.30.3" # repo: kubernetes/kubernetes
-software_version_fzf: "v0.54.1" # repo: junegunn/fzf
+software_version_fzf: "v0.54.2" # repo: junegunn/fzf
 software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide
 software_version_ripgrep: "14.1.0" # repo: BurntSushi/ripgrep
 # Terminal JSON viewer & processor
@@ -229,9 +229,9 @@ software_version_gh: "2.53.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "23.2.1" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "23.3.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.23.3" # repo: crate-ci/typos
+software_version_typos: "1.23.5" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.1.0" # repo: sharkdp/fd
