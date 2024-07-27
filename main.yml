@@ -81,4 +81,7 @@
       ssh_to_age_version: "{{ software_version_ssh_to_age }}"
       tags:
         - software
-        - gavin
+    - role: halkeye.krr
+      krr_version: "{{ software_version_krr }}"
+      tags:
+        - software

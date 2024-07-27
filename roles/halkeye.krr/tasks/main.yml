@@ -1,0 +1,21 @@
+---
+- name: Create krr directory
+  become: true
+  ansible.builtin.file:
+    path: /usr/local/krr/{{ krr_version }}
+    state: directory
+    mode: "0755"
+
+- name: Download and extract krr
+  become: true
+  ansible.builtin.unarchive:
+    src: https://github.com/robusta-dev/krr/releases/download/v.{{ krr_version }}/krr-ubuntu-latest-v.{{ krr_version }}.zip
+    dest: /usr/local/krr/{{ krr_version }}
+    remote_src: true
+
+- name: Map right version of krr to bin
+  become: true
+  ansible.builtin.file:
+    state: link
+    src: /usr/local/krr/{{ krr_version }}/krr/krr
+    dest: /usr/local/bin/krr
