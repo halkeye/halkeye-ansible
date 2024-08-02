@@ -9,7 +9,7 @@
 - name: Download and extract krr
   become: true
   ansible.builtin.unarchive:
-    src: https://github.com/robusta-dev/krr/releases/download/v.{{ krr_version }}/krr-ubuntu-latest-v.{{ krr_version }}.zip
+    src: https://github.com/robusta-dev/krr/releases/download/{{ krr_version }}/krr-ubuntu-latest-{{ krr_version }}.zip
     dest: /usr/local/krr/{{ krr_version }}
     remote_src: true
 
