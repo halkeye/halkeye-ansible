@@ -144,7 +144,7 @@
     version_command: shellcheck --version
     asset_regex: shellcheck.*
     move_rules:
-      - src_regex: shellcheck
+      - src_regex: shellcheck.*/shellcheck
         dst: /usr/local/bin/shellcheck
         mode: 0755
 
