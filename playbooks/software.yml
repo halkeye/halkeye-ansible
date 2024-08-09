@@ -9,6 +9,14 @@
   vars:
     helm_version: "{{ software_version_helm }}"
 
+
+- name: Download git-subtree
+  become: true
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/git/git/v{{ git_version }}/contrib/subtree/git-subtree.sh"
+    dest: '/usr/libexec/git-core/git-subtree'
+    mode: '0755'
+
 # Start Debs
 
 - name: Create list of debs
@@ -303,4 +311,19 @@
     move_rules:
       - src_regex: gemini
         dst: /usr/local/bin/gemini
+        mode: 0755
+
+- name: Install git-absorb
+  become: true
+  quera.github.install_from_github:
+    repo: tummychow/git-absorb
+    tag: "{{ software_version_git_absorb }}"
+    version_command: /usr/libexec/git-core/git-absorb --version
+    asset_regex: git-absorb.*
+    move_rules:
+      - src_regex: git-absorb
+        dst: /usr/libexec/git-core
+        mode: 0755
+      - src_regex: docs/git-absorb.1
+        dst: /usr/share/man/man1
         mode: 0755
