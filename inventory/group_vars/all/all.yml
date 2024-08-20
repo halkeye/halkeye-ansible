@@ -195,7 +195,7 @@ git_install_from_source_force_update: true
 
 ghr_install_dir: "{{ env_home }}/.local/bin"
 
-asdf_version: "v0.14.0" # repo: asdf-vm/asdf
+asdf_version: "v0.14.1" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.1" # repo: neovim/neovim
 software_version_treesitter: "0.22.6" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.31.0" # repo: kubernetes/kubernetes
@@ -207,7 +207,7 @@ software_version_fx: "35.0.0" # repo: antonmedv/fx
 # A cat(1) clone with wings.
 software_version_bat: "0.24.0" # repo: sharkdp/bat
 # The next gen ls command
-software_version_lsd: "1.1.2" # repo: lsd-rs/lsd
+software_version_lsd: "1.1.3" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
 software_version_doctl: "1.111.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
@@ -229,7 +229,7 @@ software_version_gh: "2.54.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "23.6.3" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "23.6.6" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.23.6" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
