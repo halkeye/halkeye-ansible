@@ -25,7 +25,7 @@
     repo: ulyssa/iamb
     tag: "v{{ software_version_iamb }}"
     version_command: iamb --version
-    asset_regex: iamb.*
+    asset_regex: ^iamb.*\.tgz$
     move_rules:
       - src_regex: iamb.*/iamb$
         dst: /usr/local/bin/iamb
