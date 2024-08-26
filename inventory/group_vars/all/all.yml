@@ -197,7 +197,7 @@ ghr_install_dir: "{{ env_home }}/.local/bin"
 
 asdf_version: "v0.14.1" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.1" # repo: neovim/neovim
-software_version_treesitter: "0.22.6" # repo: tree-sitter/tree-sitter
+software_version_treesitter: "0.23.0" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.31.0" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.54.3" # repo: junegunn/fzf
 software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide
@@ -229,18 +229,18 @@ software_version_gh: "2.55.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "23.6.8" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "23.7.2" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.23.6" # repo: crate-ci/typos
+software_version_typos: "1.24.1" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
-software_version_fd: "10.1.0" # repo: sharkdp/fd
+software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.3" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
 software_version_act: "0.2.65" # repo: nektos/act
 software_version_regctl: "0.7.1" # repo: regclient/regclient
 software_version_humanlog: "0.7.6" # repo: humanlogio/humanlog
-software_version_jwt: "6.1.0" # repo: mike-engel/jwt-cli
+software_version_jwt: "6.1.1" # repo: mike-engel/jwt-cli
 software_version_rover: "0.26.0" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.8" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.1" # repo: rhysd/actionlint
@@ -249,7 +249,7 @@ software_version_stern: "1.30.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
 software_version_vivid: "0.10.1" # repo: sharkdp/vivid
 software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
-software_version_vale: "3.7.0" # repo: errata-ai/vale
+software_version_vale: "3.7.1" # repo: errata-ai/vale
 software_version_gemini: "0.3.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.13.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.15" # repo: tummychow/git-absorb
