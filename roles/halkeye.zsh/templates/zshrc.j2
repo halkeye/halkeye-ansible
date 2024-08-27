@@ -55,7 +55,7 @@ tmux_jump() {
   BASE="$HOME/git"
   # ... look for directories exactly two levels deep (`~/code/owner/project`)
   # and match them with fzf. In this case we break ties by favoring matches
-  # on the project name instead of the owner name (implementaion means
+  # on the project name instead of the owner name (implementation means
   # favoring matches closer to the end of the string.) This is simplified a
   # little bit with the `--select-1 --query="$1"` line: if there's only one
   # match for the argument passed in as the first argument to this function,
@@ -113,7 +113,7 @@ test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
 ### END 'bash' completion
 
 # Full zsh support
-# if [ -f ~/.fzf/shell/key-bindings.zsh ]; then source ~/.fzf/shell/key-bindings.zsh; fi 
+if [ -f ~/.fzf/shell/key-bindings.zsh ]; then source ~/.fzf/shell/key-bindings.zsh; fi 
 if [ -f ~/.fzf/shell/completion.zsh ]; then source ~/.fzf/shell/completion.zsh; fi 
 
 ## Some aliases I really like
