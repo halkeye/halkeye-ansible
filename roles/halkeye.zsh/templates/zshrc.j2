@@ -90,6 +90,7 @@ if [ -e "$HOME/.config/yarn/global/node_modules/.bin" ]; then export PATH="$HOME
 if [ -e "/opt/google-cloud-sdk/bin" ]; then export PATH="/opt/google-cloud-sdk/bin:$PATH"; fi
 if [ -e "$GOPATH" ]; then export PATH="$GOPATH/bin:$PATH"; fi
 if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"; fi
+if [ -e "/mnt/c/Program Files/Tailscale" ]; then export PATH="$PATH:/mnt/c/Program Files/Tailscale"; fi
 if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
 if [ -e "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; then export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"; fi
 if [ -e "${KREW_ROOT:-$HOME/.krew}" ]; then export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"; fi
