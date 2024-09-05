@@ -154,7 +154,7 @@ eval $(dirmngr --homedir $HOME/.gnupg --daemon)
 fi
 
 if command -v ssh-to-age 2>/dev/null 1>/dev/null; then
-  export SOPS_AGE_KEY=$(ssh-to-age -private-key < ~/.ssh/id_ed25519)
+  if [ -f ~/.ssh/id_ed25519 ]; then export SOPS_AGE_KEY=$(ssh-to-age -private-key < ~/.ssh/id_ed25519); fi
 fi
 
 {% if zsh_use_ssh_plugin %}
