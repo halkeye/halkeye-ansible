@@ -209,7 +209,7 @@ software_version_bat: "0.24.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.112.0" # repo: digitalocean/doctl
+software_version_doctl: "1.113.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.9.0" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -225,11 +225,11 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.55.0" # repo: cli/cli
+software_version_gh: "2.56.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "23.11.1" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "23.12.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.24.5" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
@@ -237,11 +237,11 @@ software_version_typos: "1.24.5" # repo: crate-ci/typos
 software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.3" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
-software_version_act: "0.2.66" # repo: nektos/act
+software_version_act: "0.2.67" # repo: nektos/act
 software_version_regctl: "0.7.1" # repo: regclient/regclient
 software_version_humanlog: "0.7.6" # repo: humanlogio/humanlog
 software_version_jwt: "6.1.1" # repo: mike-engel/jwt-cli
-software_version_rover: "0.26.1" # repo: apollographql/rover
+software_version_rover: "0.26.2" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.8" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.1" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
