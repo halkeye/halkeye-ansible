@@ -198,7 +198,7 @@ ghr_install_dir: "{{ env_home }}/.local/bin"
 asdf_version: "v0.14.1" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.1" # repo: neovim/neovim
 software_version_treesitter: "0.23.0" # repo: tree-sitter/tree-sitter
-software_version_kubectl: "1.31.0" # repo: kubernetes/kubernetes
+software_version_kubectl: "1.31.1" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.55.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.4" # repo: ajeetdsouza/zoxide
 software_version_ripgrep: "14.1.1" # repo: BurntSushi/ripgrep
@@ -217,7 +217,7 @@ software_version_age: "1.2.0" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
 software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
-software_version_helm: "3.15.4" # repo: helm/helm
+software_version_helm: "3.16.0" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
 software_version_k9s: "0.32.5" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
