@@ -209,7 +209,7 @@ software_version_bat: "0.24.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.114.0" # repo: digitalocean/doctl
+software_version_doctl: "1.115.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.9.0" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -229,7 +229,7 @@ software_version_gh: "2.57.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "23.14.1" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "23.15.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.24.6" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
