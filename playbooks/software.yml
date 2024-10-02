@@ -327,3 +327,15 @@
       - src_regex: docs/git-absorb.1
         dst: /usr/share/man/man1
         mode: 0755
+
+- name: Install air
+  become: true
+  quera.github.install_from_github:
+    repo: air-verse/air
+    tag: "v{{ software_version_air }}"
+    version_command: air --version
+    asset_regex: air.*.tar.gz
+    move_rules:
+      - src_regex: air
+        dst: /usr/local/bin/air
+        mode: 0755
