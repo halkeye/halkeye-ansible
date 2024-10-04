@@ -196,8 +196,8 @@ git_install_from_source_force_update: true
 ghr_install_dir: "{{ env_home }}/.local/bin"
 
 asdf_version: "v0.14.1" # repo: asdf-vm/asdf
-software_version_neovim: "0.10.1" # repo: neovim/neovim
-software_version_treesitter: "0.23.2" # repo: tree-sitter/tree-sitter
+software_version_neovim: "0.10.2" # repo: neovim/neovim
+software_version_treesitter: "0.24.1" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.31.1" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.55.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.6" # repo: ajeetdsouza/zoxide
@@ -211,7 +211,7 @@ software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
 software_version_doctl: "1.115.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
-software_version_sops: "3.9.0" # repo: getsops/sops
+software_version_sops: "3.9.1" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
 software_version_age: "1.2.0" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
