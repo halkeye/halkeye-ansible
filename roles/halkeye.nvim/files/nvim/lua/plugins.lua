@@ -384,6 +384,7 @@ require("lazy").setup({
           "jsonls",
           "lua_ls",
           "marksman",
+          "pyright",
           "ruby_lsp",
           "ruff",
           "ruff_lsp",
