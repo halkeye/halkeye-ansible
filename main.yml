@@ -75,6 +75,7 @@
       contents: "{{ ssh_config }}"
       home: "{{ env_home }}"
       owner: "{{ env_user }}"
+      authorized_keys: "{{ global_authorized_keys }}"
       tags:
         - ssh
     - role: halkeye.ssh-to-age

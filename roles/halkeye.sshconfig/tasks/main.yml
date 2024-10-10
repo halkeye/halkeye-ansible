@@ -11,3 +11,10 @@
     owner: "{{ owner }}"
     mode: "0700"
     content: "{{ contents }}"
+
+- name: Set authorized keys
+  ansible.posix.authorized_key:
+    user: "{{ owner }}"
+    key: "{{ authorized_keys | join('\n') }}"
+    state: present
+    exclusive: true
