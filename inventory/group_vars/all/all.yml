@@ -254,3 +254,4 @@ software_version_gemini: "0.3.1" # repo: reugn/gemini-cli
 software_version_krr: "v1.16.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.15" # repo: tummychow/git-absorb
 software_version_air: "1.61.0" # repo: air-verse/air
+software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm

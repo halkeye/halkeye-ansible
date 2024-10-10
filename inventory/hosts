@@ -17,6 +17,7 @@ DO-PW0BFSP4
 gmogan-dev-box
 
 [linux]
+blackpanther
 wasp
 
 [remote]
@@ -28,7 +29,6 @@ gmogan-dev-box
 
 [wsl]
 jarvis
-blackpanther
 loki
 antman
 DO-MJ0D79E0

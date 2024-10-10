@@ -1,0 +1,13 @@
+- name: Create wezterm config directory
+  ansible.builtin.file:
+    path: "{{ config_dir }}"
+    owner: "{{ env_user }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy wezterm config
+  ansible.builtin.copy:
+    src: "wezterm.lua"
+    dest: "{{ config_dir }}/.wezterm.lua"
+    owner: "{{ env_user }}"
+    mode: '0644'

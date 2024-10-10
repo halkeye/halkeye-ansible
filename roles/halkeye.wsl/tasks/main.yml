@@ -34,8 +34,8 @@
 
 - name: Copy wezterm config
   when: windows_username is defined
-  ansible.builtin.copy:
-    src: "wezterm.lua"
-    dest: "/mnt/c/Users/{{ windows_username }}/.wezterm.lua"
-    owner: "{{ env_user }}"
-    mode: '0644'
+  ansible.builtin.include_role:
+    name: halkeye.wezterm
+    tasks_from: config 
+  vars:
+    config_dir: "/mnt/c/Users/{{ windows_username }}"

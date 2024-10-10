@@ -6,6 +6,18 @@
   "git-submodules": {
     "enabled": true
   },
+  "packageRules": {
+    {
+      "description": "Loose versioning for non-semver packages",
+      "matchDatasources": [
+        "github-releases"
+      ],
+      "versioning": "loose",
+      "matchPackagePatterns": [
+        "wez/wezterm"
+      ]
+    }
+  },
   "customManagers": [
     {
       "customType": "regex",

@@ -85,3 +85,8 @@
       krr_version: "{{ software_version_krr }}"
       tags:
         - software
+    - role: halkeye.wezterm
+      when: "'linux' in group_names"
+      wezterm_version: "{{ software_version_wezterm }}"
+      tags:
+        - wezterm

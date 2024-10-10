@@ -1,0 +1,6 @@
+---
+# defaults file for halkeye.wezterm
+wezterm_version: "20240203-110809-5046fc22"
+env_home: "{{ lookup('env','HOME') }}"
+env_user: "{{ lookup('env','USER') }}"
+config_dir: "{{ env_home }}/.config/wezterm"
