@@ -26,8 +26,7 @@
       ],
       "matchStrings": [
         "asdf_version: \"v(?<currentValue>.+?)\" # repo: (?<depName>.*)",
-        "software_version_(.+): \"(?<currentValue>.+?)\" # repo: (?<depName>.*)",
-        "krew_version: \"(?<currentValue>.+?)\" # repo: (?<depName>.*)",
+        "software_version_(.+): \"(?<currentValue>.+?)\" # repo: (?<depName>.*)"
       ],
       "datasourceTemplate": "github-releases"
     },
