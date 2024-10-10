@@ -14,10 +14,6 @@
     - import_tasks: playbooks/directories.yml
       tags:
         - directories
-    - import_tasks: playbooks/vim.yml
-      tags:
-        - software
-        - vim
     - import_tasks: playbooks/software.yml
       tags:
         - software
