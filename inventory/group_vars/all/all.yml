@@ -86,7 +86,19 @@ global_git_config:
     scope: global
     value: main
 global_authorized_keys:
+  # linux desktop
   - "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAH4Q/4giT2I4mRqeMXIEqtVK9HJ2iZYbdpqEK9G28JesXD5JTR+pmsTd+eQU65ZiROKatEo5LZ0/JYWALH5wYNNCgAOj8zd0iZLMjQ8Qn1SFYKTzv+ZZeZ5umYoQ/sIf09Yrvkfv2m+SkvVctAaqGOxJJHiHcnt1vk/sXJzlupqQvC1IQ== halkeye@blackpanther"
+  # loki
+  - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4U4ArR8f3FOKtylBbRNKaywKYKpIqPwYAcN14eB2+enWTKK1T4obLBaQEaL/UEGmExCI/QdGQKHRREhOYgI1wPscco6Gj6D7IMZH+ER29HyBY6kWP9LPQNz7iZzZR9r3AWgHUTXY3kylmBwnLddmIWN6GNaR6p/IVwqLzmOgTiaoejFDSrBXprP+V5YFvp6H5ElmuO3vBYxGjUjeFM4HmHUEtVrzc4ZmDpVgQBRnu/xmZQ/wm+/ACvoIiuH02/rNhg6G9OchrZWjzFLGXsRjlV0pB+SJf5jzRoddcMDWFYqTe7VqPpVoFn8BmMtxvlsS5d5Dnuixk4AL5C+tJD57D halkeye@odin"
+  # new desktop
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBf5hQY0Pgc1BdK9KvXwQK/3RIqefRPveI0rzUNGMu5d halkeye@loki"
+  # antman
+  # cleanup later
+  - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqfN+qsqxofrz39PofB/PU+hG4k7rJ15TiE6ys+F1GohKg4h7VVuoGyUqn/kdRhf016rwtlzieKA0Ue0upwXT3pVYfVz/UjQ/PAEEhkux6SzvsplREC1hBr17qP93+1ts5SJrB+0PfimWmVKSKw0SyQO5mYOXy9UqFgSTwkQKQnNXvCC4HSAuRqQ4lTzbuBpMqmoem0QwkEt4ceAxZlDE6Q9OpqTJjXoqG5LR2gpwY1rXup4DsZnLfyIB+D+I69aM7NDb+q5NBvZE7ouKByPs84e3yNFHvlXFAcHrF4LVK9aBwe9ESIiqfoNuyBVXYlMkgKwvetRvGq1rN8h/AuTM5xFR4v95m4tU86OxiqR5PjI/34EEuy80tVpvt9oTTAPIiaK/yA5hwvUHR7SavJUoLqZG0+z+ALXcY4yDmMgmrnjigWDXxnZkWBp9lFTfHtay4XlWFD3hUT5lDmb62bjBs+3+cl3zrhOsBErxGvBsCBTNqRClncM2oPZLiTD1zFa8= halkeye@ANTMAN"
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOHhK9BcPvE/31OfJyrFnLZ5SoOkmGByaJkenHAtrdq halkeye@antman"
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJba+eKHmBHbiM2ZXXEi0CWPp7cABHCcSFXsK38qq7lJ halkeye@antman"
+  # work
+  - "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD65/3DUqVhvMCGS5GLqaHROKlmeY979QKpatwwWlXHq+aPMZgr/oz4yPdeiiNdgMrwhZYATXOlZy+t08o1UcKs= gmogan@DO-PW0BFSP4"
 
 git_ignore:
   - "*~"
@@ -196,6 +208,23 @@ git_install_from_source: true
 git_install_from_source_force_update: true
 
 ghr_install_dir: "{{ env_home }}/.local/bin"
+
+krew_version: "v0.4.4" # repo: kubernetes-sigs/krew
+
+krew_install_plugins:
+  - ingress-nginx
+  - deprecations
+  - explore
+  - get-all
+  - klock
+  - kor
+  - krew
+  - modify-secret
+  - neat
+  - secretdata
+  - tail
+  - view-cert
+  - view-secret
 
 asdf_version: "v0.14.1" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.2" # repo: neovim/neovim

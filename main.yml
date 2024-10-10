@@ -87,3 +87,6 @@
       wezterm_version: "{{ software_version_wezterm }}"
       tags:
         - wezterm
+    - role: cnygaard.kubectl_krew
+      tags:
+        - software
