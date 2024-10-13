@@ -333,7 +333,7 @@
   quera.github.install_from_github:
     repo: air-verse/air
     tag: "v{{ software_version_air }}"
-    version_command: air --version
+    version_command: air -v
     asset_regex: air.*.tar.gz
     move_rules:
       - src_regex: air

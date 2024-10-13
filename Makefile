@@ -6,9 +6,8 @@ ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file 
 ANSIBLE_DEBUG :=
 PLAYBOOK := main
 
-
 .PHONY: pull
-pull: .gitmodules ## get all dependancies
+pull: .gitmodules ## get all dependencies
 	git pull
 	git submodule update --init
 
@@ -17,7 +16,7 @@ clean: clean-venv ## Delete all generated artefacts
 	find . -name "*.pyc" -exec $(RM) -rf {} \;
 
 .PHONY: setup
-setup: venv ## Installs minimal dependancies
+setup: venv ## Installs minimal dependencies
 	(which unzip || sudo apt install -y unzip) && \
 	(which zip || sudo apt install -y zip)
 
