@@ -389,8 +389,6 @@ require("lazy").setup({
           "ruff",
           "ruff_lsp",
           "rust_analyzer",
-          "sqlls",
-          "sqls",
           "tailwindcss",
           "typos_lsp",
           "yamlls",
