@@ -22,6 +22,3 @@
 [submodule "collections/ansible_collections/quera/github"]
 	path = collections/ansible_collections/quera/github
 	url = https://github.com/QueraTeam/ansible-github.git
-[submodule "roles/cnygaard.kubectl_krew"]
-	path = roles/cnygaard.kubectl_krew
-	url = https://github.com/cnygaard/ansible-role-kubectl-krew

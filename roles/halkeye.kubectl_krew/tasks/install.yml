@@ -1,0 +1,36 @@
+---
+- name: Set download vars
+  ansible.builtin.set_fact:
+    download_arch: "{{ [ansible_architecture] | map('extract', krew_architecture) | first }}"
+    download_os: linux
+
+- name: Fetch krew
+  ansible.builtin.get_url:
+    url: "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-{{ download_os }}_{{ download_arch }}.tar.gz"
+    dest: /tmp/krew.tar.gz
+    mode: "755"
+
+- name: Make tempdir
+  ansible.builtin.file:
+    path: /tmp/krew
+    state: directory
+    mode: "755"
+
+- name: Unarchive krew
+  ansible.builtin.unarchive:
+    src: /tmp/krew.tar.gz
+    dest: /tmp/krew
+    remote_src: true
+
+- name: Copy krew plugin to /usr/local/bin
+  become: true
+  ansible.builtin.copy:
+    src: "/tmp/krew/krew-{{ download_os }}_{{ download_arch }}"
+    dest: /usr/local/bin/kubectl-krew
+    mode: "755"
+    remote_src: true
+
+- name: Run Krew Update
+  ansible.builtin.command: kubectl krew update
+  args:
+    creates: "{{ home }}/.krew/index/plugins/krew_plugins.yaml"

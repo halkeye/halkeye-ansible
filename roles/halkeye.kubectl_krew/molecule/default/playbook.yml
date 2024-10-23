@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: andrewrothstein.kubectl
+    - role: robertdebock.git
+    - role: halkeye.kubectl_krew

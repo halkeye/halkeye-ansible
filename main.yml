@@ -87,8 +87,11 @@
       wezterm_version: "{{ software_version_wezterm }}"
       tags:
         - wezterm
-    - role: cnygaard.kubectl_krew
+    - role: halkeye.kubectl_krew
       krew_version: "{{ software_version_krew }}"
+      krew_plugins: "{{ krew_install_plugins }}"
+      home: "{{ env_home }}"
+      owner: "{{ env_user }}"
       tags:
         - software
         - krew

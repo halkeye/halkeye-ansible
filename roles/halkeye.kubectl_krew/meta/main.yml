@@ -1,0 +1,29 @@
+---
+galaxy_info:
+  author: Christian Nygaard
+  description: Installs Kubectl Krew plugin
+  role_name: kubectl-krew
+  license: GPLv3
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+
+  galaxy_tags:
+    - kubernetes
+    - k8s
+
+  dependencies:
+    - andrewrothstein.kubectl

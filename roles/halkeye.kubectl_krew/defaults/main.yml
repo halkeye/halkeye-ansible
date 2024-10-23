@@ -1,0 +1,14 @@
+---
+# defaults file for kubectl_krew
+
+krew_version: "v0.2.1"
+
+user: "root"
+
+krew_plugins:
+  - "ingress-nginx"
+
+krew_architecture:
+  aarch64: "arm64"
+  x86_64: "amd64"
+

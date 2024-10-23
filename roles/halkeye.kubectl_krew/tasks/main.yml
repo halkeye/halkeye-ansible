@@ -1,0 +1,6 @@
+---
+- name: Install Kubectl Krew Plugin
+  ansible.builtin.include_tasks: install.yml
+
+- name: Install Plugins
+  ansible.builtin.include_tasks: plugins.yml
