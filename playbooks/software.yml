@@ -33,6 +33,7 @@
       - { url: "https://github.com/humanlogio/humanlog/releases/download/v{{ software_version_humanlog }}/humanlog_{{ software_version_humanlog }}_linux_amd64.deb", "name": "humanlog", "version": "{{ software_version_humanlog }}" }
       - { url: "https://github.com/getsops/sops/releases/download/v{{ software_version_sops }}/sops_{{ software_version_sops }}_amd64.deb", "name": "sops", "version": "{{ software_version_sops }}" }
       - { url: "https://github.com/sharkdp/vivid/releases/download/v{{ software_version_vivid }}/vivid-musl_{{ software_version_vivid }}_amd64.deb", "name": "sops", "version": "{{ software_version_vivid }}" }
+      - { url: "https://github.com/wagoodman/dive/releases/download/v{{ software_version_dive }}/dive_{{ software_version_dive }}_linux_amd64.deb", "name": "dive", "version": "{{ software_version_dive }}" }
 
 - name: Download debs
   become: true
