@@ -93,10 +93,13 @@ global_authorized_keys:
   # new desktop
   - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBf5hQY0Pgc1BdK9KvXwQK/3RIqefRPveI0rzUNGMu5d halkeye@loki"
   # antman
-  # cleanup later
+  # windows
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQ+t1eQkTdYdBnj67+J4gpDj0wzpyA6MT3NqdW6g2UC5Shoz2TWzScbxjoOfKvsyY+cZlS4bHJdTkZtYFQwGqG0ojZWIHaRfchrsz/bfQHxABJgxGs0ITedREdaeAnisrMa5+TtllsE48HMU3XJ5TOpDPyE8nowbKb+6J+HHCzyVPguKC3l/LIu9D0aM60WKXllnuVQB/PjE8kBYxk6En3to3j4bb4qPx4d5Rc+ftrEN6biY266xsZb/2myrR8t+HxgW3vZBIH+fI++ugjBT8rTDJcuDDsIDNd/xp2gXnO6wCsQNQ3JdBaHFKhMDlc4sNFNIEM5crwH2PCZ2E7BE3l micro@ANTMAN
+  # linux
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJba+eKHmBHbiM2ZXXEi0CWPp7cABHCcSFXsK38qq7lJ halkeye@antman
+  # cleanup later (antman)
   - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqfN+qsqxofrz39PofB/PU+hG4k7rJ15TiE6ys+F1GohKg4h7VVuoGyUqn/kdRhf016rwtlzieKA0Ue0upwXT3pVYfVz/UjQ/PAEEhkux6SzvsplREC1hBr17qP93+1ts5SJrB+0PfimWmVKSKw0SyQO5mYOXy9UqFgSTwkQKQnNXvCC4HSAuRqQ4lTzbuBpMqmoem0QwkEt4ceAxZlDE6Q9OpqTJjXoqG5LR2gpwY1rXup4DsZnLfyIB+D+I69aM7NDb+q5NBvZE7ouKByPs84e3yNFHvlXFAcHrF4LVK9aBwe9ESIiqfoNuyBVXYlMkgKwvetRvGq1rN8h/AuTM5xFR4v95m4tU86OxiqR5PjI/34EEuy80tVpvt9oTTAPIiaK/yA5hwvUHR7SavJUoLqZG0+z+ALXcY4yDmMgmrnjigWDXxnZkWBp9lFTfHtay4XlWFD3hUT5lDmb62bjBs+3+cl3zrhOsBErxGvBsCBTNqRClncM2oPZLiTD1zFa8= halkeye@ANTMAN"
   - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOHhK9BcPvE/31OfJyrFnLZ5SoOkmGByaJkenHAtrdq halkeye@antman"
-  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJba+eKHmBHbiM2ZXXEi0CWPp7cABHCcSFXsK38qq7lJ halkeye@antman"
   # work
   - "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD65/3DUqVhvMCGS5GLqaHROKlmeY979QKpatwwWlXHq+aPMZgr/oz4yPdeiiNdgMrwhZYATXOlZy+t08o1UcKs= gmogan@DO-PW0BFSP4"
 
