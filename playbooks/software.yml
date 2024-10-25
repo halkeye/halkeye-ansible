@@ -322,10 +322,10 @@
     version_command: /usr/libexec/git-core/git-absorb --version
     asset_regex: git-absorb.*
     move_rules:
-      - src_regex: git-absorb
+      - src_regex: git-absorb.*/git-absorb
         dst: /usr/libexec/git-core
         mode: 0755
-      - src_regex: docs/git-absorb.1
+      - src_regex: git-absorb.*/docs/git-absorb.1
         dst: /usr/share/man/man1
         mode: 0755
 
