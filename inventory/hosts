@@ -16,7 +16,7 @@ DO-PW0BFSP4
 [ldap]
 gmogan-dev-box
 
-[linux]
+[linux_desktop]
 blackpanther
 wasp
 

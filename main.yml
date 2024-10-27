@@ -83,10 +83,17 @@
       tags:
         - software
     - role: halkeye.wezterm
-      when: "'linux' in group_names"
+      when: "'linux_desktop' in group_names"
       wezterm_version: "{{ software_version_wezterm }}"
       tags:
         - wezterm
+        - software
+    - role: darkwizard242.googlechrome
+      become: true
+      when: "'linux_desktop' in group_names"
+      tags:
+        - chrome
+        - software
     - role: halkeye.kubectl_krew
       krew_version: "v{{ software_version_krew }}"
       krew_plugins: "{{ krew_install_plugins }}"
