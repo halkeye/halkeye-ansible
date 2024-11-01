@@ -262,13 +262,13 @@ software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
 software_version_oh_my_posh: "23.20.3" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.26.8" # repo: crate-ci/typos
+software_version_typos: "1.27.0" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.5" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
-software_version_act: "0.2.68" # repo: nektos/act
+software_version_act: "0.2.69" # repo: nektos/act
 software_version_regctl: "0.7.1" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.1.1" # repo: mike-engel/jwt-cli
