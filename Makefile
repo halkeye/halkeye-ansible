@@ -2,7 +2,7 @@
 SHELL = /bin/bash
 .DEFAULT_GOAL := run
 
-ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file .vault -l $$(hostname) -c local
+ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file .vault -l $$(hostname) -c local -e 'ansible_python_interpreter=$(PWD)/$(VENV)/python'
 ANSIBLE_DEBUG :=
 PLAYBOOK := main
 
