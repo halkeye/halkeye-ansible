@@ -1,8 +1,13 @@
 ---
+- name: Setup architecture map
+  ansible.builtin.set_fact:
+    deb_architectures: { "armv6l": "armhf", "armv7l": "armhf", "aarch64": "arm64", "x86_64": "amd64", "i386": "i386" } 
+
 - name: Setup architecture variable (if not already set)
   ansible.builtin.set_fact:
-    ohmyposh_arch: "amd64"
-  when: (ohmyposh_arch is not defined) and (ansible_architecture == "x86_64")
+    ohmyposh_arch: "{{ [ansible_architecture] | map('extract', deb_architectures) | first }}"
+    ohmyposh_os: linux
+  when: (ohmyposh_arch is not defined)
 
 - name: Check if oh-my-posh is already installed
   ansible.builtin.stat:

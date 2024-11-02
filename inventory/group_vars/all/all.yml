@@ -20,6 +20,7 @@ global_centos_packages:
 global_ubuntu_packages:
   - libsqlite3-dev
   - liblzma-dev
+  - libyaml-dev
   - libbz2-dev # make sure python has bz
   - luarocks
   - silversearcher-ag
@@ -87,7 +88,7 @@ global_git_config:
     value: main
 global_authorized_keys:
   # linux desktop
-  - "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAH4Q/4giT2I4mRqeMXIEqtVK9HJ2iZYbdpqEK9G28JesXD5JTR+pmsTd+eQU65ZiROKatEo5LZ0/JYWALH5wYNNCgAOj8zd0iZLMjQ8Qn1SFYKTzv+ZZeZ5umYoQ/sIf09Yrvkfv2m+SkvVctAaqGOxJJHiHcnt1vk/sXJzlupqQvC1IQ== halkeye@blackpanther"
+  - "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAH4Q/4giT2I4mRqeMXIEqtVK9HJ2iZYbdpqEK9G28JesXD5JTR+pmsTd+eQU65ZiROKatEo5LZ0/JYWALH5wYNNCgAOj8zd0iZLMjQ8Qn1SFYKTzv+ZZeZ5umYoQ/sIf09Yrvkfv2m+SkvVctAaqGOxJJHiHcnt1vk/sXJzlupqQvC1IQ== halkeye@adamwarlock"
   # loki
   - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4U4ArR8f3FOKtylBbRNKaywKYKpIqPwYAcN14eB2+enWTKK1T4obLBaQEaL/UEGmExCI/QdGQKHRREhOYgI1wPscco6Gj6D7IMZH+ER29HyBY6kWP9LPQNz7iZzZR9r3AWgHUTXY3kylmBwnLddmIWN6GNaR6p/IVwqLzmOgTiaoejFDSrBXprP+V5YFvp6H5ElmuO3vBYxGjUjeFM4HmHUEtVrzc4ZmDpVgQBRnu/xmZQ/wm+/ACvoIiuH02/rNhg6G9OchrZWjzFLGXsRjlV0pB+SJf5jzRoddcMDWFYqTe7VqPpVoFn8BmMtxvlsS5d5Dnuixk4AL5C+tJD57D halkeye@odin"
   # new desktop
@@ -153,14 +154,13 @@ asdf_plugins:
   - name: "java"    # a plugin name
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
-      - zulu-8.48.0.53
-      - zulu-11.31.11
-    global: zulu-11.31.11
+      - adoptopenjdk-11.0.16+8
+    global: adoptopenjdk-11.0.16+8
   - name: "maven"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
-      - 3.8.4
-    global: 3.8.4
+      - 3.9.9
+    global: 3.9.9
   - name: "perl"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
