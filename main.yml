@@ -88,6 +88,11 @@
       tags:
         - wezterm
         - software
+    - role: githubixx.kubectl
+      become: true
+      tags:
+        - kubectl
+        - software
     - role: halkeye.kubectl_krew
       krew_version: "v{{ software_version_krew }}"
       krew_plugins: "{{ krew_install_plugins }}"
@@ -95,4 +100,4 @@
       owner: "{{ env_user }}"
       tags:
         - software
-        - krew
+        - kubectl

@@ -48,9 +48,9 @@ software: run ## Just update software
 git: ANSIBLE_DEBUG+=-t git
 git: run ## Just update git
 
-.PHONY: krew
-krew: ANSIBLE_DEBUG+=-t krew
-krew: run ## Just update krew
+.PHONY: kubectl
+kubectl: ANSIBLE_DEBUG+=-t kubectl
+kubectl: run ## Just update kubectl
 
 .PHONY: vim
 vim: ANSIBLE_DEBUG+=-t vim

@@ -1,1 +1,2 @@
 go_arch: arm64
+kubectl_arch: arm64

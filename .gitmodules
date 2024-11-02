@@ -22,3 +22,7 @@
 [submodule "collections/ansible_collections/quera/github"]
 	path = collections/ansible_collections/quera/github
 	url = https://github.com/QueraTeam/ansible-github.git
+[submodule "roles/githubixx.kubectl"]
+	path = roles/githubixx.kubectl
+	url = https://github.com/githubixx/ansible-role-kubectl.git
+	branch = 23.2.0+1.30.5
