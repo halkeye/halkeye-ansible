@@ -9,7 +9,7 @@
 - name: Create wezterm repo
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *"
+    repo: "deb [signed-by=/etc/apt/keyrings/wez.asc] https://apt.fury.io/wez/ * *"
     state: present
 
 - name: Install wezterm
