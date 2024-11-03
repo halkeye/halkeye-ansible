@@ -329,7 +329,7 @@
   quera.github.install_from_github:
     repo: tummychow/git-absorb
     tag: "{{ software_version_git_absorb }}"
-    version_command: /usr/libexec/git-core/git-absorb --version
+    # version_command: /usr/libexec/git-core/git-absorb --version
     asset_regex: git-absorb.*
     move_rules:
       - src_regex: git-absorb.*/git-absorb
