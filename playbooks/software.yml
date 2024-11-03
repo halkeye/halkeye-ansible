@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook
-#
 # sops
 - name: Setup architecture map
   ansible.builtin.set_fact:
@@ -43,6 +42,8 @@
       - { url: "https://github.com/getsops/sops/releases/download/v{{ software_version_sops }}/sops_{{ software_version_sops }}_{{ deb_architecture }}.deb", "name": "sops", "version": "{{ software_version_sops }}" }
       - { url: "https://github.com/sharkdp/vivid/releases/download/v{{ software_version_vivid }}/vivid-musl_{{ software_version_vivid }}_{{ deb_architecture }}.deb", "name": "sops", "version": "{{ software_version_vivid }}" }
       - { url: "https://github.com/wagoodman/dive/releases/download/v{{ software_version_dive }}/dive_{{ software_version_dive }}_linux_{{ deb_architecture }}.deb", "name": "dive", "version": "{{ software_version_dive }}" }
+      - { url: "https://github.com/goreleaser/goreleaser/releases/download/v{{ software_version_goreleaser }}/goreleaser_{{ software_version_goreleaser }}_{{ deb_architecture }}.deb", "name": "goreleaser", "version": "{{ software_version_dive }}" }
+
 
 - name: Download debs
   become: true

@@ -290,3 +290,4 @@ software_version_air: "1.61.1" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
+software_version_goreleaser: "2.4.1" # repo: goreleaser/goreleaser
