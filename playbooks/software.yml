@@ -76,24 +76,24 @@
     owner: "root"
     mode: '0755'
 
-- name: Download kubectl
-  become: true
-  ansible.builtin.get_url:
-    url: "https://dl.k8s.io/release/v{{ software_version_kubectl }}/bin/linux/{{ deb_architecture }}/kubectl"
-    dest: /usr/local/bin/kubectl-{{ software_version_kubectl }}
-    mode: '0755'
-    owner: root
-    group: root
+# - name: Download kubectl
+#   become: true
+#   ansible.builtin.get_url:
+#     url: "https://dl.k8s.io/release/v{{ software_version_kubectl }}/bin/linux/{{ deb_architecture }}/kubectl"
+#     dest: /usr/local/bin/kubectl-{{ software_version_kubectl }}
+#     mode: '0755'
+#     owner: root
+#     group: root
 
-- name: Install kubectl
-  become: true
-  ansible.builtin.file:
-    src: /usr/local/bin/kubectl-{{ software_version_kubectl }}
-    dest: '/usr/local/bin/kubectl'
-    state: link
-    owner: root
-    group: root
-    mode: '0755'
+# - name: Install kubectl
+#   become: true
+#   ansible.builtin.file:
+#     src: /usr/local/bin/kubectl-{{ software_version_kubectl }}
+#     dest: '/usr/local/bin/kubectl'
+#     state: link
+#     owner: root
+#     group: root
+#     mode: '0755'
 
 - name: Install age
   become: true
