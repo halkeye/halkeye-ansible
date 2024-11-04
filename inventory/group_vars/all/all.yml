@@ -271,12 +271,12 @@ software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.5" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
 software_version_act: "0.2.69" # repo: nektos/act
-software_version_regctl: "0.7.1" # repo: regclient/regclient
+software_version_regctl: "0.7.2" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.1.1" # repo: mike-engel/jwt-cli
 software_version_rover: "0.26.2" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.9" # repo: Mic92/ssh-to-age
-software_version_actionlint: "1.7.3" # repo: rhysd/actionlint
+software_version_actionlint: "1.7.4" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
 software_version_stern: "1.31.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
@@ -290,4 +290,4 @@ software_version_air: "1.61.1" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
-software_version_goreleaser: "2.4.1" # repo: goreleaser/goreleaser
+software_version_goreleaser: "2.4.3" # repo: goreleaser/goreleaser
