@@ -17,13 +17,35 @@
   vars:
     helm_version: "{{ software_version_helm }}"
 
-
 - name: Download git-subtree
   become: true
   ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/git/git/v{{ git_version }}/contrib/subtree/git-subtree.sh"
     dest: '/usr/libexec/git-core/git-subtree'
     mode: '0755'
+
+# Start direct downloads
+
+- name: Create a list of direct download links
+  ansible.builtin.set_fact:
+    software_direct_download_links:
+      - { url: "https://github.com/operator-framework/operator-sdk/releases/download/v{{ software_version_operatorsdk }}/operator-sdk_{{deb_os}}_{{deb_architecture}}", "name": "operator-sdk", "version": "v{{ software_version_operatorsdk }}", "version_cmd": "version" }
+
+- name: Determine versions
+  ansible.builtin.command: "sh -c 'command -v /usr/local/bin/{{ item.name }} 2>/dev/null 1>/dev/null && /usr/local/bin/{{ item.name }} {{ item.version_cmd }}; true'"
+  register: software_direct_download_links_version_cmds
+  with_items: "{{ software_direct_download_links }}"
+
+- name: Install direct download links
+  become: true
+  ansible.builtin.get_url:
+    url: "{{ item.url }}"
+    force: "{{ item.version not in software_direct_download_links_version_cmds.results[download_links_idx].stdout }}"
+    dest: /usr/local/bin/{{ item.name }}
+    mode: '0755'
+  with_items: "{{ software_direct_download_links }}"
+  loop_control:
+    index_var: download_links_idx
 
 # Start Debs
 
@@ -103,8 +125,11 @@
     version_command: age --version
     asset_regex: "age-.*\\.(gz|zip)$"
     move_rules:
-      - src_regex: age-.*
+      - src_regex: age/age
         dst: /usr/local/bin/age
+        mode: 0755
+      - src_regex: age/age-keygen
+        dst: /usr/local/bin/age-keygen
         mode: 0755
 
 - name: Install fx

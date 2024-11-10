@@ -4,19 +4,18 @@
     - import_tasks: playbooks/tasks.yml
       tags:
         - software
-  tasks:
     - import_tasks: playbooks/fzf.yml
       tags:
         - fzf
-    - import_tasks: playbooks/genuinetools.yml
-      tags:
-        - genuinetools
     - import_tasks: playbooks/directories.yml
       tags:
         - directories
     - import_tasks: playbooks/software.yml
       tags:
         - software
+    - import_tasks: playbooks/genuinetools.yml
+      tags:
+        - genuinetools
   roles:
     - role: halkeye.wsl
       when: "'wsl' in group_names"
