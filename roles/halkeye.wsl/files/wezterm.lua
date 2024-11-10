@@ -11,6 +11,9 @@ end)
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- dont mess with strings being pasted in
+config.canonicalize_pasted_newlines = "None"
+
 -- This is where you actually apply your config choices
 config.default_domain = 'WSL:Ubuntu'
 config.default_cwd = wezterm.home_dir
