@@ -213,6 +213,7 @@ git_install_from_source_force_update: true
 ghr_install_dir: "{{ env_home }}/.local/bin"
 
 krew_install_plugins:
+  - ctx
   - explore
   - get-all
   - klock
