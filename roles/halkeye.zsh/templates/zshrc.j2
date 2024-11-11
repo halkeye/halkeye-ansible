@@ -108,7 +108,7 @@ command -v doctl 2>/dev/null 1>/dev/null && source <(doctl completion zsh)
 command -v npm 2>/dev/null 1>/dev/null && source <(npm completion)
 command -v gh 2>/dev/null 1>/dev/null && source <(gh completion -s zsh)
 command -v k9s 2>/dev/null 1>/dev/null && source <(k9s completion zsh)
-command -v stern 2>/dev/null 1>/dev/null && source <(stern completion zsh)
+command -v stern 2>/dev/null 1>/dev/null && source <(stern --completion zsh)
 TMUXINATOR_COMPLETION_PATH="$(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")' 2>/dev/null)"
 test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
 . $HOME/.asdf/completions/asdf.bash
