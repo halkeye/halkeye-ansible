@@ -30,6 +30,7 @@
   ansible.builtin.set_fact:
     software_direct_download_links:
       - { url: "https://github.com/operator-framework/operator-sdk/releases/download/v{{ software_version_operatorsdk }}/operator-sdk_{{deb_os}}_{{deb_architecture}}", "name": "operator-sdk", "version": "v{{ software_version_operatorsdk }}", "version_cmd": "version" }
+      - { url: "https://github.com/argoproj/argo-cd/releases/download/{{ software_version_argocd }}/argocd-{{ deb_os }}-{{ deb_architecture }}", "name": "argocd", "version": "v{{ software_version_argocd }}", "version_cmd": "version" }
 
 - name: Determine versions
   ansible.builtin.command: "sh -c 'command -v /usr/local/bin/{{ item.name }} 2>/dev/null 1>/dev/null && /usr/local/bin/{{ item.name }} {{ item.version_cmd }}; true'"
