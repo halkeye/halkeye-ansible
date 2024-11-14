@@ -1,6 +1,7 @@
 ---
 - name: Install
-  when: install
+  when: install|default(false)|bool == true
   ansible.builtin.include_tasks: ./install.yml
+
 - name: Config
   ansible.builtin.include_tasks: ./config.yml
