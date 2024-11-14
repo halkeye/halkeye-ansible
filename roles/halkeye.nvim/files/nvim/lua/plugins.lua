@@ -12,6 +12,31 @@ local function first(bufnr, ...)
   return select(1, ...)
 end
 
+-- Alternative of
+-- vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+-- that runs synchronously and doesn't produce race conditions with formatting or saving.
+local function organize_imports(client, bufnr)
+  local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
+  params.context = { only = { "source.organizeImports" } }
+
+  local resp = client.request_sync("textDocument/codeAction", params, 3000, bufnr)
+  for _, r in pairs(resp and resp.result or {}) do
+    if r.edit then
+      vim.lsp.util.apply_workspace_edit(r.edit, vim.lsp.util._get_offset_encoding())
+    else
+      print(r.command)
+      vim.lsp.buf.execute_command(r.command)
+    end
+  end
+end
+
+local function format(bufnr)
+  if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+    return
+  end
+  require("conform").format({ lsp_fallback = true })
+end
+
 require("lazy").setup({
   "nvim-lua/plenary.nvim",
   "nvim-tree/nvim-web-devicons",
@@ -86,6 +111,7 @@ require("lazy").setup({
           return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d",
             "eslint") }
         end,
+        tsserver = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d", "eslint") } end,
         typescript = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d", "eslint") } end,
         typescriptreact = function(bufnr)
           return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d",
@@ -96,8 +122,8 @@ require("lazy").setup({
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
       -- Customize formatters
       formatters = {
-        goimports = {
-          prepend_args = { "-rm-unused", "-company-prefixes", "do" }
+        ["goimports-reviser"] = {
+          prepend_args = { "-company-prefixes", "do/" }
         },
         shfmt = {
           prepend_args = { "-i", "2" },
@@ -121,6 +147,9 @@ require("lazy").setup({
           "erb-lint"
         },
         javascript = {
+          "eslint_d"
+        },
+        tsserver = {
           "eslint_d"
         },
         typescript = {
@@ -340,14 +369,10 @@ require("lazy").setup({
     "folke/neoconf.nvim",
   },
   {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "folke/neoconf.nvim",
+      "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/nvim-cmp",
@@ -358,6 +383,7 @@ require("lazy").setup({
       local mason_lspconfig = require("mason-lspconfig")
 
       vim.opt_global.omnifunc = 'v:lua.vim.lsp.omnifunc'
+      vim.opt_global.tagfunc = 'v:lua.vim.lsp.tagfunc'
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -366,16 +392,15 @@ require("lazy").setup({
       local on_attach = function(_, bufnr)
         -- Enable completion triggered by <c-x><c-o>
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
         vim.lsp.inlay_hint.enable()
       end
 
       mason_lspconfig.setup {
         ensure_installed = {
-          "ansiblels",
           "bashls",
           "cssls",
           "dockerls",
-          "ember",
           "eslint",
           "gopls",
           "graphql",
@@ -384,10 +409,9 @@ require("lazy").setup({
           "jsonls",
           "lua_ls",
           "marksman",
-          "pyright",
+          -- "jedi_language_server", -- python
+          "pylsp", -- python
           "ruby_lsp",
-          "ruff",
-          "ruff_lsp",
           "rust_analyzer",
           "tailwindcss",
           "typos_lsp",
@@ -402,12 +426,84 @@ require("lazy").setup({
             capabilities = capabilities,
           })
         end,
-        ["gopls"] = function()
+        ["pylsp"] = function()
           lspconfig.gopls.setup({
             on_attach = on_attach,
             capabilities = capabilities,
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  ignore = { 'W391' },
+                  maxLineLength = 100
+                }
+              }
+            }
+          })
+        end,
+
+        ["pylsp"] = function()
+          lspconfig.gopls.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  ignore = { 'W391' },
+                  maxLineLength = 100
+                }
+              }
+            }
+          })
+        end,
+
+        ["yamlls"] = function()
+          lspconfig.yamlls.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+              yaml = {
+                format = { enable = false, singleQuote = true, printWidth = 120, },
+                hover = true,
+                completion = true,
+                validate = true,
+                schemas = {
+                  ["https://raw.githubusercontent.com/bjw-s/helm-charts/common-3.4.0/charts/library/common/values.schema.json"] = { "/values.yaml", "values-secrets.yaml", },
+                },
+                schemaStore = { enable = true, url = "https://www.schemastore.org/json", },
+              },
+            },
+          })
+        end,
+
+        ["gopls"] = function()
+          lspconfig.gopls.setup({
+            on_attach = function(client, bufnr)
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                callback = function()
+                  organize_imports(client, bufnr)
+                  format(bufnr)
+                end,
+              })
+              on_attach(client, bufnr)
+            end,
+            capabilities = capabilities,
+            before_init = function(_, config)
+              if vim.fn.executable("go") ~= 1 then
+                return
+              end
+
+              local module = vim.fn.trim(vim.fn.system("go list -m"))
+              if vim.v.shell_error ~= 0 then
+                return
+              end
+              module = module:gsub("\n", ",")
+
+              config.settings.gopls["formatting.local"] = module
+            end,
             settings = {
               gopls = {
+                ["diagnostic.vulncheck"] = "Imports",
                 buildFlags = { "-tags=integration" }
               }
             }
@@ -426,8 +522,6 @@ require("lazy").setup({
       }
     end,
   },
-  -- try and detect ansible
-  { "mfussenegger/nvim-ansible" },
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPre",
