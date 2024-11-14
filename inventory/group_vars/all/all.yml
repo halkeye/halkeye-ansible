@@ -265,11 +265,11 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.61.0" # repo: cli/cli
+software_version_gh: "2.62.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "24.4.1" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "24.5.1" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.27.3" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
@@ -297,6 +297,6 @@ software_version_air: "1.61.1" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
-software_version_goreleaser: "2.4.4" # repo: goreleaser/goreleaser
+software_version_goreleaser: "2.4.5" # repo: goreleaser/goreleaser
 software_version_operatorsdk: "1.37.0" # repo: operator-framework/operator-sdk
 software_version_argocd: "v2.13.0" # repo: argoproj/argo-cd
