@@ -1,23 +1,6 @@
 ---
-- name: Download wezterm GPG key
-  become: true
-  ansible.builtin.get_url:
-    url: https://apt.fury.io/wez/gpg.key
-    dest: /etc/apt/keyrings/wez.asc
-    mode: 644
-
-- name: Create wezterm repo
-  become: true
-  ansible.builtin.apt_repository:
-    repo: "deb [signed-by=/etc/apt/keyrings/wez.asc] https://apt.fury.io/wez/ * *"
-    state: present
-
-- name: Install wezterm
-  become: true
-  ansible.builtin.apt:
-    name: "wezterm={{ wezterm_version }}"
-    state: present
-    update_cache: true
-
+- name: Install
+  when: install
+  ansible.builtin.include_tasks: ./install.yml
 - name: Config
   ansible.builtin.include_tasks: ./config.yml

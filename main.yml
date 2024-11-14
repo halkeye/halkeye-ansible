@@ -82,7 +82,7 @@
       tags:
         - software
     - role: halkeye.wezterm
-      when: "'linux_desktop' in group_names"
+      install: "'linux_desktop' in group_names"
       wezterm_version: "{{ software_version_wezterm }}"
       tags:
         - wezterm
