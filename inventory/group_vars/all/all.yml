@@ -38,6 +38,7 @@ global_ubuntu_packages:
   - direnv
   - git-absorb
   - rename
+  - ripgrep
 global_darwin_packages:
   - gpg2
   - jq
@@ -241,7 +242,6 @@ software_version_treesitter: "0.24.4" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.31.2" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.56.2" # repo: junegunn/fzf
 software_version_zoxide: "0.9.6" # repo: ajeetdsouza/zoxide
-software_version_ripgrep: "14.1.1" # repo: BurntSushi/ripgrep
 # Terminal JSON viewer & processor
 software_version_fx: "35.0.0" # repo: antonmedv/fx
 # A cat(1) clone with wings.

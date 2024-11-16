@@ -1,2 +1,18 @@
 go_arch: arm64
 kubectl_arch: arm64
+
+krew_install_plugins:
+  - ctx
+  - explore
+  - klock
+  - kor
+  - krew
+  - modify-secret
+  - portal
+  - pv-mounter
+  - secretdata
+  - tail
+  - tap
+  - view-cert
+  - view-secret
+  - whoami
