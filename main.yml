@@ -13,9 +13,6 @@
     - import_tasks: playbooks/software.yml
       tags:
         - software
-    - import_tasks: playbooks/genuinetools.yml
-      tags:
-        - genuinetools
   roles:
     - role: halkeye.wsl
       when: "'wsl' in group_names"

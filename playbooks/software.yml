@@ -356,6 +356,9 @@
     tag: "{{ software_version_git_absorb }}"
     # version_command: /usr/libexec/git-core/git-absorb --version
     asset_regex: git-absorb.*
+    asset_arch_mapping:
+      aarch64: "arm"
+      arm64: "arm"
     move_rules:
       - src_regex: git-absorb.*/git-absorb
         dst: /usr/libexec/git-core
