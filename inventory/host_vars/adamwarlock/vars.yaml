@@ -1,5 +1,6 @@
 go_arch: arm64
 kubectl_arch: arm64
+helm_architecture: arm64
 
 krew_install_plugins:
   - ctx
