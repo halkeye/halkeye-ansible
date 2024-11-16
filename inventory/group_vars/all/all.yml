@@ -259,7 +259,7 @@ software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
 software_version_helm: "3.16.3" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
-software_version_k9s: "0.32.6" # repo: derailed/k9s
+software_version_k9s: "0.32.7" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
 software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
@@ -269,7 +269,7 @@ software_version_gh: "2.62.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "24.6.2" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "24.6.3" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.27.3" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
