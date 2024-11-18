@@ -56,6 +56,10 @@ kubectl: run ## Just update kubectl
 vim: ANSIBLE_DEBUG+=-t vim
 vim: run ## Just update vim
 
+.PHONY: fonts
+fonts: ANSIBLE_DEBUG+=-t fonts
+fonts: run ## Just update fonts
+
 .PHONY: go
 go: ANSIBLE_DEBUG+=-t go
 go: run ## Just update go

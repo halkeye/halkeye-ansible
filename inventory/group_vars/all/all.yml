@@ -209,6 +209,7 @@ asdf_plugins:
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
+nf_user: "{{ env_user }}"
 docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
 go_version: "1.23.3"
@@ -235,6 +236,21 @@ krew_install_plugins:
   - view-cert
   - view-secret
   - whoami
+
+nf_enabled: false
+nf_single_fonts:
+  - "UbuntuMono/Regular/UbuntuMonoNerdFont-Regular.ttf"
+  - "UbuntuMono/Regular/UbuntuMonoNerdFontMono-Regular.ttf"
+  - "CascadiaCode/Regular/CaskaydiaCoveNerdFont-Regular.ttf"
+  - "CascadiaCode/Regular/CaskaydiaCoveNerdFontMono-Regular.ttf"
+  - "FiraCode/Regular/FiraCodeNerdFont-Regular.ttf"
+  - "FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf"
+  - "JetBrainsMono/NoLigatures/Regular/JetBrainsMonoNLNerdFont-Regular.ttf"
+  - "JetBrainsMono/NoLigatures/Regular/JetBrainsMonoNLNerdFontMono-Regular.ttf"
+  - "OpenDyslexic/Regular/OpenDyslexicNerdFont-Regular.otf"
+  - "OpenDyslexic/Mono-Regular/OpenDyslexicMNerdFontMono-Regular.otf"
+  - "SourceCodePro/SauceCodeProNerdFont-Regular.ttf"
+  - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
 asdf_version: "v0.14.1" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.2" # repo: neovim/neovim
