@@ -267,7 +267,7 @@ software_version_bat: "0.24.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.117.0" # repo: digitalocean/doctl
+software_version_doctl: "1.118.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.9.1" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -316,5 +316,5 @@ software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
 software_version_goreleaser: "2.4.7" # repo: goreleaser/goreleaser
-software_version_operatorsdk: "1.37.0" # repo: operator-framework/operator-sdk
+software_version_operatorsdk: "1.38.0" # repo: operator-framework/operator-sdk
 software_version_argocd: "v2.13.0" # repo: argoproj/argo-cd
