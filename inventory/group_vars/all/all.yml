@@ -216,7 +216,7 @@ docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
 go_version: "1.23.3"
 
-git_version: "2.47.0" # repo: git/git
+git_version: "2.47.1" # repo: git/git
 git_install_from_source: true
 git_install_from_source_force_update: true
 
@@ -283,13 +283,13 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.62.0" # repo: cli/cli
+software_version_gh: "2.63.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "24.6.5" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "24.10.1" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.27.3" # repo: crate-ci/typos
+software_version_typos: "1.28.1" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
@@ -298,7 +298,7 @@ software_version_iamb: "0.0.10" # repo: ulyssa/iamb
 software_version_act: "0.2.69" # repo: nektos/act
 software_version_regctl: "0.7.2" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
-software_version_jwt: "6.1.1" # repo: mike-engel/jwt-cli
+software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
 software_version_rover: "0.26.2" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.9" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.4" # repo: rhysd/actionlint
