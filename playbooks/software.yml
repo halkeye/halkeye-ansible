@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook
-# sops
 - name: Setup architecture map
   ansible.builtin.set_fact:
     deb_architectures: { "armv6l": "armhf", "armv7l": "armhf", "aarch64": "arm64", "x86_64": "amd64", "i386": "i386" } 
@@ -29,8 +28,7 @@
 - name: Create a list of direct download links
   ansible.builtin.set_fact:
     software_direct_download_links:
-      - { url: "https://github.com/operator-framework/operator-sdk/releases/download/v{{ software_version_operatorsdk }}/operator-sdk_{{deb_os}}_{{deb_architecture}}", "name": "operator-sdk", "version": "v{{ software_version_operatorsdk }}", "version_cmd": "version" }
-      - { url: "https://github.com/argoproj/argo-cd/releases/download/{{ software_version_argocd }}/argocd-{{ deb_os }}-{{ deb_architecture }}", "name": "argocd", "version": "v{{ software_version_argocd }}", "version_cmd": "version" }
+      - { url: "https://github.com/argoproj/argo-cd/releases/download/v{{ software_version_argocd }}/argocd-{{ deb_os }}-{{ deb_architecture }}", "name": "argocd", "version": "v{{ software_version_argocd }}", "version_cmd": "version" }
 
 - name: Determine versions
   ansible.builtin.command: "sh -c 'command -v /usr/local/bin/{{ item.name }} 2>/dev/null 1>/dev/null && /usr/local/bin/{{ item.name }} {{ item.version_cmd }}; true'"
@@ -64,7 +62,9 @@
       - { url: "https://github.com/getsops/sops/releases/download/v{{ software_version_sops }}/sops_{{ software_version_sops }}_{{ deb_architecture }}.deb", "name": "sops", "version": "{{ software_version_sops }}" }
       - { url: "https://github.com/sharkdp/vivid/releases/download/v{{ software_version_vivid }}/vivid_{{ software_version_vivid }}_{{ deb_architecture }}.deb", "name": "sops", "version": "{{ software_version_vivid }}" }
       - { url: "https://github.com/wagoodman/dive/releases/download/v{{ software_version_dive }}/dive_{{ software_version_dive }}_linux_{{ deb_architecture }}.deb", "name": "dive", "version": "{{ software_version_dive }}" }
-      - { url: "https://github.com/goreleaser/goreleaser/releases/download/v{{ software_version_goreleaser }}/goreleaser_{{ software_version_goreleaser }}_{{ deb_architecture }}.deb", "name": "goreleaser", "version": "{{ software_version_dive }}" }
+      - { url: "https://github.com/goreleaser/goreleaser/releases/download/v{{ software_version_goreleaser }}/goreleaser_{{ software_version_goreleaser }}_{{ deb_architecture }}.deb", "name": "goreleaser", "version": "{{ software_version_goreleaser }}" }
+      - { url: "https://github.com/ms-jpq/sad/releases/download/v{{ software_version_sad }}/{{ ansible_architecture }}-unknown-linux-gnu.deb", "name": "sad", "version": "{{ software_version_sad }}" }
+      - { url: "https://github.com/dandavison/delta/releases/download/{{ software_version_delta }}/git-delta_{{ software_version_delta }}_{{ deb_architecture }}.deb", "name": "delta", "version": "{{ software_version_delta }}" }
 
 
 - name: Download debs

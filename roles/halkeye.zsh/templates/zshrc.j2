@@ -95,6 +95,9 @@ if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/Sys
 if [ -e "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; then export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"; fi
 if [ -e "${KREW_ROOT:-$HOME/.krew}" ]; then export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"; fi
 if [ -e "$HOME/.dotnet/tools" ]; then export PATH="$PATH:$HOME/.dotnet/tools"; fi
+{% if windows_username is defined and windows_username|length -%}
+if [ -e "/mnt/c/Users/{{ windows_username }}/AppData/Local/Microsoft/WindowsApps" ]; then export PATH="$PATH:/mnt/c/Users/{{ windows_username }}/AppData/Local/Microsoft/WindowsApps"; fi
+{% endif -%}
 
 eval "$(POSH_INSTALLER=ws /usr/local/bin/oh-my-posh init zsh --config ~/.poshthemes/gmay.omp.json)"
 
