@@ -257,7 +257,7 @@ nf_single_fonts:
 asdf_version: "v0.14.1" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.2" # repo: neovim/neovim
 software_version_treesitter: "0.24.4" # repo: tree-sitter/tree-sitter
-software_version_kubectl: "1.31.3" # repo: kubernetes/kubernetes
+software_version_kubectl: "1.31.4" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.56.3" # repo: junegunn/fzf
 software_version_zoxide: "0.9.6" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
@@ -296,11 +296,11 @@ software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.5" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
 software_version_act: "0.2.70" # repo: nektos/act
-software_version_regctl: "0.7.2" # repo: regclient/regclient
+software_version_regctl: "0.8.0" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
 software_version_rover: "0.26.2" # repo: apollographql/rover
-software_version_ssh_to_age: "1.1.9" # repo: Mic92/ssh-to-age
+software_version_ssh_to_age: "1.1.10" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.4" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
 software_version_stern: "1.31.0" # repo: stern/stern
