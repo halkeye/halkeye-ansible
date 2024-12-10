@@ -287,7 +287,7 @@ software_version_gh: "2.63.2" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "24.11.4" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "24.12.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.28.2" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
@@ -309,7 +309,7 @@ software_version_vivid: "0.10.1" # repo: sharkdp/vivid
 software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
 software_version_vale: "3.9.1" # repo: errata-ai/vale
 software_version_gemini: "0.3.1" # repo: reugn/gemini-cli
-software_version_krr: "v1.17.0" # repo: robusta-dev/krr
+software_version_krr: "v1.18.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.16" # repo: tummychow/git-absorb
 software_version_air: "1.61.1" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
