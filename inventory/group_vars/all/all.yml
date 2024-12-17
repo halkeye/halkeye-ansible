@@ -275,7 +275,7 @@ software_version_age: "1.2.0" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
 software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
-software_version_helm: "3.16.3" # repo: helm/helm
+software_version_helm: "3.16.4" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
 software_version_k9s: "0.32.7" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
@@ -287,9 +287,9 @@ software_version_gh: "2.63.2" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "24.13.0" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "24.14.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.28.3" # repo: crate-ci/typos
+software_version_typos: "1.28.4" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
@@ -299,7 +299,7 @@ software_version_act: "0.2.70" # repo: nektos/act
 software_version_regctl: "0.8.0" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
-software_version_rover: "0.26.2" # repo: apollographql/rover
+software_version_rover: "0.26.3" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.10" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.4" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
@@ -311,7 +311,7 @@ software_version_vale: "3.9.1" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.18.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.16" # repo: tummychow/git-absorb
-software_version_air: "1.61.1" # repo: air-verse/air
+software_version_air: "1.61.5" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
