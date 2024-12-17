@@ -39,3 +39,24 @@
     tasks_from: config 
   vars:
     config_dir: "/mnt/c/Users/{{ windows_username }}"
+
+- name: Create WSL Notify Send dir
+  become: true
+  ansible.builtin.file:
+    path: /usr/local/wsl-notify-send-{{ software_version_wsl_notify_send }}
+    state: directory
+    mode: "0755"
+
+- name: Download and extract WSL Notify Send
+  become: true
+  ansible.builtin.unarchive:
+    src: https://github.com/stuartleeks/wsl-notify-send/releases/download/v{{ software_version_wsl_notify_send }}/wsl-notify-send_windows_amd64.zip
+    dest: /usr/local/wsl-notify-send-{{ software_version_wsl_notify_send }}
+    remote_src: yes
+
+- name: Map wslview to xdg-open
+  become: true
+  ansible.builtin.file:
+    state: link
+    src: /usr/local/wsl-notify-send-{{ software_version_wsl_notify_send }}/wsl-notify-send.exe
+    dest: /usr/bin/wsl-notify-send
