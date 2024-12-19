@@ -257,7 +257,7 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFont-Regular.ttf"
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
-asdf_version: "v0.14.1" # repo: asdf-vm/asdf
+asdf_version: "v0.15.0" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.2" # repo: neovim/neovim
 software_version_treesitter: "0.24.5" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.32.0" # repo: kubernetes/kubernetes
@@ -274,7 +274,7 @@ software_version_doctl: "1.120.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.9.2" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
-software_version_age: "1.2.0" # repo: FiloSottile/age
+software_version_age: "1.2.1" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
 software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
@@ -290,7 +290,7 @@ software_version_gh: "2.63.2" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "24.14.0" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "24.16.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.28.4" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
