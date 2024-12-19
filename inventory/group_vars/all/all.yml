@@ -81,6 +81,9 @@ global_git_config:
   - name: url.ssh://git@github.com/.insteadOf
     scope: global
     value: 'https://github.com/'
+  - name: url.ssh://git@gitlab.com/.insteadOf
+    scope: global
+    value: 'https://gitlab.com/'
   - name: alias.root
     scope: global
     value: rev-parse --show-toplevel
@@ -320,4 +323,5 @@ software_version_argocd: "2.13.2" # repo: argoproj/argo-cd
 software_version_sad: "0.4.31" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
+software_version_glab: "1.51.0" # gitlab_repo: gitlab-org/cli
 

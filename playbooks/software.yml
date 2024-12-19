@@ -65,6 +65,7 @@
       - { url: "https://github.com/goreleaser/goreleaser/releases/download/v{{ software_version_goreleaser }}/goreleaser_{{ software_version_goreleaser }}_{{ deb_architecture }}.deb", "name": "goreleaser", "version": "{{ software_version_goreleaser }}" }
       - { url: "https://github.com/ms-jpq/sad/releases/download/v{{ software_version_sad }}/{{ ansible_architecture }}-unknown-linux-gnu.deb", "name": "sad", "version": "{{ software_version_sad }}" }
       - { url: "https://github.com/dandavison/delta/releases/download/{{ software_version_delta }}/git-delta_{{ software_version_delta }}_{{ deb_architecture }}.deb", "name": "delta", "version": "{{ software_version_delta }}" }
+      - { url: "https://gitlab.com/gitlab-org/cli/-/releases/v{{ software_version_glab }}/downloads/glab_{{ software_version_glab }}_linux_{{ deb_architecture }}.deb", "name": "glab", "version": "{{ software_version_glab }}" }
 
 
 - name: Download debs

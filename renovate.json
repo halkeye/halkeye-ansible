@@ -36,6 +36,17 @@
         "inventory/group_vars/all/all.yml$"
       ],
       "matchStrings": [
+        "asdf_version: \"v(?<currentValue>.+?)\" # gitlab_repo: (?<depName>.*)",
+        "software_version_(.+): \"(?<currentValue>.+?)\" # gitlab_repo: (?<depName>.*)"
+      ],
+      "datasourceTemplate": "gitlab-releases"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "inventory/group_vars/all/all.yml$"
+      ],
+      "matchStrings": [
         "git_version: \"(?<currentValue>.+?)\" # repo: (?<depName>.*)"
       ],
       "depNameTemplate": "git/git",
