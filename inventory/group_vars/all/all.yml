@@ -227,6 +227,7 @@ ghr_install_dir: "{{ env_home }}/.local/bin"
 
 krew_install_plugins:
   - ctx
+  - capture
   - explore
   - get-all
   - klock
@@ -238,6 +239,7 @@ krew_install_plugins:
   - secretdata
   - tail
   - tap
+  - sysdig
   - view-cert
   - view-secret
   - whoami
