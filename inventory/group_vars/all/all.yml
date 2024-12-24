@@ -239,7 +239,6 @@ krew_install_plugins:
   - secretdata
   - tail
   - tap
-  - sysdig
   - view-cert
   - view-secret
   - whoami
