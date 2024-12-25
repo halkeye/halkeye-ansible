@@ -311,7 +311,7 @@ software_version_stern: "1.31.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
 software_version_vivid: "0.10.1" # repo: sharkdp/vivid
 software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
-software_version_vale: "3.9.1" # repo: errata-ai/vale
+software_version_vale: "3.9.2" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.18.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.16" # repo: tummychow/git-absorb
