@@ -16,6 +16,13 @@
   vars:
     helm_version: "{{ software_version_helm }}"
 
+- name: Make sure git directory exists
+  become: true
+  file:
+    path: "/usr/libexec/git-core"
+    state: directory
+    mode: "0755"
+    
 - name: Download git-subtree
   become: true
   ansible.builtin.get_url:
