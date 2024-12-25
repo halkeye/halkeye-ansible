@@ -115,7 +115,8 @@ global_authorized_keys:
   - "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD65/3DUqVhvMCGS5GLqaHROKlmeY979QKpatwwWlXHq+aPMZgr/oz4yPdeiiNdgMrwhZYATXOlZy+t08o1UcKs= gmogan@DO-PW0BFSP4"
   # juicessh
   - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDlYpUaNTIHO8QZRPpdTU3iWrG9RjYHo7ceVmD89P61vyyu8q7Fr9ygCm0O35FMUguTN3X391IsipReYFi1Zf97N9HeYs9XtCWbD36R2Po/qSC5kCmV82Wqu4o76CnVNdSN1aH3a7+NOXgZDZwEPDOOChyg9nVo4f7vdYe2AsBSUZVV5jLVj1NHWkeyLx0/S9ZrZBsBsBhKr5FtT+Hl/iMLGs2MRSKIvHS+hKHYC0QQNBg2voBva2a+b6VqdGOCX4HqZZnAF9XJdkEzXqd/g7Di8IewIBJxrHjc4Bern9QklAl5KH8qGB9vNxKiz7LDvtRpad1Sd7c0pZhXTnqznJSv JuiceSSH"
-
+  # WASP
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL22alHh1H0AroZW475rqtZY+5NIUZGgWQAycV1/3aia halkeye@wasp
 git_ignore:
   - "*~"
   - "# temporary files which can be created if a process still has a handle open of a deleted file"

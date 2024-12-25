@@ -1,0 +1,4 @@
+---
+zsh_install_ssh_agent: true
+windows_username: "micro"
+wezterm_config_dir: /mnt/c/Users/micro/
