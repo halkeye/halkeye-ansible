@@ -42,6 +42,7 @@ global_ubuntu_packages:
   - git-absorb
   - rename
   - ripgrep
+  - sshfs
 global_darwin_packages:
   - gpg2
   - jq
