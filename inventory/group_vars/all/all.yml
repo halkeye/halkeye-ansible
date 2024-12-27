@@ -43,6 +43,9 @@ global_ubuntu_packages:
   - rename
   - ripgrep
   - sshfs
+  - docker.io
+  - docker-buildx
+  - docker-compose-v2
 global_darwin_packages:
   - gpg2
   - jq
