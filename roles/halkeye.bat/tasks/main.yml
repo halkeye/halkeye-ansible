@@ -1,0 +1,55 @@
+---
+- name: Download debs
+  become: true
+  ansible.builtin.get_url:
+    url: "https://github.com/sharkdp/bat/releases/download/v{{ bat_version }}/bat_{{ bat_version }}_{{ architecture }}.deb"
+    dest: /var/cache/apt/archives/bat-{{ bat_version }}.deb
+    mode: '0600'
+
+- name: Install package
+  become: true
+  ansible.builtin.apt:
+    deb: /var/cache/apt/archives/bat-{{ bat_version }}.deb
+
+- name: Create config directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ env_home }}/.config/bat"
+    state: directory
+    mode: "0755"
+
+- name: Create skins directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ env_home }}/.config/bat/themes"
+    state: directory
+    mode: "0755"
+
+- name: Make sure config file exists
+  become: false
+  ansible.builtin.file:
+    path: "{{ env_home }}/.config/bat/config"
+    state: touch
+    modification_time: preserve
+    access_time: preserve
+    mode: "0755"
+
+- name: Download catppuccin-mocha
+  become: false
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/catppuccin/bat/699f60fc8ec434574ca7451b444b880430319941/themes/{{ item | regex_replace(' ', '%20') }}
+    dest: '{{ env_home }}/.config/bat/themes/{{ item }}'
+    mode: '0600'
+  loop:
+    - Catppuccin Frappe.tmTheme
+    - Catppuccin Latte.tmTheme
+    - Catppuccin Macchiato.tmTheme
+    - Catppuccin Mocha.tmTheme
+
+- name: Make sure theme is set
+  become: false
+  ansible.builtin.lineinfile:
+    path: "{{ env_home }}/.config/bat/config"
+    search_string: '^--theme='
+    line: --theme="Catppuccin Mocha"
+
