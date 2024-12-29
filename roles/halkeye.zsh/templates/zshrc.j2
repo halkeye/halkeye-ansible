@@ -43,30 +43,30 @@ bindkey "$key[Up]" history-beginning-search-backward-end
 bindkey "$key[Down]" history-beginning-search-forward-end
 ## From: https://unix.stackexchange.com/questions/258656/how-can-i-delete-to-a-slash-or-a-word-in-zsh
 # This way you can use ctrl+w for deleting a Word (in vim lingo) and alt+bkspc to delete a word
-backward-kill-dir () {
+backward-kill-dir() {
   local WORDCHARS=${WORDCHARS/\/}
   zle backward-kill-word
 }
 zle -N backward-kill-dir
 bindkey '^[^?' backward-kill-dir
 
-yaml_validate {
+yaml_validate() {
   python -c 'import sys, yaml, json; yaml.safe_load(sys.stdin.read())'
 }
 
-yaml2json {
+yaml2json() {
   python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read())))'
 }
 
-yaml2json_pretty {
+yaml2json_pretty() {
   python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read()), indent=2, sort_keys=False))'
 }
 
-json_validate {
+json_validate() {
   python -c 'import sys, yaml, json; json.loads(sys.stdin.read())'
 }
 
-json2yaml {
+json2yaml() {
   python -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))'
 }
 
