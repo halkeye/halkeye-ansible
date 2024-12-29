@@ -99,6 +99,9 @@ global_git_config:
   - name: pull.rebase
     scope: global
     value: "true"
+  - name: rebase.autoStash
+    scope: global
+    value: "true"
 global_authorized_keys:
   # linux desktop
   - "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAH4Q/4giT2I4mRqeMXIEqtVK9HJ2iZYbdpqEK9G28JesXD5JTR+pmsTd+eQU65ZiROKatEo5LZ0/JYWALH5wYNNCgAOj8zd0iZLMjQ8Qn1SFYKTzv+ZZeZ5umYoQ/sIf09Yrvkfv2m+SkvVctAaqGOxJJHiHcnt1vk/sXJzlupqQvC1IQ== halkeye@adamwarlock"
