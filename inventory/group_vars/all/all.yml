@@ -1,4 +1,7 @@
 ---
+deb_architecture: amd64
+deb_os: linux
+
 zsh_hotkeys_extras:
   - { hotkey: '\e[3~', action: 'delete-char' }
 npm_config_prefix: "{{ lookup('env','HOME') }}/.npm-global"

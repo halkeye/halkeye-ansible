@@ -102,3 +102,11 @@
       when: nf_enabled
       tags:
         - fonts
+    - role: halkeye.k9s
+      tags:
+        - software
+        - k9s
+      home: "{{ env_home }}"
+      owner: "{{ env_user }}"
+      k9s_version: "{{ software_version_k9s }}"
+      architecture: "{{ deb_architecture }}"
