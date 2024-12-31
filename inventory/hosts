@@ -23,11 +23,13 @@ wasp
 [remote]
 gmogan-dev-box
 falcon
+linuxgsm
 
 [server]
 thor
 falcon
 gmogan-dev-box
+linuxgsm
 
 [wsl]
 wasp
