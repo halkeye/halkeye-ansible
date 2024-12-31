@@ -22,9 +22,11 @@ wasp
 
 [remote]
 gmogan-dev-box
+falcon
 
 [server]
 thor
+falcon
 gmogan-dev-box
 
 [wsl]
