@@ -50,6 +50,6 @@
   become: false
   ansible.builtin.lineinfile:
     path: "{{ env_home }}/.config/bat/config"
-    search_string: '^--theme='
+    search_string: '--theme='
     line: --theme="Catppuccin Mocha"
 

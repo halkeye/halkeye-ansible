@@ -1,15 +1,9 @@
 ---
-- name: Create config directory
-  become: false
-  ansible.builtin.file:
-    path: "{{ env_home }}/.config"
-    state: directory
-    mode: "0755"
-
 - name: Create config k9s directory
   become: false
   ansible.builtin.file:
     path: "{{ env_home }}/.config/k9s"
+    recurse: true
     state: directory
     mode: "0755"
 
@@ -27,18 +21,27 @@
     dest: '{{ env_home }}/.config/k9s/skins/catppuccin-mocha.yaml'
     mode: '0600'
 
-- name: Open yaml file
+- name: Make sure config file exists
+  become: false
+  ansible.builtin.file:
+    path: '{{ env_home }}/.config/k9s/config.yaml'
+    state: touch
+    modification_time: preserve
+    access_time: preserve
+    mode: "0755"
+
+- name: Open config.yaml file
   slurp:
     path: '{{ env_home }}/.config/k9s/config.yaml'
   register: r_k9s_config
 
-- name: Read yaml to dictionary
-  set_fact:
-    k9sconfig: "{{ r_k9s_config['content'] | b64decode | from_yaml }}"
+# - name: Read config.yaml to dictionary
+#   set_fact:
+#     k9sconfig: "{{ r_k9s_config['content'] | b64decode | from_yaml }}"
 
 - name: Override skin
   set_fact:
-    k9sconfig: "{{ k9sconfig | combine(newdata, recursive=True) }}"
+    k9sconfig: "{{ r_k9s_config['content'] | b64decode | from_yaml  | combine(newdata, recursive=True) }}"
   vars: 
     newdata:
       k9s:
