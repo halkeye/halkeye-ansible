@@ -272,7 +272,7 @@ nf_single_fonts:
 
 asdf_version: "v0.15.0" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.3" # repo: neovim/neovim
-software_version_treesitter: "0.24.5" # repo: tree-sitter/tree-sitter
+software_version_treesitter: "0.24.6" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.32.0" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.57.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.6" # repo: ajeetdsouza/zoxide
@@ -285,7 +285,7 @@ software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
 software_version_doctl: "1.120.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
-software_version_sops: "3.9.2" # repo: getsops/sops
+software_version_sops: "3.9.3" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
 software_version_age: "1.2.1" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
@@ -317,7 +317,7 @@ software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
 software_version_rover: "0.26.3" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.10" # repo: Mic92/ssh-to-age
-software_version_actionlint: "1.7.4" # repo: rhysd/actionlint
+software_version_actionlint: "1.7.5" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
 software_version_stern: "1.31.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
