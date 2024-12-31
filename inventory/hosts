@@ -28,8 +28,8 @@ linuxgsm
 [server]
 thor
 falcon
-gmogan-dev-box
 linuxgsm
+gmogan-dev-box
 
 [wsl]
 wasp
