@@ -283,7 +283,7 @@ software_version_bat: "0.24.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.120.0" # repo: digitalocean/doctl
+software_version_doctl: "1.120.1" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.9.3" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -299,13 +299,13 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.64.0" # repo: cli/cli
+software_version_gh: "2.65.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "24.17.1" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "24.18.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.29.3" # repo: crate-ci/typos
+software_version_typos: "1.29.4" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
@@ -317,7 +317,7 @@ software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
 software_version_rover: "0.26.3" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.10" # repo: Mic92/ssh-to-age
-software_version_actionlint: "1.7.5" # repo: rhysd/actionlint
+software_version_actionlint: "1.7.6" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
 software_version_stern: "1.31.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
@@ -332,7 +332,7 @@ software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
 software_version_goreleaser: "2.5.1" # repo: goreleaser/goreleaser
-software_version_argocd: "2.13.2" # repo: argoproj/argo-cd
+software_version_argocd: "2.13.3" # repo: argoproj/argo-cd
 software_version_sad: "0.4.31" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
