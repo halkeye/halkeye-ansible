@@ -117,6 +117,7 @@ if [ -e "${KREW_ROOT:-$HOME/.krew}" ]; then export PATH="${KREW_ROOT:-$HOME/.kre
 if [ -e "$HOME/.dotnet/tools" ]; then export PATH="$PATH:$HOME/.dotnet/tools"; fi
 {% if windows_username is defined and windows_username|length -%}
 if [ -e "/mnt/c/Users/{{ windows_username }}/AppData/Local/Microsoft/WindowsApps" ]; then export PATH="$PATH:/mnt/c/Users/{{ windows_username }}/AppData/Local/Microsoft/WindowsApps"; fi
+if [ -e "/mnt/c/Users/{{ windows_username }}/AppData/Roaming/Code/User/globalStorage/ms-vscode-remote.remote-containers" ]; then export PATH="$PATH:/mnt/c/Users/{{ windows_username }}/AppData/Roaming/Code/User/globalStorage/ms-vscode-remote.remote-containers"; fi
 {% endif -%}
 
 eval "$(POSH_INSTALLER=ws /usr/local/bin/oh-my-posh init zsh --config ~/.poshthemes/gmay.omp.json)"
