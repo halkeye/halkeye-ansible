@@ -9,6 +9,7 @@
 - name: Install package
   become: true
   ansible.builtin.apt:
+    allow_downgrade: true
     deb: /var/cache/apt/archives/bat-{{ bat_version }}.deb
 
 - name: Create config directory
