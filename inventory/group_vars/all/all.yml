@@ -231,7 +231,7 @@ docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
 go_version: "1.23.4"
 
-git_version: "2.47.1" # repo: git/git
+git_version: "2.48.0" # repo: git/git
 git_install_from_source: true
 git_install_from_source_force_update: true
 
@@ -326,7 +326,7 @@ software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
 software_version_vale: "3.9.3" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.18.0" # repo: robusta-dev/krr
-software_version_git_absorb: "0.6.16" # repo: tummychow/git-absorb
+software_version_git_absorb: "0.6.17" # repo: tummychow/git-absorb
 software_version_air: "1.61.5" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
