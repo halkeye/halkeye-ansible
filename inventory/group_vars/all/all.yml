@@ -229,7 +229,7 @@ env_user: "{{ lookup('env','USER') }}"
 nf_user: "{{ env_user }}"
 docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
-go_version: "1.23.4"
+go_version: "1.23.5"
 
 git_version: "2.48.1" # repo: git/git
 git_install_from_source: true
