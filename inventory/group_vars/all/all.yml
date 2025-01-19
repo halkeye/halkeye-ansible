@@ -317,7 +317,7 @@ software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
 software_version_rover: "0.26.3" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.10" # repo: Mic92/ssh-to-age
-software_version_actionlint: "1.7.6" # repo: rhysd/actionlint
+software_version_actionlint: "1.7.7" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
 software_version_stern: "1.31.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
@@ -327,7 +327,7 @@ software_version_vale: "3.9.3" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.19.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.17" # repo: tummychow/git-absorb
-software_version_air: "1.61.5" # repo: air-verse/air
+software_version_air: "1.61.7" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
