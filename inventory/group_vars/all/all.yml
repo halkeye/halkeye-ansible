@@ -274,7 +274,7 @@ asdf_version: "v0.15.0" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.3" # repo: neovim/neovim
 software_version_treesitter: "0.24.7" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.32.1" # repo: kubernetes/kubernetes
-software_version_fzf: "v0.57.0" # repo: junegunn/fzf
+software_version_fzf: "v0.58.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.6" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
 software_version_fx: "35.0.0" # repo: antonmedv/fx
@@ -319,7 +319,7 @@ software_version_rover: "0.26.3" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.10" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.7" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
-software_version_stern: "1.31.0" # repo: stern/stern
+software_version_stern: "1.32.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
 software_version_vivid: "0.10.1" # repo: sharkdp/vivid
 software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
@@ -336,6 +336,6 @@ software_version_argocd: "2.13.3" # repo: argoproj/argo-cd
 software_version_sad: "0.4.31" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
-software_version_glab: "1.51.0" # gitlab_repo: gitlab-org/cli
+software_version_glab: "1.52.0" # gitlab_repo: gitlab-org/cli
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 
