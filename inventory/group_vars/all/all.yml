@@ -331,7 +331,7 @@ software_version_air: "1.61.7" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
-software_version_goreleaser: "2.5.1" # repo: goreleaser/goreleaser
+software_version_goreleaser: "2.6.0" # repo: goreleaser/goreleaser
 software_version_argocd: "2.13.3" # repo: argoproj/argo-cd
 software_version_sad: "0.4.31" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
