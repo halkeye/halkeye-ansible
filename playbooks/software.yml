@@ -387,3 +387,15 @@
       - src_regex: bw
         dst: /usr/local/bin/bw
         mode: 0755
+
+- name: Install starship
+  become: true
+  quera.github.install_from_github:
+    repo: starship/starship
+    tag: "v{{ software_version_starship }}"
+    version_command: starship -V
+    asset_regex: starship.*linux-gnu.tar.gz
+    move_rules:
+      - src_regex: starship
+        dst: /usr/local/bin/starship
+        mode: 0755
