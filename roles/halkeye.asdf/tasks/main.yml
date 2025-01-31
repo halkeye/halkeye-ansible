@@ -11,6 +11,28 @@
     - default-python-packages
     - default-perl-modules
 
-- name: Configure asdf
-  ansible.builtin.include_role:
-    name: cimon-io.asdf
+- name: Ensure global tool versions
+  ansible.builtin.lineinfile:
+    path: "{{ env_home }}/.tool-versions"
+    regexp: '^{{ item.name }}'
+    line: "{{ item.name }} {{ item.global }}"
+    owner: "{{ env_user }}"
+    mode: '0644'
+  with_items: "{{ asdf_plugins }}"
+
+- name: Install asdf
+  become: true
+  quera.github.install_from_github:
+    repo: asdf-vm/asdf
+    tag: "{{ software_version_asdf }}"
+    version_command: asdf version
+    asset_regex: asdf-.*-linux-.*.tar.gz
+    move_rules:
+      - src_regex: asdf
+        dst: /usr/local/bin/asdf
+        mode: 0755
+
+- name: Make sure plugins are installed
+  ansible.builtin.command: "asdf plugin add {{item.name}} {{item.repository}}"
+  when: item.repository is defined and item.repository != "" 
+  with_items: "{{ asdf_plugins }}"

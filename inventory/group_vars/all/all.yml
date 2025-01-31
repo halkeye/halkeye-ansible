@@ -173,8 +173,6 @@ git_ignore:
 
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 
-asdf_user: "{{ lookup('env', 'USER') }}"
-asdf_group: "{{ lookup('env', 'USER') }}"
 asdf_plugins:
   - name: "java"    # a plugin name
     repository: ""    # a plugin repository, optional
@@ -271,7 +269,7 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFont-Regular.ttf"
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
-asdf_version: "v0.16.0" # repo: asdf-vm/asdf
+software_version_asdf: "v0.16.0" # repo: asdf-vm/asdf
 software_version_neovim: "0.10.4" # repo: neovim/neovim
 software_version_treesitter: "0.24.7" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.32.1" # repo: kubernetes/kubernetes

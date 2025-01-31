@@ -10,9 +10,6 @@
 [submodule "roles/geerlingguy.git"]
 	path = roles/geerlingguy.git
 	url = https://github.com/geerlingguy/ansible-role-git
-[submodule "roles/cimon-io.asdf"]
-	path = roles/cimon-io.asdf
-	url = https://github.com/eliberty/ansible-role-asdf
 [submodule "roles/gikeymarcia.neovim"]
 	path = roles/gikeymarcia.neovim
 	url = https://github.com/gikeymarcia/ansible-role-neovim

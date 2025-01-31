@@ -28,8 +28,10 @@ export FZF_DEFAULT_OPTS='--height 100% --multi --layout=reverse-list --inline-in
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
 
-. $HOME/.asdf/asdf.sh
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 if [ -f $HOME/.asdf/plugins/java/set-java-home.zsh ]; then source $HOME/.asdf/plugins/java/set-java-home.zsh; fi
+command -v asdf 2>/dev/null 1>/dev/null && source <(asdf completion zsh)
 
 ## switch to emacs mode after setting editor, which changes the mode
 bindkey -e
@@ -135,7 +137,6 @@ command -v k9s 2>/dev/null 1>/dev/null && source <(k9s completion zsh)
 command -v stern 2>/dev/null 1>/dev/null && source <(stern --completion zsh)
 TMUXINATOR_COMPLETION_PATH="$(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")' 2>/dev/null)"
 test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
-. $HOME/.asdf/completions/asdf.bash
 ### END 'bash' completion
 
 # Full zsh support
