@@ -28,8 +28,6 @@
       tags:
         - asdf
     - role: halkeye.nvim
-      neovim_neovim_version: "{{ software_version_neovim }}"
-      neovim_treesitter_version: "{{ software_version_treesitter }}"
       tags:
         - vim
         - software

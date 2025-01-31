@@ -270,8 +270,6 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
 software_version_asdf: "v0.16.0" # repo: asdf-vm/asdf
-software_version_neovim: "0.10.4" # repo: neovim/neovim
-software_version_treesitter: "0.24.7" # repo: tree-sitter/tree-sitter
 software_version_kubectl: "1.32.1" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.58.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.6" # repo: ajeetdsouza/zoxide
