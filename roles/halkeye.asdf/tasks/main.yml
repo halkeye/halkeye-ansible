@@ -33,6 +33,12 @@
         mode: 0755
 
 - name: Make sure plugins are installed
-  ansible.builtin.command: "asdf plugin add {{item.name}} {{item.repository}}"
-  when: item.repository is defined and item.repository != "" 
+  ansible.builtin.command: "asdf plugin add {{item.name}}"
+  with_items: "{{ asdf_plugins }}"
+
+- name: Make sure default global stuff is installed
+  ansible.builtin.command:
+    cmd: "asdf install {{ item.name }}"
+    chdir: "{{ env_home }}"
+  ignore_errors: true
   with_items: "{{ asdf_plugins }}"
