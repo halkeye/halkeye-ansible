@@ -122,7 +122,7 @@ if [ -e "/mnt/c/Users/{{ windows_username }}/AppData/Local/Microsoft/WindowsApps
 if [ -e "/mnt/c/Users/{{ windows_username }}/AppData/Roaming/Code/User/globalStorage/ms-vscode-remote.remote-containers" ]; then export PATH="$PATH:/mnt/c/Users/{{ windows_username }}/AppData/Roaming/Code/User/globalStorage/ms-vscode-remote.remote-containers"; fi
 {% endif -%}
 
-eval "$(POSH_INSTALLER=ws /usr/local/bin/oh-my-posh init zsh --config ~/.poshthemes/gmay.omp.json)"
+eval "$(starship init zsh)"
 
 ### START 'bash' completion
 autoload -U +X compinit && compinit

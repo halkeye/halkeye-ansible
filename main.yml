@@ -116,3 +116,10 @@
       owner: "{{ env_user }}"
       bat_version: "{{ software_version_bat }}"
       architecture: "{{ deb_architecture }}"
+    - role: halkeye.starship
+      tags:
+        - software
+        - starship
+      home: "{{ env_home }}"
+      owner: "{{ env_user }}"
+      starship_version: "{{ software_version_starship }}"

@@ -1,0 +1,19 @@
+---
+- name: Copy config file
+  ansible.builtin.copy:
+    src: "starship.toml"
+    dest: "{{ home }}/.config/starship.toml"
+    owner: "{{ owner }}"
+    mode: '0664'
+
+- name: Install starship
+  become: true
+  quera.github.install_from_github:
+    repo: starship/starship
+    tag: "v{{ starship_version }}"
+    version_command: starship -V
+    asset_regex: starship.*linux-gnu.tar.gz
+    move_rules:
+      - src_regex: starship
+        dst: /usr/local/bin/starship
+        mode: 0755
