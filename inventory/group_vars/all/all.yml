@@ -271,7 +271,7 @@ nf_single_fonts:
 
 software_version_asdf: "v0.16.0" # repo: asdf-vm/asdf
 software_version_kubectl: "1.32.1" # repo: kubernetes/kubernetes
-software_version_fzf: "v0.58.0" # repo: junegunn/fzf
+software_version_fzf: "v0.59.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.6" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
 software_version_fx: "35.0.0" # repo: antonmedv/fx
@@ -296,19 +296,19 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.65.0" # repo: cli/cli
+software_version_gh: "2.66.1" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
 software_version_oh_my_posh: "24.19.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.29.4" # repo: crate-ci/typos
+software_version_typos: "1.29.5" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.5" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
-software_version_act: "0.2.71" # repo: nektos/act
+software_version_act: "0.2.72" # repo: nektos/act
 software_version_regctl: "0.8.0" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
@@ -322,7 +322,7 @@ software_version_vivid: "0.10.1" # repo: sharkdp/vivid
 software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
 software_version_vale: "3.9.4" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
-software_version_krr: "v1.20.0" # repo: robusta-dev/krr
+software_version_krr: "v1.21.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.17" # repo: tummychow/git-absorb
 software_version_air: "1.61.7" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
