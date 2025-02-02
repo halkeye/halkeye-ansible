@@ -115,6 +115,7 @@ if [ -e "/mnt/c/Program Files/Microsoft VS Code/bin" ]; then export PATH="$PATH:
 if [ -e "/mnt/c/Program Files/Tailscale" ]; then export PATH="$PATH:/mnt/c/Program Files/Tailscale"; fi
 if [ -e "/mnt/c/Windows/System32/" ]; then export PATH="$PATH:/mnt/c/Windows/System32"; fi
 if [ -e "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; then export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"; fi
+if [ -e "/mnt/c/Program Files/RedHat/Podman/" ]; then export PATH="$PATH:/mnt/c/Program Files/RedHat/Podman/"; fi
 if [ -e "${KREW_ROOT:-$HOME/.krew}" ]; then export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"; fi
 if [ -e "$HOME/.dotnet/tools" ]; then export PATH="$PATH:$HOME/.dotnet/tools"; fi
 {% if windows_username is defined and windows_username|length -%}
