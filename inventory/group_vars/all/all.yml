@@ -269,7 +269,7 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFont-Regular.ttf"
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
-software_version_asdf: "v0.16.0" # repo: asdf-vm/asdf
+software_version_asdf: "v0.16.1" # repo: asdf-vm/asdf
 software_version_kubectl: "1.32.1" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.59.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.6" # repo: ajeetdsouza/zoxide
