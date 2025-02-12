@@ -271,7 +271,7 @@ nf_single_fonts:
 
 software_version_asdf: "v0.16.2" # repo: asdf-vm/asdf
 software_version_kubectl: "1.32.1" # repo: kubernetes/kubernetes
-software_version_fzf: "v0.59.0" # repo: junegunn/fzf
+software_version_fzf: "v0.60.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
 software_version_fx: "35.0.0" # repo: antonmedv/fx
@@ -322,7 +322,7 @@ software_version_vivid: "0.10.1" # repo: sharkdp/vivid
 software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
 software_version_vale: "3.9.5" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
-software_version_krr: "v1.21.0" # repo: robusta-dev/krr
+software_version_krr: "v1.22.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.17" # repo: tummychow/git-absorb
 software_version_air: "1.61.7" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
