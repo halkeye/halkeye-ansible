@@ -301,8 +301,7 @@
   quera.github.install_from_github:
     repo: tomnomnom/gron
     tag: "v{{software_version_gron}}"
-    version_command: "echo v{{software_version_gron}}"
-    asset_regex: gron.*
+    asset_regex: gron-linux-.*.tgz
     move_rules:
       - src_regex: ^gron$
         dst: /usr/local/bin/gron
