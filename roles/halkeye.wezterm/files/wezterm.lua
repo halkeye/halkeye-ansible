@@ -25,6 +25,13 @@ config.color_scheme = 'Dracula (Official)'
 config.hide_tab_bar_if_only_one_tab = true
 
 config.mouse_bindings = {
+  -- There are mouse binding to mimc Windows Terminal and let you copy
+  -- To copy just highlight something and right click. Simple
+  {
+    event = { Down = { streak = 3, button = 'Left' } },
+    action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+    mods = 'NONE',
+  },
   {
     event = { Down = { streak = 1, button = "Right" } },
     mods = "NONE",
@@ -41,6 +48,11 @@ config.mouse_bindings = {
 }
 
 config.keys = {
+  {
+    key = 'V',
+    mods = 'CTRL',
+    action = act.PasteFrom 'Clipboard'
+  },
   {
     key = 'r',
     mods = 'CMD|SHIFT',
