@@ -336,4 +336,5 @@ software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify
 software_version_glab: "1.53.0" # gitlab_repo: gitlab-org/cli
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_starship: "1.22.1" # repo: starship/starship
+software_version_tailspin: "4.0.0" # repo: bensadeh/tailspin
 

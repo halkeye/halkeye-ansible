@@ -387,3 +387,15 @@
         dst: /usr/local/bin/bw
         mode: 0755
 
+- name: Install tailspin
+  become: true
+  quera.github.install_from_github:
+    repo: bensadeh/tailspin
+    tag: "{{ software_version_tailspin }}"
+    asset_regex: tailspin.*linux.*.tar.gz
+    version_command: tspin --version
+    move_rules:
+      - src_regex: tspin
+        dst: /usr/local/bin/tspin
+        mode: 0755
+
