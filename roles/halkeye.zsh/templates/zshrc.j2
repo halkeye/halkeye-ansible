@@ -161,6 +161,7 @@ alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 alias todo="todoist list --filter '(overdue | today)'"
 alias ls='lsd'
+alias c='code $(git root)'
 command -v xclip 2>/dev/null 1>/dev/null && alias pbcopy='xclip -selection clipboard'
 command -v xclip 2>/dev/null 1>/dev/null && alias pbpaste='xclip -selection clipboard -o'
 
