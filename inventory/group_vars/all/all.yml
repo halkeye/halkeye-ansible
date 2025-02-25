@@ -271,7 +271,7 @@ nf_single_fonts:
 
 software_version_asdf: "v0.16.4" # repo: asdf-vm/asdf
 software_version_kubectl: "1.32.2" # repo: kubernetes/kubernetes
-software_version_fzf: "v0.60.1" # repo: junegunn/fzf
+software_version_fzf: "v0.60.2" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
 software_version_fx: "35.0.0" # repo: antonmedv/fx
@@ -280,7 +280,7 @@ software_version_bat: "0.25.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.121.0" # repo: digitalocean/doctl
+software_version_doctl: "1.122.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.9.4" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
