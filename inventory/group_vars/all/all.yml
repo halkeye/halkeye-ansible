@@ -280,7 +280,7 @@ software_version_bat: "0.25.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.122.0" # repo: digitalocean/doctl
+software_version_doctl: "1.123.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.9.4" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -302,13 +302,13 @@ software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
 software_version_oh_my_posh: "24.19.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.29.10" # repo: crate-ci/typos
+software_version_typos: "1.30.0" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.5" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
-software_version_act: "0.2.74" # repo: nektos/act
+software_version_act: "0.2.75" # repo: nektos/act
 software_version_regctl: "0.8.2" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
@@ -320,7 +320,7 @@ software_version_stern: "1.32.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
 software_version_vivid: "0.10.1" # repo: sharkdp/vivid
 software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
-software_version_vale: "3.9.5" # repo: errata-ai/vale
+software_version_vale: "3.9.6" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.22.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.6.17" # repo: tummychow/git-absorb
@@ -329,7 +329,7 @@ software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
 software_version_goreleaser: "2.7.0" # repo: goreleaser/goreleaser
-software_version_argocd: "2.14.2" # repo: argoproj/argo-cd
+software_version_argocd: "2.14.3" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
