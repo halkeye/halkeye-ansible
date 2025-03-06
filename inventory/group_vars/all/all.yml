@@ -228,7 +228,7 @@ env_user: "{{ lookup('env','USER') }}"
 nf_user: "{{ env_user }}"
 docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
-go_version: "1.24.0"
+go_version: "1.24.1"
 
 git_version: "2.48.1" # repo: git/git
 git_install_from_source: true
@@ -269,9 +269,9 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFont-Regular.ttf"
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
-software_version_asdf: "v0.16.4" # repo: asdf-vm/asdf
+software_version_asdf: "v0.16.5" # repo: asdf-vm/asdf
 software_version_kubectl: "1.32.2" # repo: kubernetes/kubernetes
-software_version_fzf: "v0.60.2" # repo: junegunn/fzf
+software_version_fzf: "v0.60.3" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
 software_version_fx: "35.0.0" # repo: antonmedv/fx
@@ -296,13 +296,13 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.67.0" # repo: cli/cli
+software_version_gh: "2.68.1" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
 software_version_oh_my_posh: "24.19.0" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.30.0" # repo: crate-ci/typos
+software_version_typos: "1.30.1" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
@@ -329,7 +329,7 @@ software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
 software_version_goreleaser: "2.7.0" # repo: goreleaser/goreleaser
-software_version_argocd: "2.14.3" # repo: argoproj/argo-cd
+software_version_argocd: "2.14.4" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
