@@ -270,7 +270,7 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
 software_version_asdf: "v0.16.5" # repo: asdf-vm/asdf
-software_version_kubectl: "1.32.2" # repo: kubernetes/kubernetes
+software_version_kubectl: "1.32.3" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.60.3" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
@@ -290,7 +290,7 @@ software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
 software_version_helm: "3.17.1" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
-software_version_k9s: "0.40.5" # repo: derailed/k9s
+software_version_k9s: "0.40.8" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
 software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
@@ -300,9 +300,9 @@ software_version_gh: "2.68.1" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "25.2.1" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "25.4.1" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
-software_version_typos: "1.30.1" # repo: crate-ci/typos
+software_version_typos: "1.30.2" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
@@ -323,13 +323,13 @@ software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
 software_version_vale: "3.9.6" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.22.0" # repo: robusta-dev/krr
-software_version_git_absorb: "0.6.17" # repo: tummychow/git-absorb
+software_version_git_absorb: "0.7.0" # repo: tummychow/git-absorb
 software_version_air: "1.61.7" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.4" # repo: kubernetes-sigs/krew
 software_version_dive: "0.12.0" # repo: wagoodman/dive
 software_version_goreleaser: "2.7.0" # repo: goreleaser/goreleaser
-software_version_argocd: "2.14.4" # repo: argoproj/argo-cd
+software_version_argocd: "2.14.5" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
