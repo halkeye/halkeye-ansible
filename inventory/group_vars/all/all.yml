@@ -230,7 +230,7 @@ docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
 go_version: "1.24.1"
 
-git_version: "2.48.1" # repo: git/git
+git_version: "2.49.0" # repo: git/git
 git_install_from_source: true
 git_install_from_source_force_update: true
 
