@@ -19,11 +19,6 @@
       tags:
         - wsl
         - gnupg
-    - role: halkeye.ohmyposh
-      ohmyposh_version: "{{ software_version_oh_my_posh }}"
-      tags:
-        - ohmyposh
-        - shell
     - role: halkeye.asdf
       tags:
         - asdf

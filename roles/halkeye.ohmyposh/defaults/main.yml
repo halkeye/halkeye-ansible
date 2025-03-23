@@ -1,4 +1,0 @@
----
-ohmyposh_theme_directory: "{{ env_home }}/.poshthemes"
-ohmyposh_version: "18.8.1"
-ohmyposh_installed_version: 0
