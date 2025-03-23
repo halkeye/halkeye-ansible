@@ -269,7 +269,7 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFont-Regular.ttf"
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
-software_version_asdf: "v0.16.5" # repo: asdf-vm/asdf
+software_version_asdf: "v0.16.6" # repo: asdf-vm/asdf
 software_version_kubectl: "1.32.3" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.60.3" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
@@ -300,7 +300,7 @@ software_version_gh: "2.69.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # The most customisable and low-latency cross platform/shell prompt renderer
-software_version_oh_my_posh: "25.5.0" # repo: JanDeDobbeleer/oh-my-posh
+software_version_oh_my_posh: "25.5.1" # repo: JanDeDobbeleer/oh-my-posh
 # Source code spell checker
 software_version_typos: "1.30.2" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
@@ -327,7 +327,7 @@ software_version_git_absorb: "0.7.0" # repo: tummychow/git-absorb
 software_version_air: "1.61.7" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
-software_version_dive: "0.12.0" # repo: wagoodman/dive
+software_version_dive: "0.13.0" # repo: wagoodman/dive
 software_version_goreleaser: "2.8.1" # repo: goreleaser/goreleaser
 software_version_argocd: "2.14.7" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
