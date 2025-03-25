@@ -300,7 +300,7 @@ software_version_gh: "2.69.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # Source code spell checker
-software_version_typos: "1.30.2" # repo: crate-ci/typos
+software_version_typos: "1.30.3" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
@@ -327,11 +327,11 @@ software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
 software_version_dive: "0.13.0" # repo: wagoodman/dive
 software_version_goreleaser: "2.8.1" # repo: goreleaser/goreleaser
-software_version_argocd: "2.14.7" # repo: argoproj/argo-cd
+software_version_argocd: "2.14.8" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
-software_version_glab: "1.54.0" # gitlab_repo: gitlab-org/cli
+software_version_glab: "1.55.0" # gitlab_repo: gitlab-org/cli
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_starship: "1.22.1" # repo: starship/starship
 software_version_tailspin: "4.0.0" # repo: bensadeh/tailspin
