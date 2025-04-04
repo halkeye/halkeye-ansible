@@ -21,6 +21,7 @@ global_centos_packages:
   - python36-pip
   - mosh
 global_ubuntu_packages:
+  - rustup
   - dnsutils
   - libsqlite3-dev
   - liblzma-dev
@@ -214,10 +215,6 @@ asdf_plugins:
     versions:
       - "3.0.7"
     global: "3.0.7"
-  - name: "rust"
-    versions:
-      - 1.78.0
-    global: 1.78.0
   - name: "gradle"
     versions:
       - 7.3.1
