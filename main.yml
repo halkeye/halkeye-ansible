@@ -13,6 +13,14 @@
     - import_tasks: playbooks/software.yml
       tags:
         - software
+    - name: Create git excludes
+      ansible.builtin.copy:
+        dest: "{{env_home}}/.gitexcludesfile"
+        owner: "{{ env_user }}"
+        mode: '0644'
+        content: "{{ git_ignore | join('\n') }}"
+      tags:
+        - git
   roles:
     - role: halkeye.wsl
       when: "'wsl' in group_names"
