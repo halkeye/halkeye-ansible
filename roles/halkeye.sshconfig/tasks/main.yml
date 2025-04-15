@@ -12,6 +12,14 @@
     mode: "0700"
     content: "{{ contents }}"
 
+- name: Create ssh (windows) config
+  when: windows_username != ""
+  ansible.builtin.copy:
+    dest: "/mnt/c/Users/{{ windows_username }}/.ssh/config"
+    owner: "{{ owner }}"
+    mode: "0700"
+    content: "{{ contents }}"
+
 - name: Set authorized keys
   ansible.posix.authorized_key:
     user: "{{ owner }}"

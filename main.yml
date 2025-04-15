@@ -68,6 +68,7 @@
       contents: "{{ ssh_config }}"
       home: "{{ env_home }}"
       owner: "{{ env_user }}"
+      windows_username: "{{ windows_username }}"
       authorized_keys: "{{ global_authorized_keys }}"
       tags:
         - ssh
