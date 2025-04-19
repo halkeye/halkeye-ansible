@@ -287,7 +287,7 @@ software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
 software_version_helm: "3.17.3" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
-software_version_k9s: "0.50.3" # repo: derailed/k9s
+software_version_k9s: "0.50.4" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
 software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
@@ -331,5 +331,5 @@ software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify
 software_version_glab: "1.55.0" # gitlab_repo: gitlab-org/cli
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_starship: "1.22.1" # repo: starship/starship
-software_version_tailspin: "5.3.0" # repo: bensadeh/tailspin
+software_version_tailspin: "5.4.0" # repo: bensadeh/tailspin
 
