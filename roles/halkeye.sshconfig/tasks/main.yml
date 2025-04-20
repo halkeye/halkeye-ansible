@@ -13,7 +13,7 @@
     content: "{{ contents }}"
 
 - name: Create ssh (windows) config
-  when: windows_username != ""
+  when: windows_username is defined
   ansible.builtin.copy:
     dest: "/mnt/c/Users/{{ windows_username }}/.ssh/config"
     owner: "{{ owner }}"
