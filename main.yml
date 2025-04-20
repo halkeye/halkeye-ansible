@@ -68,7 +68,6 @@
       contents: "{{ ssh_config }}"
       home: "{{ env_home }}"
       owner: "{{ env_user }}"
-      windows_username: "{{ windows_username }}"
       authorized_keys: "{{ global_authorized_keys }}"
       tags:
         - ssh
@@ -100,10 +99,10 @@
       tags:
         - software
         - kubectl
-    - role: ctorgalson.nerdfonts
-      when: nf_enabled
-      tags:
-        - fonts
+    # - role: ctorgalson.nerdfonts
+    #   when: nf_enabled
+    #   tags:
+    #     - fonts
     - role: halkeye.k9s
       tags:
         - software
