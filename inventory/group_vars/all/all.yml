@@ -270,7 +270,7 @@ nf_single_fonts:
 
 software_version_asdf: "v0.16.7" # repo: asdf-vm/asdf
 software_version_kubectl: "1.32.3" # repo: kubernetes/kubernetes
-software_version_fzf: "v0.61.1" # repo: junegunn/fzf
+software_version_fzf: "v0.61.3" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
 software_version_fx: "35.0.0" # repo: antonmedv/fx
@@ -289,7 +289,7 @@ software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
 software_version_helm: "3.17.3" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
-software_version_k9s: "0.50.3" # repo: derailed/k9s
+software_version_k9s: "0.50.4" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
 software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
@@ -326,12 +326,12 @@ software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
 software_version_dive: "0.13.1" # repo: wagoodman/dive
 software_version_goreleaser: "2.8.2" # repo: goreleaser/goreleaser
-software_version_argocd: "2.14.10" # repo: argoproj/argo-cd
+software_version_argocd: "2.14.11" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
 software_version_glab: "1.55.0" # gitlab_repo: gitlab-org/cli
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_starship: "1.22.1" # repo: starship/starship
-software_version_tailspin: "5.3.0" # repo: bensadeh/tailspin
+software_version_tailspin: "5.4.2" # repo: bensadeh/tailspin
 
