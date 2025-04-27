@@ -269,7 +269,7 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
 software_version_asdf: "v0.16.7" # repo: asdf-vm/asdf
-software_version_kubectl: "1.32.3" # repo: kubernetes/kubernetes
+software_version_kubectl: "1.33.0" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.61.3" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
@@ -295,7 +295,7 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.70.0" # repo: cli/cli
+software_version_gh: "2.71.2" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # Source code spell checker
@@ -306,10 +306,10 @@ software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.5" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
 software_version_act: "0.2.76" # repo: nektos/act
-software_version_regctl: "0.8.2" # repo: regclient/regclient
+software_version_regctl: "0.8.3" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
-software_version_rover: "0.29.0" # repo: apollographql/rover
+software_version_rover: "0.29.1" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.11" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.7" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
@@ -320,7 +320,7 @@ software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
 software_version_vale: "3.11.2" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.23.0" # repo: robusta-dev/krr
-software_version_git_absorb: "0.7.0" # repo: tummychow/git-absorb
+software_version_git_absorb: "0.8.0" # repo: tummychow/git-absorb
 software_version_air: "1.61.7" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
@@ -330,8 +330,8 @@ software_version_argocd: "2.14.11" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
-software_version_glab: "1.55.0" # gitlab_repo: gitlab-org/cli
+software_version_glab: "1.56.0" # gitlab_repo: gitlab-org/cli
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
-software_version_starship: "1.22.1" # repo: starship/starship
+software_version_starship: "1.23.0" # repo: starship/starship
 software_version_tailspin: "5.4.2" # repo: bensadeh/tailspin
 
