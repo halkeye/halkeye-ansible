@@ -6,6 +6,19 @@
     repo: "{{ item }}"
     state: present
 
+- name: Install docker repo
+  become: true
+  block:
+    - name: key
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.asc
+
+    - name: repo
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ deb_architecture }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
 - name: Install ubuntu packages
   become: true
   when: ansible_os_family == "Debian"
