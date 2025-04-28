@@ -413,6 +413,7 @@ require("lazy").setup({
           "pylsp", -- python
           "ruby_lsp",
           "rust_analyzer",
+          "tsserver",
           "tailwindcss",
           "typos_lsp",
           "yamlls",
@@ -424,20 +425,6 @@ require("lazy").setup({
           lspconfig[server_name].setup({
             on_attach = on_attach,
             capabilities = capabilities,
-          })
-        end,
-        ["pylsp"] = function()
-          lspconfig.gopls.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            pylsp = {
-              plugins = {
-                pycodestyle = {
-                  ignore = { 'W391' },
-                  maxLineLength = 100
-                }
-              }
-            }
           })
         end,
 
