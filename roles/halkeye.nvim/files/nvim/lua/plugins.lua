@@ -413,7 +413,7 @@ require("lazy").setup({
           "pylsp", -- python
           "ruby_lsp",
           "rust_analyzer",
-          "tsserver",
+          "ts_ls",
           "tailwindcss",
           "typos_lsp",
           "yamlls",
