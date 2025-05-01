@@ -279,7 +279,7 @@ software_version_bat: "0.25.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.124.0" # repo: digitalocean/doctl
+software_version_doctl: "1.125.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.10.2" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -295,11 +295,11 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.71.2" # repo: cli/cli
+software_version_gh: "2.72.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # Source code spell checker
-software_version_typos: "1.31.1" # repo: crate-ci/typos
+software_version_typos: "1.31.2" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
@@ -325,7 +325,7 @@ software_version_air: "1.61.7" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
 software_version_dive: "0.13.1" # repo: wagoodman/dive
-software_version_goreleaser: "2.8.2" # repo: goreleaser/goreleaser
+software_version_goreleaser: "2.9.0" # repo: goreleaser/goreleaser
 software_version_argocd: "2.14.11" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
