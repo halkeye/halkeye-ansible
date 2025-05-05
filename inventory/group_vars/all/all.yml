@@ -270,7 +270,7 @@ nf_single_fonts:
 
 software_version_asdf: "v0.16.7" # repo: asdf-vm/asdf
 software_version_kubectl: "1.33.0" # repo: kubernetes/kubernetes
-software_version_fzf: "v0.61.3" # repo: junegunn/fzf
+software_version_fzf: "v0.62.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
 software_version_fx: "35.0.0" # repo: antonmedv/fx
@@ -279,7 +279,7 @@ software_version_bat: "0.25.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.125.0" # repo: digitalocean/doctl
+software_version_doctl: "1.125.1" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.10.2" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -299,13 +299,13 @@ software_version_gh: "2.72.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # Source code spell checker
-software_version_typos: "1.31.2" # repo: crate-ci/typos
+software_version_typos: "1.32.0" # repo: crate-ci/typos
 # A simple, fast and user-friendly alternative to 'find'
 # (Currently used by ctrl+p in vim)
 software_version_fd: "10.2.0" # repo: sharkdp/fd
 software_version_shcopy: "0.1.5" # repo: aymanbagabas/shcopy
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
-software_version_act: "0.2.76" # repo: nektos/act
+software_version_act: "0.2.77" # repo: nektos/act
 software_version_regctl: "0.8.3" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
@@ -330,7 +330,7 @@ software_version_argocd: "2.14.11" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
-software_version_glab: "1.56.0" # gitlab_repo: gitlab-org/cli
+software_version_glab: "1.57.0" # gitlab_repo: gitlab-org/cli
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_starship: "1.23.0" # repo: starship/starship
 software_version_tailspin: "5.4.2" # repo: bensadeh/tailspin
