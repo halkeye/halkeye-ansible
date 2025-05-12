@@ -104,7 +104,8 @@ require("lazy").setup({
         ruby = { "rubocop" },
         eruby = { "erb-lint" },
         python = { "isort", "black" },
-        go = { "gofmt", "goimports-reviser" },
+        sh = { "shfmt" },
+        go = { "gofmt", "golines", "goimports-reviser" },
         -- Use a sub-list to run only the first available formatter
         javascript = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d", "eslint") } end,
         javascriptreact = function(bufnr)
@@ -356,6 +357,8 @@ require("lazy").setup({
     config = function()
       require('mason-tool-installer').setup {
         ensure_installed = {
+          'shellcheck',
+          'shfmt',
           'goimports-reviser',
           'golines',
           'prettierd',
@@ -413,8 +416,8 @@ require("lazy").setup({
           "pylsp", -- python
           "ruby_lsp",
           "rust_analyzer",
-          "ts_ls",
           "tailwindcss",
+          "ts_ls",
           "typos_lsp",
           "yamlls",
         },
