@@ -289,7 +289,7 @@ software_version_helmfile: "1.0.0-rc.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
 software_version_helm: "3.17.3" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
-software_version_k9s: "0.50.5" # repo: derailed/k9s
+software_version_k9s: "0.50.6" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
 software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
