@@ -105,11 +105,13 @@ if [ -f "/etc/wsl.conf" ]; then
   alias help=run-help
 fi
 
-if [ -f "/etc/wsl.conf" ]; then
-  alias ssh-add='ssh-add.exe'
-  alias ssh='ssh-add.exe -l > /dev/null || ssh-add.exe && ssh.exe'
-  git config --global core.sshcommand "ssh.exe"
-fi
+# if [ -f "/etc/wsl.conf" ]; then
+#   alias ssh-add='ssh-add.exe'
+#   alias ssh='ssh-add.exe -l > /dev/null || ssh-add.exe && ssh.exe'
+#   git config --global core.sshcommand "ssh.exe"
+# else
+source ~/.zsh/ssh-agent.plugin.zsh
+# fi
 
 ## Setup all the paths stuff
 if [ -e "$HOME/bin" ]; then export PATH="$HOME/bin:$PATH"; fi
