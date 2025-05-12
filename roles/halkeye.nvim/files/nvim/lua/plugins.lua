@@ -377,9 +377,8 @@ require("lazy").setup({
       "folke/neoconf.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/nvim-cmp",
-      "towolf/vim-helm",
+      "saghen/blink.cmp",
+      "williamboman/mason-lspconfig.nvim",
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -389,8 +388,8 @@ require("lazy").setup({
       vim.opt_global.tagfunc = 'v:lua.vim.lsp.tagfunc'
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-      capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
       local on_attach = function(_, bufnr)
         -- Enable completion triggered by <c-x><c-o>
@@ -407,7 +406,6 @@ require("lazy").setup({
           "eslint",
           "gopls",
           "graphql",
-          "helm_ls",
           "html",
           "jsonls",
           "lua_ls",
@@ -423,93 +421,51 @@ require("lazy").setup({
         },
       }
 
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          lspconfig[server_name].setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-          })
-        end,
-
-        ["pylsp"] = function()
-          lspconfig.gopls.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            pylsp = {
-              plugins = {
-                pycodestyle = {
-                  ignore = { 'W391' },
-                  maxLineLength = 100
-                }
-              }
-            }
-          })
-        end,
-
-        ["yamlls"] = function()
-          lspconfig.yamlls.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = {
-              yaml = {
-                format = { enable = false, singleQuote = true, printWidth = 120, },
-                hover = true,
-                completion = true,
-                validate = true,
-                schemas = {
-                  ["https://raw.githubusercontent.com/bjw-s/helm-charts/common-3.4.0/charts/library/common/values.schema.json"] = { "/values.yaml", "values-secrets.yaml", },
-                },
-                schemaStore = { enable = true, url = "https://www.schemastore.org/json", },
-              },
-            },
-          })
-        end,
-
-        ["gopls"] = function()
-          lspconfig.gopls.setup({
-            on_attach = function(client, bufnr)
-              vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = bufnr,
-                callback = function()
-                  organize_imports(client, bufnr)
-                  format(bufnr)
-                end,
-              })
-              on_attach(client, bufnr)
-            end,
-            capabilities = capabilities,
-            before_init = function(_, config)
-              if vim.fn.executable("go") ~= 1 then
-                return
-              end
-
-              local module = vim.fn.trim(vim.fn.system("go list -m"))
-              if vim.v.shell_error ~= 0 then
-                return
-              end
-              module = module:gsub("\n", ",")
-
-              config.settings.gopls["formatting.local"] = module
-            end,
-            settings = {
-              gopls = {
-                ["diagnostic.vulncheck"] = "Imports",
-                buildFlags = { "-tags=integration" }
-              }
-            }
-          })
-        end,
-      })
-
-      lspconfig.helm_ls.setup {
+      vim.lsp.config('pylsp', {
         settings = {
-          ['helm-ls'] = {
-            yamlls = {
-              path = "yaml-language-server",
+          pylsp = {
+            plugins = {
+              pycodestyle = {
+                ignore = { 'W391' },
+                maxLineLength = 100
+              }
             }
           }
+        },
+      })
+
+      vim.lsp.config('yamlls', {
+        settings = {
+          yaml = {
+            format = { enable = false, singleQuote = true, printWidth = 120, },
+            hover = true,
+            completion = true,
+            validate = true,
+            schemaStore = { enable = true, url = "https://www.schemastore.org/json", },
+          },
+        },
+      })
+      vim.lsp.config('gopls', {
+        before_init = function(_, config)
+          if vim.fn.executable("go") ~= 1 then
+            return
+          end
+
+          local module = vim.fn.trim(vim.fn.system("go list -m"))
+          if vim.v.shell_error ~= 0 then
+            return
+          end
+          module = module:gsub("\n", ",")
+
+          config.settings.gopls["formatting.local"] = module
+        end,
+        settings = {
+          gopls = {
+            ["diagnostic.vulncheck"] = "Imports",
+            buildFlags = { "-tags=integration" }
+          }
         }
-      }
+      })
     end,
   },
   {
@@ -640,33 +596,6 @@ require("lazy").setup({
     end,
   },
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-    },
-    config = function()
-      local cmp = require 'cmp'
-      cmp.setup {
-        mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        }),
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-        }, {
-          { name = 'buffer' },
-        }, {
-          { name = 'path' },
-        })
-      }
-    end,
-  },
-  {
     "stevearc/oil.nvim",
     opts = {
       view_options = {
@@ -730,5 +659,58 @@ require("lazy").setup({
         desc = "Next harpoon",
       },
     },
+  },
+  {
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = { 'rafamadriz/friendly-snippets' },
+
+    -- use a release tag to download pre-built binaries
+    version = '1.*',
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      --
+      -- See :h blink-cmp-config-keymap for defining your own keymap
+      keymap = { preset = 'default' },
+
+      appearance = {
+        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'mono'
+      },
+
+      -- (Default) Only show the documentation popup when manually triggered
+      completion = { documentation = { auto_show = false } },
+
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+
+      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+      --
+      -- See the fuzzy documentation for more information
+      fuzzy = { implementation = "prefer_rust_with_warning" }
+    },
+    opts_extend = { "sources.default" }
   }
 })
