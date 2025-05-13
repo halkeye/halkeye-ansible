@@ -110,7 +110,14 @@ fi
 #   alias ssh='ssh-add.exe -l > /dev/null || ssh-add.exe && ssh.exe'
 #   git config --global core.sshcommand "ssh.exe"
 # else
+{% if zsh_use_ssh_plugin %}
 source ~/.zsh/ssh-agent.plugin.zsh
+{% endif %}
+{% if zsh_use_ssh_auth_sock_link %}
+if [[ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
+ln -sf "$SSH_AUTH_SOCK" $HOME/.ssh/ssh_auth_sock
+fi
+{% endif %}
 # fi
 
 ## Setup all the paths stuff
@@ -200,15 +207,6 @@ fi
 if command -v ssh-to-age 2>/dev/null 1>/dev/null; then
   if [ -f ~/.ssh/id_ed25519 ]; then export SOPS_AGE_KEY=$(ssh-to-age -private-key < ~/.ssh/id_ed25519); fi
 fi
-
-{% if zsh_use_ssh_plugin %}
-source ~/.zsh/ssh-agent.plugin.zsh
-{% endif %}
-{% if zsh_use_ssh_auth_sock_link %}
-if [[ -n "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
-ln -sf "$SSH_AUTH_SOCK" $HOME/.ssh/ssh_auth_sock
-fi
-{% endif %}
 
 if [ -f /opt/android/android-sdk-linux ]; then
 export ANDROID_HOME=/opt/android/android-sdk-linux
