@@ -273,7 +273,7 @@ software_version_kubectl: "1.33.0" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.62.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
-software_version_fx: "35.0.0" # repo: antonmedv/fx
+software_version_fx: "36.0.0" # repo: antonmedv/fx
 # A cat(1) clone with wings.
 software_version_bat: "0.25.0" # repo: sharkdp/bat
 # The next gen ls command
