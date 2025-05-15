@@ -273,13 +273,13 @@ software_version_kubectl: "1.33.0" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.62.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
-software_version_fx: "36.0.0" # repo: antonmedv/fx
+software_version_fx: "36.0.1" # repo: antonmedv/fx
 # A cat(1) clone with wings.
 software_version_bat: "0.25.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.125.1" # repo: digitalocean/doctl
+software_version_doctl: "1.126.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.10.2" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -309,7 +309,7 @@ software_version_act: "0.2.77" # repo: nektos/act
 software_version_regctl: "0.8.3" # repo: regclient/regclient
 software_version_humanlog: "0.7.8" # repo: humanlogio/humanlog
 software_version_jwt: "6.2.0" # repo: mike-engel/jwt-cli
-software_version_rover: "0.29.1" # repo: apollographql/rover
+software_version_rover: "0.31.0" # repo: apollographql/rover
 software_version_ssh_to_age: "1.1.11" # repo: Mic92/ssh-to-age
 software_version_actionlint: "1.7.7" # repo: rhysd/actionlint
 software_version_bump: "0.2.3" # repo: guilhem/bump
@@ -326,7 +326,7 @@ software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
 software_version_dive: "0.13.1" # repo: wagoodman/dive
 software_version_goreleaser: "2.9.0" # repo: goreleaser/goreleaser
-software_version_argocd: "3.0.0" # repo: argoproj/argo-cd
+software_version_argocd: "3.0.1" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
