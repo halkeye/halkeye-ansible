@@ -269,7 +269,7 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
 software_version_asdf: "v0.16.7" # repo: asdf-vm/asdf
-software_version_kubectl: "1.33.0" # repo: kubernetes/kubernetes
+software_version_kubectl: "1.33.1" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.62.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.7" # repo: ajeetdsouza/zoxide
 # Terminal JSON viewer & processor
