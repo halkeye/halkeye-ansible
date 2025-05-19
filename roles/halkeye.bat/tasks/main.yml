@@ -46,6 +46,8 @@
     - Catppuccin Latte.tmTheme
     - Catppuccin Macchiato.tmTheme
     - Catppuccin Mocha.tmTheme
+  notify:
+    - "Cache Clear"
 
 - name: Make sure theme is set
   become: false
@@ -53,4 +55,6 @@
     path: "{{ env_home }}/.config/bat/config"
     search_string: '--theme='
     line: --theme="Catppuccin Mocha"
+  notify:
+    - "Cache Clear"
 

@@ -1,2 +1,4 @@
 ---
 # handlers file for halkeye.bat
+- name: Cache Clear
+  ansible.builtin.command: bat cache --clear
