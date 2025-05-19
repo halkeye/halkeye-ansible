@@ -391,7 +391,7 @@
   become: true
   quera.github.install_from_github:
     repo: kubernetes-sigs/kustomize
-    tag: "{{ software_version_kustomize }}"
+    tag: "kustomize/v{{ software_version_kustomize }}"
     asset_regex: kustomize.*linux.*.tar.gz
     version_command: kustomize --version
     move_rules:
