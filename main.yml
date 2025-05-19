@@ -119,6 +119,10 @@
       owner: "{{ env_user }}"
       bat_version: "{{ software_version_bat }}"
       architecture: "{{ deb_architecture }}"
+    - role: halkeye.bw
+      tags:
+        - software
+        - bw
     - role: halkeye.starship
       tags:
         - software

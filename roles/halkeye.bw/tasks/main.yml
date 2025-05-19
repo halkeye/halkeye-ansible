@@ -1,0 +1,15 @@
+---
+- name: Install bw (bitwarden cli)
+  become: true
+  quera.github.install_from_github:
+    repo: bitwarden/clients
+    tag: "{{ software_version_bw }}"
+    version_command: bw -v
+    asset_regex: bw-oss-linux-.*.zip
+    move_rules:
+      - src_regex: bw
+        dst: /usr/local/bin/bw
+        mode: 0755
+
+- name: "Set bitwarden server"
+  ansible.builtin.command: /usr/local/bin/bw config server {{ bitwarden_server }}
