@@ -80,7 +80,7 @@
       tags:
         - software
     - role: halkeye.wezterm
-      install: "'linux_desktop' in group_names"
+      install: "{{ install_wezterm }}"
       wezterm_version: "{{ software_version_wezterm }}"
       config_dir: "{{ wezterm_config_dir }}"
       tags:

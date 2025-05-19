@@ -64,6 +64,8 @@ global_darwin_packages:
   - coreutils
   - tig
 
+install_wezterm: false
+
 group_git_config: []
 host_git_config: []
 global_git_config:
