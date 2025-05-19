@@ -387,3 +387,15 @@
         dst: /usr/local/bin/tspin
         mode: 0755
 
+- name: Install kustomize
+  become: true
+  quera.github.install_from_github:
+    repo: kubernetes-sigs/kustomize
+    tag: "{{ software_version_kustomize }}"
+    asset_regex: kustomize.*linux.*.tar.gz
+    version_command: kustomize --version
+    move_rules:
+      - src_regex: kustomize
+        dst: /usr/local/bin/kustomize
+        mode: 0755
+
