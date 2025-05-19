@@ -26,14 +26,22 @@ global_ubuntu_packages:
   - libsqlite3-dev
   - liblzma-dev
   - libyaml-dev
-  - libbz2-dev # make sure python has bz
+  # python build start
+  - build-essential
+  - zlib1g-dev
+  - libncurses5-dev
+  - libgdbm-dev
+  - libnss3-dev
+  - libssl-dev
+  - libreadline-dev
+  - libffi-dev
+  - libbz2-dev
+  # python build end
   - luarocks
   - silversearcher-ag
   - jq
   - curl
   - tig
-  - libffi-dev
-  - libssl-dev
   - mosh
   - net-tools
   - nmap
