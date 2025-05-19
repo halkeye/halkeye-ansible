@@ -11,6 +11,13 @@
     - default-python-packages
     - default-perl-modules
 
+- name: Ensure global tool versions exists
+  ansible.builtin.file:
+    path: "{{ env_home }}/.tool-versions"
+    state: touch
+    owner: "{{ env_user }}"
+    mode: '0644'
+
 - name: Ensure global tool versions
   ansible.builtin.lineinfile:
     path: "{{ env_home }}/.tool-versions"
