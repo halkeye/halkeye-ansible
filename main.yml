@@ -20,10 +20,8 @@
         - git
   roles:
     - role: halkeye.software
-      when: "'wsl' in group_names"
       tags:
-        - wsl
-        - gnupg
+        - software
     - role: halkeye.wsl
       when: "'wsl' in group_names"
       tags:
