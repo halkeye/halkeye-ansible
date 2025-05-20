@@ -12,30 +12,6 @@ local function first(bufnr, ...)
   return select(1, ...)
 end
 
--- Alternative of
--- vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
--- that runs synchronously and doesn't produce race conditions with formatting or saving.
-local function organize_imports(client, bufnr)
-  local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
-  params.context = { only = { "source.organizeImports" } }
-
-  local resp = client.request_sync("textDocument/codeAction", params, 3000, bufnr)
-  for _, r in pairs(resp and resp.result or {}) do
-    if r.edit then
-      vim.lsp.util.apply_workspace_edit(r.edit, vim.lsp.util._get_offset_encoding())
-    else
-      print(r.command)
-      vim.lsp.buf.execute_command(r.command)
-    end
-  end
-end
-
-local function format(bufnr)
-  if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-    return
-  end
-  require("conform").format({ lsp_fallback = true })
-end
 
 require("lazy").setup({
   "nvim-lua/plenary.nvim",
@@ -344,9 +320,32 @@ require("lazy").setup({
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "bashls",
+        "cssls",
+        "dockerls",
+        "eslint",
+        "gopls",
+        "graphql",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "marksman",
+        -- "jedi_language_server", -- python
+        "pylsp", -- python
+        "ruby_lsp",
+        "rust_analyzer",
+        "tailwindcss",
+        "ts_ls",
+        "typos_lsp",
+        "yamlls",
+      },
+    },
     dependencies = {
-      "williamboman/mason.nvim",
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
   },
   {
@@ -377,50 +376,9 @@ require("lazy").setup({
       "folke/neoconf.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "saghen/blink.cmp",
-      "williamboman/mason-lspconfig.nvim",
+      "saghen/blink.cmp"
     },
     config = function()
-      local lspconfig = require("lspconfig")
-      local mason_lspconfig = require("mason-lspconfig")
-
-      vim.opt_global.omnifunc = 'v:lua.vim.lsp.omnifunc'
-      vim.opt_global.tagfunc = 'v:lua.vim.lsp.tagfunc'
-
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-      local on_attach = function(_, bufnr)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-        vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
-        vim.lsp.inlay_hint.enable()
-      end
-
-      mason_lspconfig.setup {
-        ensure_installed = {
-          "bashls",
-          "cssls",
-          "dockerls",
-          "eslint",
-          "gopls",
-          "graphql",
-          "html",
-          "jsonls",
-          "lua_ls",
-          "marksman",
-          -- "jedi_language_server", -- python
-          "pylsp", -- python
-          "ruby_lsp",
-          "rust_analyzer",
-          "tailwindcss",
-          "ts_ls",
-          "typos_lsp",
-          "yamlls",
-        },
-      }
-
       vim.lsp.config('pylsp', {
         settings = {
           pylsp = {
@@ -465,6 +423,9 @@ require("lazy").setup({
             buildFlags = { "-tags=integration" }
           }
         }
+      })
+      vim.lsp.config("*", {
+        capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
       })
     end,
   },
@@ -737,10 +698,16 @@ require("lazy").setup({
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require("go").setup()
+      require("go").setup({
+        tag_options = '',          -- sets options sent to gomodifytags, i.e., json=omitempty
+        test_runner = 'gotestsum', -- one of {`go`,  `dlv`, `ginkgo`, `gotestsum`}
+        run_in_floaterm = true,    -- set to true to run in a float window. :GoTermClose closes the floatterm
+        -- float term recommend if you use gotestsum ginkgo with terminal color
+        trouble = true,            -- true: use trouble to open quickfix
+      })
     end,
     event = { "CmdlineEnter" },
     ft = { "go", 'gomod' },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  }
+  },
 })
