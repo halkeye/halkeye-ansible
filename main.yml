@@ -80,7 +80,8 @@
       tags:
         - software
     - role: halkeye.wezterm
-      install: "{{ install_wezterm }}"
+      # install: "{{ install_wezterm }}"
+      install: false
       wezterm_version: "{{ software_version_wezterm }}"
       config_dir: "{{ wezterm_config_dir }}"
       tags:
