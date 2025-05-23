@@ -295,7 +295,7 @@ software_version_sops: "3.10.2" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
 software_version_age: "1.2.1" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
-software_version_helmfile: "v1.1.0" # repo: helmfile/helmfile
+software_version_helmfile: "1.1.0" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
 software_version_helm: "3.18.0" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
