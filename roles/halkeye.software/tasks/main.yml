@@ -63,6 +63,7 @@
       - { url: "https://github.com/dandavison/delta/releases/download/{{ software_version_delta }}/git-delta_{{ software_version_delta }}_{{ deb_architecture }}.deb", "name": "delta", "version": "{{ software_version_delta }}" }
       - { url: "https://gitlab.com/gitlab-org/cli/-/releases/v{{ software_version_glab }}/downloads/glab_{{ software_version_glab }}_linux_{{ deb_architecture }}.deb", "name": "glab", "version": "{{ software_version_glab }}" }
       - { url: "https://dl.min.io/client/mc/release/linux-{{ deb_architecture }}/archive/mcli_{{ software_version_mc }}.0.0_{{ deb_architecture }}.deb", "name": "mc", "version": "{{ software_version_mc }}" }
+      - { url: "https://github.com/go-task/task/releases/download/v{{software_version_task}}/task_linux_386.deb", "name": "task", "version": "{{ software_version_task }}" }
 
 
 - name: Download debs

@@ -346,3 +346,4 @@ software_version_starship: "1.23.0" # repo: starship/starship
 software_version_tailspin: "5.4.2" # repo: bensadeh/tailspin
 software_version_kustomize: "5.6.0" # repo: kubernetes-sigs/kustomize
 software_version_mc: "20250416181326" # repo: minio/mc
+software_version_task: "3.43.3" # repo: go-task/task
