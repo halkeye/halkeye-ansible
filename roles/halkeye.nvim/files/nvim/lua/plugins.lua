@@ -285,16 +285,16 @@ require("lazy").setup({
   --     vim.cmd.colorscheme('gruvbox-material')
   --   end,
   -- },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = { style = "night" },
-    init = function()
-      vim.opt.background = "dark"
-      vim.cmd.colorscheme("tokyonight")
-    end,
-  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = { style = "night" },
+  --   init = function()
+  --     vim.opt.background = "dark"
+  --     vim.cmd.colorscheme("tokyonight")
+  --   end,
+  -- },
   -- {
   --   "NLKNguyen/papercolor-theme",
   --   lazy = false,
@@ -425,6 +425,7 @@ require("lazy").setup({
         }
       })
       vim.lsp.config("*", {
+        -- capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
       })
     end,
