@@ -295,7 +295,7 @@ software_version_sops: "3.10.2" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
 software_version_age: "1.2.1" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
-software_version_helmfile: "1.1.0" # repo: helmfile/helmfile
+software_version_helmfile: "1.1.1" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
 software_version_helm: "3.18.1" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
@@ -305,7 +305,7 @@ software_version_kubectx: "0.9.5" # repo: ahmetb/kubectx
 # ShellCheck, a static analysis tool for shell scripts
 software_version_shellcheck: "0.10.0" # repo: koalaman/shellcheck
 # GitHub’s official command line tool
-software_version_gh: "2.73.0" # repo: cli/cli
+software_version_gh: "2.74.0" # repo: cli/cli
 # Dockerfile linter, validate inline bash, written in Haskell
 software_version_hadolint: "2.12.0" # repo: hadolint/hadolint
 # Source code spell checker
@@ -336,7 +336,7 @@ software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
 software_version_dive: "0.13.1" # repo: wagoodman/dive
 software_version_goreleaser: "2.9.0" # repo: goreleaser/goreleaser
-software_version_argocd: "3.0.4" # repo: argoproj/argo-cd
+software_version_argocd: "3.0.5" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
