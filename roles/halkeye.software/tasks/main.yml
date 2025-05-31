@@ -76,6 +76,7 @@
 - name: Install package
   become: true
   ansible.builtin.apt:
+    allow_downgrade: true
     deb: /var/cache/apt/archives/{{ item.name }}-{{ item.version }}.deb
   with_items: "{{ software_debs }}"
 
