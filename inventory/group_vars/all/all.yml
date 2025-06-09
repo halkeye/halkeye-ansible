@@ -237,7 +237,7 @@ env_user: "{{ lookup('env','USER') }}"
 nf_user: "{{ env_user }}"
 docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
-go_version: "1.24.3"
+go_version: "1.24.4"
 
 git_version: "2.49.0" # repo: git/git
 git_install_from_source: true
@@ -278,7 +278,7 @@ nf_single_fonts:
   - "SourceCodePro/SauceCodeProNerdFont-Regular.ttf"
   - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
 
-software_version_asdf: "v0.17.0" # repo: asdf-vm/asdf
+software_version_asdf: "v0.18.0" # repo: asdf-vm/asdf
 software_version_kubectl: "1.33.1" # repo: kubernetes/kubernetes
 software_version_fzf: "v0.62.0" # repo: junegunn/fzf
 software_version_zoxide: "0.9.8" # repo: ajeetdsouza/zoxide
@@ -289,7 +289,7 @@ software_version_bat: "0.25.0" # repo: sharkdp/bat
 # The next gen ls command
 software_version_lsd: "1.1.5" # repo: lsd-rs/lsd
 # The official command line interface for the DigitalOcean API.
-software_version_doctl: "1.128.0" # repo: digitalocean/doctl
+software_version_doctl: "1.129.0" # repo: digitalocean/doctl
 # Simple and flexible tool for managing secrets
 software_version_sops: "3.10.2" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
@@ -327,7 +327,7 @@ software_version_stern: "1.32.0" # repo: stern/stern
 software_version_gron: "0.7.1" # repo: tomnomnom/gron
 software_version_vivid: "0.10.1" # repo: sharkdp/vivid
 software_version_lychee: "0.15.1" # repo: lycheeverse/lychee
-software_version_vale: "3.11.2" # repo: errata-ai/vale
+software_version_vale: "3.12.0" # repo: errata-ai/vale
 software_version_gemini: "0.4.0" # repo: reugn/gemini-cli
 software_version_krr: "v1.23.0" # repo: robusta-dev/krr
 software_version_git_absorb: "0.8.0" # repo: tummychow/git-absorb
@@ -335,15 +335,15 @@ software_version_air: "1.62.0" # repo: air-verse/air
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
 software_version_dive: "0.13.1" # repo: wagoodman/dive
-software_version_goreleaser: "2.9.0" # repo: goreleaser/goreleaser
+software_version_goreleaser: "2.10.2" # repo: goreleaser/goreleaser
 software_version_argocd: "3.0.5" # repo: argoproj/argo-cd
 software_version_sad: "0.4.32" # repo: ms-jpq/sad
 software_version_delta: "0.18.2" # repo: dandavison/delta
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
-software_version_glab: "1.58.0" # gitlab_repo: gitlab-org/cli
+software_version_glab: "1.59.2" # gitlab_repo: gitlab-org/cli
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_starship: "1.23.0" # repo: starship/starship
-software_version_tailspin: "5.4.4" # repo: bensadeh/tailspin
+software_version_tailspin: "5.4.5" # repo: bensadeh/tailspin
 software_version_kustomize: "5.6.0" # repo: kubernetes-sigs/kustomize
 software_version_mc: "20250416181326" # repo: minio/mc
-software_version_task: "3.43.3" # repo: go-task/task
+software_version_task: "3.44.0" # repo: go-task/task
