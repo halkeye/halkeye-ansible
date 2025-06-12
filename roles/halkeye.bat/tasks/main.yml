@@ -1,16 +1,9 @@
 ---
-- name: Download debs
-  become: true
-  ansible.builtin.get_url:
-    url: "https://github.com/sharkdp/bat/releases/download/v{{ bat_version }}/bat_{{ bat_version }}_{{ architecture }}.deb"
-    dest: /var/cache/apt/archives/bat-{{ bat_version }}.deb
-    mode: '0600'
-
 - name: Install package
   become: true
   ansible.builtin.apt:
     allow_downgrade: true
-    deb: /var/cache/apt/archives/bat-{{ bat_version }}.deb
+    name: bat
 
 - name: Create config directory
   become: false

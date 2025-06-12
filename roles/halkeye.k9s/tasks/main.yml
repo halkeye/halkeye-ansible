@@ -53,15 +53,7 @@
     content: '{{ k9sconfig | to_nice_yaml }}'
     dest: '{{ env_home }}/.config/k9s/config.yaml'
 
-
-- name: Download debs
-  become: true
-  ansible.builtin.get_url:
-    url: "https://github.com/derailed/k9s/releases/download/v{{ k9s_version }}/k9s_linux_{{ architecture }}.deb"
-    dest: /var/cache/apt/archives/k9s-{{ k9s_version }}.deb
-    mode: '0600'
-
 - name: Install package
   become: true
   ansible.builtin.apt:
-    deb: /var/cache/apt/archives/k9s-{{ k9s_version }}.deb
+    name: k9s
