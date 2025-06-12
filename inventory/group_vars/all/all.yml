@@ -21,6 +21,7 @@ global_centos_packages:
   - python36-pip
   - mosh
 global_ubuntu_packages:
+  - mycli
   - rustup
   - dnsutils
   - libsqlite3-dev
