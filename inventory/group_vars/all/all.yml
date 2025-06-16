@@ -240,7 +240,7 @@ docker__users: ["{{ ansible_env.SUDO_USER | d('root') }}"]
 
 go_version: "1.24.4"
 
-git_version: "2.49.0" # repo: git/git
+git_version: "2.50.0" # repo: git/git
 git_install_from_source: true
 git_install_from_source_force_update: true
 
@@ -296,9 +296,9 @@ software_version_sops: "3.10.2" # repo: getsops/sops
 # A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability. 
 software_version_age: "1.2.1" # repo: FiloSottile/age
 # Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD.
-software_version_helmfile: "1.1.1" # repo: helmfile/helmfile
+software_version_helmfile: "1.1.2" # repo: helmfile/helmfile
 # The Kubernetes Package Manager
-software_version_helm: "3.18.2" # repo: helm/helm
+software_version_helm: "3.18.3" # repo: helm/helm
 # Kubernetes CLI To Manage Your Clusters In Style!
 software_version_k9s: "0.50.6" # repo: derailed/k9s
 # Faster way to switch between clusters and namespaces in kubectl
