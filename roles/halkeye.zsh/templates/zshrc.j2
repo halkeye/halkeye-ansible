@@ -18,6 +18,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 export TERM="${TERM:-xterm-256color}"
 export EDITOR=nvim
 export TZ=America/Vancouver
+export LS_COLORS=$(vivid generate catppuccin-mocha)
 # tell less not to paginate if less than a page
 export LESS='-F -X -isMR --shift 5'
 # fzf
