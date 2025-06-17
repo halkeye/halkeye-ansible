@@ -99,8 +99,8 @@
   become: true
   ansible.builtin.copy:
     dest: "{{ env_home }}/.config/humanlog/config.json"
-    content: '{"truncate-length": 1999}'
-    owner: "root"
+    content: '{"truncate-length": 1999, "skip_check_updates": true}'
+    owner: "{{ env_user }}"
     mode: '0755'
 
 # - name: Download kubectl
