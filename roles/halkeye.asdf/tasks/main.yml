@@ -10,6 +10,7 @@
     - default-npm-packages
     - default-python-packages
     - default-perl-modules
+    - asdfrc
 
 - name: Ensure global tool versions exists
   ansible.builtin.file:
