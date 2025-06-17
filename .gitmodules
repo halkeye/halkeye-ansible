@@ -26,3 +26,6 @@
 [submodule "roles/ctorgalson.nerdfonts"]
 	path = roles/ctorgalson.nerdfonts
 	url = https://github.com/ctorgalson/ansible-role-nerdfonts
+[submodule "collections/ansible_collections/drew1kun/fancyfonts"]
+	path = collections/ansible_collections/drew1kun/fancyfonts
+	url = https://github.com/drew1kun/ansible-collection-fancyfonts

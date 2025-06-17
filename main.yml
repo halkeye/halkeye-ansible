@@ -100,10 +100,11 @@
       tags:
         - software
         - kubectl
-    # - role: ctorgalson.nerdfonts
-    #   when: nf_enabled
-    #   tags:
-    #     - fonts
+    - role: drew1kun.fancyfonts.nerdfonts
+      when: nf_enabled
+      nerdfonts_release: "v3.4.0"
+      tags:
+        - fonts
     - role: halkeye.k9s
       tags:
         - software

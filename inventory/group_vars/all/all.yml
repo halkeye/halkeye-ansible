@@ -265,19 +265,26 @@ krew_install_plugins:
   - whoami
 
 nf_enabled: false
-nf_single_fonts:
-  - "UbuntuMono/Regular/UbuntuMonoNerdFont-Regular.ttf"
-  - "UbuntuMono/Regular/UbuntuMonoNerdFontMono-Regular.ttf"
-  - "CascadiaCode/Regular/CaskaydiaCoveNerdFont-Regular.ttf"
-  - "CascadiaCode/Regular/CaskaydiaCoveNerdFontMono-Regular.ttf"
-  - "FiraCode/Regular/FiraCodeNerdFont-Regular.ttf"
-  - "FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf"
-  - "JetBrainsMono/NoLigatures/Regular/JetBrainsMonoNLNerdFont-Regular.ttf"
-  - "JetBrainsMono/NoLigatures/Regular/JetBrainsMonoNLNerdFontMono-Regular.ttf"
-  - "OpenDyslexic/Regular/OpenDyslexicNerdFont-Regular.otf"
-  - "OpenDyslexic/Mono-Regular/OpenDyslexicMNerdFontMono-Regular.otf"
-  - "SourceCodePro/SauceCodeProNerdFont-Regular.ttf"
-  - "SourceCodePro/SauceCodeProNerdFontPropo-Regular.ttf"
+nerdfonts_release: v3.4.0
+nerdfonts_fonts:
+  - fontname: 'AnonymousPro'
+    name: 'font-anonymice-nerd-font'
+  - fontname: 'Mononoki'
+    name: 'font-mononoki-nerd-font'
+  - fontname: 'SourceCodePro'
+    name: 'font-sauce-code-pro-nerd-font'
+  - fontname: 'Hack'
+    name: 'font-hack-nerd-font'
+  - fontname: 'FiraCode'
+    name: 'font-fira-code-nerd-font'
+  - fontname: 'FiraMono'
+    name: 'font-fira-mono-nerd-font'
+  - fontname: 'UbuntuMono'
+    name: 'font-ubuntu-mono-nerd-font'
+  - fontname: 'CascadiaMono'
+    name: 'font-cascadia-mono-nerd-font'
+  - fontname: 'JetBrainsMono'
+    name: 'font-jetbrains-mono-nerd-font'
 
 software_version_asdf: "v0.18.0" # repo: asdf-vm/asdf
 software_version_kubectl: "1.33.1" # repo: kubernetes/kubernetes

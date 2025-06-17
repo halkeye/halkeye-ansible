@@ -1,2 +1,3 @@
 ---
 zsh_install_ssh_agent: true
+nf_enabled: true
