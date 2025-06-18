@@ -116,7 +116,24 @@ require("lazy").setup({
     "mfussenegger/nvim-lint",
     config = function()
       local lint = require("lint")
+      if vim.fn.executable("go") == 1 then
+        local modpath = vim.fn.trim(vim.fn.system("go env GOMOD | xargs dirname"))
+        if vim.v.shell_error ~= 1 then
+          lint.linters.revive.cmd = "go"
+          lint.linters.revive.args = {
+            "tool",
+            "revive",
+            "-formatter",
+            "json",
+            "-config",
+            modpath .. "/revive.toml",
+          }
+        end
+      end
       lint.linters_by_ft = {
+        go = {
+          "revive"
+        },
         ruby = {
           "rubocop"
         },
@@ -139,6 +156,13 @@ require("lazy").setup({
           "eslint_d"
         }
       }
+      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+        callback = function()
+          -- try_lint without arguments runs the linters defined in `linters_by_ft`
+          -- for the current filetype
+          require("lint").try_lint()
+        end,
+      })
     end,
   },
   {
@@ -733,5 +757,5 @@ require("lazy").setup({
     config = function()
       require("copilot").setup({})
     end,
-  }
+  },
 })
