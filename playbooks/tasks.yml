@@ -46,3 +46,9 @@
   ansible.builtin.apt:
     name: software-properties-common
     state: present
+
+- name: adding existing user '{{ env_user }}' to docker sudo
+  ansible.builtin.user:
+    name: '{{ env_user }}'
+    groups: docker
+    append: yes
