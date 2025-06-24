@@ -45,7 +45,7 @@
     index_var: download_links_idx
 
 # Start Debs
-#
+
 - name: repo
   become: true
   ansible.builtin.apt_repository:
@@ -80,6 +80,30 @@
       - glab
       - mc
       - task
+      - kustomize
+      - tailspin
+      - air
+      - git-absorb
+      - gemini-cli
+      - vale
+      - lychee
+      - gron
+      - stern
+      - bump
+      - actionlint
+      - rover
+      - jwt
+      - regclient
+      - act
+      - typos
+      - hadolint
+      - shellcheck
+      - kubectx
+      - helmfile
+      - doctl
+      - doctl
+      - fx
+      - age
 
 - name: Install package
   become: true
@@ -102,308 +126,4 @@
     content: '{"truncate-length": 1999, "skip_check_updates": true}'
     owner: "{{ env_user }}"
     mode: '0755'
-
-# - name: Download kubectl
-#   become: true
-#   ansible.builtin.get_url:
-#     url: "https://dl.k8s.io/release/v{{ software_version_kubectl }}/bin/linux/{{ deb_architecture }}/kubectl"
-#     dest: /usr/local/bin/kubectl-{{ software_version_kubectl }}
-#     mode: '0755'
-#     owner: root
-#     group: root
-
-# - name: Install kubectl
-#   become: true
-#   ansible.builtin.file:
-#     src: /usr/local/bin/kubectl-{{ software_version_kubectl }}
-#     dest: '/usr/local/bin/kubectl'
-#     state: link
-#     owner: root
-#     group: root
-#     mode: '0755'
-
-- name: Install age
-  become: true
-  quera.github.install_from_github:
-    repo: FiloSottile/age
-    tag: "v{{software_version_age}}"
-    version_command: age --version
-    asset_regex: "age-.*\\.(gz|zip)$"
-    move_rules:
-      - src_regex: age/age
-        dst: /usr/local/bin/age
-        mode: 0755
-      - src_regex: age/age-keygen
-        dst: /usr/local/bin/age-keygen
-        mode: 0755
-
-- name: Install fx
-  become: true
-  quera.github.install_from_github:
-    repo: antonmedv/fx
-    tag: "{{software_version_fx}}"
-    version_command: fx --version
-    asset_regex: fx_.*
-    move_rules:
-      - src_regex: fx_.*
-        dst: /usr/local/bin/fx
-        mode: 0755
-
-- name: Install doctl
-  become: true
-  quera.github.install_from_github:
-    repo: digitalocean/doctl
-    tag: "v{{software_version_doctl}}"
-    version_command: doctl version
-    asset_regex: doctl.*
-    move_rules:
-      - src_regex: doctl.*
-        dst: /usr/local/bin/doctl
-        mode: 0755
-
-- name: Install helmfile
-  become: true
-  quera.github.install_from_github:
-    repo: helmfile/helmfile
-    tag: "v{{software_version_helmfile}}"
-    version_command: helmfile --version
-    asset_regex: helmfile.*
-    move_rules:
-      - src_regex: helmfile.*
-        dst: /usr/local/bin/helmfile
-        mode: 0755
-
-- name: Install kubectx
-  become: true
-  quera.github.install_from_github:
-    repo: ahmetb/kubectx
-    tag: "v{{software_version_kubectx}}"
-    version_command: kubectx --version
-    asset_regex: kubectx.*
-    move_rules:
-      - src_regex: kubectx.*
-        dst: /usr/local/bin/kubectx
-        mode: 0755
-
-- name: Install shellcheck
-  become: true
-  quera.github.install_from_github:
-    repo: koalaman/shellcheck
-    tag: "v{{software_version_shellcheck}}"
-    version_command: shellcheck --version
-    asset_regex: shellcheck.*
-    move_rules:
-      - src_regex: shellcheck.*/shellcheck
-        dst: /usr/local/bin/shellcheck
-        mode: 0755
-
-- name: Install hadolint
-  become: true
-  quera.github.install_from_github:
-    repo: hadolint/hadolint
-    tag: "v{{software_version_hadolint}}"
-    version_command: hadolint --version
-    asset_regex: ^hadolint-Linux-\w+$
-    move_rules:
-      - src_regex: ^hadolint-Linux-\w+$
-        dst: /usr/local/bin/hadolint
-        mode: 0755
-
-- name: Install typos
-  become: true
-  quera.github.install_from_github:
-    repo: crate-ci/typos
-    tag: "v{{software_version_typos}}"
-    version_command: typos --version
-    asset_regex: typos.*
-    move_rules:
-      - src_regex: typos.*
-        dst: /usr/local/bin/typos
-        mode: 0755
-
-- name: Install act
-  become: true
-  quera.github.install_from_github:
-    repo: nektos/act
-    tag: "v{{software_version_act}}"
-    version_command: act --version
-    asset_regex: act.*
-    move_rules:
-      - src_regex: act.*
-        dst: /usr/local/bin/act
-        mode: 0755
-
-- name: Install regctl
-  become: true
-  quera.github.install_from_github:
-    repo: regclient/regclient
-    tag: "v{{software_version_regctl}}"
-    version_command: regctl version
-    asset_regex: regctl.*
-    move_rules:
-      - src_regex: .*
-        dst: /usr/local/bin/regctl
-        mode: 0755
-
-- name: Install jwt
-  become: true
-  quera.github.install_from_github:
-    repo: mike-engel/jwt-cli
-    tag: "{{software_version_jwt}}"
-    version_command: jwt --version
-    asset_regex: jwt-linux.tar.gz
-    move_rules:
-      - src_regex: jwt
-        dst: /usr/local/bin/jwt
-        mode: 0755
-
-- name: Install rover
-  become: true
-  quera.github.install_from_github:
-    repo: apollographql/rover
-    tag: "v{{software_version_rover}}"
-    version_command: rover --version
-    asset_regex: rover.*-gnu.tar.gz
-    move_rules:
-      - src_regex: dist/rover
-        dst: /usr/local/bin/rover
-        mode: 0755
-
-- name: Install actionlint
-  become: true
-  quera.github.install_from_github:
-    repo: rhysd/actionlint
-    tag: "v{{software_version_actionlint}}"
-    version_command: actionlint --version
-    asset_regex: actionlint.*
-    move_rules:
-      - src_regex: ^actionlint$
-        dst: /usr/local/bin/actionlint
-        mode: 0755
-
-- name: Install bump
-  become: true
-  quera.github.install_from_github:
-    repo: guilhem/bump
-    tag: "v{{software_version_bump}}"
-    asset_regex: bump.*
-    move_rules:
-      - src_regex: ^bump$
-        dst: /usr/local/bin/bump
-        mode: 0755
-
-- name: Install stern
-  become: true
-  quera.github.install_from_github:
-    repo: stern/stern
-    tag: "v{{software_version_stern}}"
-    version_command: stern --version
-    asset_regex: stern.*
-    move_rules:
-      - src_regex: ^stern$
-        dst: /usr/local/bin/stern
-        mode: 0755
-
-- name: Install gron
-  become: true
-  quera.github.install_from_github:
-    repo: tomnomnom/gron
-    tag: "v{{software_version_gron}}"
-    asset_regex: gron-linux-.*.tgz
-    move_rules:
-      - src_regex: ^gron$
-        dst: /usr/local/bin/gron
-        mode: 0755
-
-- name: Install lychee
-  become: true
-  quera.github.install_from_github:
-    repo: lycheeverse/lychee
-    tag: "v{{software_version_lychee}}"
-    version_command: lychee --version
-    asset_regex: lychee.*-gnu.tar.gz
-    move_rules:
-      - src_regex: lychee
-        dst: /usr/local/bin/lychee
-        mode: 0755
-
-- name: Install vale
-  become: true
-  quera.github.install_from_github:
-    repo: errata-ai/vale
-    tag: "v{{software_version_vale}}"
-    version_command: vale --version
-    asset_regex: vale.*
-    asset_arch_mapping:
-      amd64: "64-bit"
-    move_rules:
-      - src_regex: vale
-        dst: /usr/local/bin/vale
-        mode: 0755
-
-- name: Install gemini
-  become: true
-  quera.github.install_from_github:
-    repo: reugn/gemini-cli
-    tag: "v{{software_version_gemini}}"
-    version_command: gemini --version
-    asset_regex: gemini.*
-    move_rules:
-      - src_regex: gemini
-        dst: /usr/local/bin/gemini
-        mode: 0755
-
-- name: Install git-absorb
-  become: true
-  quera.github.install_from_github:
-    repo: tummychow/git-absorb
-    tag: "{{ software_version_git_absorb }}"
-    # version_command: /usr/libexec/git-core/git-absorb --version
-    asset_regex: git-absorb.*
-    asset_arch_mapping:
-      aarch64: "arm"
-      arm64: "arm"
-    move_rules:
-      - src_regex: git-absorb.*/git-absorb
-        dst: /usr/libexec/git-core
-        mode: 0755
-      - src_regex: git-absorb.*/docs/git-absorb.1
-        dst: /usr/share/man/man1
-        mode: 0755
-
-- name: Install air
-  become: true
-  quera.github.install_from_github:
-    repo: air-verse/air
-    tag: "v{{ software_version_air }}"
-    version_command: air -v
-    asset_regex: air.*.tar.gz
-    move_rules:
-      - src_regex: air
-        dst: /usr/local/bin/air
-        mode: 0755
-
-- name: Install tailspin
-  become: true
-  quera.github.install_from_github:
-    repo: bensadeh/tailspin
-    tag: "{{ software_version_tailspin }}"
-    asset_regex: tailspin.*linux.*.tar.gz
-    version_command: tspin --version
-    move_rules:
-      - src_regex: tspin
-        dst: /usr/local/bin/tspin
-        mode: 0755
-
-- name: Install kustomize
-  become: true
-  quera.github.install_from_github:
-    repo: kubernetes-sigs/kustomize
-    tag: "kustomize/v{{ software_version_kustomize }}"
-    asset_regex: kustomize.*linux.*.tar.gz
-    version_command: kustomize version
-    move_rules:
-      - src_regex: kustomize
-        dst: /usr/local/bin/kustomize
-        mode: 0755
 
