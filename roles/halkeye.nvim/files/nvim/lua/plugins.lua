@@ -78,7 +78,7 @@ require("lazy").setup({
         lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
         ruby = { "rubocop" },
-        eruby = { "erb-lint" },
+        eruby = { "erb_lint" },
         python = { "isort", "black" },
         sh = { "shfmt" },
         go = { "gofmt", "goimports-reviser" },
@@ -138,7 +138,7 @@ require("lazy").setup({
           "rubocop"
         },
         eruby = {
-          "erb-lint"
+          "erb_lint"
         },
         javascript = {
           "eslint_d"
