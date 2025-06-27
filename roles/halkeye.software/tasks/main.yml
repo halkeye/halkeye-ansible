@@ -66,46 +66,46 @@
 - name: Create list of debs
   ansible.builtin.set_fact:
     software_debs:
-      - zoxide
-      - lsd
-      - gh
-      - fd
-      - shcopy
-      - humanlog
-      - sops
-      - vivid
-      - dive
-      - goreleaser
-      - delta
-      - glab
-      - mc
-      - task
-      - kustomize
-      - tailspin
-      - air
-      - git-absorb
-      - gemini-cli
-      - vale
-      - lychee
-      - gron
-      - stern
-      - bump
-      - actionlint
-      - rover
-      - jwt
-      - regclient
       - act
-      - typos
-      - hadolint
-      - shellcheck
-      - kubectx
-      - helmfile
-      - doctl
-      - doctl
-      - fx
+      - actionlint
       - age
-      - grpcurl
+      - air
+      - bump
+      - delta
+      - dive
+      - doctl
+      - doctl
+      - fd
+      - fx
+      - gemini-cli
+      - gh
+      - git-absorb
+      - glab
+      - goreleaser
+      - gron
       - grpcui
+      - grpcurl
+      - hadolint
+      - helmfile
+      - humanlog
+      - jwt
+      - kubectx
+      - kustomize
+      - lsd
+      - lychee
+      - mc
+      - regclient
+      - rover
+      - shcopy
+      - shellcheck
+      - sops
+      - stern
+      - tailspin
+      - task
+      - typos
+      - vale
+      - vivid
+      - zoxide
 
 - name: Install package
   become: true
