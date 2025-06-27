@@ -104,6 +104,8 @@
       - doctl
       - fx
       - age
+      - grpcurl
+      - grpcui
 
 - name: Install package
   become: true
