@@ -131,3 +131,8 @@
       home: "{{ env_home }}"
       owner: "{{ env_user }}"
       starship_version: "{{ software_version_starship }}"
+    - role: halkeye.firefox
+      when: "'linux_desktop' in group_names"
+      tags:
+        - firefox
+        - software

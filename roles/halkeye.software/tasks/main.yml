@@ -49,7 +49,7 @@
 - name: repo
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb [arch={{ deb_architecture }} trusted=yes] https://halkeye.github.io/deb-repo/ {{ ansible_distribution_release }} main"
+    repo: "deb [arch={{ deb_architecture }} trusted=yes allow-insecure=yes] https://halkeye.github.io/deb-repo/ {{ ansible_distribution_release }} main"
     state: present
 
 - name: "create my repo priority file"
