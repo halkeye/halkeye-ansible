@@ -213,6 +213,12 @@ require("lazy").setup({
           live_grep = {
             hidden = true,
           },
+          diagnostics = {
+            bufnr = 0,
+            theme = "dropdown",
+            prompt_title = "diagnostics",
+            previewer = false
+          }
         },
       }
     end,
@@ -297,6 +303,13 @@ require("lazy").setup({
           require("telescope.builtin").git_status()
         end,
         desc = "Git Status",
+      },
+      {
+        "<Leader>de",
+        function()
+          require("telescope.builtin").diagnostics()
+        end,
+        desc = "Diagnostics",
       },
     },
   },
@@ -758,5 +771,50 @@ require("lazy").setup({
     config = function()
       require("copilot").setup({})
     end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local trouble = require("trouble")
+      local symbols = trouble.statusline({
+        mode = "lsp_document_symbols",
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = "{kind_icon}{symbol.name:Normal}",
+        -- The following line is needed to fix the background color
+        -- Set it to the lualine section you want to use
+        hl_group = "lualine_c_normal",
+      })
+      require('lualine').setup {
+        sections = { lualine_c = {
+          {
+            symbols.get,
+            cond = symbols.has,
+          },
+          'data',
+          "require'lsp-status'.status()"
+        } },
+        extensions = { 'quickfix', 'fzf', 'lazy', 'mason', 'oil', 'trouble' },
+      }
+    end,
+    --    opts = function(_, opts)
+    --      local trouble = require("trouble")
+    --      local symbols = trouble.statusline({
+    --        mode = "lsp_document_symbols",
+    --        groups = {},
+    --        title = false,
+    --        filter = { range = true },
+    --        format = "{kind_icon}{symbol.name:Normal}",
+    --        -- The following line is needed to fix the background color
+    --        -- Set it to the lualine section you want to use
+    --        hl_group = "lualine_c_normal",
+    --      })
+    --      table.insert(opts.sections.lualine_a, {
+    --        symbols.get,
+    --        cond = symbols.has,
+    --      })
+    --    end,
   },
 })
