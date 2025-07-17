@@ -313,6 +313,15 @@ require("lazy").setup({
       },
     },
   },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    init = function()
+      vim.opt.background = "dark"
+      vim.cmd.colorscheme('catppuccin-macchiato')
+    end,
+  },
   -- {
   --   "sainnhe/gruvbox-material",
   --   lazy = false,
