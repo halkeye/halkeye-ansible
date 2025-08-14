@@ -287,11 +287,11 @@ nerdfonts_fonts:
   - fontname: 'JetBrainsMono'
     name: 'font-jetbrains-mono-nerd-font'
 
-software_version_argocd: "3.0.12" # repo: argoproj/argo-cd
+software_version_argocd: "3.1.0" # repo: argoproj/argo-cd
 software_version_asdf: "v0.18.0" # repo: asdf-vm/asdf
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_fzf: "v0.65.1" # repo: junegunn/fzf
-software_version_helm: "3.18.4" # repo: helm/helm
+software_version_helm: "3.18.5" # repo: helm/helm
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
 software_version_k9s: "0.50.9" # repo: derailed/k9s
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
