@@ -14,16 +14,29 @@
         url: https://download.docker.com/linux/ubuntu/gpg
         dest: /etc/apt/keyrings/docker.asc
 
-    - name: repo
-      ansible.builtin.apt_repository:
-        repo: "deb [arch={{ deb_architecture }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-        state: present
+    - name: remove old style file
+      file:
+        path: "/etc/apt/sources.list.d/download_docker_com_linux_ubuntu.list"
+        state: absent
+
+    - name: create modern style sources
+      copy:
+        dest: "/etc/apt/sources.list.d/download_docker_com_linux_ubuntu.sources"
+        mode: 0644
+        owner: root
+        content: |
+          Types: deb
+          URIs: https://download.docker.com/linux/ubuntu/
+          Suites: {{ ansible_distribution_release }}
+          Components: stable
+          Signed-By: /etc/apt/keyrings/docker.asc
 
 - name: Install ubuntu packages
   become: true
   when: ansible_os_family == "Debian"
   ansible.builtin.apt:
     name: "{{ global_ubuntu_packages }}"
+    update_cache: yes
     state: present
 
 - name: Install centos packages

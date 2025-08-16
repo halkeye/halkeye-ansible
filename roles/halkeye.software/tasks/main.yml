@@ -48,20 +48,34 @@
 
 - name: repo
   become: true
-  ansible.builtin.apt_repository:
-    repo: "deb [arch={{ deb_architecture }} trusted=yes allow-insecure=yes] https://halkeye.github.io/deb-repo/ {{ ansible_distribution_release }} main"
-    state: present
+  block:
+    - name: remove old style file
+      file:
+        path: "/etc/apt/sources.list.d/halkeye_github_io_deb_repo.list"
+        state: absent
 
-- name: "create my repo priority file"
-  become: true
-  ansible.builtin.copy:
-    dest: "/etc/apt/preferences.d/priority-halkeye"
-    content: |
-      Package: *
-      Pin: release o=halkeye
-      Pin-Priority: 2000
-    owner: "root"
-    mode: '0755'
+    - name: create modern style sources
+      copy:
+        dest: "/etc/apt/sources.list.d/halkeye_github_io_deb_repo.sources"
+        mode: 0644
+        owner: root
+        content: |
+          Types: deb
+          URIs: https://halkeye.github.io/deb-repo/
+          Suites: {{ ansible_distribution_release }}
+          Components: main
+          AllowInsecure: yes
+          Trusted: yes
+
+    - name: "create my repo priority file"
+      ansible.builtin.copy:
+        dest: "/etc/apt/preferences.d/priority-halkeye"
+        content: |
+          Package: *
+          Pin: release o=halkeye
+          Pin-Priority: 2000
+        owner: "root"
+        mode: '0755'
 
 - name: Create list of debs
   ansible.builtin.set_fact:
@@ -111,6 +125,7 @@
   become: true
   ansible.builtin.apt:
     name: "{{ software_debs }}"
+    update_cache: yes
 
 # Done Debs
 

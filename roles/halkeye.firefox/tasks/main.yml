@@ -1,12 +1,4 @@
 ---
-- name: Download firefox signing key
-  become: true
-  ansible.builtin.get_url:
-    url: https://packages.mozilla.org/apt/repo-signing-key.gpg
-    # id: 35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3
-    checksum: sha256:3ecc63922b7795eb23fdc449ff9396f9114cb3cf186d6f5b53ad4cc3ebfbb11f.
-    dest: /etc/apt/keyrings/packages.mozilla.asc
-
 # - name: Add firefox signing key
 #   become: true
 #   ansible.builtin.command:
@@ -16,9 +8,30 @@
 
 - name: Add firefox repository
   become: true
-  ansible.builtin.apt_repository:
-    repo: "deb [signed-by=/etc/apt/keyrings/packages.mozilla.asc] https://packages.mozilla.org/apt mozilla main"
-    state: present 
+  block:
+    - name: Download firefox signing key
+      ansible.builtin.get_url:
+        url: https://packages.mozilla.org/apt/repo-signing-key.gpg
+        # id: 35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3
+        checksum: sha256:3ecc63922b7795eb23fdc449ff9396f9114cb3cf186d6f5b53ad4cc3ebfbb11f.
+        dest: /etc/apt/keyrings/packages.mozilla.asc
+
+    - name: remove old style file
+      file:
+        path: "/etc/apt/sources.list.d/packages_mozilla_org_apt.list"
+        state: absent
+
+    - name: create modern style sources
+      copy:
+        dest: "/etc/apt/sources.list.d/packages_mozilla_org_apt.sources"
+        mode: 0644
+        owner: root
+        content: |
+          Types: deb
+          URIs: https://packages.mozilla.org/apt
+          Suites: mozilla
+          Components: main
+          Signed-By: /etc/apt/keyrings/packages.mozilla.asc
 
 - name: Add firefox pin
   become: true
@@ -32,6 +45,8 @@
     mode: '0755'
 
 - name: Install firefox deb
+  become: true
   ansible.builtin.apt:
     name: firefox
     state: present
+    update_cache: yes
