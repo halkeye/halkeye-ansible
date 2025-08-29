@@ -182,6 +182,7 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias todo="todoist list --filter '(overdue | today)'"
 alias ls='lsd'
 alias c='code $(git root)'
+alias git-ls="git ls-tree --name-only HEAD -z | TZ=UTC xargs -0n1 -I_ git --no-pager log -1 --date=iso-local --format='%ad _' -- _ | sort -k1"
 command -v xclip 2>/dev/null 1>/dev/null && alias pbcopy='xclip -selection clipboard'
 command -v xclip 2>/dev/null 1>/dev/null && alias pbpaste='xclip -selection clipboard -o'
 
