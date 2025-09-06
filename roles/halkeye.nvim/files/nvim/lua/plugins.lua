@@ -12,6 +12,11 @@ local function first(bufnr, ...)
   return select(1, ...)
 end
 
+vim.filetype.add({
+  pattern = {
+    [".*/.github/workflows/.*%.yml"] = "yaml.ghaction",
+  },
+})
 
 require("lazy").setup({
   "nvim-lua/plenary.nvim",
@@ -154,7 +159,10 @@ require("lazy").setup({
         },
         typescriptreact = {
           "eslint_d"
-        }
+        },
+        ["ghaction"] = {
+          "actionlint"
+        },
       }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
