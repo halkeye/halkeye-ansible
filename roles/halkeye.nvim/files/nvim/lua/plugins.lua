@@ -42,6 +42,16 @@ require("lazy").setup({
         desc = "Buffer Diagnostics (Trouble)",
       },
       {
+        "<leader>rr",
+        "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>rR",
+        "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
         "<leader>cs",
         "<cmd>Trouble symbols toggle focus=false<cr>",
         desc = "Symbols (Trouble)",
@@ -232,20 +242,6 @@ require("lazy").setup({
     end,
     keys = {
       {
-        "<Leader>fr",
-        function()
-          require("telescope.builtin").resume()
-        end,
-        desc = "Resume previous picker",
-      },
-      {
-        "<Leader>fb",
-        function()
-          require("telescope.builtin").buffers()
-        end,
-        desc = "Buffers",
-      },
-      {
         "<Leader>be",
         function()
           require("telescope.builtin").buffers()
@@ -278,35 +274,14 @@ require("lazy").setup({
         desc = "Files",
       },
       {
-        "<Leader>ff",
-        function()
-          require("telescope").extensions.vwd.find_files({})
-        end,
-        desc = "Files",
-      },
-      {
-        "<Leader>fg",
-        function()
-          require("telescope").extensions.vwd.live_grep({ default_text = vim.fn.expand("<cword>") })
-        end,
-        desc = "Grep",
-      },
-      {
-        "<Leader>fq",
+        "<Leader>qf",
         function()
           require("telescope.builtin").quickfix()
         end,
         desc = "Quickfixes",
       },
       {
-        "<Leader>fk",
-        function()
-          require("telescope.builtin").keymaps()
-        end,
-        desc = "Keymaps",
-      },
-      {
-        "<Leader>fs",
+        "<Leader>gs",
         function()
           require("telescope.builtin").git_status()
         end,
@@ -834,4 +809,10 @@ require("lazy").setup({
     --      })
     --    end,
   },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+  }
 })
