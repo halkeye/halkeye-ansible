@@ -7,6 +7,7 @@ loki
 thor
 wasp
 antman
+cosmo
 
 [work]
 gmogan-dev-box
@@ -19,6 +20,7 @@ gmogan-dev-box
 adamwarlock
 wasp
 DO-PW0BFSP4
+cosmo
 
 [remote]
 gmogan-dev-box
