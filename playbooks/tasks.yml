@@ -61,6 +61,7 @@
     state: present
 
 - name: adding existing user '{{ env_user }}' to docker sudo
+  become: true
   ansible.builtin.user:
     name: '{{ env_user }}'
     groups: docker
