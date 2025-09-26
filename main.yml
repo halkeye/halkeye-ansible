@@ -4,9 +4,6 @@
     - import_tasks: playbooks/tasks.yml
       tags:
         - software
-    - import_tasks: playbooks/fzf.yml
-      tags:
-        - fzf
     - import_tasks: playbooks/directories.yml
       tags:
         - directories
