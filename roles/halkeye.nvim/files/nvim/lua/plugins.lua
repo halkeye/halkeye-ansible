@@ -19,6 +19,15 @@ vim.filetype.add({
 })
 
 require("lazy").setup({
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        "nvim-dap-ui",
+      },
+    },
+  },
   "nvim-lua/plenary.nvim",
   "nvim-tree/nvim-web-devicons",
   "duane9/nvim-rg",
@@ -95,6 +104,7 @@ require("lazy").setup({
         ruby = { "rubocop" },
         eruby = { "erb_format" },
         python = { "isort", "black" },
+        html = { "htmlbeautifier" },
         sh = { "shfmt" },
         go = { "gofmt", "goimports-reviser" },
         -- Use a sub-list to run only the first available formatter
@@ -709,9 +719,15 @@ require("lazy").setup({
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
 
         providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            score_offset = 100,
+          },
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",
@@ -814,5 +830,113 @@ require("lazy").setup({
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "nvim-neotest/nvim-nio"
+    },
+    lazy = true,
+    -- Copied from LazyVim/lua/lazyvim/plugins/extras/dap/core.lua and
+    -- modified.
+    keys = {
+      {
+        "<leader>db",
+        function() require("dap").toggle_breakpoint() end,
+        desc = "Toggle Breakpoint"
+      },
+
+      {
+        "<leader>dc",
+        function() require("dap").continue() end,
+        desc = "Continue"
+      },
+
+      {
+        "<leader>dC",
+        function() require("dap").run_to_cursor() end,
+        desc = "Run to Cursor"
+      },
+
+      {
+        "<leader>dT",
+        function() require("dap").terminate() end,
+        desc = "Terminate"
+      },
+    },
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "jay-babu/mason-nvim-dap.nvim",
+      "leoluz/nvim-dap-go",
+      "mfussenegger/nvim-dap-python",
+      "nvim-neotest/nvim-nio",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    keys = {
+      {
+        "<leader>du",
+        function()
+          require("dapui").toggle({})
+        end,
+        desc = "[D]ap [U]I"
+      },
+      {
+        "<leader>de",
+        function()
+          require("dapui").eval()
+        end,
+        desc = "[D]ap [E]val"
+      },
+    },
+    config = function(_, opts)
+      local dap, dapui = require 'dap', require 'dapui'
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
+      dapui.setup(opts)
+    end,
+  },
+  {
+    'leoluz/nvim-dap-go',
+    ft = 'go',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+    },
+    config = function(_, _)
+      require('dap-go').setup {
+        -- Additional dap configurations can be added.
+        -- dap_configurations accepts a list of tables where each entry
+        -- represents a dap configuration. For more details do:
+        -- :help dap-configuration
+        dap_configurations = {
+          {
+            -- Must be "go" or it will be ignored by the plugin
+            type = "go",
+            name = "Attach remote",
+            mode = "remote",
+            port = 4444,
+            host = "127.0.0.1",
+            request = "attach",
+          },
+        },
+      }
+    end,
   }
 })
