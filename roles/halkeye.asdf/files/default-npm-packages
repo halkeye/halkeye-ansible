@@ -6,3 +6,5 @@ pnpm
 vim-language-server
 bash-language-server
 @devcontainers/cli
+@google/gemini-cli
+@github/copilot

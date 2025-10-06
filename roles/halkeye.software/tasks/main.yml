@@ -92,7 +92,6 @@
       - fd
       - fx
       - fzf
-      - gemini-cli
       - gh
       - git-absorb
       - glab
