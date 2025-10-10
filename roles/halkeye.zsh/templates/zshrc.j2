@@ -215,5 +215,13 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 eval "$(zoxide init zsh --cmd j)"
 
+if [[ -n $TMUX ]]; then
+  _fix_ssh_agent_in_tmux () { if [[ ! -S $SSH_AUTH_SOCK ]]; then eval $(tmux show-env -s |grep '^SSH_'); fi }
+  ssh ()   { _fix_ssh_agent_in_tmux; command ssh $@; }
+  scp ()   { _fix_ssh_agent_in_tmux; command scp $@; }
+  git ()   { _fix_ssh_agent_in_tmux; command git $@; }
+  rsync () { _fix_ssh_agent_in_tmux; command rsync $@; }
+fi
+
 {{ zsh_group_config }}
 {{ zsh_host_config }}
