@@ -85,7 +85,7 @@
       - age
       - air
       - bump
-      - delta
+      - git-delta
       - dive
       - doctl
       - doctl
