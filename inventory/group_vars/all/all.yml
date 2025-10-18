@@ -287,7 +287,7 @@ nerdfonts_fonts:
   - fontname: 'JetBrainsMono'
     name: 'font-jetbrains-mono-nerd-font'
 
-software_version_argocd: "3.1.8" # repo: argoproj/argo-cd
+software_version_argocd: "3.1.9" # repo: argoproj/argo-cd
 software_version_asdf: "v0.18.0" # repo: asdf-vm/asdf
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_helm: "3.19.0" # repo: helm/helm
