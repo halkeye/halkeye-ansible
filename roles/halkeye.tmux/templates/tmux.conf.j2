@@ -5,6 +5,9 @@ set -g prefix C-a
 bind-key C-a last-window
 bind-key a send-prefix
 
+# enable clipboard so shcopy can work
+set -s set-clipboard on
+
 #set-option -g default-command "command -v reattach-to-user-namespace >/dev/null 2>&1 && reattach-to-user-namespace -l $SHELL || $SHELL -l"
 
 # Reload key
