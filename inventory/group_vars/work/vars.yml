@@ -1,2 +1,3 @@
 ---
 zsh_install_ssh_agent: true
+go_version: "1.25.2"
