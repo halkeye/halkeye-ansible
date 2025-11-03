@@ -33,6 +33,10 @@ export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 if [ -f $HOME/.asdf/plugins/java/set-java-home.zsh ]; then source $HOME/.asdf/plugins/java/set-java-home.zsh; fi
 command -v asdf 2>/dev/null 1>/dev/null && source <(asdf completion zsh)
+asdf_global_latest_node() {
+  asdf install nodejs $(asdf cmd nodejs resolve lts)
+  asdf set nodejs $(asdf cmd nodejs resolve lts)
+}
 
 ## switch to emacs mode after setting editor, which changes the mode
 bindkey -e
