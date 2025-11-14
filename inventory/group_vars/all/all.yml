@@ -51,6 +51,7 @@ global_ubuntu_packages:
   - vim
   - direnv
   - git-absorb
+  - git-standup
   - rename
   - ripgrep
   - sshfs
@@ -110,6 +111,9 @@ global_git_config:
   - name: alias.root
     scope: global
     value: rev-parse --show-toplevel
+  - name: alias.search
+    scope: global
+    value: '!git rev-list --all | xargs git grep -F'
   - name: init.defaultBranch
     scope: global
     value: main
