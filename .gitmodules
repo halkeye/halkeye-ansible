@@ -13,9 +13,6 @@
 [submodule "roles/gikeymarcia.neovim"]
 	path = roles/gikeymarcia.neovim
 	url = https://github.com/gikeymarcia/ansible-role-neovim
-[submodule "roles/gantsign.helm"]
-	path = roles/gantsign.helm
-	url = https://github.com/gantsign/ansible_role_helm
 [submodule "collections/ansible_collections/quera/github"]
 	path = collections/ansible_collections/quera/github
 	url = https://github.com/QueraTeam/ansible-github.git

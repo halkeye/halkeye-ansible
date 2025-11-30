@@ -2,7 +2,6 @@ go_arch: arm64
 deb_architecture: arm64
 deb_os: linux
 kubectl_arch: arm64
-helm_architecture: arm64
 
 krew_install_plugins:
   - ctx

@@ -9,8 +9,4 @@
       - "{{ env_home }}/go"
       - "{{ env_home }}/git"
       - "{{ env_home }}/git/halkeye"
-      - "{{ env_home }}/git/halkeye-docker"
-      - "{{ env_home }}/git/halkeye-helm-charts"
-      - "{{ env_home }}/git/jenkinsci"
-      - "{{ env_home }}/git/jenkins-infra"
       - "{{ env_home }}/git/digitalocean"

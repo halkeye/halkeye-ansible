@@ -1,12 +1,4 @@
 ---
-- name: Install latest version of helm
-  ansible.builtin.include_role:
-    name: gantsign.helm
-    apply:
-      become: true
-  vars:
-    helm_version: "{{ software_version_helm }}"
-
 - name: Make sure git directory exists
   become: true
   file:
@@ -85,7 +77,6 @@
       - age
       - air
       - bump
-      - git-delta
       - dive
       - doctl
       - doctl
@@ -94,12 +85,14 @@
       - fzf
       - gh
       - git-absorb
+      - git-delta
       - glab
       - goreleaser
       - gron
       - grpcui
       - grpcurl
       - hadolint
+      - helm
       - helmfile
       - humanlog
       - jwt
