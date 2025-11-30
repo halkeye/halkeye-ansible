@@ -8,13 +8,11 @@ thor
 wasp
 antman
 cosmo
+gaming-amp
 
 [work]
 gmogan-dev-box
 DO-PW0BFSP4
-
-[ldap]
-gmogan-dev-box
 
 [linux_desktop]
 adamwarlock
@@ -25,13 +23,12 @@ cosmo
 [remote]
 gmogan-dev-box
 falcon
-linuxgsm
+gaming-amp
 
 [server]
 thor
 falcon
-linuxgsm
-gmogan-dev-box
+gaming-amp
 
 [wsl]
 loki
