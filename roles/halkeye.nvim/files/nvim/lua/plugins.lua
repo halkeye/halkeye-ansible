@@ -109,16 +109,14 @@ require("lazy").setup({
         sh = { "shfmt" },
         go = { "gofmt", "goimports-reviser" },
         -- Use a sub-list to run only the first available formatter
-        javascript = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d", "eslint") } end,
+        javascript = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint") } end,
         javascriptreact = function(bufnr)
-          return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d",
-            "eslint") }
+          return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint") }
         end,
-        tsserver = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d", "eslint") } end,
-        typescript = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d", "eslint") } end,
+        tsserver = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint") } end,
+        typescript = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint") } end,
         typescriptreact = function(bufnr)
-          return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint_d",
-            "eslint") }
+          return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint") }
         end,
       },
       -- Set up format-on-save
@@ -167,19 +165,19 @@ require("lazy").setup({
           "erb_lint"
         },
         javascript = {
-          "eslint_d"
+          "eslint"
         },
         tsserver = {
-          "eslint_d"
+          "eslint"
         },
         typescript = {
-          "eslint_d"
+          "eslint"
         },
         javascriptreact = {
-          "eslint_d"
+          "eslint"
         },
         typescriptreact = {
-          "eslint_d"
+          "eslint"
         },
         ["ghaction"] = {
           "actionlint"
