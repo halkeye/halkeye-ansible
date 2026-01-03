@@ -40,7 +40,7 @@
 
 - name: repo
   become: true
-  when: ansible_os_family == "Debian"
+  when: ansible_facts["os_family"] == "Debian"
   block:
     - name: remove old style file
       file:
@@ -76,35 +76,35 @@
       - act
       - actionlint
       - age
-      - air
-      - bump
+      # - air
+      # - bump
       - dive
       - doctl
       - doctl
       - fd
       - fx
       - fzf
-      - gh
+      # - gh
       - git-absorb
       - git-delta
       - glab
       - goreleaser
       - gron
-      - grpcui
-      - grpcurl
-      - hadolint
+      # - grpcui
+      # - grpcurl
+      # - hadolint
       - helm
       - helmfile
-      - humanlog
-      - jwt
+      # - humanlog
+      # - jwt
       - kubectx
       - kustomize
       - lsd
       - lychee
       - mc
-      - regclient
-      - rover
-      - shcopy
+      # - regclient
+      # - rover
+      # - shcopy
       - shellcheck
       - sops
       - stern
@@ -117,14 +117,14 @@
 
 - name: Install package
   become: true
-  when: ansible_os_family == "Debian"
+  when: ansible_facts["os_family"] == "Debian"
   ansible.builtin.apt:
     name: "{{ software_debs }}"
     update_cache: yes
 
 - name: Install package
   become: true
-  when: ansible_os_family == "Archlinux"
+  when: ansible_facts["os_family"] == "Archlinux"
   ansible.builtin.pacman:
     name: "{{ software_debs }}"
     update_cache: yes

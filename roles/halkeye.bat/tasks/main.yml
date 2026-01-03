@@ -1,14 +1,14 @@
 ---
 - name: Install package
   become: true
-  when: ansible_os_family == "Debian"
+  when: ansible_facts["os_family"] == "Debian"
   ansible.builtin.apt:
     allow_downgrade: true
     name: bat
 
 - name: Install package
   become: true
-  when: ansible_os_family == "Archlinux"
+  when: ansible_facts["os_family"] == "Archlinux"
   ansible.builtin.pacman:
     name: bat
 

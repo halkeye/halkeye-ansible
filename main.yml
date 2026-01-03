@@ -46,7 +46,7 @@
         - software
     - role: geerlingguy.git
       become: true
-      when: ansible_os_family != "Darwin" and ansible_os_family != "Archlinux"
+      when: ansible_facts["os_family"] != "Darwin" and ansible_facts["os_family"] != "Archlinux"
       tags:
         - git
     - role: halkeye.tmux

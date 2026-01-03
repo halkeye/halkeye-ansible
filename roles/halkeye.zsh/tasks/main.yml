@@ -1,7 +1,7 @@
 ---
 - name: Install zsh
   become: true
-  when: ansible_os_family == "Debian"
+  when: ansible_facts["os_family"] == "Debian"
   ansible.builtin.apt:
     name:
       - zsh
@@ -9,7 +9,7 @@
 
 - name: Install zsh
   become: true
-  when: ansible_os_family == "Archlinux"
+  when: ansible_facts["os_family"] == "Archlinux"
   community.general.pacman:
     name:
       - zsh
