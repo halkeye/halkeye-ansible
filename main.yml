@@ -4,6 +4,10 @@
     - import_tasks: playbooks/tasks.yml
       tags:
         - software
+    - import_tasks: playbooks/archlinux.yml
+      when: ansible_facts["os_family"] == "Archlinux"
+      tags:
+        - software
     - import_tasks: playbooks/directories.yml
       tags:
         - directories

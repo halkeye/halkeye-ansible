@@ -70,41 +70,30 @@
         owner: "root"
         mode: '0755'
 
-- name: Create list of debs
+- name: Create list of packages
   ansible.builtin.set_fact:
-    software_debs:
+    software_packages:
       - act
       - actionlint
       - age
-      # - air
-      # - bump
       - dive
       - doctl
       - doctl
       - fd
       - fx
       - fzf
-      # - gh
       - git-absorb
       - git-delta
       - glab
       - goreleaser
       - gron
-      # - grpcui
-      # - grpcurl
-      # - hadolint
       - helm
       - helmfile
-      # - humanlog
-      # - jwt
       - kubectx
       - kustomize
       - lsd
       - lychee
       - mc
-      # - regclient
-      # - rover
-      # - shcopy
       - shellcheck
       - sops
       - stern
@@ -114,20 +103,41 @@
       - vale
       - vivid
       - zoxide
+    # non upstream system packages
+    software_user_packages:
+      - air
+      - bump
+      - gh
+      - grpcui
+      - grpcurl
+      - hadolint
+      - humanlog
+      - jwt
+      - regclient
+      - rover
+      - shcopy
 
-- name: Install package
+- name: Install packages
   become: true
   when: ansible_facts["os_family"] == "Debian"
   ansible.builtin.apt:
-    name: "{{ software_debs }}"
+    name: "{{ software_packages + software_user_packages }}"
     update_cache: yes
 
-- name: Install package
+- name: Install packages
   become: true
   when: ansible_facts["os_family"] == "Archlinux"
   ansible.builtin.pacman:
-    name: "{{ software_debs }}"
+    name: "{{ software_packages }}"
     update_cache: yes
+
+- name: Install aur packages
+  when: ansible_facts["os_family"] == "Archlinux"
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    use: yay
+    name: "{{ software_user_packages }}"
 
 # Done Debs
 
