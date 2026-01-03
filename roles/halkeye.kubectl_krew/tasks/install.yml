@@ -1,7 +1,7 @@
 ---
 - name: Set download vars
   ansible.builtin.set_fact:
-    download_arch: "{{ [ansible_architecture] | map('extract', krew_architecture) | first }}"
+    download_arch: "{{ [ansible_facts['architecture']] | map('extract', krew_architecture) | first }}"
     download_os: linux
 
 - name: Fetch krew
