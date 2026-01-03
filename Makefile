@@ -44,6 +44,10 @@ debug: run ## Run in debug mode
 software: ANSIBLE_DEBUG+=-t software
 software: run ## Just update software
 
+.PHONY: asdf
+asdf: ANSIBLE_DEBUG+=-t asdf
+asdf: run ## Just update asdf
+
 .PHONY: git
 git: ANSIBLE_DEBUG+=-t git
 git: run ## Just update git
