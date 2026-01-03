@@ -28,6 +28,7 @@ require("lazy").setup({
       },
     },
   },
+  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
   "nvim-lua/plenary.nvim",
   "nvim-tree/nvim-web-devicons",
   "duane9/nvim-rg",
@@ -470,131 +471,136 @@ require("lazy").setup({
       })
     end,
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
-    enabled = true,
-    opts = { mode = "cursor" },
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   event = "BufReadPre",
+  --   enabled = true,
+  --   opts = { mode = "cursor" },
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
+    -- dependencies = {
+    --   "nvim-treesitter/nvim-treesitter-context",
+    --   "nvim-treesitter/nvim-treesitter-textobjects",
+    -- },
     lazy = false,
     build = ':TSUpdate',
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "bash",
-          "diff",
-          "dockerfile",
-          "go",
-          "gomod",
-          "graphql",
-          "html",
-          "javascript",
-          "json",
-          "lua",
-          "make",
-          "markdown",
-          "markdown_inline",
-          "python",
-          "query",
-          "regex",
-          "ruby",
-          "rust",
-          "scss",
-          "ssh_config",
-          "tsx",
-          "typescript",
-          "vim",
-          "yaml",
-        },
-        indent = {
-          enable = true
-        },
-        highlight = {
+    branch = 'main',
+    opts = {
+      ensure_installed = {
+        "bash",
+        "diff",
+        "dockerfile",
+        "go",
+        "gomod",
+        "graphql",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "ruby",
+        "rust",
+        "scss",
+        "ssh_config",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+      },
+      indent = {
+        enable = true
+      },
+      highlight = {
+        enable = true,
+      },
+      sync_install = false,
+      auto_install = true,
+      ignore_install = {},
+      disable = function(_, buf)
+        local max_filesize = 100 * 1024 -- 100 KB
+        local exists, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if exists and stats and stats.size > max_filesize then
+          return true
+        end
+      end,
+      additional_vim_regex_highlighting = false,
+      textobjects = {
+        select = {
           enable = true,
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+            ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+          },
+          selection_modes = {
+            ['@parameter.outer'] = 'v', -- charwise
+            ['@function.outer'] = 'V',  -- linewise
+            ['@class.outer'] = '<c-v>', -- blockwise
+          },
+          include_surrounding_whitespace = true,
         },
-        sync_install = false,
-        auto_install = true,
-        ignore_install = {},
-        disable = function(_, buf)
-          local max_filesize = 100 * 1024 -- 100 KB
-          local exists, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-          if exists and stats and stats.size > max_filesize then
-            return true
-          end
-        end,
-        additional_vim_regex_highlighting = false,
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-              ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-            },
-            selection_modes = {
-              ['@parameter.outer'] = 'v', -- charwise
-              ['@function.outer'] = 'V',  -- linewise
-              ['@class.outer'] = '<c-v>', -- blockwise
-            },
-            include_surrounding_whitespace = true,
+        swap = {
+          enable = true,
+          swap_next = {
+            ["<leader>a"] = "@parameter.inner",
           },
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader>a"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<leader>A"] = "@parameter.inner",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = { query = "@class.outer", desc = "Next class start" },
-              --
-              -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queries.
-              ["]o"] = "@loop.*",
-              -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
-              --
-              -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
-              -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
-              ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
-              ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-            -- Below will go to either the start or the end, whichever is closer.
-            -- Use if you want more granular movements
-            -- Make it even more gradual by adding multiple queries and regex.
-            goto_next = {
-              ["]d"] = "@conditional.outer",
-            },
-            goto_previous = {
-              ["[d"] = "@conditional.outer",
-            }
+          swap_previous = {
+            ["<leader>A"] = "@parameter.inner",
           },
         },
-      })
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            ["]m"] = "@function.outer",
+            ["]]"] = { query = "@class.outer", desc = "Next class start" },
+            --
+            -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queries.
+            ["]o"] = "@loop.*",
+            -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
+            --
+            -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
+            -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+            ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+            ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+          },
+          goto_next_end = {
+            ["]M"] = "@function.outer",
+            ["]["] = "@class.outer",
+          },
+          goto_previous_start = {
+            ["[m"] = "@function.outer",
+            ["[["] = "@class.outer",
+          },
+          goto_previous_end = {
+            ["[M"] = "@function.outer",
+            ["[]"] = "@class.outer",
+          },
+          -- Below will go to either the start or the end, whichever is closer.
+          -- Use if you want more granular movements
+          -- Make it even more gradual by adding multiple queries and regex.
+          goto_next = {
+            ["]d"] = "@conditional.outer",
+          },
+          goto_previous = {
+            ["[d"] = "@conditional.outer",
+          }
+        },
+      },
+    },
+    init = function()
       vim.opt.foldmethod = "expr"
       vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
     end,
