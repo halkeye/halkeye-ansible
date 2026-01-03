@@ -105,11 +105,11 @@
       - zoxide
     # non upstream system packages
     software_user_packages:
-      - air
-      - bump
+      - air-bin # FIXME - rename air to air-bin in deb repo
+      # - bump # FIXME - no bump
       - gh
-      - grpcui
-      - grpcurl
+      # - grpcui
+      # - grpcurl
       - hadolint
       - humanlog
       - jwt
@@ -131,13 +131,13 @@
     name: "{{ software_packages }}"
     update_cache: yes
 
-- name: Install aur packages
-  when: ansible_facts["os_family"] == "Archlinux"
-  become: yes
-  become_user: aur_builder
-  kewlfft.aur.aur:
-    use: yay
-    name: "{{ software_user_packages }}"
+#- name: Install aur packages
+#  when: ansible_facts["os_family"] == "Archlinux"
+#  become: yes
+#  become_user: aur_builder
+#  kewlfft.aur.aur:
+#    use: yay
+#    name: "{{ software_user_packages }}"
 
 # Done Debs
 

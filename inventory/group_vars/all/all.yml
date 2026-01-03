@@ -242,7 +242,7 @@ asdf_plugins:
       - 20.12.2
       - 21.7.3
       - 24.12.0
-    global: "21.7.3"
+    global: "24.12.0"
   - name: "python"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install

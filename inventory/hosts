@@ -19,6 +19,7 @@ adamwarlock
 wasp
 DO-PW0BFSP4
 cosmo
+loki
 
 [remote]
 gmogan-dev-box
@@ -29,6 +30,3 @@ gaming-amp
 thor
 falcon
 gaming-amp
-
-[wsl]
-loki
