@@ -46,7 +46,7 @@
         - software
     - role: geerlingguy.git
       become: true
-      when: ansible_os_family != "Darwin"
+      when: ansible_os_family != "Darwin" and ansible_os_family != "Archlinux"
       tags:
         - git
     - role: halkeye.tmux
@@ -97,11 +97,11 @@
       tags:
         - software
         - kubectl
-    - role: drew1kun.fancyfonts.nerdfonts
-      when: nf_enabled
-      nerdfonts_release: "v3.4.0"
-      tags:
-        - fonts
+#    - role: drew1kun.fancyfonts.nerdfonts
+#      when: nf_enabled
+#      nerdfonts_release: "v3.4.0"
+#      tags:
+#        - fonts
     - role: halkeye.k9s
       tags:
         - software

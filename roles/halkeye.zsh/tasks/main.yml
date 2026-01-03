@@ -7,6 +7,14 @@
       - zsh
     state: present
 
+- name: Install zsh
+  become: true
+  when: ansible_os_family == "Archlinux"
+  community.general.pacman:
+    name:
+      - zsh
+    state: present
+
 - name: Change user shell to zsh
   become: true
   when: "'ldap' not in group_names"

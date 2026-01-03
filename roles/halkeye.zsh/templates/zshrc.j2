@@ -46,8 +46,8 @@ bindkey -a '^[[3~' delete-char
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "$key[Up]" history-beginning-search-backward-end
-bindkey "$key[Down]" history-beginning-search-forward-end
+[[ -n "${key[Up]}" ]] && bindkey "$key[Up]" history-beginning-search-backward-end
+[[ -n "${key[Down]}" ]] && bindkey "$key[Down]" history-beginning-search-forward-end
 ## From: https://unix.stackexchange.com/questions/258656/how-can-i-delete-to-a-slash-or-a-word-in-zsh
 # This way you can use ctrl+w for deleting a Word (in vim lingo) and alt+bkspc to delete a word
 backward-kill-dir() {
@@ -342,13 +342,15 @@ fzf-checkout(){
     fi
 }
 
-if [ -d /etc/profile.d ]; then
-for i in /etc/profile.d/*.sh; do
-  if [ -r $i ]; then
-    . $i
-  fi
-done
-unset i
+if [ -e /etc/profile ]; then
+  source /etc/profile
+elif [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
 fi
 
 if [ -f "/etc/wsl.conf" ]; then

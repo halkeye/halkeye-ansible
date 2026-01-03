@@ -20,6 +20,7 @@ global_centos_packages:
   - python36-devel
   - python36-pip
   - mosh
+
 global_ubuntu_packages:
   - mycli
   - rustup
@@ -61,6 +62,20 @@ global_ubuntu_packages:
   - docker-buildx-plugin 
   - docker-compose-plugin
   - ncdu
+
+global_archlinux_packages:
+  - tig
+  - direnv
+  - ncdu
+  - renameutils
+  - entr
+  - zoxide
+  - vivid
+  - tmux
+  - ripgrep
+  - sshfs
+  - less
+
 global_darwin_packages:
   - gpg2
   - jq

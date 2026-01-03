@@ -2,7 +2,7 @@
 SHELL = /bin/bash
 .DEFAULT_GOAL := run
 
-ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file .vault -l $$(hostname) -c local -e 'ansible_python_interpreter=$(PWD)/$(VENV)/python'
+ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file .vault -l $$(cat /etc/hostname) -c local -e 'ansible_python_interpreter=$(PWD)/$(VENV)/python'
 ANSIBLE_DEBUG :=
 PLAYBOOK := main
 
@@ -30,11 +30,11 @@ run: setup ## Run
 
 .PHONY: lint
 lint: setup ## Perform an ansible-lint linting
-	$(VENV)/ansible-lint main.yml
+	$(VENV)/ansible-lint $(PLAYBOOK).yml
 
 .PHONY: vars
 vars: setup ## List all variables
-	$(VENV)/ansible $$(hostname) --vault-password-file .vault -c local -m ansible.builtin.setup
+	$(VENV)/ansible $$(cat /etc/hostname) --vault-password-file .vault -c local -m ansible.builtin.setup
 
 .PHONY: debug
 debug: ANSIBLE_DEBUG+=-vvv

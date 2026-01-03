@@ -7,6 +7,7 @@
     state: present
 
 - name: Install docker repo
+  when: ansible_os_family == "Debian"
   become: true
   block:
     - name: key
@@ -39,6 +40,14 @@
     update_cache: yes
     state: present
 
+- name: Install archlinux packages
+  become: true
+  when: ansible_os_family == "Archlinux"
+  ansible.builtin.pacman:
+    name: "{{ global_archlinux_packages }}"
+    update_cache: yes
+    state: present
+
 - name: Install centos packages
   become: true
   when: ansible_os_family == "RedHat"
@@ -61,6 +70,7 @@
     state: present
 
 - name: adding existing user '{{ env_user }}' to docker sudo
+  when: ansible_os_family == "Debian"
   become: true
   ansible.builtin.user:
     name: '{{ env_user }}'
