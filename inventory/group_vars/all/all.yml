@@ -40,7 +40,6 @@ global_ubuntu_packages:
   - libbz2-dev
   # python build end
   - luarocks
-  - silversearcher-ag
   - jq
   - curl
   - tig
