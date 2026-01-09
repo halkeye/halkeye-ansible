@@ -312,15 +312,15 @@ nerdfonts_fonts:
   - fontname: 'JetBrainsMono'
     name: 'font-jetbrains-mono-nerd-font'
 
-software_version_argocd: "3.2.2" # repo: argoproj/argo-cd
+software_version_argocd: "3.2.3" # repo: argoproj/argo-cd
 software_version_asdf: "v0.18.0" # repo: asdf-vm/asdf
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
 software_version_iamb: "0.0.10" # repo: ulyssa/iamb
 software_version_k9s: "0.50.16" # repo: derailed/k9s
 software_version_krew: "0.4.5" # repo: kubernetes-sigs/krew
-software_version_krr: "v1.27.0" # repo: robusta-dev/krr
+software_version_krr: "v1.28.0" # repo: robusta-dev/krr
 software_version_ssh_to_age: "1.2.0" # repo: Mic92/ssh-to-age
-software_version_starship: "1.24.1" # repo: starship/starship
+software_version_starship: "1.24.2" # repo: starship/starship
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
 software_version_yay: "12.5.7" # repo: Jguer/yay
