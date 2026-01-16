@@ -215,8 +215,8 @@ asdf_plugins:
   - name: "java"    # a plugin name
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
-      - adoptopenjdk-11.0.16+8
-    global: adoptopenjdk-11.0.16+8
+      - adoptopenjdk-21.0.9+10.0.LTS
+    global: adoptopenjdk-21.0.9+10.0.LTS
   - name: "maven"
     repository: ""    # a plugin repository, optional
     versions:         # a list of versions to install
