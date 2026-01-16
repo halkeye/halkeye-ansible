@@ -1,10 +1,11 @@
-virtualenv
+build
+jedi
 neovim
+pylsp-mypy
 pynvim
+python-lsp-black
+python-lsp-isort
 python-lsp-server[all]
 vim-vint
-python-lsp-isort
-pylsp-mypy
-python-lsp-black
-jedi
+virtualenv
 yamllint
