@@ -28,6 +28,13 @@
 * https://packages.ubuntu.com/search?keywords=fonts-cascadia-code
 * http://noobish-nix.blogspot.com/2015/05/xfce-xubuntu-how-take-screenshot-of.html - windows+shift+s
 * syncthing
+* pipewire-zeroconf
+* https://old.reddit.com/r/linux/comments/1ao7fau/hail_to_pipewire_and_its_developers/
+* extra/avahi 1:0.9rc2-1 [installed]
+docker-compose
+docker
+extra/docker-buildx
+https://archlinux.org/packages/extra/x86_64/github-cli/
 
 git config --global alias.root 'rev-parse --show-toplevel'
 
