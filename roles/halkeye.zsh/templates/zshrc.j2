@@ -40,7 +40,11 @@ asdf_global_latest_node() {
 
 ## switch to emacs mode after setting editor, which changes the mode
 bindkey -e
-# speifically make delete key work
+# enable editing current line in edtor with ctrl+X ctrl+E
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+# specifically make delete key work
 bindkey -a '^[[3~' delete-char
 # up/down to search back the zsh history
 autoload -U history-search-end
