@@ -459,7 +459,7 @@ require("lazy").setup({
         settings = {
           gopls = {
             ["diagnostic.vulncheck"] = "Imports",
-            buildFlags = { "-tags=integration" }
+            buildFlags = { "-tags=integration,sandbox" }
           }
         }
       })
