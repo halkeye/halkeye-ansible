@@ -50,8 +50,6 @@ global_ubuntu_packages:
   - entr
   - vim
   - direnv
-  - git-absorb
-  - git-standup
   - rename
   - ripgrep
   - sshfs
