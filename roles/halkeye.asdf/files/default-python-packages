@@ -9,3 +9,4 @@ python-lsp-server[all]
 vim-vint
 virtualenv
 yamllint
+gh-release-install

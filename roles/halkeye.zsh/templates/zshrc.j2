@@ -22,12 +22,13 @@ export LS_COLORS=$(vivid generate catppuccin-mocha)
 # tell less not to paginate if less than a page
 export LESS='-F -X -isMR --shift 5'
 # fzf
-# ignore node_modules from fzf
 export FZF_TMUX=0
-export FZF_DEFAULT_COMMAND='fd --type f --follow'
+# ignore node_modules from fzf
 export FZF_DEFAULT_OPTS='--height 100% --multi --layout=reverse-list --inline-info'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND="fd --type f --follow"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+
+export CILIUM_NAMESPACE=cilium
 
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
@@ -40,7 +41,7 @@ asdf_global_latest_node() {
 
 ## switch to emacs mode after setting editor, which changes the mode
 bindkey -e
-# enable editing current line in edtor with ctrl+X ctrl+E
+# enable editing current line in editor with ctrl+X ctrl+E
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
@@ -154,23 +155,6 @@ function fzf-kill-processes() {
     echo $pid | xargs kill -${1:-9}
   fi
 }
-
-AWESOME_FZF_LOCATION="/path/to/awsome-fzf.zsh"
-
-
-#List Awesome FZF Functions
-function fzf-awesome-list() {
-if [[ -f $AWESOME_FZF_LOCATION ]]; then
-    selected=$(grep -E "(function fzf-)(.*?)[^(]*" $AWESOME_FZF_LOCATION | sed -e "s/function fzf-//" | sed -e "s/() {//" | grep -v "selected=" | fzf --reverse --prompt="awesome fzf functions > ")
-else
-    echo "awesome fzf not found"
-fi
-    case "$selected" in
-        "");; #don't throw an exit error when we dont select anything
-        *) "fzf-"$selected;;
-    esac
-}
-
 
 #Enhanced rm
 function fzf-rm() {
@@ -418,8 +402,17 @@ test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
 ### END 'bash' completion
 
 # Full zsh support
-if [ -f /usr/local/fzf/key-bindings.zsh ]; then source /usr/local/fzf/key-bindings.zsh; fi 
-if [ -f /usr/local/fzf/completion.zsh ]; then source /usr/local/fzf/completion.zsh; fi 
+if [ -f /usr/local/fzf/key-bindings.zsh ]; then
+  source /usr/local/fzf/key-bindings.zsh;
+elif [ -f /usr/share/fzf/key-bindings.zsh ]; then
+  source /usr/share/fzf/key-bindings.zsh;
+fi
+
+if [ -f /usr/local/fzf/completion.zsh ]; then
+  source /usr/local/fzf/completion.zsh;
+elif [ -f /usr/share/fzf/completion.zsh ]; then
+  source /usr/share/fzf/completion.zsh;
+fi
 
 ## Some aliases I really like
 alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"

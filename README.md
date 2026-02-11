@@ -35,8 +35,13 @@ docker-compose
 docker
 extra/docker-buildx
 https://archlinux.org/packages/extra/x86_64/github-cli/
+chafa
+
+ sudo pacman -S extra/ttf-anonymouspro-nerd ttf-mononoki-nerd ttf-firacode-nerd extra/ttf-sourcecodepro-nerd extra/ttf-hack-nerd extra/ttf-firacode-nerd extra/otf-firamono-nerd extra/ttf-ubuntu-mono-nerd extra/ttf-ubuntu-nerd extra/ttf-cascadia-mono-nerd extra/ttf-cascadia-code-nerd extra/ttf-jetbrains-mono-nerd
 
 git config --global alias.root 'rev-parse --show-toplevel'
 
-
 https://www.reddit.com/r/neovim/comments/13j14li/use_both_ansible_lsp_and_yaml_lsp/
+
+
+why no jq
