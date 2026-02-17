@@ -19,7 +19,7 @@
 [submodule "roles/githubixx.kubectl"]
 	path = roles/githubixx.kubectl
 	url = https://github.com/githubixx/ansible-role-kubectl.git
-	branch = 24.0.1+1.33.5
+	branch = 26.0.0+1.35.1
 [submodule "roles/ctorgalson.nerdfonts"]
 	path = roles/ctorgalson.nerdfonts
 	url = https://github.com/ctorgalson/ansible-role-nerdfonts
