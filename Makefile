@@ -66,7 +66,7 @@ fonts: ANSIBLE_DEBUG+=-t fonts
 fonts: run ## Just update fonts
 
 .PHONY: go
-go: ANSIBLE_DEBUG+=-t go
+go: ANSIBLE_DEBUG+=-t golang
 go: run ## Just update go
 
 .PHONY: diff
