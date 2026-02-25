@@ -113,7 +113,7 @@ require("lazy").setup({
         python = { "isort", "black" },
         html = { "htmlbeautifier" },
         sh = { "shfmt" },
-        go = { "gofmt", "goimports-reviser" },
+        go = { "gofmt", "goimports" },
         -- Use a sub-list to run only the first available formatter
         javascript = function(bufnr) return { first(bufnr, "prettierd", "prettier"), first(bufnr, "eslint") } end,
         javascriptreact = function(bufnr)
@@ -129,9 +129,6 @@ require("lazy").setup({
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
       -- Customize formatters
       formatters = {
-        ["goimports-reviser"] = {
-          prepend_args = { "-company-prefixes", "do/" }
-        },
         shfmt = {
           prepend_args = { "-i", "2" },
         },
@@ -402,7 +399,7 @@ require("lazy").setup({
         ensure_installed = {
           'shellcheck',
           'shfmt',
-          'goimports-reviser',
+          'goimports',
           'golines',
           'prettierd',
           'eslint_d',
