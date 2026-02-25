@@ -12,6 +12,13 @@ local function first(bufnr, ...)
   return select(1, ...)
 end
 
+--- :copen: Open the quickfix window.
+--- :cclose: Close the quickfix window.
+--- :cn[ext]: Jump to the next match.
+--- :cp[revious]: Jump to the previous match.
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
 vim.filetype.add({
   pattern = {
     [".*/.github/workflows/.*%.yml"] = "yaml.ghaction",
@@ -31,7 +38,6 @@ require("lazy").setup({
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
   "nvim-lua/plenary.nvim",
   "nvim-tree/nvim-web-devicons",
-  "duane9/nvim-rg",
   "tpope/vim-surround",
   {
     "folke/trouble.nvim",
@@ -669,7 +675,7 @@ require("lazy").setup({
     },
   },
   {
-  "L3MON4D3/LuaSnip",
+    "L3MON4D3/LuaSnip",
     dependencies = { "rafamadriz/friendly-snippets" },
     version = "v2.*",
     build = "make install_jsregexp",
@@ -680,7 +686,7 @@ require("lazy").setup({
   },
   {
     'saghen/blink.cmp',
-    dependencies = { 
+    dependencies = {
       'L3MON4D3/LuaSnip',
       'giuxtaposition/blink-cmp-copilot'
     },
