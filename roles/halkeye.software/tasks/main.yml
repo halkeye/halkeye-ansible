@@ -105,7 +105,6 @@
       - vivid
       - zoxide
       - git-absorb
-      - git-standup
     # non upstream system packages
     software_user_packages:
       - air-bin # FIXME - rename air to air-bin in deb repo
@@ -119,6 +118,7 @@
       - regclient
       - rover
       - shcopy
+      - git-standup
 
 - name: Install packages
   become: true

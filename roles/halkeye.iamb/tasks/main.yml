@@ -13,10 +13,11 @@
     state: directory
     mode: "0755"
 
-- name: Download iamb config
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/ulyssa/iamb/main/config.example.toml
+- name: Install iamb config
+  ansible.builtin.template:
+    src: templates/config.toml.j2
     dest: "{{ env_home }}/.config/iamb/config.toml"
+    owner: "{{ env_user }}"
     mode: '0600'
 
 - name: Install iamb
