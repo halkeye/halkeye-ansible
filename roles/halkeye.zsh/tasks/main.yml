@@ -44,3 +44,12 @@
     dest: "{{ env_home }}/.zshrc"
     owner: "{{ env_user }}"
     mode: "0755"
+
+- name: Copy over completions
+  become: true
+  ansible.builtin.copy:
+    src: ./files/completion/
+    dest: /usr/local/zsh/completion
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r

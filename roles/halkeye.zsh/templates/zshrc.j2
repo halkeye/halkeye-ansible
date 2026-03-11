@@ -399,6 +399,7 @@ command -v k9s 2>/dev/null 1>/dev/null && source <(k9s completion zsh)
 command -v stern 2>/dev/null 1>/dev/null && source <(stern --completion zsh)
 TMUXINATOR_COMPLETION_PATH="$(ruby -e 'require "tmuxinator"; puts File.join(File.dirname(File.dirname($LOADED_FEATURES.select { |file| file.include?("/lib/tmuxinator.rb") }.first)), "completion", "tmuxinator.zsh")' 2>/dev/null)"
 test -z "$TMUXINATOR_COMPLETION_PATH" || source $TMUXINATOR_COMPLETION_PATH
+source /usr/local/zsh/completion/go-task-completion.zsh
 ### END 'bash' completion
 
 # Full zsh support
@@ -415,12 +416,9 @@ elif [ -f /usr/share/fzf/completion.zsh ]; then
 fi
 
 ## Some aliases I really like
-alias ag="ag --color-path 35 --color-match '1;35' --color-line-number 32"
 alias ncu="npx -p npm-check-updates ncu"
 alias bfg="docker run -it --rm -v \$(readlink -m $(pwd)):/code -w /code donderom/bfg-repo-cleaner"
 alias webbie="python3 -m http.server"
-alias kexec='kubectl exec -it $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
-alias klogs='kubectl logs $(kubectl get pod -o jsonpath="{.items[0].metadata.name}")'
 alias tmux='tmux -u'
 alias docker_run_pwd='docker run -it --rm -w $PWD -v $PWD:$PWD -u $UID:$GID'
 alias docker_run='docker run -it --rm -v $PWD:$PWD -u $UID:$GID'
