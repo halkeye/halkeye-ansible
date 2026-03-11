@@ -397,6 +397,7 @@ require("lazy").setup({
     config = function()
       require('mason-tool-installer').setup {
         ensure_installed = {
+          "copilot-language-server",
           'shellcheck',
           'shfmt',
           'goimports',
