@@ -116,6 +116,10 @@ function fzf-man() {
 }
 
 ## Search list of your aliases and functions
+function fzf-kill() {
+  ps -e | fzf | awk '{print $1}' | xargs kill
+}
+
 function fzf-aliases-functions() {
     CMD=$(
         (
