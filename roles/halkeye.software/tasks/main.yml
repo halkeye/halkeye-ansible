@@ -99,7 +99,7 @@
       - sops
       - stern
       - tailspin
-      - task
+      - go-task
       - typos
       - vale
       - vivid
