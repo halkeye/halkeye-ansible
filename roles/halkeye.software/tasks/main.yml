@@ -187,3 +187,9 @@
       - org.mozilla.firefox
       - org.raspberrypi.rpi-imager
       - rocks.koreader.KOReader
+      - io.missioncenter.MissionCenter
+
+- name: Install Extra Flatpak Packages
+  when: install_desktop_flatpak == true
+  community.general.flatpak:
+    name: "{{ extra_flatpak_packages }}"
