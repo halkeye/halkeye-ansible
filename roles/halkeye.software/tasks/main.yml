@@ -163,14 +163,16 @@
   when: install_desktop_flatpak == true
   community.general.flatpak:
     name:
-      - org.gimp.GIMP
-      - org.inkscape.Inkscape
+      - app.devsuite.Ptyxis
+      - be.alexandervanhee.gradia
+      - com.calibre_ebook.calibre
       - com.discordapp.Discord
       - com.github.Matoking.protontricks
       - com.github.tchx84.Flatseal
       - com.google.Chrome
       - com.heroicgameslauncher.hgl
       - com.hypixel.HytaleLauncher
+      - com.jetbrains.DataGrip
       - com.jetbrains.IntelliJ-IDEA-Ultimate
       - com.orcaslicer.OrcaSlicer
       - com.usebottles.bottles
@@ -180,5 +182,8 @@
       - io.dbeaver.DBeaverCommunity
       - io.github.kolunmi.Bazaar
       - io.kinvolk.Headlamp
+      - org.gimp.GIMP
+      - org.inkscape.Inkscape
       - org.mozilla.firefox
+      - org.raspberrypi.rpi-imager
       - rocks.koreader.KOReader
