@@ -159,3 +159,26 @@
     owner: "{{ env_user }}"
     mode: '0755'
 
+- name: Install multiple packages
+  when: install_desktop_flatpak == true
+  community.general.flatpak:
+    name:
+      - org.gimp.GIMP
+      - org.inkscape.Inkscape
+      - com.discordapp.Discord
+      - com.github.Matoking.protontricks
+      - com.github.tchx84.Flatseal
+      - com.google.Chrome
+      - com.heroicgameslauncher.hgl
+      - com.hypixel.HytaleLauncher
+      - com.jetbrains.IntelliJ-IDEA-Ultimate
+      - com.orcaslicer.OrcaSlicer
+      - com.usebottles.bottles
+      - com.valvesoftware.Steam
+      - com.vysp3r.ProtonPlus
+      - com.yacreader.YACReader
+      - io.dbeaver.DBeaverCommunity
+      - io.github.kolunmi.Bazaar
+      - io.kinvolk.Headlamp
+      - org.mozilla.firefox
+      - rocks.koreader.KOReader

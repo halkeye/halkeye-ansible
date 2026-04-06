@@ -1,2 +1,3 @@
 nf_enabled: true
 install_wezterm: true
+install_desktop_flatpak: true
