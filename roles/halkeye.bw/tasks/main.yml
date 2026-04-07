@@ -11,5 +11,10 @@
         dst: /usr/local/bin/bw
         mode: 0755
 
+- name: Determine existing server
+  ansible.builtin.command: "/usr/local/bin/bw config server"
+  register: bw_existing_server
+
 - name: "Set bitwarden server"
   ansible.builtin.command: /usr/local/bin/bw config server {{ bitwarden_server }}
+  when: bw_existing_server is failed or trim(bw_existing_server.stdout) != bitwarden_server

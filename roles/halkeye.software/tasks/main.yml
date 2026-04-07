@@ -171,7 +171,6 @@
       - com.github.tchx84.Flatseal
       - com.google.Chrome
       - com.heroicgameslauncher.hgl
-      - com.hypixel.HytaleLauncher
       - com.jetbrains.DataGrip
       - com.jetbrains.IntelliJ-IDEA-Ultimate
       - com.orcaslicer.OrcaSlicer
@@ -192,4 +191,12 @@
 - name: Install Extra Flatpak Packages
   when: install_desktop_flatpak == true
   community.general.flatpak:
-    name: "{{ extra_flatpak_packages }}"
+    name: "{{ item }}"
+  with_items: "{{ extra_flatpak_packages | default([]) }}"
+
+# - name: Hytale
+#   when: install_desktop_flatpak == true
+#   community.general.flatpak:
+#     name:
+#       - https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak
+#       - com.hypixel.HytaleLauncher
