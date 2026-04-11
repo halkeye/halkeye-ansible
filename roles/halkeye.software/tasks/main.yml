@@ -99,7 +99,6 @@
       - sops
       - stern
       - tailspin
-      - go-task
       - typos
       - vale
       - vivid
@@ -119,6 +118,7 @@
       - rover
       - shcopy
       - git-standup
+      - task
 
 - name: Install packages
   become: true
