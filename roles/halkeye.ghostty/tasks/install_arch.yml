@@ -1,0 +1,8 @@
+---
+- name: install ghostty
+  become: true
+  when: ansible_facts["os_family"] == "Archlinux"
+  ansible.builtin.pacman:
+    name: "ghostty"
+    update_cache: yes
+    state: present

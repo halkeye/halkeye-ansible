@@ -1,0 +1,13 @@
+- name: Create ghostty config directory
+  ansible.builtin.file:
+    path: "{{ config_dir | default(default_config_dir) }}"
+    owner: "{{ env_user }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy ghostty config
+  ansible.builtin.copy:
+    src: "config"
+    dest: "{{ config_dir | default(default_config_dir) }}/config"
+    owner: "{{ env_user }}"
+    mode: '0644'

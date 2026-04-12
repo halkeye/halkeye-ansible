@@ -1,0 +1,5 @@
+---
+install: false
+env_home: "{{ lookup('env','HOME') }}"
+env_user: "{{ lookup('env','USER') }}"
+default_config_dir: "{{ env_home }}/.config/ghostty"

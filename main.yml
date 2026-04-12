@@ -80,6 +80,12 @@
       krr_version: "{{ software_version_krr }}"
       tags:
         - software
+    - role: halkeye.ghostty
+      when: "'linux_desktop' in group_names"
+      install: true
+      tags:
+        - ghostty
+        - software
     - role: halkeye.wezterm
       # install: "{{ install_wezterm }}"
       install: false

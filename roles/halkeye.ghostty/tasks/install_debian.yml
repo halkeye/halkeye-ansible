@@ -1,0 +1,13 @@
+---
+- name: Create ghostty repo
+  become: true
+  ansible.builtin.apt_repository:
+    repo: "ppa:mkasberg/ghostty-ubuntu"
+    state: present
+
+- name: Install ghostty
+  become: true
+  ansible.builtin.apt:
+    name: "ghostty"
+    state: present
+    update_cache: true
