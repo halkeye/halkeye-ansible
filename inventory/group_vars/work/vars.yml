@@ -1,5 +1,3 @@
 ---
 zsh_install_ssh_agent: true
-extra_flatpak_packages:
-  - com.slack.Slack
-  - re.sonny.Junction
+install_flatpak_work: true

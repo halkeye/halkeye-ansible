@@ -160,42 +160,49 @@
     mode: '0755'
 
 - name: Install multiple packages
-  when: install_desktop_flatpak == true
+  when: install_flatpak_desktop == true
   community.general.flatpak:
     name:
       - app.devsuite.Ptyxis
       - be.alexandervanhee.gradia
-      - com.calibre_ebook.calibre
       - com.discordapp.Discord
       - com.github.Matoking.protontricks
       - com.github.tchx84.Flatseal
       - com.google.Chrome
-      - com.heroicgameslauncher.hgl
       - com.jetbrains.DataGrip
       - com.jetbrains.IntelliJ-IDEA-Ultimate
-      - com.orcaslicer.OrcaSlicer
       - com.usebottles.bottles
       - com.valvesoftware.Steam
       - com.vysp3r.ProtonPlus
-      - com.yacreader.YACReader
       - io.dbeaver.DBeaverCommunity
       - io.github.kolunmi.Bazaar
-      - io.kinvolk.Headlamp
+      - io.missioncenter.MissionCenter
       - org.gimp.GIMP
       - org.inkscape.Inkscape
       - org.mozilla.firefox
+
+- name: Install home flatpak packages
+  when: install_desktop_flatpak == true and install_flatpak_home == true
+  community.general.flatpak:
+    name:
+      - com.calibre_ebook.calibre
+      - com.heroicgameslauncher.hgl
+      - com.orcaslicer.OrcaSlicer
+      - com.yacreader.YACReader
+      - org.godotengine.Godot
+      - io.kinvolk.Headlamp
       - org.raspberrypi.rpi-imager
       - rocks.koreader.KOReader
-      - io.missioncenter.MissionCenter
 
-- name: Install Extra Flatpak Packages
-  when: install_desktop_flatpak == true
+- name: Install work flatpak packages
+  when: install_desktop_flatpak == true and install_flatpak_work == true
   community.general.flatpak:
-    name: "{{ item }}"
-  with_items: "{{ extra_flatpak_packages | default([]) }}"
+    name:
+      - com.slack.Slack
+      - re.sonny.Junction
 
 # - name: Hytale
-#   when: install_desktop_flatpak == true
+#   when: install_flatpak_desktop == true
 #   community.general.flatpak:
 #     name:
 #       - https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak
