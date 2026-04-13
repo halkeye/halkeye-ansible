@@ -248,6 +248,18 @@ asdf_plugins:
     versions:
       - 7.3.1
     global: 7.3.1
+  - name: "android-sdk"
+    repository: "https://github.com/Syquel/mise-android-sdk.git"
+  - name: "dotnet"
+    repository: "https://github.com/hensou/asdf-dotnet"
+  - name: "rust"
+    repository: "https://github.com/code-lever/asdf-rust.git"
+  - name: "terraform"
+    repository: "https://github.com/asdf-community/asdf-hashicorp.git"
+  - name: "uv"
+    repository: "https://github.com/asdf-community/asdf-uv.git"
+  - name: "opentofu"
+    repository: "https://github.com/virtualroot/asdf-opentofu.git"
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"

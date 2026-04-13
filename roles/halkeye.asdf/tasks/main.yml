@@ -27,6 +27,7 @@
     owner: "{{ env_user }}"
     mode: '0644'
   with_items: "{{ asdf_plugins }}"
+  when: "'global' in item"
 
 - name: Install asdf
   become: true
@@ -50,3 +51,4 @@
     chdir: "{{ env_home }}"
   ignore_errors: true
   with_items: "{{ asdf_plugins }}"
+  when: "'global' in item"
