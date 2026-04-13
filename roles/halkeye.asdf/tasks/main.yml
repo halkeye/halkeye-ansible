@@ -42,7 +42,7 @@
         mode: 0755
 
 - name: Make sure plugins are installed
-  ansible.builtin.command: "asdf plugin add {{item.name}}"
+  ansible.builtin.command: "asdf plugin add {{item.name}} {{item.repository | default('')}}"
   with_items: "{{ asdf_plugins }}"
 
 - name: Make sure default global stuff is installed
