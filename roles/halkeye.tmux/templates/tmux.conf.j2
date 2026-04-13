@@ -2,7 +2,9 @@
 unbind C-b
 unbind l
 set -g prefix C-a
+# ctrl a ctrl a goes to previous window
 bind-key C-a last-window
+# ctrl a a goes to start of line
 bind-key a send-prefix
 
 # enable clipboard so shcopy can work
@@ -22,7 +24,16 @@ set -g history-limit 1000
 set -s escape-time 0
 
 # 0 is too far from `
-set -g base-index 1
+set -g base-index 1           # start windows numbering at 1
+setw -g pane-base-index 1     # make pane numbering consistent with windows
+
+setw -g automatic-rename on   # rename window to reflect current program
+set -g renumber-windows on    # renumber windows when a window is closed
+
+set -g set-titles on          # set terminal title
+
+# toggle mouse
+bind m run "cut -c3- '#{TMUX_CONF}' | sh -s _toggle_mouse"
 
 setw -g monitor-activity off
 
@@ -75,6 +86,9 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'ChanderG/tmux-notify'
+set -g @plugin 'jaclu/tmux-menus'
+set -g @plugin 'sainnhe/tmux-fzf'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
