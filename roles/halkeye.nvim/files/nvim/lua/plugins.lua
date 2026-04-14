@@ -713,27 +713,27 @@ require("lazy").setup({
     },
     opts_extend = { "sources.default" }
   },
-  {
-    "ray-x/go.nvim",
-    dependencies = { -- optional packages
-      "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    branch = 'nvim_0.11',
-    config = function()
-      require("go").setup({
-        tag_options = '',          -- sets options sent to gomodifytags, i.e., json=omitempty
-        test_runner = 'gotestsum', -- one of {`go`,  `dlv`, `ginkgo`, `gotestsum`}
-        run_in_floaterm = true,    -- set to true to run in a float window. :GoTermClose closes the floatterm
-        -- float term recommend if you use gotestsum ginkgo with terminal color
-        trouble = true,            -- true: use trouble to open quickfix
-      })
-    end,
-    event = { "CmdlineEnter" },
-    ft = { "go", 'gomod' },
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  },
+  -- {
+  --   "ray-x/go.nvim",
+  --   dependencies = { -- optional packages
+  --     "ray-x/guihua.lua",
+  --     "neovim/nvim-lspconfig",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   branch = 'nvim_0.11',
+  --   config = function()
+  --     require("go").setup({
+  --       tag_options = '',          -- sets options sent to gomodifytags, i.e., json=omitempty
+  --       test_runner = 'gotestsum', -- one of {`go`,  `dlv`, `ginkgo`, `gotestsum`}
+  --       run_in_floaterm = true,    -- set to true to run in a float window. :GoTermClose closes the floatterm
+  --       -- float term recommend if you use gotestsum ginkgo with terminal color
+  --       trouble = true,            -- true: use trouble to open quickfix
+  --     })
+  --   end,
+  --   event = { "CmdlineEnter" },
+  --   ft = { "go", 'gomod' },
+  --   build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+  -- },
   {
     "giuxtaposition/blink-cmp-copilot",
     dependencies = {
