@@ -203,13 +203,9 @@ require("lazy").setup({
     lazy = false
   },
   {
-    "prichrd/vwd.nvim",
-    opts = {},
-  },
-  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "nvim-telescope/telescope-fzy-native.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
     },
     config = function()
       require("telescope").setup {
@@ -230,10 +226,6 @@ require("lazy").setup({
                 return require("telescope.actions").move_selection_previous(bufnr)
               end,
             },
-          },
-        },
-        extensions = {
-          fzy_native = {
           },
         },
         pickers = {
@@ -281,7 +273,9 @@ require("lazy").setup({
       {
         "<c-P>",
         function()
-          require("telescope").extensions.vwd.find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))
+          require("telescope.builtin").find_files(
+            require('telescope.themes').get_dropdown({ winblend = 10 })
+          )
         end,
         desc = "Files",
       },
@@ -616,13 +610,6 @@ require("lazy").setup({
           return name == ".."
         end,
       },
-      keymaps = {
-        ["<TAB>"] = function()
-          local oil = require('oil')
-          require('vwd').set_vwd(oil.get_current_dir(), true)
-          print("[oil] current vwd:", require('vwd').get_vwd())
-        end,
-      },
     },
     keys = {
       {
@@ -631,45 +618,6 @@ require("lazy").setup({
           require("oil").open()
         end,
       }
-    },
-  },
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-      {
-        "<Leader>ha",
-        function()
-          local harpoon = require("harpoon")
-          harpoon:list():add()
-        end,
-        desc = "Add a harpoon",
-      },
-      {
-        "<Leader>hh",
-        function()
-          local harpoon = require("harpoon")
-          harpoon.ui:toggle_quick_menu(harpoon:list())
-        end,
-        desc = "Add a harpoon",
-      },
-      {
-        "]h",
-        function()
-          local harpoon = require("harpoon")
-          harpoon:list():next()
-        end,
-        desc = "Next harpoon",
-      },
-      {
-        "[h",
-        function()
-          local harpoon = require("harpoon")
-          harpoon:list():prev()
-        end,
-        desc = "Next harpoon",
-      },
     },
   },
   {
@@ -772,6 +720,7 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
+    branch = 'nvim_0.11',
     config = function()
       require("go").setup({
         tag_options = '',          -- sets options sent to gomodifytags, i.e., json=omitempty
