@@ -159,7 +159,7 @@
     owner: "{{ env_user }}"
     mode: '0755'
 
-- name: Install multiple packages
+- name: Install standard flatpak packages
   when: install_flatpak_desktop == true
   community.general.flatpak:
     name:
@@ -172,7 +172,6 @@
       - com.jetbrains.DataGrip
       - com.jetbrains.IntelliJ-IDEA-Ultimate
       - com.usebottles.bottles
-      - com.valvesoftware.Steam
       - com.vysp3r.ProtonPlus
       - io.dbeaver.DBeaverCommunity
       - io.github.kolunmi.Bazaar
@@ -180,6 +179,14 @@
       - org.gimp.GIMP
       - org.inkscape.Inkscape
       - org.mozilla.firefox
+
+- name: Uninstall standard flatpak packages
+  when: install_flatpak_desktop == true
+  community.general.flatpak:
+    state: absent
+    name:
+      # we use native steam in this house (cause it supports gamepads)
+      - com.valvesoftware.Steam
 
 - name: Install home flatpak packages
   when: install_desktop_flatpak == true and install_flatpak_home == true
