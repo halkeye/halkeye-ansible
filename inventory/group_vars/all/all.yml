@@ -326,3 +326,4 @@ software_version_starship: "1.24.2" # repo: starship/starship
 software_version_wezterm: "20240203-110809-5046fc22" # repo: wez/wezterm
 software_version_wsl_notify_send: "0.1.871612270" # repo: stuartleeks/wsl-notify-send
 software_version_yay: "12.5.7" # repo: Jguer/yay
+software_version_neovim: "0.12.1" # repo: neovim/neovim

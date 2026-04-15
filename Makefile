@@ -45,6 +45,10 @@ debug: run ## Run in debug mode
 software: ANSIBLE_DEBUG+=-t software
 software: run ## Just update software
 
+.PHONY: nvim
+nvim: ANSIBLE_DEBUG+=-t nvim
+nvim: run ## Just update nvim
+
 .PHONY: asdf
 asdf: ANSIBLE_DEBUG+=-t asdf
 asdf: run ## Just update asdf

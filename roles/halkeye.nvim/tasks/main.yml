@@ -5,6 +5,8 @@
     name: gikeymarcia.neovim
     apply:
       become: true
+  vars:
+    neovim_version: "{{ software_version_neovim }}"
 
 - name: Install latest version of neovim
   when: ansible_facts["os_family"] == "Archlinux"
