@@ -260,6 +260,8 @@ asdf_plugins:
     repository: "https://github.com/asdf-community/asdf-uv.git"
   - name: "opentofu"
     repository: "https://github.com/virtualroot/asdf-opentofu.git"
+  - name: "bun"
+    repository: "https://github.com/cometkim/asdf-bun.git"
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
