@@ -32,6 +32,8 @@
 vim.keymap.set("n", "<Leader>te", ":tabedit<space>")
 vim.keymap.set("n", "<Leader>tn", ":tabnew<space>")
 vim.keymap.set("n", "<Leader>tm", ":tabmove<space>")
+vim.keymap.set("n", "<Leader>ds", ":vert diffsplit<space>")
+vim.keymap.set("n", "<Leader>tr", ":Telescope resume<space>")
 
 vim.diagnostic.config({
   virtual_text = false,
