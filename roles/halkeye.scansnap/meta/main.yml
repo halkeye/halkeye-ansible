@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Gavin Mogan
+  description: Configures and installs Fujitsu ScanSnap scanner with SANE
+
+  license: MIT
+
+  min_ansible_version: "9.6"
+
+  galaxy_tags:
+    - scanner
+    - sane
+    - scansnap
+
+dependencies: []

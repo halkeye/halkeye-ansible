@@ -1,0 +1,59 @@
+---
+- name: Install scansnap
+  when: install | default(false) | bool == true
+  block:
+    # Install SANE packages on Debian
+    - name: Install sane packages (Debian)
+      become: true
+      when: ansible_facts["os_family"] == "Debian"
+      ansible.builtin.apt:
+        name:
+          - sane
+          - sane-utils
+          - libsane
+        state: present
+
+    # Install SANE packages on Arch
+    - name: Install sane packages (Archlinux)
+      become: true
+      when: ansible_facts["os_family"] == "Archlinux"
+      ansible.builtin.pacman:
+        name:
+          - sane
+        state: present
+
+    # Copy firmware file for epjitsu scanner
+    - name: Ensure epjitsu firmware directory exists
+      become: true
+      ansible.builtin.file:
+        path: /usr/share/sane/epjitsu
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copy epjitsu firmware file
+      become: true
+      ansible.builtin.copy:
+        src: 1100_0B00.nal
+        dest: /usr/share/sane/epjitsu/1100_0B00.nal
+        owner: root
+        group: root
+        mode: '0644'
+
+    # Copy udev rules for scanner
+    - name: Copy udev rules for scansnap
+      become: true
+      ansible.builtin.copy:
+        src: 99-snapscan.rules
+        dest: /etc/udev/rules.d/99-snapscan.rules
+        owner: root
+        group: root
+        mode: '0644'
+      notify: reload udev rules
+
+    # Install Simple Scan via flatpak
+    - name: Install Simple Scan flatpak
+      community.general.flatpak:
+        name: org.gnome.SimpleScan
+        state: present
