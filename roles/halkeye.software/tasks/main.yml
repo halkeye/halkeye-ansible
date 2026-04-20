@@ -175,6 +175,7 @@
       - com.vysp3r.ProtonPlus
       - io.dbeaver.DBeaverCommunity
       - io.github.kolunmi.Bazaar
+      - io.github.peazip.PeaZip
       - io.missioncenter.MissionCenter
       - org.gimp.GIMP
       - org.inkscape.Inkscape
