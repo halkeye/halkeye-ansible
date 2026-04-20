@@ -176,6 +176,7 @@
       - io.dbeaver.DBeaverCommunity
       - io.github.kolunmi.Bazaar
       - io.missioncenter.MissionCenter
+      - md.obsidian.Obsidian
       - org.gimp.GIMP
       - org.inkscape.Inkscape
       - org.mozilla.firefox
