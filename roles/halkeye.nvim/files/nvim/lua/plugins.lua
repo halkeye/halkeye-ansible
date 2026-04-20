@@ -111,7 +111,7 @@ require("lazy").setup({
         ruby = { "rubocop" },
         eruby = { "erb_format" },
         python = { "isort", "black" },
-        html = { "htmlbeautifier" },
+        html = { "djlint" },
         sh = { "shfmt" },
         go = { "gofmt", "goimports" },
         -- Use a sub-list to run only the first available formatter
@@ -364,7 +364,6 @@ require("lazy").setup({
         "eslint",
         "gopls",
         "graphql",
-        "html",
         "jsonls",
         "lua_ls",
         "marksman",
@@ -400,6 +399,7 @@ require("lazy").setup({
           'eslint_d',
           'erb-lint',
           'erb-formatter',
+          'djlint',
         }
       }
     end,
