@@ -262,6 +262,8 @@ asdf_plugins:
     repository: "https://github.com/virtualroot/asdf-opentofu.git"
   - name: "bun"
     repository: "https://github.com/cometkim/asdf-bun.git"
+  - name: "hugo"
+    repository: "https://github.com/NeoHsu/asdf-hugo.git"
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
