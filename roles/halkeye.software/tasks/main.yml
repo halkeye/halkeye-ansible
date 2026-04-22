@@ -79,10 +79,12 @@
       - age
       - dive
       - doctl
-      - doctl
+      - doggo
+      - fastfetch
       - fd
       - fx
       - fzf
+      - git-absorb
       - git-absorb
       - git-delta
       - glab
@@ -92,6 +94,7 @@
       - helmfile
       - kubectx
       - kustomize
+      - lm_sensors
       - lsd
       - lychee
       - mc
@@ -103,7 +106,6 @@
       - vale
       - vivid
       - zoxide
-      - git-absorb
     # non upstream system packages
     software_user_packages:
       - air-bin # FIXME - rename air to air-bin in deb repo
