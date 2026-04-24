@@ -192,9 +192,11 @@
     name:
       # we use native steam in this house (cause it supports gamepads)
       - com.valvesoftware.Steam
+      # more annoying than its worth
+      - re.sonny.Junction
 
 - name: Install home flatpak packages
-  when: (install_desktop_flatpak|default(false)) == true and (install_flatpak_home|default(false)) == true
+  when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
   community.general.flatpak:
     name:
       - com.calibre_ebook.calibre
@@ -207,11 +209,10 @@
       - rocks.koreader.KOReader
 
 - name: Install work flatpak packages
-  when: (install_desktop_flatpak|default(false)) == true and (install_flatpak_work|default(false)) == true
+  when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_work|default(false)) == true
   community.general.flatpak:
     name:
       - com.slack.Slack
-      - re.sonny.Junction
 
 # - name: Hytale
 #   when: install_flatpak_desktop == true
