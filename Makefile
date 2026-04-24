@@ -37,6 +37,14 @@ lint: setup ## Perform an ansible-lint linting
 vars: setup ## List all variables
 	$(VENV)/ansible $$(cat /etc/hostname) --vault-password-file .vault -c local -m ansible.builtin.setup
 
+.PHONY: inventory
+inventory: setup ## List all variables
+	$(VENV)/ansible-inventory --host $$(cat /etc/hostname) --vault-password-file .vault
+
+.PHONY: groups
+groups: setup ## List all variables
+	$(VENV)/ansible $$(cat /etc/hostname) --vault-password-file .vault -c local -m ansible.builtin.debug -a 'var=groups'
+
 .PHONY: debug
 debug: ANSIBLE_DEBUG+=-vvv
 debug: run ## Run in debug mode
