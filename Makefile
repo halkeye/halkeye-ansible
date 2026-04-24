@@ -73,6 +73,10 @@ fonts: run ## Just update fonts
 go: ANSIBLE_DEBUG+=-t golang
 go: run ## Just update go
 
+.PHONY: firefox
+firefox: ANSIBLE_DEBUG+=-t firefox
+firefox: run ## Just update firefox
+
 .PHONY: diff
 diff: ANSIBLE_DEBUG+=--check --diff
 diff: run ## Dry run and output diffs not run

@@ -57,6 +57,7 @@
           URIs: https://halkeye.github.io/deb-repo/
           # Suites: {{ ansible_facts['distribution_release'] }}
           Suites: plucky
+          Architectures: {{ deb_architecture }}
           Components: main
           AllowInsecure: yes
           Trusted: yes
@@ -79,7 +80,7 @@
       - age
       - dive
       - doctl
-      - doggo
+      - doggo-bin
       - fastfetch
       - fd
       - fx
@@ -94,7 +95,8 @@
       - helmfile
       - kubectx
       - kustomize
-      - lm_sensors
+      # - lm_sensors
+      # - lm-sensors
       - lsd
       - lychee
       - mc
@@ -162,7 +164,7 @@
     mode: '0755'
 
 - name: Install standard flatpak packages
-  when: install_flatpak_desktop == true
+  when: (install_flatpak_desktop|default(false)) == true
   community.general.flatpak:
     name:
       - app.devsuite.Ptyxis
@@ -184,7 +186,7 @@
       - org.mozilla.firefox
 
 - name: Uninstall standard flatpak packages
-  when: install_flatpak_desktop == true
+  when: (install_flatpak_desktop|default(false)) == true
   community.general.flatpak:
     state: absent
     name:
@@ -192,7 +194,7 @@
       - com.valvesoftware.Steam
 
 - name: Install home flatpak packages
-  when: install_desktop_flatpak == true and install_flatpak_home == true
+  when: (install_desktop_flatpak|default(false)) == true and (install_flatpak_home|default(false)) == true
   community.general.flatpak:
     name:
       - com.calibre_ebook.calibre
@@ -205,7 +207,7 @@
       - rocks.koreader.KOReader
 
 - name: Install work flatpak packages
-  when: install_desktop_flatpak == true and install_flatpak_work == true
+  when: (install_desktop_flatpak|default(false)) == true and (install_flatpak_work|default(false)) == true
   community.general.flatpak:
     name:
       - com.slack.Slack

@@ -30,6 +30,7 @@
           Types: deb
           URIs: https://packages.mozilla.org/apt
           Suites: mozilla
+          Architectures: {{ deb_architecture }}
           Components: main
           Signed-By: /etc/apt/keyrings/packages.mozilla.asc
 
