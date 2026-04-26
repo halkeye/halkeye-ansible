@@ -194,6 +194,8 @@
       - com.valvesoftware.Steam
       # more annoying than its worth
       - re.sonny.Junction
+      # some sort of dev version
+      - io.github.softfever.OrcaSlicer
 
 - name: Install home flatpak packages
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
