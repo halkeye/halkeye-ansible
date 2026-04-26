@@ -80,7 +80,6 @@
       - age
       - dive
       - doctl
-      - doggo-bin
       - fastfetch
       - fd
       - fx
@@ -111,6 +110,7 @@
     # non upstream system packages
     software_user_packages:
       - air-bin # FIXME - rename air to air-bin in deb repo
+      - doggo-bin
       # - bump # FIXME - no bump
       - gh
       # - grpcui
