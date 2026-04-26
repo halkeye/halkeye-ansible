@@ -2,8 +2,9 @@
 SHELL = /bin/bash
 .DEFAULT_GOAL := run
 
-ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file .vault -l $$(cat /etc/hostname) -c local -e 'ansible_python_interpreter=$(PWD)/$(VENV)/python'
-#ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file .vault -l $$(cat /etc/hostname) -c local -e 'ansible_python_interpreter=/usr/bin/python3'
+ANSIBLE_INTERPRETER ?= $(PWD)/$(VENV)/python
+# ANSIBLE_INTERPRETER ?= /usr/bin/python3
+ANSIBLE_PLAYBOOK ?= $(VENV)/ansible-playbook -i inventory --vault-password-file .vault -l $$(cat /etc/hostname) -c local -e 'ansible_python_interpreter=$(ANSIBLE_INTERPRETER)'
 ANSIBLE_DEBUG :=
 PLAYBOOK := main
 
@@ -26,6 +27,7 @@ sync: ## Synchronize ansible data
 	git pull --rebase
 
 .PHONY: run
+run: export ANSIBLE_BECOME_EXE=$(shell test -e /usr/bin/sudo.ws && echo '/usr/bin/sudo.ws')
 run: setup ## Run
 	$(ANSIBLE_PLAYBOOK) $(PLAYBOOK).yml $(ANSIBLE_DEBUG)
 
