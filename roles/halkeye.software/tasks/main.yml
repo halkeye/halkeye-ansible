@@ -181,6 +181,7 @@
       - io.github.kolunmi.Bazaar
       - io.github.peazip.PeaZip
       - io.missioncenter.MissionCenter
+      - md.obsidian.Obsidian
       - org.gimp.GIMP
       - org.inkscape.Inkscape
       - org.mozilla.firefox
