@@ -156,7 +156,7 @@ global_authorized_keys:
   # WASP
   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL22alHh1H0AroZW475rqtZY+5NIUZGgWQAycV1/3aia halkeye@wasp
   # work
-  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDhxxf5E9L0lA4WGfG/OcXQjBptQD9qNAvqyMq5Tfg5X gmogan@DO21rws01d00"
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDhxxf5E9L0lA4WGfG/OcXQjBptQD9qNAvqyMq5Tfg5X gmogan@DO-PF61W10B"
 git_ignore:
   - "*~"
   - "# temporary files which can be created if a process still has a handle open of a deleted file"
