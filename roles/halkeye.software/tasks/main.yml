@@ -170,6 +170,7 @@
       - app.devsuite.Ptyxis
       - be.alexandervanhee.gradia
       - com.discordapp.Discord
+      - com.github.marhkb.Pods
       - com.github.Matoking.protontricks
       - com.github.tchx84.Flatseal
       - com.google.Chrome
@@ -178,6 +179,7 @@
       - com.usebottles.bottles
       - com.vysp3r.ProtonPlus
       - io.dbeaver.DBeaverCommunity
+      - io.github.giantpinkrobots.flatsweep
       - io.github.kolunmi.Bazaar
       - io.github.peazip.PeaZip
       - io.missioncenter.MissionCenter
@@ -206,8 +208,8 @@
       - com.heroicgameslauncher.hgl
       - com.orcaslicer.OrcaSlicer
       - com.yacreader.YACReader
-      - org.godotengine.Godot
       - io.kinvolk.Headlamp
+      - org.godotengine.Godot
       - org.raspberrypi.rpi-imager
       - rocks.koreader.KOReader
 
