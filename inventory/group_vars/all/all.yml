@@ -263,6 +263,8 @@ asdf_plugins:
     repository: "https://github.com/cometkim/asdf-bun.git"
   - name: "hugo"
     repository: "https://github.com/NeoHsu/asdf-hugo.git"
+  - name: "just"
+    repository: "https://github.com/ggilmore/asdf-just"
 
 env_home: "{{ lookup('env','HOME') }}"
 env_user: "{{ lookup('env','USER') }}"
