@@ -183,6 +183,7 @@
       - io.missioncenter.MissionCenter
       - md.obsidian.Obsidian
       - org.gimp.GIMP
+      - org.gnome.Firmware
       - org.inkscape.Inkscape
       - org.mozilla.firefox
 
