@@ -169,11 +169,9 @@
     name:
       - app.devsuite.Ptyxis
       - be.alexandervanhee.gradia
-      - com.discordapp.Discord
       - com.github.marhkb.Pods
       - com.github.Matoking.protontricks
       - com.github.tchx84.Flatseal
-      - com.google.Chrome
       - com.jetbrains.DataGrip
       - com.jetbrains.IntelliJ-IDEA-Ultimate
       - com.usebottles.bottles
@@ -205,6 +203,8 @@
   community.general.flatpak:
     name:
       - com.calibre_ebook.calibre
+      - com.discordapp.Discord
+      - com.google.Chrome
       - com.heroicgameslauncher.hgl
       - com.orcaslicer.OrcaSlicer
       - com.yacreader.YACReader
