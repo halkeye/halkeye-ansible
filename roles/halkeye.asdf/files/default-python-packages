@@ -1,4 +1,5 @@
 build
+gh-release-install
 jedi
 neovim
 pylsp-mypy
@@ -6,7 +7,7 @@ pynvim
 python-lsp-black
 python-lsp-isort
 python-lsp-server[all]
+semgrep
 vim-vint
 virtualenv
 yamllint
-gh-release-install
