@@ -115,11 +115,11 @@ require("lazy").setup({
 				sh = { "shfmt" },
 				go = { "gofmt", "goimports" },
 				-- Use a sub-list to run only the first available formatter
-				javascript = { "prettier", "eslint" },
-				javascriptreact = { "prettier", "eslint" },
-				tsserver = { "prettier", "eslint" },
-				typescript = { "prettier", "eslint" },
-				typescriptreact = { "prettier", "eslint" },
+				javascript = { "prettierd", "eslint" },
+				javascriptreact = { "prettierd", "eslint" },
+				tsserver = { "prettierd", "eslint" },
+				typescript = { "prettierd", "eslint" },
+				typescriptreact = { "prettierd", "eslint" },
 			},
 			-- Set up format-on-save
 			format_on_save = { timeout_ms = 500, lsp_fallback = true },
