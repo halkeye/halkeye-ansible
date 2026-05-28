@@ -400,12 +400,8 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"folke/neoconf.nvim",
-	},
-	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"folke/neoconf.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"saghen/blink.cmp",
