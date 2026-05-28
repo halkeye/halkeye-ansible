@@ -387,6 +387,7 @@ require("lazy").setup({
 					"copilot-language-server",
 					"shellcheck",
 					"shfmt",
+					"stylua",
 					"goimports",
 					"golines",
 					"prettierd",
