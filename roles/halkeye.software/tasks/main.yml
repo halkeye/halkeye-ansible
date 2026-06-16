@@ -168,6 +168,7 @@
   community.general.flatpak:
     name:
       - app.devsuite.Ptyxis
+      - app.kreya.Kreya
       - be.alexandervanhee.gradia
       - com.github.marhkb.Pods
       - com.github.Matoking.protontricks
@@ -203,13 +204,18 @@
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
   community.general.flatpak:
     name:
+      - app.grayjay.Grayjay
       - com.calibre_ebook.calibre
       - com.discordapp.Discord
       - com.google.Chrome
       - com.heroicgameslauncher.hgl
       - com.orcaslicer.OrcaSlicer
       - com.yacreader.YACReader
+      - io.github.dweymouth.supersonic
       - io.kinvolk.Headlamp
+      - org.gimp.GIMP
+      - org.gnome.Boxes
+      - org.gnome.SimpleScan
       - org.godotengine.Godot
       - org.raspberrypi.rpi-imager
       - rocks.koreader.KOReader
