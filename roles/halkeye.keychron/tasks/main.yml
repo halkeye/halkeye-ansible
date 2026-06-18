@@ -1,0 +1,22 @@
+---
+- name: Install keychron
+  when: install | default(false) | bool == true
+  block:
+    # Copy udev rules for Keychron keyboard
+    - name: Copy udev rules for keychron
+      become: true
+      ansible.builtin.copy:
+        src: 99-keychron.rules
+        dest: /etc/udev/rules.d/99-keychron.rules
+        owner: root
+        group: root
+        mode: '0644'
+      notify: reload udev rules
+
+    # Add user to input group for Keychron keyboard access
+    - name: Add user to input group for keychron access
+      become: true
+      ansible.builtin.user:
+        name: '{{ ansible_user_id }}'
+        groups: input
+        append: true

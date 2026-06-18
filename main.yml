@@ -144,3 +144,13 @@
       tags:
         - firefox
         - software
+
+    - role: halkeye.scansnap
+      when: can_have_scanner| default(false) | bool == true
+      tags:
+        - scanner
+
+    - role: halkeye.keychron
+      when: can_have_keyboard| default(false) | bool == true
+      tags:
+        - keyboard

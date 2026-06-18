@@ -1,3 +1,4 @@
 ---
 zsh_install_ssh_agent: true
 install_flatpak_work: true
+can_have_scanner: false

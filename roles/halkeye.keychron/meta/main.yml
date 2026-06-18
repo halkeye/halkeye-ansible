@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Gavin Mogan
+  description: Configures udev rules for Keychron keyboards
+
+  license: MIT
+
+  min_ansible_version: "9.6"
+
+  galaxy_tags:
+    - keyboard
+    - keychron
+    - udev
+
+dependencies: []

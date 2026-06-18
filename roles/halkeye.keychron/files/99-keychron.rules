@@ -1,0 +1,4 @@
+# Keychron keyboard udev rules
+# Enable function keys by default on Keychron keyboards
+KERNEL=="hidraw*", ATTRS{idVendor}=="3434", MODE="0660", GROUP="input"
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="3434", ATTR{power/wakeup}="enabled"

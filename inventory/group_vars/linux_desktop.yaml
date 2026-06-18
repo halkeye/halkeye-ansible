@@ -1,3 +1,5 @@
 nf_enabled: true
 install_flatpak_desktop: true
 install_wezterm: true
+can_have_scanner: true
+can_have_keyboard: true
