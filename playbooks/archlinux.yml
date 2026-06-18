@@ -19,8 +19,7 @@
   quera.github.install_from_github:
     repo: Jguer/yay
     tag: "v{{ software_version_yay }}"
-    version_regex: "{{ software_version_yay }}"
-    version_command: yay --version
+    version_command: /usr/bin/yay --version
     asset_regex: ^yay.*\.tar.gz$
     move_rules:
       - src_regex: yay.*/yay$
