@@ -44,6 +44,11 @@
       tags:
         - zsh
         - shell
+    - role: halkeye.fish
+      when: install_fish | default(false) | bool == true
+      tags:
+        - fish
+        - shell
     - role: yogo1212.ansible-go
       become: true
       tags:

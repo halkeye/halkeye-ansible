@@ -1,0 +1,42 @@
+---
+- name: Install fish
+  become: true
+  when: ansible_facts["os_family"] == "Debian"
+  ansible.builtin.apt:
+    name:
+      - fish
+    state: present
+
+- name: Install fish
+  become: true
+  when: ansible_facts["os_family"] == "Archlinux"
+  community.general.pacman:
+    name:
+      - fish
+    state: present
+
+- name: Create fish config directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ config_dir }}"
+    state: directory
+    owner: "{{ fish_user }}"
+    group: "{{ fish_group }}"
+    mode: "0755"
+
+- name: Create fish config directory conf.d
+  become: false
+  ansible.builtin.file:
+    path: "{{ config_dir }}/conf.d"
+    state: directory
+    owner: "{{ fish_user }}"
+    group: "{{ fish_group }}"
+    mode: "0755"
+
+- name: Install config.fish
+  ansible.builtin.template:
+    src: templates/config.fish.j2
+    dest: "{{ config_dir }}/config.fish"
+    owner: "{{ fish_user }}"
+    group: "{{ fish_group }}"
+    mode: "0644"

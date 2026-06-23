@@ -1,6 +1,7 @@
 nf_enabled: true
 install_flatpak_desktop: true
 install_wezterm: true
+install_fish: true
 can_have_scanner: true
 can_have_keyboard: true
 install_firefox: true

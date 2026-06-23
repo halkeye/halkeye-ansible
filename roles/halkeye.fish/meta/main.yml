@@ -1,0 +1,11 @@
+galaxy_info:
+  author: Gavin Mogan
+  description: Configures and installs fish shell
+
+  license: MIT
+
+  min_ansible_version: "9.6"
+
+  galaxy_tags: []
+
+dependencies: []

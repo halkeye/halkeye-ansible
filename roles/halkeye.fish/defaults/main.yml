@@ -1,0 +1,4 @@
+---
+fish_user: "{{ env_user }}"
+fish_group: "{{ env_group | default(env_user) }}"
+config_dir: "{{ env_home }}/.config/fish"
