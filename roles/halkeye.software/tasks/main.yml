@@ -202,6 +202,8 @@
       - io.github.kolunmi.Bazaar
       # got the system install
       - io.kinvolk.Headlamp
+      # apparently no longer updated
+      - org.raspberrypi.rpi-imager
 
 - name: Install home flatpak packages
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
@@ -220,7 +222,6 @@
       - org.gnome.Boxes
       - org.gnome.SimpleScan
       - org.godotengine.Godot
-      - org.raspberrypi.rpi-imager
       - rocks.koreader.KOReader
 
 - name: Install work flatpak packages
