@@ -128,10 +128,12 @@
       home: "{{ env_home }}"
       owner: "{{ env_user }}"
       architecture: "{{ deb_architecture }}"
+ 
     - role: halkeye.bw
       tags:
         - software
         - bw
+
     - role: halkeye.starship
       tags:
         - software
@@ -139,8 +141,9 @@
       home: "{{ env_home }}"
       owner: "{{ env_user }}"
       starship_version: "{{ software_version_starship }}"
+
     - role: halkeye.firefox
-      when: "'linux_desktop' in group_names"
+      when: install_firefox | default(false) | bool == true
       tags:
         - firefox
         - software

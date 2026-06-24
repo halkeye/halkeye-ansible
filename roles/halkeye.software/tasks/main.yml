@@ -149,14 +149,12 @@
 # Done Debs
 
 - name: Create ~/config/humanlog directory
-  become: no
   file:
     path: "{{ env_home }}/.config/humanlog"
     state: directory
     mode: "0755"
 
 - name: "copy humanlog config"
-  become: true
   ansible.builtin.copy:
     dest: "{{ env_home }}/.config/humanlog/config.json"
     content: '{"truncate-length": 1999, "skip_check_updates": true}'
@@ -166,6 +164,7 @@
 - name: Install standard flatpak packages
   when: (install_flatpak_desktop|default(false)) == true
   community.general.flatpak:
+    method: user
     name:
       - app.devsuite.Ptyxis
       - app.kreya.Kreya
@@ -179,14 +178,12 @@
       - com.vysp3r.ProtonPlus
       - io.dbeaver.DBeaverCommunity
       - io.github.giantpinkrobots.flatsweep
-      - io.github.kolunmi.Bazaar
       - io.github.peazip.PeaZip
       - io.missioncenter.MissionCenter
       - md.obsidian.Obsidian
       - org.gimp.GIMP
       - org.gnome.Firmware
       - org.inkscape.Inkscape
-      - org.mozilla.firefox
 
 - name: Uninstall standard flatpak packages
   when: (install_flatpak_desktop|default(false)) == true
@@ -199,10 +196,17 @@
       - re.sonny.Junction
       # some sort of dev version
       - io.github.softfever.OrcaSlicer
+      # use deb
+      - org.mozilla.firefox
+      # meh, i've been using discover mostly
+      - io.github.kolunmi.Bazaar
+      # got the system install
+      - io.kinvolk.Headlamp
 
 - name: Install home flatpak packages
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
   community.general.flatpak:
+    method: user
     name:
       - app.grayjay.Grayjay
       - com.calibre_ebook.calibre
@@ -212,7 +216,6 @@
       - com.orcaslicer.OrcaSlicer
       - com.yacreader.YACReader
       - io.github.dweymouth.supersonic
-      - io.kinvolk.Headlamp
       - org.gimp.GIMP
       - org.gnome.Boxes
       - org.gnome.SimpleScan
@@ -223,6 +226,7 @@
 - name: Install work flatpak packages
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_work|default(false)) == true
   community.general.flatpak:
+    method: user
     name:
       - com.slack.Slack
 
