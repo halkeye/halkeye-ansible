@@ -167,7 +167,6 @@
     method: user
     name:
       - app.devsuite.Ptyxis
-      - app.kreya.Kreya
       - be.alexandervanhee.gradia
       - com.github.marhkb.Pods
       - com.github.Matoking.protontricks
@@ -190,6 +189,8 @@
   community.general.flatpak:
     state: absent
     name:
+      # is a paid app :(
+      - app.kreya.Kreya
       # we use native steam in this house (cause it supports gamepads)
       - com.valvesoftware.Steam
       # more annoying than its worth
