@@ -1,0 +1,73 @@
+---
+# Install Waydroid on Debian/Ubuntu
+- name: Add Waydroid repository key and source (Debian/Ubuntu)
+  become: true
+  when: ansible_facts["os_family"] == "Debian"
+  block:
+    - name: Download Waydroid GPG key
+      ansible.builtin.get_url:
+        url: https://repo.waydro.id/waydroid.gpg
+        dest: /usr/share/keyrings/waydroid.gpg
+        mode: "0644"
+
+    - name: Add Waydroid repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/waydroid.gpg] https://repo.waydro.id/ {{ ansible_facts['distribution_release'] }} main"
+        filename: waydroid
+        state: present
+
+    - name: Install waydroid package
+      ansible.builtin.apt:
+        name:
+          - waydroid
+        state: present
+        update_cache: true
+
+# Install Waydroid on Arch Linux
+- name: Install waydroid (Arch Linux)
+  become: true
+  when: ansible_facts["os_family"] == "Archlinux"
+  community.general.pacman:
+    name:
+      - waydroid
+    state: present
+
+# Ensure waydroid-container service is enabled and started
+- name: Enable and start waydroid-container service
+  become: true
+  ansible.builtin.systemd:
+    name: waydroid-container
+    enabled: true
+    state: started
+
+# Initialize Waydroid with system image (GAPPS or VANILLA)
+- name: Check if Waydroid is already initialized
+  become: true
+  ansible.builtin.stat:
+    path: /var/lib/waydroid/images/system.img
+  register: waydroid_initialized
+
+- name: Initialize Waydroid
+  become: true
+  when: waydroid_init and not waydroid_initialized.stat.exists
+  ansible.builtin.command: waydroid init -s {{ waydroid_system_type }}
+  register: waydroid_init_result
+  changed_when: waydroid_init_result.rc == 0
+
+# Configure multi-window mode if enabled
+- name: Enable multi-window mode
+  become: true
+  when: waydroid_multi_windows
+  ansible.builtin.command: waydroid prop set persist.waydroid.multi_windows true
+  changed_when: false
+
+# Create shared directory link for file sharing between host and Waydroid
+- name: Create Waydroid shared directory symlink
+  ansible.builtin.file:
+    src: /var/lib/waydroid/data/media/0/
+    dest: "{{ waydroid_home }}/Waydroid-Share"
+    state: link
+    owner: "{{ waydroid_user }}"
+    force: true
+  when: waydroid_initialized.stat.exists or (waydroid_init_result is defined and waydroid_init_result.rc == 0)
+  ignore_errors: true

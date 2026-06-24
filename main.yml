@@ -162,3 +162,10 @@
       when: can_have_keyboard| default(false) | bool == true
       tags:
         - keyboard
+
+    - role: halkeye.waydroid
+      when: install_waydroid | default(false) | bool == true
+      tags:
+        - waydroid
+        - android
+        - software

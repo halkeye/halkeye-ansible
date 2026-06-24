@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Gavin Mogan
+  description: Installs and configures Waydroid for running Android apps on Linux
+
+  license: MIT
+
+  min_ansible_version: "9.6"
+
+  galaxy_tags:
+    - android
+    - waydroid
+    - container
+
+dependencies: []

@@ -1,0 +1,7 @@
+---
+waydroid_user: "{{ env_user }}"
+waydroid_group: "{{ env_group | default(env_user) }}"
+waydroid_home: "{{ env_home }}"
+waydroid_system_type: GAPPS
+waydroid_multi_windows: true
+waydroid_init: true
