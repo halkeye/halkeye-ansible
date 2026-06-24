@@ -161,11 +161,20 @@
     owner: "{{ env_user }}"
     mode: '0755'
 
+- name: Add flathub repository
+  when: (install_flatpak_desktop|default(false)) == true
+  community.general.flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+    state: present
+
 - name: Install standard flatpak packages
   when: (install_flatpak_desktop|default(false)) == true
   community.general.flatpak:
     method: user
-    name:
+    name: "{{ item }}"
+  with_items:
       - app.devsuite.Ptyxis
       - be.alexandervanhee.gradia
       - com.github.marhkb.Pods
