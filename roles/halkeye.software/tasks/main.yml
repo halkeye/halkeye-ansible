@@ -197,7 +197,8 @@
   when: (install_flatpak_desktop|default(false)) == true
   community.general.flatpak:
     state: absent
-    name:
+    name: "{{ item }}"
+    with_items:
       # is a paid app :(
       - app.kreya.Kreya
       # we use native steam in this house (cause it supports gamepads)
@@ -219,7 +220,8 @@
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
   community.general.flatpak:
     method: user
-    name:
+    name: "{{ item }}"
+    with_items:
       - app.grayjay.Grayjay
       - com.calibre_ebook.calibre
       - com.discordapp.Discord
@@ -238,7 +240,8 @@
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_work|default(false)) == true
   community.general.flatpak:
     method: user
-    name:
+    name: "{{ item }}"
+    with_items:
       - com.slack.Slack
 
 # - name: Hytale
