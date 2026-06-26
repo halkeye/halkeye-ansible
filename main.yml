@@ -24,7 +24,7 @@
       tags:
         - software
     - role: halkeye.wsl
-      when: "'wsl' in group_names"
+      when: install_wsl | default(false) | bool == true
       tags:
         - wsl
         - gnupg
@@ -87,7 +87,7 @@
       tags:
         - software
     - role: halkeye.ghostty
-      when: "'linux_desktop' in group_names"
+      when: install_ghostty | default(false) | bool == true
       install: true
       tags:
         - ghostty

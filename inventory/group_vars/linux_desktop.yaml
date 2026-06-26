@@ -5,3 +5,4 @@ install_fish: true
 can_have_scanner: true
 can_have_keyboard: true
 install_firefox: true
+install_ghostty: true
