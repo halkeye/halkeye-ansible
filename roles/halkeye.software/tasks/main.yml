@@ -175,74 +175,74 @@
     method: user
     name: "{{ item }}"
   with_items:
-      - app.devsuite.Ptyxis
-      - be.alexandervanhee.gradia
-      - com.github.marhkb.Pods
-      - com.github.Matoking.protontricks
-      - com.github.tchx84.Flatseal
-      - com.jetbrains.DataGrip
-      - com.jetbrains.IntelliJ-IDEA-Ultimate
-      - com.usebottles.bottles
-      - com.vysp3r.ProtonPlus
-      - io.dbeaver.DBeaverCommunity
-      - io.github.giantpinkrobots.flatsweep
-      - io.github.peazip.PeaZip
-      - io.missioncenter.MissionCenter
-      - md.obsidian.Obsidian
-      - org.gimp.GIMP
-      - org.gnome.Firmware
-      - org.inkscape.Inkscape
+    - app.devsuite.Ptyxis
+    - be.alexandervanhee.gradia
+    - com.github.marhkb.Pods
+    - com.github.Matoking.protontricks
+    - com.github.tchx84.Flatseal
+    - com.jetbrains.DataGrip
+    - com.jetbrains.IntelliJ-IDEA-Ultimate
+    - com.usebottles.bottles
+    - com.vysp3r.ProtonPlus
+    - io.dbeaver.DBeaverCommunity
+    - io.github.giantpinkrobots.flatsweep
+    - io.github.peazip.PeaZip
+    - io.missioncenter.MissionCenter
+    - md.obsidian.Obsidian
+    - org.gimp.GIMP
+    - org.gnome.Firmware
+    - org.inkscape.Inkscape
 
 - name: Uninstall standard flatpak packages
   when: (install_flatpak_desktop|default(false)) == true
   community.general.flatpak:
     state: absent
     name: "{{ item }}"
-    with_items:
-      # is a paid app :(
-      - app.kreya.Kreya
-      # we use native steam in this house (cause it supports gamepads)
-      - com.valvesoftware.Steam
-      # more annoying than its worth
-      - re.sonny.Junction
-      # some sort of dev version
-      - io.github.softfever.OrcaSlicer
-      # use deb
-      - org.mozilla.firefox
-      # meh, i've been using discover mostly
-      - io.github.kolunmi.Bazaar
-      # got the system install
-      - io.kinvolk.Headlamp
-      # apparently no longer updated
-      - org.raspberrypi.rpi-imager
+  with_items:
+    # is a paid app :(
+    - app.kreya.Kreya
+    # we use native steam in this house (cause it supports gamepads)
+    - com.valvesoftware.Steam
+    # more annoying than its worth
+    - re.sonny.Junction
+    # some sort of dev version
+    - io.github.softfever.OrcaSlicer
+    # use deb
+    - org.mozilla.firefox
+    # meh, i've been using discover mostly
+    - io.github.kolunmi.Bazaar
+    # got the system install
+    - io.kinvolk.Headlamp
+    # apparently no longer updated
+    - org.raspberrypi.rpi-imager
 
 - name: Install home flatpak packages
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
   community.general.flatpak:
     method: user
     name: "{{ item }}"
-    with_items:
-      - app.grayjay.Grayjay
-      - com.calibre_ebook.calibre
-      - com.discordapp.Discord
-      - com.google.Chrome
-      - com.heroicgameslauncher.hgl
-      - com.orcaslicer.OrcaSlicer
-      - com.yacreader.YACReader
-      - io.github.dweymouth.supersonic
-      - org.gimp.GIMP
-      - org.gnome.Boxes
-      - org.gnome.SimpleScan
-      - org.godotengine.Godot
-      - rocks.koreader.KOReader
+  with_items:
+    - app.grayjay.Grayjay
+    - com.calibre_ebook.calibre
+    - com.discordapp.Discord
+    - com.google.Chrome
+    - com.heroicgameslauncher.hgl
+    - com.orcaslicer.OrcaSlicer
+    - com.yacreader.YACReader
+    - io.github.dweymouth.supersonic
+    - org.gimp.GIMP
+    - org.gnome.Boxes
+    - org.gnome.SimpleScan
+    - org.godotengine.Godot
+    - rocks.koreader.KOReader
 
 - name: Install work flatpak packages
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_work|default(false)) == true
   community.general.flatpak:
     method: user
     name: "{{ item }}"
-    with_items:
-      - com.slack.Slack
+  with_items:
+    - com.slack.Slack
 
 # - name: Hytale
 #   when: install_flatpak_desktop == true
