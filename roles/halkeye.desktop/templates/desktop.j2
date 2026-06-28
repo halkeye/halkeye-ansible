@@ -1,0 +1,28 @@
+[Desktop Entry]
+Type={{ item.type | default('Application') }}
+Name={{ item.name }}
+{% if item.generic_name is defined %}
+GenericName={{ item.generic_name }}
+{% endif %}
+Comment={{ item.comment | default('') }}
+{% if item.exec is defined %}
+Exec={{ item.exec }}
+{% endif %}
+{% if item.icon_src is defined %}
+Icon={{ desktop_icon_dir }}/{{ item.icon_src | basename }}
+{% elif item.icon is defined %}
+Icon={{ item.icon }}
+{% endif %}
+{% if item.path is defined %}
+Path={{ item.path }}
+{% endif %}
+{% if item.categories is defined %}
+Categories={{ item.categories | join(';') }};
+{% endif %}
+{% if item.mimetype is defined %}
+MimeType={{ item.mimetype | join(';') }};
+{% endif %}
+Terminal={{ item.terminal | default(false) | string | lower }}
+StartupNotify={{ item.startup_notify | default(true) | string | lower }}
+NoDisplay={{ item.nodisplay | default(false) | string | lower }}
+PrefersNonDefaultGPU={{ item.prefers_non_default_gpu | default(false) | string | lower }}

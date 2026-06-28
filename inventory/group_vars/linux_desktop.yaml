@@ -1,3 +1,4 @@
+install_desktop_menu_items: true
 nf_enabled: true
 install_flatpak_desktop: true
 install_wezterm: true

@@ -1,0 +1,8 @@
+galaxy_info:
+  author: Gavin Mogan
+  description: Creates desktop entries in ~/.local/share/applications
+  license: MIT
+  min_ansible_version: "9.6"
+  galaxy_tags: []
+
+dependencies: []

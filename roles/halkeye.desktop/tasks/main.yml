@@ -1,0 +1,38 @@
+---
+- name: Create applications directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ desktop_applications_dir }}"
+    state: directory
+    owner: "{{ env_user }}"
+    mode: "0755"
+
+- name: Create icon directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ desktop_icon_dir }}"
+    state: directory
+    owner: "{{ env_user }}"
+    mode: "0755"
+
+- name: Deploy desktop icons
+  become: false
+  ansible.builtin.copy:
+    src: "{{ item.icon_src }}"
+    dest: "{{ desktop_icon_dir }}/{{ item.icon_src | basename }}"
+    owner: "{{ env_user }}"
+    mode: "0644"
+  loop: "{{ desktop_files | selectattr('icon_src', 'defined') | list }}"
+  loop_control:
+    label: "{{ item.icon_src }}"
+
+- name: Create desktop files
+  become: false
+  ansible.builtin.template:
+    src: desktop.j2
+    dest: "{{ desktop_applications_dir }}/{{ item.filename }}"
+    owner: "{{ env_user }}"
+    mode: "0755"
+  loop: "{{ desktop_files }}"
+  loop_control:
+    label: "{{ item.filename }}"

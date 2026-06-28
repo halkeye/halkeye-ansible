@@ -1,0 +1,32 @@
+---
+# defaults file for halkeye.desktop
+
+# List of desktop entries to create in ~/.local/share/applications.
+# Each item supports:
+#   filename (required)  - the .desktop file name (e.g. "pikvm.desktop")
+#   name     (required)  - Name= shown in launchers
+#   exec                 - Exec= command line
+#   icon                 - Icon= path or icon name
+#   icon_src             - icon file shipped in this role's files/ dir;
+#                          deployed to desktop_icon_dir and used as Icon=
+#                          (takes precedence over icon)
+#   comment              - Comment= description
+#   generic_name         - GenericName=
+#   path                 - Path= working directory
+#   type                 - Type= (default: Application)
+#   terminal             - Terminal= (default: false)
+#   nodisplay            - NoDisplay= (default: false)
+#   startup_notify       - StartupNotify= (default: true)
+#   prefers_non_default_gpu - PrefersNonDefaultGPU= (default: false)
+#   categories           - list of menu categories
+#   mimetype             - list of mime types / url schemes handled
+
+# Directory where icons shipped via icon_src are deployed.
+desktop_applications_dir: "{{ env_home }}/.local/share/applications"
+desktop_icon_dir: "{{ env_home }}/.local/share/icons/halkeye"
+
+desktop_files:
+  - filename: pikvm.desktop
+    name: pikvm
+    exec: google-chrome --app=http://172.16.10.124/
+    icon_src: pikvm-logo.png
