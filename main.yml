@@ -23,6 +23,10 @@
     - role: halkeye.software
       tags:
         - software
+    - role: halkeye.disable_snap
+      tags:
+        - snap
+        - software
     - role: halkeye.wsl
       when: install_wsl | default(false) | bool == true
       tags:

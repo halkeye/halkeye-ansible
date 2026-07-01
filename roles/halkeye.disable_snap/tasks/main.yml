@@ -1,0 +1,44 @@
+---
+- name: Disable snap
+  become: true
+  when: ansible_facts["os_family"] == "Debian"
+  block:
+    - name: Stop snapd service
+      ansible.builtin.systemd:
+        name: snapd
+        state: stopped
+      ignore_errors: true
+
+    - name: Disable snapd service
+      ansible.builtin.systemd:
+        name: snapd
+        enabled: false
+      ignore_errors: true
+
+    - name: Mask snapd service
+      ansible.builtin.systemd:
+        name: snapd
+        masked: true
+      ignore_errors: true
+
+    - name: Purge snapd package
+      ansible.builtin.apt:
+        name: snapd
+        state: absent
+        purge: true
+
+    - name: Hold snapd package to prevent reinstallation
+      ansible.builtin.dpkg_selections:
+        name: snapd
+        selection: hold
+
+    - name: Create apt preferences to deprioritize snap-based package versions
+      ansible.builtin.copy:
+        dest: /etc/apt/preferences.d/no-snap
+        content: |
+          Package: *
+          Pin: version /snap/
+          Pin-Priority: -1
+        owner: root
+        group: root
+        mode: "0644"
