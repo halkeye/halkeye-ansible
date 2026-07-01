@@ -133,7 +133,7 @@
       home: "{{ env_home }}"
       owner: "{{ env_user }}"
       architecture: "{{ deb_architecture }}"
- 
+
     - role: halkeye.bw
       tags:
         - software
@@ -169,3 +169,9 @@
         - waydroid
         - android
         - software
+
+    - role: halkeye.desktop
+      when:
+        - install_desktop_menu_items | default(false) | bool == true
+      tags:
+        - desktop
