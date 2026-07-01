@@ -45,6 +45,17 @@
     owner: "root"
     mode: '0755'
 
+- name: Disable firefox snap
+  become: true
+  ansible.builtin.copy:
+    dest: "/etc/apt/preferences.d/firefox-no-snap"
+    content: |
+      Package: firefox*
+      Pin: release o=Ubuntu*
+      Pin-Priority: -1
+    owner: "root"
+    mode: '0755'
+
 - name: Install firefox deb
   become: true
   ansible.builtin.apt:
