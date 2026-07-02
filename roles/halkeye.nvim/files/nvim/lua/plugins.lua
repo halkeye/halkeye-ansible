@@ -11,6 +11,14 @@ vim.filetype.add({
 	},
 })
 
+local function mypy_extra_args()
+	local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+	if not virtual then
+		return {}
+	end
+	return { "--python-executable", virtual .. "/bin/python3", true }
+end
+
 require("lazy").setup({
 	{
 		"folke/lazydev.nvim",
@@ -406,7 +414,10 @@ require("lazy").setup({
 							pyflakes = { enabled = false },
 							pycodestyle = { enabled = false },
 							-- type checker
-							pylsp_mypy = { enabled = true },
+							pylsp_mypy = {
+								enabled = true,
+								overrides = mypy_extra_args(),
+							},
 							-- auto-completion options
 							jedi_completion = { fuzzy = true },
 							-- import sorting
