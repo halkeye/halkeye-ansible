@@ -14,7 +14,7 @@ vim.filetype.add({
 local function mypy_extra_args()
 	local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
 	if not virtual then
-		return {}
+		return { true }
 	end
 	return { "--python-executable", virtual .. "/bin/python3", true }
 end
