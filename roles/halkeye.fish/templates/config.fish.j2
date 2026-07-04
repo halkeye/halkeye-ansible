@@ -15,7 +15,6 @@ set --erase _asdf_shims
 if status is-interactive
   # Commands to run in interactive sessions can go here
   zoxide init fish --cmd j | source
-  export STARSHIP_CONFIG=/home/halkeye/foo
   starship init fish | source
   direnv hook fish | source
   asdf completion fish | source
