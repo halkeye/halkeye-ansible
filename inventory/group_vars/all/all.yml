@@ -134,7 +134,7 @@ global_git_config:
     value: '!git rev-list --all | xargs git grep -F'
   - name: alias.defbranch
     scope: global
-    value: '!f() { test -n \"$1\" && r=\"$1\" || r=origin; basename \"$(git rev-parse --abbrev-ref \"$r\"/HEAD)\"; }; f'
+    value: '!f() { test -n "$1" && r="$1" || r=origin; basename "$(git rev-parse --abbrev-ref "$r"/HEAD)"; }; f'
   - name: init.defaultBranch
     scope: global
     value: main
