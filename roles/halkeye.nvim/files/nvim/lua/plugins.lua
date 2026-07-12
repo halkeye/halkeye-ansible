@@ -261,13 +261,6 @@ require("lazy").setup({
 				desc = "Buffers",
 			},
 			{
-				"<c-P>",
-				function()
-					require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ winblend = 10 }))
-				end,
-				desc = "Files",
-			},
-			{
 				"<Leader>qf",
 				function()
 					require("telescope.builtin").quickfix()
@@ -911,7 +904,24 @@ require("lazy").setup({
 		---@module "fzf-lua"
 		---@type fzf-lua.Config|{}
 		---@diagnostic disable: missing-fields
-		opts = {},
+		config = function()
+			require("fzf-lua").setup({
+				actions = {
+					files = {
+						["enter"] = FzfLua.actions.file_tabedit,
+					},
+				},
+			})
+		end,
 		---@diagnostic enable: missing-fields
+		keys = {
+			{
+				"<c-P>",
+				function()
+					require("fzf-lua").files()
+				end,
+				desc = "Files",
+			},
+		},
 	},
 })
