@@ -2,3 +2,9 @@
 # Enable function keys by default on Keychron keyboards
 KERNEL=="hidraw*", ATTRS{idVendor}=="3434", MODE="0660", GROUP="input"
 ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="3434", ATTR{power/wakeup}="enabled"
+
+# Keychron Q11 Ultra 8K L
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="4784", MODE="0660", TAG+="uaccess"
+
+# Keychron Ultra-Link 8K
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="53288", MODE="0660", TAG+="uaccess"
