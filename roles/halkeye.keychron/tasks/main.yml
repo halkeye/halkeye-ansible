@@ -1,6 +1,5 @@
 ---
 - name: Install keychron
-  when: install | default(false) | bool == true
   block:
     # Copy udev rules for Keychron keyboard
     - name: Copy udev rules for keychron
@@ -17,6 +16,6 @@
     - name: Add user to input group for keychron access
       become: true
       ansible.builtin.user:
-        name: '{{ ansible_user_id }}'
+        name: '{{ env_user }}'
         groups: input
         append: true
