@@ -400,6 +400,7 @@ command -v doctl 2>/dev/null 1>/dev/null && source <(doctl completion zsh)
 command -v npm 2>/dev/null 1>/dev/null && source <(npm completion)
 command -v gh 2>/dev/null 1>/dev/null && source <(gh completion -s zsh)
 command -v k9s 2>/dev/null 1>/dev/null && source <(k9s completion zsh)
+command -v opencode 2>/dev/null 1>/dev/null && source <(opencode completion zsh)
 command -v stern 2>/dev/null 1>/dev/null && source <(stern --completion zsh)
 command -v regctl 2>/dev/null 1>/dev/null || alias regctl='docker run -it --rm docker.io/regclient/regctl:v0.11.2'
 command -v karakeep-cli 2>/dev/null 1>/dev/null || alias karakeep-cli='docker run -it -u $UID:$GID -e HOME=/home/user -v $HOME/.config/karakeep:/home/user/.config/karakeep --rm ghcr.io/karakeep-app/karakeep-cli:0.32.0'
