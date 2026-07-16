@@ -81,7 +81,7 @@
       - dive
       - doctl
       - fastfetch
-      - fd
+      - fd-find
       - fx
       - fzf
       - git-absorb
