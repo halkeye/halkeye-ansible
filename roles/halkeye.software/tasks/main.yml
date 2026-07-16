@@ -215,6 +215,8 @@
     - io.kinvolk.Headlamp
     # apparently no longer updated
     - org.raspberrypi.rpi-imager
+    # Using native chrome these days
+    - com.google.Chrome
 
 - name: Install home flatpak packages
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
@@ -225,7 +227,6 @@
     - app.grayjay.Grayjay
     - com.calibre_ebook.calibre
     - com.discordapp.Discord
-    - com.google.Chrome
     - com.heroicgameslauncher.hgl
     - com.orcaslicer.OrcaSlicer
     - com.yacreader.YACReader
