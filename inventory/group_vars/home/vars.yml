@@ -1,3 +1,3 @@
 ---
 install_flatpak_home: true
-install_waydroid: true
+install_waydroid: false
