@@ -180,7 +180,6 @@
     - com.github.marhkb.Pods
     - com.github.Matoking.protontricks
     - com.github.tchx84.Flatseal
-    - com.jetbrains.DataGrip
     - com.jetbrains.IntelliJ-IDEA-Ultimate
     - com.usebottles.bottles
     - com.vysp3r.ProtonPlus
@@ -217,6 +216,8 @@
     - org.raspberrypi.rpi-imager
     # Using native chrome these days
     - com.google.Chrome
+    # not free and i don't need it enough, db beaver works well enough for the few non cli dbs
+    - com.jetbrains.DataGrip
 
 - name: Install home flatpak packages
   when: (install_flatpak_desktop|default(false)) == true and (install_flatpak_home|default(false)) == true
