@@ -19,3 +19,10 @@
         name: '{{ env_user }}'
         groups: input
         append: true
+
+    # Create desktop entry for Keychron Launcher
+    - name: Create keychron desktop entry
+      ansible.builtin.include_role:
+        name: halkeye.desktop
+      vars:
+        desktop_files: "{{ keychron_desktop_files }}"

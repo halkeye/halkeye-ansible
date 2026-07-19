@@ -1,1 +1,10 @@
 ---
+keychron_desktop_files:
+  - filename: keychron-launcher.desktop
+    name: Keychron Launcher
+    comment: Keychron keyboard configuration tool
+    exec: google-chrome https://launcher.keychron.com/
+    icon: google-chrome
+    categories:
+      - Settings
+      - HardwareSettings
