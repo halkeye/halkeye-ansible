@@ -393,12 +393,40 @@ require("lazy").setup({
 			"williamboman/mason-lspconfig.nvim",
 			"saghen/blink.cmp",
 		},
+		---@class PluginLspOpts
+		opts = {
+			servers = {
+				pyright = { enabled = false, mason = false },
+			},
+		},
 		config = function()
 			vim.lsp.config("pylsp", {
 				settings = {
 					pylsp = {
 						plugins = {
 							-- formatter options
+							-- Disable the alternatives
+							basedpyright = { enabled = false },
+							pyright = { enabled = false },
+							pylsp = { enabled = false },
+							eslint = { enabled = false },
+
+							-- Enable ty for type checking
+							ty = {
+								enabled = true,
+								autostart = true,
+							},
+
+							ruff = {
+								enabled = true,
+								autostart = true,
+								init_options = {
+									settings = {
+										fixAll = true,
+									},
+								},
+							},
+
 							black = { enabled = true },
 							autopep8 = { enabled = false },
 							yapf = { enabled = false },
@@ -408,7 +436,7 @@ require("lazy").setup({
 							pycodestyle = { enabled = false },
 							-- type checker
 							pylsp_mypy = {
-								enabled = true,
+								enabled = false,
 								overrides = mypy_extra_args(),
 							},
 							-- auto-completion options
@@ -431,6 +459,7 @@ require("lazy").setup({
 					},
 				},
 			})
+
 			vim.lsp.config("gopls", {
 				before_init = function(_, config)
 					if vim.fn.executable("go") ~= 1 then
@@ -452,6 +481,7 @@ require("lazy").setup({
 					},
 				},
 			})
+
 			vim.lsp.config("*", {
 				-- capabilities = vim.lsp.protocol.make_client_capabilities()
 				capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -911,6 +941,24 @@ require("lazy").setup({
 					require("fzf-lua").files()
 				end,
 				desc = "Files",
+			},
+		},
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
 			},
 		},
 	},
