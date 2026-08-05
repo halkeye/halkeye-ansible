@@ -193,97 +193,6 @@ require("lazy").setup({
 		lazy = false,
 	},
 	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
-		config = function()
-			require("telescope").setup({
-				defaults = {
-					layout_config = {
-						vertical = { width = 0.5 },
-					},
-					file_ignore_patterns = { ".git/", "vendor/", "node_modules/" },
-					mappings = {
-						i = {
-							["<CR>"] = function(bufnr)
-								return require("telescope.actions.set").edit(bufnr, "tab drop")
-							end,
-							["<C-j>"] = function(bufnr)
-								return require("telescope.actions").move_selection_next(bufnr)
-							end,
-							["<C-k>"] = function(bufnr)
-								return require("telescope.actions").move_selection_previous(bufnr)
-							end,
-						},
-					},
-				},
-				pickers = {
-					find_files = {
-						hidden = true,
-					},
-					live_grep = {
-						hidden = true,
-					},
-					diagnostics = {
-						bufnr = 0,
-						theme = "dropdown",
-						prompt_title = "diagnostics",
-						previewer = false,
-					},
-				},
-			})
-		end,
-		keys = {
-			{
-				"<Leader>be",
-				function()
-					require("telescope.builtin").buffers()
-				end,
-				desc = "Buffers",
-			},
-			{
-				"<Leader>la",
-				function()
-					require("telescope.builtin").lsp_references({
-						preview_title = "LSP References Preview",
-						jump_type = "split",
-						fname_width = 50,
-					})
-				end,
-				desc = "LSP References Preview",
-			},
-			{
-				"<Leader>ba",
-				function()
-					require("telescope.builtin").buffers()
-				end,
-				desc = "Buffers",
-			},
-			{
-				"<Leader>qf",
-				function()
-					require("telescope.builtin").quickfix()
-				end,
-				desc = "Quickfixes",
-			},
-			{
-				"<Leader>gs",
-				function()
-					require("telescope.builtin").git_status()
-				end,
-				desc = "Git Status",
-			},
-			{
-				"<Leader>de",
-				function()
-					require("telescope.builtin").diagnostics()
-				end,
-				desc = "Diagnostics",
-			},
-		},
-	},
-	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
@@ -926,21 +835,100 @@ require("lazy").setup({
 		---@diagnostic disable: missing-fields
 		config = function()
 			require("fzf-lua").setup({
+				winopts = { preview = { hidden = true } },
 				actions = {
 					files = {
+						["ctrl-t"] = FzfLua.actions.file_tabedit,
+						["alt-q"] = FzfLua.actions.file_sel_to_qf,
 						["enter"] = FzfLua.actions.file_tabedit,
 					},
 				},
 			})
 		end,
-		---@diagnostic enable: missing-fields
 		keys = {
 			{
 				"<c-P>",
 				function()
-					require("fzf-lua").files()
+					require("fzf-lua").files({ cmd = "fdfind --type f --exclude node_modules" })
 				end,
 				desc = "Files",
+			},
+			{
+				"<Leader>rr",
+				function()
+					require("fzf-lua").resume()
+				end,
+				desc = "Resume",
+			},
+			{
+				"<Leader>ll",
+				function()
+					require("fzf-lua").loclist()
+				end,
+				desc = "Location List",
+			},
+			{
+				"<Leader>gs",
+				function()
+					require("fzf-lua").git_status()
+				end,
+				desc = "Git Status",
+			},
+			{
+				"<Leader>gd",
+				function()
+					require("fzf-lua").git_diff()
+				end,
+				desc = "Git Diff",
+			},
+			{
+				"<Leader>qf",
+				function()
+					require("fzf-lua").quickfix()
+				end,
+				desc = "Quickfix",
+			},
+			{
+				"<Leader>dd",
+				function()
+					require("fzf-lua").diagnostics_document()
+				end,
+				desc = "Diagnostics (Document)",
+			},
+			{
+				"<Leader>dw",
+				function()
+					require("fzf-lua").diagnostics_workspace()
+				end,
+				desc = "Diagnostics (Workspace)",
+			},
+			{
+				"gD",
+				function()
+					require("fzf-lua").lsp_declarations()
+				end,
+				desc = "Goto Declaration",
+			},
+			{
+				"gd",
+				function()
+					require("fzf-lua").lsp_definitions()
+				end,
+				desc = "Goto Definition",
+			},
+			{
+				"gr",
+				function()
+					require("fzf-lua").lsp_references()
+				end,
+				desc = "Goto References",
+			},
+			{
+				"gi",
+				function()
+					require("fzf-lua").lsp_references()
+				end,
+				desc = "Goto implementation",
 			},
 		},
 	},
