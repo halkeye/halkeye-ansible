@@ -167,13 +167,6 @@
       tags:
         - keyboard
 
-    - role: halkeye.waydroid
-      when: install_waydroid | default(false) | bool == true
-      tags:
-        - waydroid
-        - android
-        - software
-
     - role: halkeye.desktop
       when:
         - install_desktop_menu_items | default(false) | bool == true
