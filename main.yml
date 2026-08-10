@@ -58,7 +58,7 @@
       tags:
         - golang
         - software
-    - role: geerlingguy.git
+    - role: halkeye.git
       become: true
       when: ansible_facts["os_family"] != "Darwin" and ansible_facts["os_family"] != "Archlinux"
       tags:

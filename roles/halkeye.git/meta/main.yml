@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Gavin Mogan
+  description: Installs git with rustup support for source compilation
+
+  license: MIT
+
+  min_ansible_version: "9.6"
+
+  galaxy_tags:
+    - git
+    - rust
+    - rustup
+
+dependencies: []

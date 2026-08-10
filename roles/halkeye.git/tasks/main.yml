@@ -1,0 +1,27 @@
+---
+# tasks file for halkeye.git
+
+- name: Install rustup (required for git compilation)
+  when: git_install_from_source | default(false) | bool == true
+  become: true
+  block:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_facts["os_family"] == "Debian"
+
+    - name: Install rustup via apt
+      ansible.builtin.apt:
+        name: rustup
+        state: present
+      when: ansible_facts["os_family"] == "Debian"
+
+    - name: Set stable as default toolchain
+      ansible.builtin.command: rustup default stable
+      register: rustup_default_result
+      changed_when: "'stable' not in rustup_default_result.stdout or 'unchanged' not in rustup_default_result.stdout"
+
+- name: Install git
+  ansible.builtin.import_role:
+    name: geerlingguy.git
