@@ -2,8 +2,12 @@
   become: true
   with_items: "{{ global_ubuntu_ppas }}"
   when: ansible_facts["os_family"] == "Debian"
-  ansible.builtin.apt_repository:
-    repo: "{{ item }}"
+  ansible.builtin.deb822_repository:
+    name: "{{ item | regex_replace('^ppa:', '') | regex_replace('[^a-zA-Z0-9_-]', '_') }}"
+    types: deb
+    uris: "{{ item }}"
+    suites: "{{ ansible_facts['distribution_release'] }}"
+    components: main
     state: present
 
 - name: Install docker repo
@@ -21,17 +25,15 @@
         state: absent
 
     - name: create modern style sources
-      copy:
-        dest: "/etc/apt/sources.list.d/download_docker_com_linux_ubuntu.sources"
-        mode: 0644
-        owner: root
-        content: |
-          Types: deb
-          URIs: https://download.docker.com/linux/ubuntu/
-          Suites: {{ ansible_facts['distribution_release'] }}
-          Architectures: {{ deb_architecture }}
-          Components: stable
-          Signed-By: /etc/apt/keyrings/docker.asc
+      ansible.builtin.deb822_repository:
+        name: docker
+        types: deb
+        uris: https://download.docker.com/linux/ubuntu/
+        suites: "{{ ansible_facts['distribution_release'] }}"
+        architectures: "{{ deb_architecture }}"
+        components: stable
+        signed_by: /etc/apt/keyrings/docker.asc
+        state: present
 
 - name: Install ubuntu packages
   become: true
