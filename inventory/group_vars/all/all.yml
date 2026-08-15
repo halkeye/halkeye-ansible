@@ -150,16 +150,12 @@ global_git_config:
 global_authorized_keys:
   # loki
   - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBf5hQY0Pgc1BdK9KvXwQK/3RIqefRPveI0rzUNGMu5d halkeye@loki"
-  # linux
-  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJba+eKHmBHbiM2ZXXEi0CWPp7cABHCcSFXsK38qq7lJ halkeye@antman
-  # cleanup later (antman)
-  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOHhK9BcPvE/31OfJyrFnLZ5SoOkmGByaJkenHAtrdq halkeye@antman"
-  # work (old)
-  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFKtvMs+qVmTHVNZ2JVikXDe8p3/YpOg/VR9J0ErYk4w gmogan@DO-PW0BFSP4"
   # WASP
   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL22alHh1H0AroZW475rqtZY+5NIUZGgWQAycV1/3aia halkeye@wasp
   # work
   - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDhxxf5E9L0lA4WGfG/OcXQjBptQD9qNAvqyMq5Tfg5X gmogan@DO-PF61W10B"
+  # phone
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEk7+17RThgoL9YkUoZisNub1Zk5XQt26YhUeMYYRL8i phone"
 git_ignore:
   - "*~"
   - "# temporary files which can be created if a process still has a handle open of a deleted file"
