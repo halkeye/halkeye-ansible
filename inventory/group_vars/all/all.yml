@@ -318,10 +318,10 @@ nerdfonts_fonts:
   - fontname: 'JetBrainsMono'
     name: 'font-jetbrains-mono-nerd-font'
 
-software_version_argocd: "3.5.2" # repo: argoproj/argo-cd
-software_version_asdf: "v0.20.0" # repo: asdf-vm/asdf
+software_version_argocd: "3.5.3" # repo: argoproj/argo-cd
+software_version_asdf: "v0.20.1" # repo: asdf-vm/asdf
 software_version_bw: "cli-v2024.12.0" # repo: bitwarden/clients
-software_version_iamb: "0.0.11" # repo: ulyssa/iamb
+software_version_iamb: "0.0.12" # repo: ulyssa/iamb
 software_version_k9s: "0.51.0" # repo: derailed/k9s
 software_version_krew: "0.5.0" # repo: kubernetes-sigs/krew
 software_version_krr: "v1.30.0" # repo: robusta-dev/krr
