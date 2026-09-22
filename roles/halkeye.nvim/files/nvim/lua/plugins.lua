@@ -930,6 +930,13 @@ require("lazy").setup({
 				end,
 				desc = "Goto implementation",
 			},
+			{
+				"ss",
+				function()
+					require("fzf-lua").lsp_document_symbols()
+				end,
+				desc = "Document Symbols",
+			},
 		},
 	},
 	{
