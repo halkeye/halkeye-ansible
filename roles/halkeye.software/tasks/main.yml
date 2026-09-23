@@ -184,6 +184,8 @@
     - com.usebottles.bottles
     - com.vysp3r.ProtonPlus
     - io.dbeaver.DBeaverCommunity
+    - io.dbeaver.DBeaverCommunity.Client.mariadb
+    - io.dbeaver.DBeaverCommunity.Client.pgsql
     - io.github.giantpinkrobots.flatsweep
     - io.github.peazip.PeaZip
     - io.missioncenter.MissionCenter
