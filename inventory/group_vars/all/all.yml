@@ -197,6 +197,8 @@ git_ignore:
   - "__pycache__/"
   - "*.pyc"
   - ".factorypath"
+  - ".cursor/"
+  - ".claude/"
 
 tmux_tpm_plugins_path: "{{ lookup('env','HOME') }}/.tmux/plugins"
 

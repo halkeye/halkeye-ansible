@@ -836,13 +836,6 @@ require("lazy").setup({
 		config = function()
 			require("fzf-lua").setup({
 				winopts = { preview = { hidden = true } },
-				actions = {
-					files = {
-						["ctrl-t"] = FzfLua.actions.file_tabedit,
-						["alt-q"] = FzfLua.actions.file_sel_to_qf,
-						["enter"] = FzfLua.actions.file_tabedit,
-					},
-				},
 			})
 		end,
 		keys = {
