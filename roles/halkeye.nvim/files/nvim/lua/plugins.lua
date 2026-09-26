@@ -836,27 +836,17 @@ require("lazy").setup({
 		config = function()
 			require("fzf-lua").setup({
 				winopts = { preview = { hidden = true } },
+				files = {
+					fd_opts = [[--color=never --type f --type l --exclude .git --exclude .jj --exclude node_modules]],
+					find_opts = [[-type f \! -path '*/.git/*' \! -path '*/.jj/*' \! -path '*/node_modules/*']],
+				},
 			})
 		end,
 		keys = {
 			{
-				"<c-I>",
-				function()
-					require("fzf-lua").buffers()
-				end,
-				desc = "Buffers",
-			},
-			{
-				"<c-B>",
-				function()
-					require("fzf-lua").buffers()
-				end,
-				desc = "Buffers",
-			},
-			{
 				"<c-P>",
 				function()
-					require("fzf-lua").files({ cmd = "fdfind --type f --exclude node_modules" })
+					require("fzf-lua").global()
 				end,
 				desc = "Files",
 			},
