@@ -840,6 +840,20 @@ require("lazy").setup({
 		end,
 		keys = {
 			{
+				"<c-I>",
+				function()
+					require("fzf-lua").buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<c-B>",
+				function()
+					require("fzf-lua").buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
 				"<c-P>",
 				function()
 					require("fzf-lua").files({ cmd = "fdfind --type f --exclude node_modules" })
