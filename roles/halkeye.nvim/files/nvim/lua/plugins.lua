@@ -256,7 +256,6 @@ require("lazy").setup({
 				"graphql",
 				"jsonls",
 				"lua_ls",
-				"marksman",
 				-- "jedi_language_server", -- python
 				"pylsp", -- python
 				"ruby_lsp",
