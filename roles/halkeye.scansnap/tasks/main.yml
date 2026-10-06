@@ -1,6 +1,5 @@
 ---
 - name: Install scansnap
-  when: install | default(false) | bool == true
   block:
     # Install SANE packages on Debian
     - name: Install sane packages (Debian)
@@ -10,7 +9,7 @@
         name:
           - sane
           - sane-utils
-          - libsane
+          - libsane1
         state: present
 
     # Install SANE packages on Arch
