@@ -253,7 +253,6 @@ require("lazy").setup({
 				"dockerls",
 				"eslint",
 				"gopls",
-				"graphql",
 				"jsonls",
 				"lua_ls",
 				-- "jedi_language_server", -- python
