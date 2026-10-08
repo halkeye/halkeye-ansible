@@ -23,4 +23,9 @@ luasnip.add_snippets("all", {
 	s("rand64", {
 		f(generate_64_char_string, {}),
 	}),
+	s("unixtime", {
+		f(function()
+			return os.time()
+		end, {}),
+	}),
 })
