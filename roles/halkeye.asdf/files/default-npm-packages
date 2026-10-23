@@ -3,6 +3,5 @@ jsonlint
 neovim
 serve
 pnpm
-vim-language-server
 bash-language-server
 @devcontainers/cli
